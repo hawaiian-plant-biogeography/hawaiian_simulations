@@ -31,7 +31,9 @@ index,age_end
 
 Source for these age ends: [Isaac will fill this out]
 
-(3) One categorical between (cb) feature, representing the progression rule ("1" indicates migration from old to young), no interpolation needed:
+(3) One feature of each kind
+
+TODO: update below this point
 
 In `age1/cb1.csv` (present, all islands exist):
 

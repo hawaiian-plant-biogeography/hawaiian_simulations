@@ -15,8 +15,7 @@ Each of the experiments below are detailed in their own README.md files, located
 
 ### Experiment 1
 
-**Data summary**: 6 regions (H, M, O, K, X, Z), 6 epochs (epoch age ends are the appearance of
-the islands), 1 categorical feature, 1 quantitative feature
+**Data summary**: 6 regions (R, H, M, O, K, Z), 5 epochs (epoch age ends are the appearance of the islands), feature of each kind
 
 **Model summary**: 
 
