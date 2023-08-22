@@ -31,11 +31,18 @@ index,age_end
 
 Source for these age ends: [Isaac will fill this out]
 
-(3) One feature of each kind
+(3) One feature of each kind:
 
-TODO: update below this point
+Categorical within: which island is on the rise
 
-In `age1/cb1.csv` (present, all islands exist):
+Quantitative within: island area (Lim and Marshall, 2017)
+
+Categorical between: progression rule (old -> young = 1, young -> old = 0)
+
+Quantitative between: distance between islands on Google maps
+
+
+Example in `age1/cb1.csv` (present, all islands exist):
 
 ```
 R,K,O,M,H,Z
@@ -58,19 +65,4 @@ nan,nan,nan,nan,0,nan
 1,nan,nan,nan,nan,0
 ```
 
-(4) One quantitative within (qw) feature, representing island area, from Lim & Marshall (2017):
-
-In `age1/qw1.csv` (present, all islands exist):
-
-```
-R,K,O,M,H,Z
-1000,1431,1548,3155,10434,3500
-```
-
-In `age5/qw1.csv` (only continent exists):
-
-```
-R,K,O,M,H,Z
-1500,nan,nan,nan,nan,1000
-```
-
+(4) 
