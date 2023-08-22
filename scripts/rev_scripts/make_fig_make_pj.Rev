@@ -13,43 +13,43 @@
 # Initial setup #
 #################
 
-seed(12345)
+# seed(12345)
 
 # /Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
-tensorphylo_lib_dir = "put_the_path_to_tensorphylo's_lib_here/"
+tensorphylo_lib_dir = "/Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
 loadPlugin("TensorPhylo", tensorphylo_lib_dir)
 
 # setting up paths
 if (!exists("experiment_path")) exp_path = "experiment1/"
 if (!exists("features_path"))   features_path = exp_path + "feature_summary.csv"
-if (!exists("times_path"))      times_path = "age_summary.csv"
+if (!exists("times_path"))      times_path = exp_path + "age_summary.csv"
 if (!exists("pj_scripts_dir"))  pj_scripts_dir = exp_path + "pj_scripts/"
 if (!exists("model_truth_dir"))  model_truth_dir = exp_path + "model_truth/"
 
 # setting up FIG model quantities we may need to tweak
 #
 # base rate parameters
-if (!exists(rho_d_init)) rho_d_init = 0.0001
-if (!exists(rho_e_init)) rho_e_init = 0.0001
-if (!exists(rho_w_init)) rho_w_init = 0.0002
-if (!exists(rho_b_init)) rho_b_init = 0.0002
-#
+if (!exists("rho_d_init")) rho_d_init = 0.001
+if (!exists("rho_e_init")) rho_e_init = 0.001
+if (!exists("rho_w_init")) rho_w_init = 0.002
+if (!exists("rho_b_init")) rho_b_init = 0.002
+
 # feature effect parameters
-if (!exists(sigma_d_init)) sigma_d_init = 0.00001
-if (!exists(sigma_e_init)) sigma_e_init = 0.00001
-if (!exists(sigma_w_init)) sigma_w_init = 0.00001
-if (!exists(sigma_b_init)) sigma_b_init = 0.00001
-if (!exists(phi_d_init))     phi_d_init = 0.00001
-if (!exists(phi_e_init))     phi_e_init = 0.00001
-if (!exists(phi_w_init))     phi_w_init = 0.00001
-if (!exists(phi_b_init))     phi_b_init = 0.00001
+if (!exists("sigma_d_init")) sigma_d_init = 0.00001
+if (!exists("sigma_e_init")) sigma_e_init = 0.00001
+if (!exists("sigma_w_init")) sigma_w_init = 0.00001
+if (!exists("sigma_b_init")) sigma_b_init = 0.00001
+if (!exists("phi_d_init"))     phi_d_init = 0.00001
+if (!exists("phi_e_init"))     phi_e_init = 0.00001
+if (!exists("phi_w_init"))     phi_w_init = 0.00001
+if (!exists("phi_b_init"))     phi_b_init = 0.00001
 #
 # reversible-jump?
 if (!exists("use_rj")) use_rj = false
 
 # simulation config
-if (!exists("n_samples")) n_samples = 110
-
+if (!exists("n_samples"))    n_samples    = 110
+if (!exists("max_attempts")) max_attempts = 1000
 
 ############################
 # Reading epoch age limits #
@@ -80,12 +80,11 @@ for (i in 1:(n_epochs-1)) {
 }
 
 
-
 ####################
 # Reading features #
 ####################
 
-geo_features <- readRegionalFeatures(features_path, delimiter=",")
+geo_features <- readRegionalFeatures(features_path, delimiter=",", "nan")
 geo_features.normalize("within")
 geo_features.normalize("between")
 
@@ -134,10 +133,10 @@ rho_w ~ dnExp(1)
 rho_b ~ dnExp(1)
 
 # initializing values (only relevant for inference later)
-# rho_d.setValue(rho_d_init)
-# rho_e.setValue(rho_e_init)
-# rho_w.setValue(rho_w_init)
-# rho_b.setValue(rho_b_init)
+rho_d.setValue(rho_d_init)
+rho_e.setValue(rho_e_init)
+rho_w.setValue(rho_w_init)
+rho_b.setValue(rho_b_init)
 
 # feature effect parameters
 rj_base_sigma_w  = dnNormal(0,1) # prior of "on-value" for RJMCMC
@@ -179,16 +178,16 @@ if (use_rj) {
 
 # initializing values (only relevant for inference later)
 # categorical feature effects
-# for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
-# for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
-# for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
-# for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
+for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
+for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
+for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
+for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
 
 # quantitative feature effects
-# for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
-# for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
-# for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
-# for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
+for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
+for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
+for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
+for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
 
 # base-rate multipliers
 # first t is oldest
@@ -219,7 +218,7 @@ total_speciation := rho_w + rho_b
 # getting dispersal manifested rates
 for (t in 1:n_epochs) {
     for (i in 1:n_regions) {
-        for (j in 1:m_d[k][i].size()) {
+        for (j in 1:m_d[t][i].size()) {
             r_d[t][i][j] := rho_d * m_d[t][i][j]
         }
 
@@ -252,7 +251,7 @@ for (t in 1:n_epochs) {
 
 # get extinction manifested rates
 for (t in 1:n_epochs) {
-    for (i in 1:n_states) {
+    for (i in 1:n_ranges) {
         mu[t][i] <- abs(0)
 
         if (i <= n_regions) {
@@ -281,48 +280,85 @@ or_age = -1.0
 # R, K, O, M, H, Z
 non_continent_region_idxs = [1, 2, 3, 4, 5]
 
+# 16, 100001, R+Z
+# 17, 010001, K+Z
+# 18, 001001, O+Z
+# 19, 000101, M+Z
+# 20, 000011, H+Z
+translation_table = [16, 17, 18, 19, 20]
+island_names = ["Northwestern islands", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
+
 valid = false
 while (!valid) {
+    # cap rejection sampling
+    max_attempts -= 1
+    # use as many successes we got so far
+    if (max_attempts <= 0) {
+	q()
+    }
+
     # decreasing ages
     # times: breakpoints
     
+    # draw root age for the whole tree
+    # this is the age of the MRCA that separates
+    # the ingroup (stem) and the outgroup
+    whole_tree_age ~ dnUnif(0,30)
+
+    # old -> young
     for (t in 1:n_epochs) {
         
         # adding all dispersal rates from continent into any non-continent region
         d2island_total_rate = 0.0
         for (i in non_continent_region_idxs) {
-            d2island_total_rate += r_d[t][5][i]
+            d2island_total_rate += r_d[t][6][i]
         }
 
         t_d ~ dnExp(d2island_total_rate)
-        or_age = (times[t] - t_d) # origin age
 
-        # overan time interval
-        if (or_age < times[t+1]) {
-            continue; # do nothing
+        # if we're in the oldest epoch
+        if (t == 1) {
+            island_or_age = whole_tree_age - t_d
+        } else {
+            island_or_age = times[t-1] - t_d
+        }
+        
+        if (island_or_age < 0) {
+            # island_or_age cannot be negative, done!
+            break
         }
 
-        # event happened within interval t
-        else {
-
+        # overan time interval while still in the second youngest epoch at most
+        if (t < n_epochs && (island_or_age < times[t])) {
+            next
+        } else {
+            # event happened within interval t
             islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
+
             for (i in non_continent_region_idxs) {
-                islands_relative_rates[i] = r_d[t][5][i] / d2island_total_rate
+                islands_relative_rates[i] = r_d[t][6][i] / d2island_total_rate
             }
 
-            # starting region (island)
-            island_subroot ~ dnCat(islands_relative_rates)
+
+            # starting region (island), between 1 and 5
+            island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
 
             # note that we have to add the island to the continent
             # and find that widespread range integer ID
-            subroot_range = find_state_number(Z, island_subroot) # PSEUDOCODE STILL
+            subroot_range = translation_table[island_subroot_idx]
+            colonized_island_name = island_names[island_subroot_idx]
             
             valid = true
             break
         }
     }
-} # we have O, X and S
+}
 
+print("Whole tree root age = " + whole_tree_age)
+print("Origin age of island radiation = " + island_or_age)
+print("Island that got colonized = " + colonized_island_name)
+
+xxxx
 
 ###########################################
 # Making simulator (PhyloJunction) string #
@@ -380,3 +416,7 @@ for (s_idx in 1:n_samples) {
 write(sigma_true_vals_s, file=sigma_true_values_path)
 write(phi_true_vals_s, file=phi_true_values_path)
 write(rho_true_vals_s, file=rho_true_values_path)
+
+# Here:
+# Wait until PhyloJunction finishes simulations
+# Then run MCMC on simulated data
