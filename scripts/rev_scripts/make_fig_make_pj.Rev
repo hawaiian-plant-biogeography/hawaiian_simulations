@@ -1,0 +1,269 @@
+# Script: make_fig_make_pj_exp1.Rev
+# Author: Fabio K. Mendes (f.mendes@wustl.edu)
+# Date: Aug, 2023
+
+# This script will:
+# (1) Read in all features and epoch information,
+# (2) Build the FIG model,
+# (3) Build a string specifying a PhyloJunction script
+#
+# NOTE: Run this script from hawaiian_simulations/
+
+# /Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
+tensorphylo_lib_dir = "put_the_path_to_tensorphylo's_lib_here/"
+loadPlugin("TensorPhylo", tensorphylo_lib_dir)
+
+# setting up paths
+if (!exists("experiment_path")) exp_path = "experiment1/"
+if (!exists("features_path"))   features_path = exp_path + "feature_summary.csv"
+if (!exists("times_path"))      times_path = "age_summary.csv"
+
+# setting up FIG model quantities we may need to tweak
+#
+# base rate parameters
+if (!exists(rho_d_init)) rho_d_init = 0.0001
+if (!exists(rho_e_init)) rho_e_init = 0.0001
+if (!exists(rho_w_init)) rho_w_init = 0.0002
+if (!exists(rho_b_init)) rho_b_init = 0.0002
+#
+# feature effect parameters
+if (!exists(sigma_d_init)) sigma_d_init = 0.00001
+if (!exists(sigma_e_init)) sigma_e_init = 0.00001
+if (!exists(sigma_w_init)) sigma_w_init = 0.00001
+if (!exists(sigma_b_init)) sigma_b_init = 0.00001
+if (!exists(phi_d_init))     phi_d_init = 0.00001
+if (!exists(phi_e_init))     phi_e_init = 0.00001
+if (!exists(phi_w_init))     phi_w_init = 0.00001
+if (!exists(phi_b_init))     phi_b_init = 0.00001
+#
+# reversible-jump?
+if (!exists("use_rj"))        use_rj = false
+
+############################
+# Reading epoch age limits #
+############################
+
+# reading age ends, old at the top, young at the bottom
+#
+# e.g.,
+# index,age_end
+# 4,6.15
+# 3,4.135
+# 2,2.55
+# 1,1.20 
+#
+# i.e.,
+# last entry gives the age at which the youngest epoch ends
+# the first entry gives the age at which the fourth epoch ends
+# (the oldest epoch runs infinitely into the past, and is not
+# specified an end)
+
+times_table = readDataDelimitedFile(times_path, delimiter=",", header=true)
+n_times = times_table.size() + 1 # times.size()
+
+# 2nd element is the epoch's age end
+for (i in 1:(n_times-1)) {
+    times[i] <- times_table[i][2]
+}
+
+
+
+####################
+# Reading features #
+####################
+
+geo_features <- readRegionalFeatures(features_path, delimiter=",")
+geo_features.normalize("within")
+geo_features.normalize("between")
+
+# first t is oldest
+# last t is youngest
+for (t in 1:n_times) {
+    print("Reading features in time slice " + t)
+
+    feature_CW[t] <- geo_features.get("within", "categorical", t)
+    feature_QW[t] <- geo_features.get("within", "quantitative", t)
+    feature_CB[t] <- geo_features.get("between", "categorical", t)
+    feature_QB[t] <- geo_features.get("between", "quantitative", t)
+
+    for (j in 1:feature_CW[t].size()) {
+        layer_CW[t][j] <- feature_CW[t][j].get()
+    }
+
+    for (j in 1:feature_QW[t].size()) {
+        layer_QW[t][j] <- feature_QW[t][j].get()
+    }
+
+    for (j in 1:feature_CB[t].size()) {
+        layer_CB[t][j] <- feature_CB[t][j].get()
+    }
+
+    for (j in 1:feature_QB[t].size()) {
+        layer_QB[t][j] <- feature_QB[t][j].get()
+    }
+}
+
+# layer objects:
+# 1D: time slice; shallowest comma
+# 2D: feature; one level deeper comma
+# 3D: from-atomic region (rows); two level deeper comma
+# 4D: to-atomic region (cols); innermost comma
+
+
+###################################
+# Setting up FIG model parameters #
+###################################
+
+# base rate parameters
+rho_d ~ dnExp(1)
+rho_e ~ dnExp(1)
+rho_w ~ dnExp(1)
+rho_b ~ dnExp(1)
+
+# initializing values
+rho_d.setValue(rho_d_init)
+rho_e.setValue(rho_e_init)
+rho_w.setValue(rho_w_init)
+rho_b.setValue(rho_b_init)
+
+# feature effect parameters
+rj_base_sigma_w  = dnNormal(0,1) # prior of "on-value" for RJMCMC
+rj_base_sigma_e  = dnNormal(0,1)
+rj_base_sigma_d  = dnNormal(0,1)
+rj_base_sigma_b  = dnNormal(0,1)
+rj_base_phi_w    = dnNormal(0,1)
+rj_base_phi_e    = dnNormal(0,1)
+rj_base_phi_d    = dnNormal(0,1)
+rj_base_phi_b    = dnNormal(0,1)
+rj_sigma_w       = dnRJMixture(0.0, rj_base_sigma_w, p=0.5)
+rj_sigma_e       = dnRJMixture(0.0, rj_base_sigma_e, p=0.5)
+rj_sigma_d       = dnRJMixture(0.0, rj_base_sigma_d, p=0.5)
+rj_sigma_b       = dnRJMixture(0.0, rj_base_sigma_b, p=0.5)
+rj_phi_w         = dnRJMixture(0.0, rj_base_phi_w, p=0.5)
+rj_phi_e         = dnRJMixture(0.0, rj_base_phi_e, p=0.5)
+rj_phi_d         = dnRJMixture(0.0, rj_base_phi_d, p=0.5)
+rj_phi_b         = dnRJMixture(0.0, rj_base_phi_b, p=0.5)
+
+if (use_rj) {
+    for (i in 1:feature_CW[1].size()) sigma_w[i] ~ rj_sigma_w
+    for (i in 1:feature_CW[1].size()) sigma_e[i] ~ rj_sigma_e
+    for (i in 1:feature_CB[1].size()) sigma_d[i] ~ rj_sigma_d
+    for (i in 1:feature_CB[1].size()) sigma_b[i] ~ rj_sigma_b
+    for (i in 1:feature_QW[1].size()) phi_w[i] ~ rj_phi_w
+    for (i in 1:feature_QW[1].size()) phi_e[i] ~ rj_phi_e
+    for (i in 1:feature_QB[1].size()) phi_d[i] ~ rj_phi_d
+    for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_phi_b
+} else {
+    for (i in 1:feature_CW[1].size()) sigma_w[i] ~ rj_base_sigma_w
+    for (i in 1:feature_CW[1].size()) sigma_e[i] ~ rj_base_sigma_e
+    for (i in 1:feature_CB[1].size()) sigma_d[i] ~ rj_base_sigma_d
+    for (i in 1:feature_CB[1].size()) sigma_b[i] ~ rj_base_sigma_b
+    for (i in 1:feature_QW[1].size()) phi_w[i] ~ rj_base_phi_w
+    for (i in 1:feature_QW[1].size()) phi_e[i] ~ rj_base_phi_e
+    for (i in 1:feature_QB[1].size()) phi_d[i] ~ rj_base_phi_d
+    for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_base_phi_b
+}
+
+# initializing values
+# categorical feature effects
+for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
+for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
+for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
+for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
+
+# quantitative feature effects
+for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
+for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
+for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
+for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
+
+# base-rate multipliers
+# first t is oldest
+# last t is youngest
+for (t in 1:n_times) {
+    m_w[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_w, phi_w)
+    m_e[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_e, phi_e)
+    m_d[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_d, phi_d)
+    m_b[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_b, phi_b)
+}
+
+# quantities we need for later
+n_regions = m_b[1].size()
+max_range_size = n_regions
+n_ranges = 0 # number of states
+for (i in 1:max_range_size) n_ranges += choose(n_regions, i)
+max_subrange_split_size = n_regions
+
+
+####################################
+# Converting FIG model into GeoSSE #
+####################################
+
+# summarize base rates
+speciation_rates := [ rho_w, rho_b ]
+total_speciation := rho_w + rho_b
+
+# getting dispersal manifested rates
+for (k in 1:n_times) {
+    for (i in 1:n_regions) {
+        for (j in 1:m_d[k][i].size()) {
+            r_d[k][i][j] := rho_d * m_d[k][i][j]
+        }
+
+        for (j in 1:m_e[k][1].size()) {
+            r_e[k][j] := rho_e * m_e[k][1][j]
+        }
+    }
+
+    Q[k] := fnBiogeographyRateMatrix(dispersalRates=r_d[k],
+                                     extirpationRates=r_e[k],
+                                     maxRangeSize=max_range_size)
+}
+
+# get speciation manifested rates
+for (k in 1:n_times) {
+    clado_map[k] := fnBiogeographyCladoEventsBD(speciation_rates=speciation_rates,
+                                                within_region_features=m_w[k][1],
+                                                between_region_features=m_b[k],
+                                                max_range_size=max_range_size,
+                                                max_subrange_split_size=max_subrange_split_size)
+
+    lambda[k] := clado_map[k].getSpeciationRateSumPerState()
+
+    omega[k] := clado_map[k].getCladogeneticProbabilityMatrix()
+
+    # monitor variables for absolute speciation rates
+    r_w[k] := rho_w * m_w[k][1]
+    r_b[k] := rho_b * matrix(m_b[k]) # not for all widespread ranges, just for species with 2-region ranges
+}
+
+# get extinction manifested rates
+for (k in 1:n_times) {
+    for (i in 1:n_states) {
+        mu[k][i] <- abs(0)
+
+        if (i <= n_regions) {
+            mu[k][i] := r_e[k][i]
+        }
+    }
+}
+
+# other SSE parameters
+# eq. freq at start of process
+pi <- simplex(rep(1, n_ranges))
+
+condition = "survival"
+
+rho <- 1.0 # sampling probability
+
+
+##################################################
+# Draw time and range for an island colonization #
+# to match Hawaiian data                         #
+##################################################
+
+
+
+###########################################
+# Making simulator (PhyloJunction) string #
+###########################################
