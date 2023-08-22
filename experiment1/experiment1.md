@@ -56,7 +56,7 @@ R,K,O,M,H,Z
 In `age5/cb1.csv` (only R and continent exist):
 
 ```
-X,K,O,M,H,Z
+R,K,O,M,H,Z
 0,nan,nan,nan,nan,0
 nan,0,nan,nan,nan,nan
 nan,nan,0,nan,nan,nan

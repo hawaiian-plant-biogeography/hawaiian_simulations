@@ -9,6 +9,12 @@
 #
 # NOTE: Run this script from hawaiian_simulations/
 
+#################
+# Initial setup #
+#################
+
+seed(12345)
+
 # /Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
 tensorphylo_lib_dir = "put_the_path_to_tensorphylo's_lib_here/"
 loadPlugin("TensorPhylo", tensorphylo_lib_dir)
@@ -17,6 +23,8 @@ loadPlugin("TensorPhylo", tensorphylo_lib_dir)
 if (!exists("experiment_path")) exp_path = "experiment1/"
 if (!exists("features_path"))   features_path = exp_path + "feature_summary.csv"
 if (!exists("times_path"))      times_path = "age_summary.csv"
+if (!exists("pj_scripts_dir"))  pj_scripts_dir = exp_path + "pj_scripts/"
+if (!exists("model_truth_dir"))  model_truth_dir = exp_path + "model_truth/"
 
 # setting up FIG model quantities we may need to tweak
 #
@@ -37,7 +45,11 @@ if (!exists(phi_w_init))     phi_w_init = 0.00001
 if (!exists(phi_b_init))     phi_b_init = 0.00001
 #
 # reversible-jump?
-if (!exists("use_rj"))        use_rj = false
+if (!exists("use_rj")) use_rj = false
+
+# simulation config
+if (!exists("n_samples")) n_samples = 110
+
 
 ############################
 # Reading epoch age limits #
@@ -59,10 +71,11 @@ if (!exists("use_rj"))        use_rj = false
 # specified an end)
 
 times_table = readDataDelimitedFile(times_path, delimiter=",", header=true)
-n_times = times_table.size() + 1 # times.size()
+n_epochs = times_table.size() + 1 # times.size()
 
 # 2nd element is the epoch's age end
-for (i in 1:(n_times-1)) {
+# old -> young
+for (i in 1:(n_epochs-1)) {
     times[i] <- times_table[i][2]
 }
 
@@ -78,7 +91,7 @@ geo_features.normalize("between")
 
 # first t is oldest
 # last t is youngest
-for (t in 1:n_times) {
+for (t in 1:n_epochs) {
     print("Reading features in time slice " + t)
 
     feature_CW[t] <- geo_features.get("within", "categorical", t)
@@ -120,11 +133,11 @@ rho_e ~ dnExp(1)
 rho_w ~ dnExp(1)
 rho_b ~ dnExp(1)
 
-# initializing values
-rho_d.setValue(rho_d_init)
-rho_e.setValue(rho_e_init)
-rho_w.setValue(rho_w_init)
-rho_b.setValue(rho_b_init)
+# initializing values (only relevant for inference later)
+# rho_d.setValue(rho_d_init)
+# rho_e.setValue(rho_e_init)
+# rho_w.setValue(rho_w_init)
+# rho_b.setValue(rho_b_init)
 
 # feature effect parameters
 rj_base_sigma_w  = dnNormal(0,1) # prior of "on-value" for RJMCMC
@@ -164,23 +177,23 @@ if (use_rj) {
     for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_base_phi_b
 }
 
-# initializing values
+# initializing values (only relevant for inference later)
 # categorical feature effects
-for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
-for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
-for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
-for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
+# for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
+# for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
+# for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
+# for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
 
 # quantitative feature effects
-for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
-for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
-for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
-for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
+# for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
+# for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
+# for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
+# for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
 
 # base-rate multipliers
 # first t is oldest
 # last t is youngest
-for (t in 1:n_times) {
+for (t in 1:n_epochs) {
     m_w[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_w, phi_w)
     m_e[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_e, phi_e)
     m_d[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_d, phi_d)
@@ -204,46 +217,46 @@ speciation_rates := [ rho_w, rho_b ]
 total_speciation := rho_w + rho_b
 
 # getting dispersal manifested rates
-for (k in 1:n_times) {
+for (t in 1:n_epochs) {
     for (i in 1:n_regions) {
         for (j in 1:m_d[k][i].size()) {
-            r_d[k][i][j] := rho_d * m_d[k][i][j]
+            r_d[t][i][j] := rho_d * m_d[t][i][j]
         }
 
-        for (j in 1:m_e[k][1].size()) {
-            r_e[k][j] := rho_e * m_e[k][1][j]
+        for (j in 1:m_e[t][1].size()) {
+            r_e[t][j] := rho_e * m_e[t][1][j]
         }
     }
 
-    Q[k] := fnBiogeographyRateMatrix(dispersalRates=r_d[k],
-                                     extirpationRates=r_e[k],
+    Q[t] := fnBiogeographyRateMatrix(dispersalRates=r_d[t],
+                                     extirpationRates=r_e[t],
                                      maxRangeSize=max_range_size)
 }
 
 # get speciation manifested rates
-for (k in 1:n_times) {
-    clado_map[k] := fnBiogeographyCladoEventsBD(speciation_rates=speciation_rates,
-                                                within_region_features=m_w[k][1],
-                                                between_region_features=m_b[k],
+for (t in 1:n_epochs) {
+    clado_map[t] := fnBiogeographyCladoEventsBD(speciation_rates=speciation_rates,
+                                                within_region_features=m_w[t][1],
+                                                between_region_features=m_b[t],
                                                 max_range_size=max_range_size,
                                                 max_subrange_split_size=max_subrange_split_size)
 
-    lambda[k] := clado_map[k].getSpeciationRateSumPerState()
+    lambda[t] := clado_map[t].getSpeciationRateSumPerState()
 
-    omega[k] := clado_map[k].getCladogeneticProbabilityMatrix()
+    omega[t] := clado_map[t].getCladogeneticProbabilityMatrix()
 
     # monitor variables for absolute speciation rates
-    r_w[k] := rho_w * m_w[k][1]
-    r_b[k] := rho_b * matrix(m_b[k]) # not for all widespread ranges, just for species with 2-region ranges
+    r_w[t] := rho_w * m_w[t][1]
+    r_b[t] := rho_b * matrix(m_b[t]) # not for all widespread ranges, just for species with 2-region ranges
 }
 
 # get extinction manifested rates
-for (k in 1:n_times) {
+for (t in 1:n_epochs) {
     for (i in 1:n_states) {
-        mu[k][i] <- abs(0)
+        mu[t][i] <- abs(0)
 
         if (i <= n_regions) {
-            mu[k][i] := r_e[k][i]
+            mu[t][i] := r_e[t][i]
         }
     }
 }
@@ -262,8 +275,108 @@ rho <- 1.0 # sampling probability
 # to match Hawaiian data                         #
 ##################################################
 
+# origin (seed) age
+or_age = -1.0
+
+# R, K, O, M, H, Z
+non_continent_region_idxs = [1, 2, 3, 4, 5]
+
+valid = false
+while (!valid) {
+    # decreasing ages
+    # times: breakpoints
+    
+    for (t in 1:n_epochs) {
+        
+        # adding all dispersal rates from continent into any non-continent region
+        d2island_total_rate = 0.0
+        for (i in non_continent_region_idxs) {
+            d2island_total_rate += r_d[t][5][i]
+        }
+
+        t_d ~ dnExp(d2island_total_rate)
+        or_age = (times[t] - t_d) # origin age
+
+        # overan time interval
+        if (or_age < times[t+1]) {
+            continue; # do nothing
+        }
+
+        # event happened within interval t
+        else {
+
+            islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
+            for (i in non_continent_region_idxs) {
+                islands_relative_rates[i] = r_d[t][5][i] / d2island_total_rate
+            }
+
+            # starting region (island)
+            island_subroot ~ dnCat(islands_relative_rates)
+
+            # note that we have to add the island to the continent
+            # and find that widespread range integer ID
+            subroot_range = find_state_number(Z, island_subroot) # PSEUDOCODE STILL
+            
+            valid = true
+            break
+        }
+    }
+} # we have O, X and S
 
 
 ###########################################
 # Making simulator (PhyloJunction) string #
 ###########################################
+
+sigma_true_values_path = model_truth_dir + "sigma_true_vals.tsv"
+phi_true_values_path = model_truth_dir + "phi_true_vals.tsv"
+rho_true_values_path = model_truth_dir + "rho_true_vals.tsv"
+
+sigma_true_vals_s = "sample\tfeature\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
+phi_true_vals_s = "sample\tfeature\tphi_d\tphi_e\tphi_w\tphi_b\n"
+rho_init_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n"
+
+for (s_idx in 1:n_samples) {
+
+    print("Preparing .pj script string for sample " + s_idx)
+
+    feat_specific_sigma_true_vals_s = "sample\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
+    for (c_feat_idx in 1:sigma_d.size()) {
+        sigma_d[c_feat_idx].redraw()
+        sigma_e[c_feat_idx].redraw()
+        sigma_w[c_feat_idx].redraw()
+        sigma_b[c_feat_idx].redraw()
+        sigma_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
+
+        feat_specific_sigma_true_values_path = model_truth_dir + "sigma_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
+        feat_specific_sigma_true_vals_s += s_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
+
+        print("Writing true feature effect values for categorical feature " + c_feat_idx + " in " + feat_specific_sigma_true_values_path)
+
+        write(feat_specific_sigma_true_vals_s, file=feat_specific_sigma_true_values_path)
+    }
+
+    feat_specific_phi_true_vals_s = "sample\tphi_d\tphi_e\tphi_w\tphi_b\n"
+    for (q_feat_idx in 1:phi_d.size()) {
+        phi_d[q_feat_idx].redraw()
+        phi_e[q_feat_idx].redraw()
+        phi_w[q_feat_idx].redraw()
+        phi_b[q_feat_idx].redraw()
+        phi_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + phi_d[c_feat_idx] + "\t" + phi_e[c_feat_idx] + "\t" + phi_w[c_feat_idx] + "\t" + phi_b[c_feat_idx] + "\n"
+
+        feat_specific_phi_true_values_path = model_truth_dir + "phi_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
+        feat_specific_phi_true_vals_s += s_idx + "\t" + phi_d[c_feat_idx] + "\t" + phi_e[c_feat_idx] + "\t" + phi_w[c_feat_idx] + "\t" + phi_b[c_feat_idx] + "\n"
+       
+        print("Writing true feature effect values for quantitative feature " + q_feat_idx + " in " + feat_specific_phi_true_values_path)
+        
+        write(feat_specific_phi_true_vals_s, file=feat_specific_phi_init_values_path)
+    }
+}
+
+# adding stuff here
+
+}
+
+write(sigma_true_vals_s, file=sigma_true_values_path)
+write(phi_true_vals_s, file=phi_true_values_path)
+write(rho_true_vals_s, file=rho_true_values_path)
