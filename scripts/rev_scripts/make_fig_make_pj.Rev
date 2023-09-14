@@ -1,6 +1,6 @@
 # Script: make_fig_make_pj_exp1.Rev
 # Author: Fabio K. Mendes (f.mendes@wustl.edu)
-# Date: Aug, 2023
+# Date: Sep, 2023
 
 # This script will:
 # (1) Read in all features and epoch information,
@@ -15,7 +15,6 @@
 
 # seed(12345)
 
-# /Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
 tensorphylo_lib_dir = "/Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
 loadPlugin("TensorPhylo", tensorphylo_lib_dir)
 
@@ -48,7 +47,7 @@ if (!exists("phi_b_init"))     phi_b_init = 0.00001
 if (!exists("use_rj")) use_rj = false
 
 # simulation config
-if (!exists("n_samples"))    n_samples    = 110
+if (!exists("n_samples"))    n_samples    = 1
 if (!exists("max_attempts")) max_attempts = 1000
 
 ############################
@@ -318,18 +317,18 @@ while (!valid) {
 
         # if we're in the oldest epoch
         if (t == 1) {
-            island_or_age = whole_tree_age - t_d
+            island_ori_age = whole_tree_age - t_d
         } else {
-            island_or_age = times[t-1] - t_d
+            island_ori_age = times[t-1] - t_d
         }
         
-        if (island_or_age < 0) {
-            # island_or_age cannot be negative, done!
+        if (island_ori_age < 0) {
+            # island_ori_age cannot be negative, done!
             break
         }
 
         # overan time interval while still in the second youngest epoch at most
-        if (t < n_epochs && (island_or_age < times[t])) {
+        if (t < n_epochs && (island_ori_age < times[t])) {
             next
         } else {
             # event happened within interval t
@@ -354,11 +353,10 @@ while (!valid) {
     }
 }
 
-print("Whole tree root age = " + whole_tree_age)
-print("Origin age of island radiation = " + island_or_age)
+print("\nWhole tree root age = " + whole_tree_age)
+print("Origin age of island radiation = " + island_ori_age)
 print("Island that got colonized = " + colonized_island_name)
 
-xxxx
 
 ###########################################
 # Making simulator (PhyloJunction) string #
@@ -370,11 +368,14 @@ rho_true_values_path = model_truth_dir + "rho_true_vals.tsv"
 
 sigma_true_vals_s = "sample\tfeature\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
 phi_true_vals_s = "sample\tfeature\tphi_d\tphi_e\tphi_w\tphi_b\n"
-rho_init_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n"
+rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n"
+
+n_samples = 1
 
 for (s_idx in 1:n_samples) {
 
-    print("Preparing .pj script string for sample " + s_idx)
+    print("\nPreparing .pj script string for sample " + s_idx)
+    pj_script_idx_path = pj_scripts_dir + "sim" + s_idx + ".pj"
 
     feat_specific_sigma_true_vals_s = "sample\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
     for (c_feat_idx in 1:sigma_d.size()) {
@@ -387,7 +388,7 @@ for (s_idx in 1:n_samples) {
         feat_specific_sigma_true_values_path = model_truth_dir + "sigma_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
         feat_specific_sigma_true_vals_s += s_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
 
-        print("Writing true feature effect values for categorical feature " + c_feat_idx + " in " + feat_specific_sigma_true_values_path)
+        # print("Writing true feature effect values for categorical feature " + c_feat_idx + " in " + feat_specific_sigma_true_values_path)
 
         write(feat_specific_sigma_true_vals_s, file=feat_specific_sigma_true_values_path)
     }
@@ -398,25 +399,148 @@ for (s_idx in 1:n_samples) {
         phi_e[q_feat_idx].redraw()
         phi_w[q_feat_idx].redraw()
         phi_b[q_feat_idx].redraw()
-        phi_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + phi_d[c_feat_idx] + "\t" + phi_e[c_feat_idx] + "\t" + phi_w[c_feat_idx] + "\t" + phi_b[c_feat_idx] + "\n"
+        phi_true_vals_s += s_idx + "\t" + q_feat_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
 
-        feat_specific_phi_true_values_path = model_truth_dir + "phi_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
-        feat_specific_phi_true_vals_s += s_idx + "\t" + phi_d[c_feat_idx] + "\t" + phi_e[c_feat_idx] + "\t" + phi_w[c_feat_idx] + "\t" + phi_b[c_feat_idx] + "\n"
+        feat_specific_phi_true_values_path = model_truth_dir + "phi_true_vals_sample" + s_idx + "_feat" + q_feat_idx + ".tsv"
+        feat_specific_phi_true_vals_s += s_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
        
-        print("Writing true feature effect values for quantitative feature " + q_feat_idx + " in " + feat_specific_phi_true_values_path)
+        # print("Writing true feature effect values for quantitative feature " + q_feat_idx + " in " + feat_specific_phi_true_values_path)
         
-        write(feat_specific_phi_true_vals_s, file=feat_specific_phi_init_values_path)
+        write(feat_specific_phi_true_vals_s, file=feat_specific_phi_true_values_path)
     }
+
+    rho_d.redraw()
+    rho_e.redraw()
+    rho_w.redraw()
+    rho_b.redraw()
+
+    sample_rho_true_values_path = model_truth_dir + "rho_true_vals_sample" + s_idx + ".tsv"
+    rho_true_vals_s += s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
+
+    write(rho_true_vals_s, file=sample_rho_true_values_path)
+
+    # done with this sample's sigmas, phis and rhos
+
+    s = "# deterministic nodes\n"
+    write(s, file=pj_script_idx_path)
+
+    var_names = [""]
+    vidx = 1
+
+    for (t in 1:n_epochs) {
+        print("    Doing time slice " + t)
+
+        processed_anc_states_bw_speciation = [-1]
+        anc_state_idx = 1
+
+        s += "\n# time slice " + t + "\n"
+        # write to existing PJ script file here
+
+        print("      Doing extinction rates")
+
+        for (i in 1:n_regions) {
+            ii = i - 1
+            var_names[vidx] = "det_death_rate" + ii + "_t" + t
+            s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\")\n"
+            write(s, append=TRUE, file=pj_script_idx_path)
+
+            vidx = vidx + 1
+        }
+
+        print("      Doing transition rates")
+
+        for (i in 1:n_ranges) {
+            ii = i - 1
+            rate_open = "det_trans_rate" + ii + "_"
+            rate_middle = " := sse_rate(" + "name=\"q_" + ii + "_"
+            i_state = ", states=[" + ii + ","
+            rate_close = "], event=\"transition\")\n"
+        
+            for (j in 1:n_ranges) {
+                q_tij = Q[t][i][j]
+                jj = j - 1
+
+                if (ii != jj) {
+                    var_names[vidx] = rate_open + jj + "_t" + t
+                    # var_names[vidx] = "det_trans_rate" + ii  + "_" + jj + "_t" + t
+                    # s = var_names[vidx] + " := sse_rate(" + "name=\"q_"+ ii + "_" + jj + "_t" + t + "\", " + "value=" + q_tij + ", states=[" + ii + "," + jj + "], " + "event=\"transition\")\n"
+		    s = var_names[vidx] + rate_middle + jj + "_t" + t + "\", " + "value=" + q_tij + i_state + jj + rate_close
+
+                    write(s, append=TRUE, file=pj_script_idx_path)
+                    
+                    vidx = vidx + 1
+                }
+            }
+        }
+
+        # print(s + "\n")
+
+        clado_map_tmp <- clado_map[t]
+        clado_map_events_tmp <- clado_map_tmp.getEvents()
+
+        print("      Doing birth rates")
+
+        for (i in 1:clado_map_events_tmp.size()) {
+            idx = clado_map_events_tmp[i]
+            ii = idx[1]
+            jj = idx[2]
+            kk = idx[3]
+            sp_label = "w_speciation"
+
+            if (ii != jj && ii != kk) {
+                sp_label = "bw_speciation"
+            }
+
+            if ((ii == jj && ii != kk) || (ii != jj && ii == kk)) {
+                sp_label = "asym_speciation"
+            }
+
+            if (sp_label == "bw_speciation" || sp_label=="asym_speciation") {
+            # if ((sp_label == "bw_speciation" && (!processed_anc_states_bw_speciation.contains(ii))) || (sp_label=="asym_speciation" && jj >= kk)) {
+                processed_anc_states_bw_speciation[anc_state_idx] = ii
+                anc_state_idx = anc_state_idx + 1
+                var_names[vidx] = "det_birth_rate" + ii + "_" + jj + "_" + kk + "_t" + t
+
+                s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + jj + "," + kk + "], " + "event=\"" + sp_label + "\")\n"
+                
+                write(s, append=TRUE, file=pj_script_idx_path)
+
+                vidx = vidx + 1
+            }
+
+            if (sp_label == "w_speciation" && (ii == jj) && (ii == kk)) {
+                var_names[vidx] = "det_birth_rate" + ii + "_t" + t
+                
+                s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + ii + "," + ii + "], " + "event=\"" + sp_label + "\")\n"
+
+                write(s, append=TRUE, file=pj_script_idx_path)
+                
+                vidx = vidx + 1
+            }
+        }
+    }
+
+    # print("      Doing sse_stash()")
+
+    s = "\n# macroevolutionary event handler\nstash := sse_stash(flat_rate_mat="
+    
+    write(s, append=TRUE, file=pj_script_idx_path)
+    
+    write(var_names, separator=", ", append=TRUE, file=pj_script_idx_path)
+    
+    s = ", n_states=" + n_ranges + ", n_epochs=" + n_epochs + ", seed_age=" + island_ori_age + ", epoch_age_ends="
+    
+    write(s, append=TRUE, file=pj_script_idx_path)
+
+    write(times, separator=", ", append=TRUE, file=pj_script_idx_path)
+
+    s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", meh=meh, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"false\", min_rec_taxa=3, max_rec_taxa=500, abort_at_obs=5000)"
+
+    write(s, append=TRUE, file=pj_script_idx_path)
 }
 
-# adding stuff here
-
-}
-
-write(sigma_true_vals_s, file=sigma_true_values_path)
-write(phi_true_vals_s, file=phi_true_values_path)
-write(rho_true_vals_s, file=rho_true_values_path)
-
-# Here:
-# Wait until PhyloJunction finishes simulations
-# Then run MCMC on simulated data
+# if doing more than one sample with this script
+#
+# write(sigma_true_vals_s, file=sigma_true_values_path)
+# write(phi_true_vals_s, file=phi_true_values_path)
+# write(rho_true_vals_s, file=rho_true_values_path)
