@@ -64,7 +64,26 @@ All created nodes (e.g., rates, probabilities, trees) will appear in the 'Model 
 
 ### (2.2) Running a script with the CLI
 
+In order to run PJ on the script produced in (1), we will call `pjcli` from the `experiment1` directory:
+
 ```
-pjcli sim1.pj -d -o ./
+cd experiment1/
+
+pjcli pj_scripts/sim1.pj -d -o pj_output/ -f 'trs'
 ```
 
+Here, `-d` tells PJ we want data output, `-o` specifies the output directory, and `-f` specifies we want a figure for the DAG node called `trs` (the island radiation phylogeny).
+
+PhyloJunction will write the following files inside `pj_output`:
+
+* `trs_annotated_complete.tsv`
+* `trs_annotated_reconstructed.tsv`
+* `trs_complete.tsv`
+* `trs_reconstructed.tsv`
+* `trs_sample1_repl1_anc_states.tsv`
+* `trs_sample1_repl1.tsv`
+* `trs_stats.csv`
+
+and inside `pj_output/figures`:
+
+* `trs_0_0.png`: a .png image of node "trs".
