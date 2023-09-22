@@ -534,7 +534,7 @@ for (s_idx in 1:n_samples) {
 
     write(times, separator=", ", append=TRUE, file=pj_script_idx_path)
 
-    s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", meh=meh, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"false\", min_rec_taxa=3, max_rec_taxa=500, abort_at_obs=5000)"
+    s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", stash=stash, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"false\", min_rec_taxa=3, max_rec_taxa=500, abort_at_obs=5000)"
 
     write(s, append=TRUE, file=pj_script_idx_path)
 }
