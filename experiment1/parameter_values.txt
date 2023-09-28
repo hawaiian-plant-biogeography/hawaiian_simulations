@@ -1,0 +1,64 @@
+# notes for Sarah
+
+What model parameters should we simulate under?
+
+# unconstrained exponential
+rho_w ~ dnExp(1.0/0.50)  # E[rho_w] = 0.50
+rho_e ~ dnExp(1.0/0.25)  # E[rho_e] = 0.25
+
+# constrained relationship
+rho_w ~ dnExp(1.0/0.50)
+rho_e_frac ~ dnUnif(0,1)
+rho_e := rho_w * rho_e_frac
+
+# unconstrained gamma
+rho_w ~ dnGamma(8,16)  # E[rho_w] = 0.50
+rho_e ~ dnGamma(4,16)  # E[rho_e] = 0.25
+
+
+# effect of size on wr speciation
+phi_w[1] ~ dnNormal(0,1)
+# effect of size on extinction
+phi_e[1] ~ dnNormal(0,1)
+# large distance decreases dispersal rate
+phi_d_pos[1] ~ dnHalfNormal(offset=0, sd=1)
+phi_d[1] := -phi_d_pos[1]
+# large distance increases b.r. speciation rate
+phi_b[1] ~ dnHalfNormal(offset=0, sd=1)
+
+# effect of net-decay on wr speciation
+sigma_w[1] 
+# effect of non-high Hawaiian island on wr speciation
+sigma_w[2]
+# effect of net-decay on extinction
+sigma_e[1]
+# effect of non-high Hawaiian island on extinction
+sigma_e[2]
+# effect for dispersing into younger island
+sigma_d[1]
+# effect for between-region speciation when one island is younger
+sigma_b[1]
+
+
+# molecular model
+mu_mol_base ~ logUniform(5e-4, 5e-2)
+
+use Jukes Cantor, fnJC(4)
+no +Gamma among site rate variation
+num sites 2000 or 10000 ??
+one locus, no across-locus rate variation or partitions
+
+# branch rate variation
+mu_mol_sd <- 0.587405  # variation in rates among branches is within one order of magnitude under lognormal
+
+# relative among branch rate variation
+for (i in 1:num_branches) {
+    ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
+    mu_mol_branch[i] ~ dnLnorm(ln_mean, mu_mol_sd)
+}
+
+# put into dnPhyloCTMC to simulate sequence data
+# be sure to set nSites=2000 (e.g.)
+
+
+
