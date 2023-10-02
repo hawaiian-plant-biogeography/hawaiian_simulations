@@ -439,12 +439,14 @@ for (s_idx in 1:n_samples) {
         print("      Doing extinction rates")
 
         for (i in 1:n_regions) {
-            ii = i - 1
-            var_names[vidx] = "det_death_rate" + ii + "_t" + t
-            s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\")\n"
-            write(s, append=TRUE, file=pj_script_idx_path)
+	    if (r_e[t][i] > 0.0) {
+                ii = i - 1
+                var_names[vidx] = "det_death_rate" + ii + "_t" + t
+                s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\", epoch=" + t + ")\n"
+                write(s, append=TRUE, file=pj_script_idx_path)
 
-            vidx = vidx + 1
+                vidx = vidx + 1
+	    }
         }
 
         print("      Doing transition rates")
@@ -454,21 +456,23 @@ for (s_idx in 1:n_samples) {
             rate_open = "det_trans_rate" + ii + "_"
             rate_middle = " := sse_rate(" + "name=\"q_" + ii + "_"
             i_state = ", states=[" + ii + ","
-            rate_close = "], event=\"transition\")\n"
+            rate_close = "], event=\"transition\", epoch=" + t + ")\n"
         
             for (j in 1:n_ranges) {
                 q_tij = Q[t][i][j]
                 jj = j - 1
 
                 if (ii != jj) {
-                    var_names[vidx] = rate_open + jj + "_t" + t
-                    # var_names[vidx] = "det_trans_rate" + ii  + "_" + jj + "_t" + t
-                    # s = var_names[vidx] + " := sse_rate(" + "name=\"q_"+ ii + "_" + jj + "_t" + t + "\", " + "value=" + q_tij + ", states=[" + ii + "," + jj + "], " + "event=\"transition\")\n"
-		    s = var_names[vidx] + rate_middle + jj + "_t" + t + "\", " + "value=" + q_tij + i_state + jj + rate_close
+		    if (q_tij > 0.0) {
+                        var_names[vidx] = rate_open + jj + "_t" + t
+                        # var_names[vidx] = "det_trans_rate" + ii  + "_" + jj + "_t" + t
+                        # s = var_names[vidx] + " := sse_rate(" + "name=\"q_"+ ii + "_" + jj + "_t" + t + "\", " + "value=" + q_tij + ", states=[" + ii + "," + jj + "], " + "event=\"transition\", epoch=" + t + ")\n"
+		        s = var_names[vidx] + rate_middle + jj + "_t" + t + "\", " + "value=" + q_tij + i_state + jj + rate_close
 
-                    write(s, append=TRUE, file=pj_script_idx_path)
+                        write(s, append=TRUE, file=pj_script_idx_path)
                     
-                    vidx = vidx + 1
+                        vidx = vidx + 1
+		    }
                 }
             }
         }
@@ -481,41 +485,46 @@ for (s_idx in 1:n_samples) {
         print("      Doing birth rates")
 
         for (i in 1:clado_map_events_tmp.size()) {
-            idx = clado_map_events_tmp[i]
-            ii = idx[1]
-            jj = idx[2]
-            kk = idx[3]
-            sp_label = "w_speciation"
+	    idx = clado_map_events_tmp[i]
 
-            if (ii != jj && ii != kk) {
-                sp_label = "bw_speciation"
-            }
+            if (clado_map_tmp.getRate(idx[1], idx[2], idx[3]) > 0.0) {
+                ii = idx[1]
+                jj = idx[2]
+                kk = idx[3]
+                sp_label = "w_speciation"
 
-            if ((ii == jj && ii != kk) || (ii != jj && ii == kk)) {
-                sp_label = "asym_speciation"
-            }
+                if (ii != jj && ii != kk) {
+                    sp_label = "bw_speciation"
+                }
 
-            if (sp_label == "bw_speciation" || sp_label=="asym_speciation") {
-            # if ((sp_label == "bw_speciation" && (!processed_anc_states_bw_speciation.contains(ii))) || (sp_label=="asym_speciation" && jj >= kk)) {
-                processed_anc_states_bw_speciation[anc_state_idx] = ii
-                anc_state_idx = anc_state_idx + 1
-                var_names[vidx] = "det_birth_rate" + ii + "_" + jj + "_" + kk + "_t" + t
+                if ((ii == jj && ii != kk) || (ii != jj && ii == kk)) {
+                    sp_label = "asym_speciation"
+                }
 
-                s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + jj + "," + kk + "], " + "event=\"" + sp_label + "\")\n"
+                if (sp_label == "bw_speciation" || sp_label=="asym_speciation") {
+                # if ((sp_label == "bw_speciation" && (!processed_anc_states_bw_speciation.contains(ii))) || (sp_label=="asym_speciation" && jj >= kk)) {
+                    processed_anc_states_bw_speciation[anc_state_idx] = ii
+                    anc_state_idx = anc_state_idx + 1
+                    var_names[vidx] = "det_birth_rate" + ii + "_" + jj + "_" + kk + "_t" + t
+
+                    s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + jj + "," + kk + "], " + "event=\"" + sp_label + "\", epoch=" + t + ")\n"
                 
-                write(s, append=TRUE, file=pj_script_idx_path)
+                    write(s, append=TRUE, file=pj_script_idx_path)
 
-                vidx = vidx + 1
+                    vidx = vidx + 1
+		}
             }
 
             if (sp_label == "w_speciation" && (ii == jj) && (ii == kk)) {
-                var_names[vidx] = "det_birth_rate" + ii + "_t" + t
+	        if (clado_map_tmp.getRate(idx[1], idx[2], idx[3]) > 0.0) {
+                    var_names[vidx] = "det_birth_rate" + ii + "_t" + t
                 
-                s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + ii + "," + ii + "], " + "event=\"" + sp_label + "\")\n"
+                    s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + ii + "," + ii + "], " + "event=\"" + sp_label + "\", epoch=" + t + ")\n"
 
-                write(s, append=TRUE, file=pj_script_idx_path)
+                    write(s, append=TRUE, file=pj_script_idx_path)
                 
-                vidx = vidx + 1
+                    vidx = vidx + 1
+		}
             }
         }
     }
