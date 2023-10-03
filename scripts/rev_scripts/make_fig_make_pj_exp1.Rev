@@ -15,8 +15,9 @@
 
 # seed(12345)
 
-tensorphylo_lib_dir = "/Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
-loadPlugin("TensorPhylo", tensorphylo_lib_dir)
+#tensorphylo_lib_dir = "/Users/binho/Documents/academic_repos/tensorphylo/build/installer/lib/"
+#loadPlugin("TensorPhylo", tensorphylo_lib_dir)
+loadPlugin("TensorPhylo")
 
 # setting up paths
 if (!exists("experiment_path")) exp_path = "experiment1/"
@@ -28,10 +29,10 @@ if (!exists("model_truth_dir"))  model_truth_dir = exp_path + "model_truth/"
 # setting up FIG model quantities we may need to tweak
 #
 # base rate parameters
-if (!exists("rho_d_init")) rho_d_init = 0.001
-if (!exists("rho_e_init")) rho_e_init = 0.001
-if (!exists("rho_w_init")) rho_w_init = 0.002
-if (!exists("rho_b_init")) rho_b_init = 0.002
+if (!exists("rho_d_init")) rho_d_init = 0.25
+if (!exists("rho_e_init")) rho_e_init = 0.25
+if (!exists("rho_w_init")) rho_w_init = 0.25
+if (!exists("rho_b_init")) rho_b_init = 0.25
 
 # feature effect parameters
 if (!exists("sigma_d_init")) sigma_d_init = 0.00001
@@ -126,10 +127,10 @@ for (t in 1:n_epochs) {
 ###################################
 
 # base rate parameters
-rho_d ~ dnExp(1)
-rho_e ~ dnExp(1)
-rho_w ~ dnExp(1)
-rho_b ~ dnExp(1)
+rho_d ~ dnGamma(4,16)
+rho_e ~ dnGamma(4,16)
+rho_w ~ dnGamma(4,16)
+rho_b ~ dnGamma(4,16)
 
 # initializing values (only relevant for inference later)
 rho_d.setValue(rho_d_init)
@@ -187,6 +188,17 @@ for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
 for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
 for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
 for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
+
+# hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
+if (use_rj) {
+    phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
+    phi_b[1] ~ dnRJMixture(0.0, dnHalfNormal(offset=0,sd=1), p=0.5)
+} else {
+    phi_d[1] ~ dnUniform(-4,0)
+    phi_b[1] ~ dnHalfNormal(offset=0,sd=1)
+}
+phi_d[1].setValue(0.00001)
+phi_b[1].setValue(0.00001)
 
 # base-rate multipliers
 # first t is oldest
@@ -543,13 +555,15 @@ for (s_idx in 1:n_samples) {
 
     write(times, separator=", ", append=TRUE, file=pj_script_idx_path)
 
-    s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", stash=stash, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"false\", min_rec_taxa=3, max_rec_taxa=500, abort_at_obs=5000)"
+    s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", stash=stash, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"false\", min_rec_taxa=15, max_rec_taxa=200, abort_at_obs=5000)"
 
     write(s, append=TRUE, file=pj_script_idx_path)
 }
 
 # if doing more than one sample with this script
 #
-# write(sigma_true_vals_s, file=sigma_true_values_path)
-# write(phi_true_vals_s, file=phi_true_values_path)
-# write(rho_true_vals_s, file=rho_true_values_path)
+write(sigma_true_vals_s, file=sigma_true_values_path)
+write(phi_true_vals_s, file=phi_true_values_path)
+write(rho_true_vals_s, file=rho_true_values_path)
+
+q()
