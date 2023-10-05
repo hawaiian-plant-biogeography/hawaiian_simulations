@@ -29,10 +29,10 @@ if (!exists("model_truth_dir"))  model_truth_dir = exp_path + "model_truth/"
 # setting up FIG model quantities we may need to tweak
 #
 # base rate parameters
-if (!exists("rho_d_init")) rho_d_init = 0.25
-if (!exists("rho_e_init")) rho_e_init = 0.25
-if (!exists("rho_w_init")) rho_w_init = 0.25
-if (!exists("rho_b_init")) rho_b_init = 0.25
+if (!exists("rho_d_init")) rho_d_init = 0.125/5
+if (!exists("rho_e_init")) rho_e_init = 8/32
+if (!exists("rho_w_init")) rho_w_init = 3/20
+if (!exists("rho_b_init")) rho_b_init = 3/20
 
 # feature effect parameters
 if (!exists("sigma_d_init")) sigma_d_init = 0.00001
@@ -46,10 +46,6 @@ if (!exists("phi_b_init"))     phi_b_init = 0.00001
 #
 # reversible-jump?
 if (!exists("use_rj")) use_rj = false
-
-# simulation config
-if (!exists("n_samples"))    n_samples    = 1
-if (!exists("max_attempts")) max_attempts = 1000
 
 ############################
 # Reading epoch age limits #
@@ -127,10 +123,10 @@ for (t in 1:n_epochs) {
 ###################################
 
 # base rate parameters
-rho_d ~ dnGamma(4,16)
-rho_e ~ dnGamma(4,16)
-rho_w ~ dnGamma(4,16)
-rho_b ~ dnGamma(4,16)
+rho_d ~ dnGamma(0.125,5)
+rho_e ~ dnGamma(8,32)
+rho_w ~ dnGamma(3,20)
+rho_b ~ dnGamma(3,20)
 
 # initializing values (only relevant for inference later)
 rho_d.setValue(rho_d_init)
@@ -279,97 +275,6 @@ condition = "survival"
 
 rho <- 1.0 # sampling probability
 
-
-##################################################
-# Draw time and range for an island colonization #
-# to match Hawaiian data                         #
-##################################################
-
-# origin (seed) age
-or_age = -1.0
-
-# R, K, O, M, H, Z
-non_continent_region_idxs = [1, 2, 3, 4, 5]
-
-# 16, 100001, R+Z
-# 17, 010001, K+Z
-# 18, 001001, O+Z
-# 19, 000101, M+Z
-# 20, 000011, H+Z
-translation_table = [16, 17, 18, 19, 20]
-island_names = ["Northwestern islands", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
-
-valid = false
-while (!valid) {
-    # cap rejection sampling
-    max_attempts -= 1
-    # use as many successes we got so far
-    if (max_attempts <= 0) {
-	q()
-    }
-
-    # decreasing ages
-    # times: breakpoints
-    
-    # draw root age for the whole tree
-    # this is the age of the MRCA that separates
-    # the ingroup (stem) and the outgroup
-    whole_tree_age ~ dnUnif(0,30)
-
-    # old -> young
-    for (t in 1:n_epochs) {
-        
-        # adding all dispersal rates from continent into any non-continent region
-        d2island_total_rate = 0.0
-        for (i in non_continent_region_idxs) {
-            d2island_total_rate += r_d[t][6][i]
-        }
-
-        t_d ~ dnExp(d2island_total_rate)
-
-        # if we're in the oldest epoch
-        if (t == 1) {
-            island_ori_age = whole_tree_age - t_d
-        } else {
-            island_ori_age = times[t-1] - t_d
-        }
-        
-        if (island_ori_age < 0) {
-            # island_ori_age cannot be negative, done!
-            break
-        }
-
-        # overan time interval while still in the second youngest epoch at most
-        if (t < n_epochs && (island_ori_age < times[t])) {
-            next
-        } else {
-            # event happened within interval t
-            islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
-
-            for (i in non_continent_region_idxs) {
-                islands_relative_rates[i] = r_d[t][6][i] / d2island_total_rate
-            }
-
-
-            # starting region (island), between 1 and 5
-            island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
-
-            # note that we have to add the island to the continent
-            # and find that widespread range integer ID
-            subroot_range = translation_table[island_subroot_idx]
-            colonized_island_name = island_names[island_subroot_idx]
-            
-            valid = true
-            break
-        }
-    }
-}
-
-print("\nWhole tree root age = " + whole_tree_age)
-print("Origin age of island radiation = " + island_ori_age)
-print("Island that got colonized = " + colonized_island_name)
-
-
 ###########################################
 # Making simulator (PhyloJunction) string #
 ###########################################
@@ -377,14 +282,107 @@ print("Island that got colonized = " + colonized_island_name)
 sigma_true_values_path = model_truth_dir + "sigma_true_vals.tsv"
 phi_true_values_path = model_truth_dir + "phi_true_vals.tsv"
 rho_true_values_path = model_truth_dir + "rho_true_vals.tsv"
+colonization_true_values_path = model_truth_dir + "colonization_true_vals.tsv"
 
 sigma_true_vals_s = "sample\tfeature\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
 phi_true_vals_s = "sample\tfeature\tphi_d\tphi_e\tphi_w\tphi_b\n"
 rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n"
+colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
 
-n_samples = 1
+# simulation config
+n_samples = 100
 
 for (s_idx in 1:n_samples) {
+
+    # origin (seed) age
+    or_age = -1.0
+
+    # R, K, O, M, H, Z
+    non_continent_region_idxs = [1, 2, 3, 4, 5]
+
+    # 16, 100001, R+Z
+    # 17, 010001, K+Z
+    # 18, 001001, O+Z
+    # 19, 000101, M+Z
+    # 20, 000011, H+Z
+    translation_table = [16, 17, 18, 19, 20]
+    island_names = ["Northwestern islands", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
+
+    #max_attempts = 1000
+    valid = false
+    while (!valid) {
+        # cap rejection sampling
+        #max_attempts -= 1
+        # use as many successes we got so far
+        #if (max_attempts <= 0) {
+        #q()
+        #}
+
+        # decreasing ages
+        # times: breakpoints
+        
+        # draw root age for the whole tree
+        # this is the age of the MRCA that separates
+        # the ingroup (stem) and the outgroup
+        whole_tree_age ~ dnUnif(0,30)
+
+        # old -> young
+        for (t in 1:n_epochs) {
+            
+            # adding all dispersal rates from continent into any non-continent region
+            d2island_total_rate = 0.0
+            for (i in non_continent_region_idxs) {
+                d2island_total_rate += r_d[t][6][i]
+            }
+
+            t_d ~ dnExp(d2island_total_rate)
+            t_d.redraw()
+
+            # if we're in the oldest epoch
+            if (t == 1) {
+                island_ori_age = whole_tree_age - t_d
+            } else {
+                island_ori_age = min(v(times[t-1], whole_tree_age)) - t_d
+            }
+            
+            if (island_ori_age < 0) {
+                # island_ori_age cannot be negative, done!
+                break
+            }
+
+            # overan time interval while still in the second youngest epoch at most
+            if (t < n_epochs && (island_ori_age < times[t])) {
+                next
+            } else {
+                # event happened within interval t
+                islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
+
+                for (i in non_continent_region_idxs) {
+                    islands_relative_rates[i] = r_d[t][6][i] / d2island_total_rate
+                }
+
+
+                # starting region (island), between 1 and 5
+                island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
+                island_subroot_idx.redraw()
+
+                # note that we have to add the island to the continent
+                # and find that widespread range integer ID
+                subroot_range = translation_table[island_subroot_idx]
+                colonized_island_name = island_names[island_subroot_idx]
+                
+                valid = true
+                break
+            }
+        }
+    }
+
+    print("\nWhole tree root age = " + whole_tree_age)
+    print("Origin age of island radiation = " + island_ori_age)
+    print("Island that got colonized = " + colonized_island_name)
+    sample_colonization_true_values_path = model_truth_dir + "colonization_true_vals_sample" + s_idx + ".tsv"
+    colonization_true_vals_s += s_idx + "\t" + whole_tree_age + "\t" + island_ori_age + "\t" + subroot_range + "\n"
+    write(colonization_true_vals_s, file=sample_colonization_true_values_path)
 
     print("\nPreparing .pj script string for sample " + s_idx)
     pj_script_idx_path = pj_scripts_dir + "sim" + s_idx + ".pj"
@@ -427,9 +425,9 @@ for (s_idx in 1:n_samples) {
     rho_b.redraw()
 
     sample_rho_true_values_path = model_truth_dir + "rho_true_vals_sample" + s_idx + ".tsv"
+    sample_rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n" + s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
+    write(sample_rho_true_vals_s, file=sample_rho_true_values_path)
     rho_true_vals_s += s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
-
-    write(rho_true_vals_s, file=sample_rho_true_values_path)
 
     # done with this sample's sigmas, phis and rhos
 
@@ -565,5 +563,6 @@ for (s_idx in 1:n_samples) {
 write(sigma_true_vals_s, file=sigma_true_values_path)
 write(phi_true_vals_s, file=phi_true_values_path)
 write(rho_true_vals_s, file=rho_true_values_path)
+write(colonization_true_vals_s, file=colonization_true_values_path)
 
 q()
