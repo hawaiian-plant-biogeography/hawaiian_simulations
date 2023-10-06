@@ -1,0 +1,67 @@
+pj_path = "../../experiment1/pj_output/"
+model_path = "../../experiment1/model_truth/"
+out_path = "../../experiment1/sim_data/"
+
+colonization_fp = model_path + "colonization_true_vals.tsv"
+colonization_times = readDataDelimitedFile(colonization_fp,sep="",header=TRUE)
+
+for (i in 1:100) {
+
+    file = pj_path + "sample" + i + "_trs_complete.tsv"
+    if (fileExists(file)) {
+
+        # Read the tree from pj_output
+        tree_str = readDataDelimitedFile(file,sep="",header=TRUE)[1][3]
+
+        # Read the root age from model_truth
+        ingroup_age = colonization_times[i][3]
+        root_age = colonization_times[i][2]
+        ingroup_branch_length = root_age - ingroup_age
+
+        # Graft on outgroup to the tree
+
+        # Graft on the outgroup to the tip data
+        tip_fp = pj_path + "sample" + i + "_trs_sample1_repl1.tsv"
+        tip_data = readDataDelimitedFile(tip_fp,sep="")
+        for (j in 1:tip_data.size()) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+        new_data[tip_data.size()+1][1] = "outgroup"
+        new_data[tip_data.size()+1][2] = 5
+
+        # Save the new tip data in sim_data
+        data_fp = out_path + "sample" + i + ".data.tsv"
+        write(new_data,filename=data_fp,sep="\t")
+
+        # Get the set of taxa to retain in the final tree
+        for (i in 1:new_data.size()) {
+            taxa[i] = taxon(new_data[i][1])
+        }
+
+        # Remove all extinct taxa from the tree
+        tree = readTrees(text=tree_str)
+        tree = fnPruneTree(tree, retain=taxa)
+
+        # Save the new tree in sim_data
+
+        # Simulate sequences over the full tree
+        # molecular model
+        mu_mol_base ~ logUniform(5e-4, 5e-2)
+        # Jukes-Cantor matrix
+        Q <- fnJC(4)
+        # branch rate variation
+        mu_mol_sd <- 0.587405 
+        # relative among branch rate variation
+        for (i in 1:num_branches) {
+            ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
+            mu_mol_branch[i] ~ dnLnorm(ln_mean, mu_mol_sd)
+        }
+        # Sequence model
+        seq ~ dnPhyloCTMC(tree=full_tree,Q=Q,branchRates=mu_mol_branch,nsites=2000,type="DNA")
+
+        # Save the sequence data in sim_data
+        seq_fp = out_path + "sample" + i + ".ranges.nex"
+        writeNexus(seq_fp,seq)
+    }
+}
