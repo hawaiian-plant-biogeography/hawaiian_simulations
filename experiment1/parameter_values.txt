@@ -1,3 +1,8 @@
+# PROBLEMS
+1. Somehow got a whole tree root age that is less than the origin age of the island radiation for one of the simulations with a really young tree (3.61945 & 5.30684)
+2. PhyloJunction repeatedly prints the epoch_idx
+3. It takes a REALLY long time for pj to make trees
+
 # notes for Sarah
 
 What model parameters should we simulate under?
@@ -23,6 +28,9 @@ phi_e[1] ~ dnNormal(0,1)
 # large distance decreases dispersal rate
 phi_d_pos[1] ~ dnHalfNormal(offset=0, sd=1)
 phi_d[1] := -phi_d_pos[1]
+    # with the way that redrawing is done
+    # the distribution has to be directly assigned to phi_d[1]
+    # currently using dnUniform(-4,0)
 # large distance increases b.r. speciation rate
 phi_b[1] ~ dnHalfNormal(offset=0, sd=1)
 

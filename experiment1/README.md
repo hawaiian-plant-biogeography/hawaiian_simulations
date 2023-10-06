@@ -69,7 +69,7 @@ In order to run PJ on the script produced in (1), we will call `pjcli` from the 
 ```
 cd experiment1/
 
-pjcli pj_scripts/sim1.pj -d -o pj_output/ -f 'trs'
+pjcli pj_scripts/sim1.pj -d -o pj_output/ -f 'trs' -p sample1
 ```
 
 Here, `-d` tells PJ we want data output, `-o` specifies the output directory, and `-f` specifies we want a figure for the DAG node called `trs` (the island radiation phylogeny).
