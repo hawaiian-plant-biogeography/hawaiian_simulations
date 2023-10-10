@@ -1,0 +1,89 @@
+q()
+min()
+?min
+q()
+?break
+?while
+q()
+colonization_times = readDataDelimitedFile("./experiment1/model_truth/colonization_true_vals.tsv",header=TRUE)
+colonization_times
+colonization_times = readDataDelimitedFile("./experiment1/model_truth/colonization_true_vals.tsv",sep="",header=TRUE)
+colonization_times
+colonization_times[1]
+colonization_times[1][3]
+tip_data = readDataDelimitedFile("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data
+tip_data = readDiscreteCharacterData("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data = readDiscreteCharacterData("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv")
+tip_data = readDelimitedCharacterData("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data = readDataDelimitedFile("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data
+tip_data[1]
+tip_data.size()
+        for (i in 1:tip_data.size()) {
+            taxa[i] = taxon(tip_data[i][1])
+        }
+taxa
+        tip_data[tip_data.size()+1] = v("outgroup",6)
+tip_data
+tip_data[16]
+tip_data[16] = "x"
+type(tip_data)
+?tip_data
+tip_data.()
+?RevObject
+tip_data = readMatrix("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data
+tip_data = readTaxonData("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data = readDelimitedCharacterData("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data = readCharacterData("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv")
+tip_data = readDataDelimitedFile("./experiment1/pj_output/sample9_trs_sample1_repl1.tsv",sep="")
+tip_data
+tip_data[tip_data.size()+1][1] = "outgroup"
+        for (j in 1:tip_data_size) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+        new_data[tip_data.size()+1][1] = "outgroup"
+        new_data[tip_data.size()=1][2] = 6
+        for (j in 1:tip_data.size()) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+new_data
+        for (j in 1:tip_data.size()) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+        new_data[tip_data.size()+1][1] = "outgroup"
+        new_data[tip_data.size()=1][2] = 6
+new_data
+        for (j in 1:tip_data.size()) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+        new_data[tip_data.size()+1][1] = "outgroup"
+        new_data[tip_data.size()+1][1][2] = 6
+        for (j in 1:tip_data.size()) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+new_data
+clear(new_data)
+        for (j in 1:tip_data.size()) {
+            new_data[j][1] = tip_data[j][1]
+            new_data[j][2] = tip_data[j][2]
+        }
+        new_data[tip_data.size()+1][1] = "outgroup"
+        new_data[tip_data.size()+1][2] = 6
+new_data
+        new_data[tip_data.size()+1][2] = 5
+new_data
+new_data.size()
+type(new_data)
+write(new_data,".",sep="\\t")
+q()
+write("THIS",filename=".",sep="\\t")
+q()
+write("This",filename="./thing",sep="\\t")
+q()

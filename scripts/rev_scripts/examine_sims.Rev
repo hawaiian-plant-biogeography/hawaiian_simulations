@@ -1,0 +1,47 @@
+model_path = "../../experiment1/model_truth/"
+out_path = "../../experiment1/sim_data/"
+
+rho_fp = model_path + "rho_true_vals.tsv"
+all_rho = readDataDelimitedFile(rho_fp,sep="",header=TRUE)
+
+index = 1
+for (i in 1:100) {
+    file = out_path + "sample" + i + ".tre"
+    if (fileExists(file)) {
+        sims[index] = i
+        tree = readTrees(file=file)[1]
+        sizes[index] = tree.ntips()
+        rho_file = model_path + "rho_true_vals_sample" + i + ".tsv"
+        rhos = readDataDelimitedFile(rho_file,sep="",header=TRUE)[1]
+        rho_d[index] = rhos[2]
+        rho_e[index] = rhos[3]
+        rho_w[index] = rhos[4]
+        rho_b[index] = rhos[5]
+        index = index + 1
+    }
+}
+
+total_size = 0
+total_d = 0
+total_e = 0
+total_w = 0
+total_b = 0
+for (i in 1:sims.size()) {
+    total_size = total_size + sizes[i]
+    total_d = total_d + rho_d[i]
+    total_e = total_e + rho_e[i]
+    total_w = total_w + rho_w[i]
+    total_b = total_b + rho_b[i]
+}
+mean_size = total_size / sims.size()
+mean_d = total_d / sims.size()
+mean_e = total_e / sims.size()
+mean_w = total_w / sims.size()
+mean_b = total_b / sims.size()
+
+print("Successful Simulations: Total = " + sims.size() + " | " + sims + "\n")
+print("Tree Sizes: Mean = " + mean_size + " | " + sizes + "\n")
+print("rho_d: Mean = " + mean_d + " | " + rho_d + "\n")
+print("rho_e: Mean = " + mean_e + " | " + rho_e + "\n")
+print("rho_w: Mean = " + mean_w + " | " + rho_w + "\n")
+print("rho_b: Mean = " + mean_b + " | " + rho_b + "\n")
