@@ -1,11 +1,14 @@
-pj_path = "../../experiment1/pj_output/"
-model_path = "../../experiment1/model_truth/"
-out_path = "../../experiment1/sim_data/"
+if (!exists("i")) i = 1
+
+if (!exists("exp_path")) exp_path = "experiment1/"
+pj_path = exp_path + "pj_output/"
+model_path = exp_path + "model_truth/"
+out_path = exp_path + "sim_data/"
 
 colonization_fp = model_path + "colonization_true_vals.tsv"
 colonization_times = readDataDelimitedFile(colonization_fp,sep="",header=TRUE)
 
-for (i in 1:100) {
+# for (i in 1:100) {
 
     file = pj_path + "sample" + i + "_trs_complete.tsv"
     if (fileExists(file)) {
@@ -76,5 +79,5 @@ for (i in 1:100) {
         seq_fp = out_path + "sample" + i + ".sequences.nex"
         writeNexus(seq_fp,seq)
     }
-}
+# }
 q()

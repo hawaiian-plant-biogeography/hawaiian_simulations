@@ -13,10 +13,13 @@
 # Initial setup #
 #################
 
-loadPlugin("TensorPhylo")
+loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
+
+# sim number
+if (!exists("s_idx")) s_idx = 1
 
 # setting up paths
-if (!exists("experiment_path")) exp_path = "experiment1/"
+if (!exists("exp_path")) exp_path = "experiment1/"
 if (!exists("features_path"))   features_path = exp_path + "feature_summary.csv"
 if (!exists("times_path"))      times_path = exp_path + "age_summary.csv"
 if (!exists("pj_scripts_dir"))  pj_scripts_dir = exp_path + "pj_scripts/"
@@ -283,9 +286,9 @@ rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n"
 colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
 
 # simulation config
-n_samples = 100
+# n_samples = 100
 
-for (s_idx in 1:n_samples) {
+# for (s_idx in 1:n_samples) {
 
     # setting a unique seed for each simulation (makes replication possible)
     seed(s_idx)
@@ -559,7 +562,7 @@ for (s_idx in 1:n_samples) {
     s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", stash=stash, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"true\", min_rec_taxa=15, max_rec_taxa=200, abort_at_obs=5000)"
 
     write(s, append=TRUE, file=pj_script_idx_path)
-}
+# }
 
 # if doing more than one sample with this script
 #
