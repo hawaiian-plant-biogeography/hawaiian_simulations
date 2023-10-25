@@ -15,5 +15,5 @@ do
 	-J $i \
 	-q general \
 	-n 3 -M 15GB -R "rusage [mem=15GB] span[hosts=1]" \
-	-a 'docker(sswiston/rb_tp:pj_test)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+	-a 'docker(sswiston/rb_tp:test)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
 done
