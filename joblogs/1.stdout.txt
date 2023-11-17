@@ -1,0 +1,630 @@
+Traceback (most recent call last):
+  File "/opt/ibm/lsfsuite/lsf/10.1/linux2.6-glibc2.3-x86_64/etc/docker1_monitor.py", line 379, in <module>
+    main(sys.argv[1:])
+  File "/opt/ibm/lsfsuite/lsf/10.1/linux2.6-glibc2.3-x86_64/etc/docker1_monitor.py", line 372, in main
+    if driverMonitor.start_monitor() < 0 :
+  File "/opt/ibm/lsfsuite/lsf/10.1/linux2.6-glibc2.3-x86_64/etc/docker1_monitor.py", line 163, in start_monitor
+    if self.__collect_rusage() < 0 :
+  File "/opt/ibm/lsfsuite/lsf/10.1/linux2.6-glibc2.3-x86_64/etc/docker1_monitor.py", line 173, in __collect_rusage
+    self.dbHandler.init_db(resources)
+  File "/opt/ibm/lsfsuite/lsf/10.1/linux2.6-glibc2.3-x86_64/etc/docker1_monitor.py", line 54, in init_db
+    cursor.execute(sql)
+sqlite3.OperationalError: database is locked
+test: Pulling from sswiston/rb_tp
+69b3efbf67c2: Pulling fs layer
+4210ced9073b: Pulling fs layer
+f8af44ff5673: Pulling fs layer
+76b277469414: Pulling fs layer
+4cc2ef8e9633: Pulling fs layer
+ff1b976e7153: Pulling fs layer
+55fb0021dcce: Pulling fs layer
+f1d807117a33: Pulling fs layer
+7d31f600e45a: Pulling fs layer
+617d489fb0ff: Pulling fs layer
+76b277469414: Waiting
+b2be1d2675c3: Pulling fs layer
+75aebdaa1e2b: Pulling fs layer
+d34165b1c55b: Pulling fs layer
+4cc2ef8e9633: Waiting
+b6bef3ad0664: Pulling fs layer
+55fb0021dcce: Waiting
+f1d807117a33: Waiting
+ff1b976e7153: Waiting
+7d31f600e45a: Waiting
+4f37c2605e32: Pulling fs layer
+d55e7d8d2b27: Pulling fs layer
+617d489fb0ff: Waiting
+75aebdaa1e2b: Waiting
+d34165b1c55b: Waiting
+fa0db00dc6a5: Pulling fs layer
+b6bef3ad0664: Waiting
+b2be1d2675c3: Waiting
+4f37c2605e32: Waiting
+c0c9d370b64d: Pulling fs layer
+17de5c798054: Pulling fs layer
+b35496a6fb17: Pulling fs layer
+fa0db00dc6a5: Waiting
+54cae01decac: Pulling fs layer
+c0c9d370b64d: Waiting
+b35496a6fb17: Waiting
+fef6e9e80ff8: Pulling fs layer
+d6f9105c021d: Pulling fs layer
+707cab3cf55b: Pulling fs layer
+d6f9105c021d: Waiting
+fef6e9e80ff8: Waiting
+78a03f6eaaba: Pulling fs layer
+707cab3cf55b: Waiting
+4b26811a6f42: Pulling fs layer
+95f52f522a04: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+78a03f6eaaba: Waiting
+95f52f522a04: Waiting
+45e5fe7eb0ed: Pulling fs layer
+7d134d68295b: Pulling fs layer
+dca1fb9f3244: Pulling fs layer
+ac29779389e3: Pulling fs layer
+45e5fe7eb0ed: Waiting
+dca1fb9f3244: Waiting
+4f4fb700ef54: Waiting
+f110eccaef71: Pulling fs layer
+f110eccaef71: Waiting
+2f8e5add4a0f: Pulling fs layer
+ac29779389e3: Waiting
+bc7f0f533215: Pulling fs layer
+6b09fc509570: Pulling fs layer
+e1284d16f823: Pulling fs layer
+38ee44099f56: Pulling fs layer
+6b09fc509570: Waiting
+79885d007850: Pulling fs layer
+466e54a968c0: Pulling fs layer
+e1284d16f823: Waiting
+2623cab7e52d: Pulling fs layer
+38ee44099f56: Waiting
+79885d007850: Waiting
+86e580a889f8: Pulling fs layer
+2623cab7e52d: Waiting
+2e8eefec9a23: Pulling fs layer
+86e580a889f8: Waiting
+00f8d5c59159: Pulling fs layer
+aeefcd499b15: Pulling fs layer
+00f8d5c59159: Waiting
+aeefcd499b15: Waiting
+ec6e186e0e5b: Pulling fs layer
+ec6e186e0e5b: Waiting
+afa877572f93: Pulling fs layer
+30ea6a117b39: Pulling fs layer
+73db07ae8e4b: Pulling fs layer
+afa877572f93: Waiting
+30ea6a117b39: Waiting
+87752c89326d: Pulling fs layer
+73db07ae8e4b: Waiting
+e8f09ca0b132: Pulling fs layer
+fbb09bbf99a0: Pulling fs layer
+87752c89326d: Waiting
+00b14cf89619: Pulling fs layer
+fd09a91ef316: Pulling fs layer
+e8f09ca0b132: Waiting
+00b14cf89619: Waiting
+fbb09bbf99a0: Waiting
+fd09a91ef316: Waiting
+2516a10e265c: Pulling fs layer
+2516a10e265c: Waiting
+2da7edc6705c: Pulling fs layer
+63890895132b: Pulling fs layer
+7671d435f097: Pulling fs layer
+2da7edc6705c: Waiting
+63890895132b: Waiting
+037dff4077de: Pulling fs layer
+13db1f68cb23: Pulling fs layer
+037dff4077de: Waiting
+13db1f68cb23: Waiting
+900053c8da37: Pulling fs layer
+375aebe7f604: Pulling fs layer
+3de6c86d4dc6: Pulling fs layer
+3de6c86d4dc6: Waiting
+95c1dbfaaf28: Pulling fs layer
+375aebe7f604: Waiting
+4cc8914621a8: Pulling fs layer
+d41fa4c58a41: Pulling fs layer
+0730c88209cb: Pulling fs layer
+d41fa4c58a41: Waiting
+252a9f06098d: Pulling fs layer
+742c7c8ea984: Pulling fs layer
+4cc8914621a8: Waiting
+a77b056856e4: Pulling fs layer
+0730c88209cb: Waiting
+252a9f06098d: Waiting
+39843bc46fb3: Pulling fs layer
+ef94b751e9fd: Pulling fs layer
+39843bc46fb3: Waiting
+71b43cbe0d6f: Pulling fs layer
+942d0515a0aa: Pulling fs layer
+71b43cbe0d6f: Waiting
+ef94b751e9fd: Waiting
+ba372903bf54: Pulling fs layer
+942d0515a0aa: Waiting
+bb4b3f394cc7: Pulling fs layer
+18f1dec9107a: Pulling fs layer
+ba372903bf54: Waiting
+bb4b3f394cc7: Waiting
+c2d1b9497c8b: Pulling fs layer
+2c33d7276701: Pulling fs layer
+1bb8d2017332: Pulling fs layer
+2c33d7276701: Waiting
+18f1dec9107a: Waiting
+2fd8d5d7475c: Pulling fs layer
+71d79ee9a710: Pulling fs layer
+1bb8d2017332: Waiting
+83d27a2c373c: Pulling fs layer
+e4ea1933371d: Pulling fs layer
+71d79ee9a710: Waiting
+1b0749c5a620: Pulling fs layer
+f21541135459: Pulling fs layer
+83d27a2c373c: Waiting
+1b0749c5a620: Waiting
+e4ea1933371d: Waiting
+6b7e65412b71: Pulling fs layer
+42806113e520: Pulling fs layer
+7e4501bbff87: Pulling fs layer
+88bc9f22f7f0: Pulling fs layer
+f21541135459: Waiting
+be36667d7291: Pulling fs layer
+88bc9f22f7f0: Waiting
+163c668a85e4: Pulling fs layer
+7e4501bbff87: Waiting
+be36667d7291: Waiting
+aa9abaa8d010: Pulling fs layer
+163c668a85e4: Waiting
+aebeb013f812: Pulling fs layer
+ff53235e40b2: Pulling fs layer
+ec0635ba3cc4: Pulling fs layer
+aa9abaa8d010: Waiting
+aebeb013f812: Waiting
+6e42f57593cc: Pulling fs layer
+b9df89708de2: Pulling fs layer
+81ee5929ef96: Pulling fs layer
+ec0635ba3cc4: Waiting
+406957d50943: Pulling fs layer
+81ee5929ef96: Waiting
+131c643b9636: Pulling fs layer
+406957d50943: Waiting
+e00a7569d556: Pulling fs layer
+131c643b9636: Waiting
+e9c500b3c5b0: Pulling fs layer
+942b30526013: Pulling fs layer
+e9c500b3c5b0: Waiting
+efb9f0b5ea0f: Pulling fs layer
+942b30526013: Waiting
+40109045e940: Pulling fs layer
+efb9f0b5ea0f: Waiting
+40109045e940: Waiting
+f8af44ff5673: Verifying Checksum
+76b277469414: Download complete
+4cc2ef8e9633: Download complete
+69b3efbf67c2: Download complete
+4210ced9073b: Verifying Checksum
+4210ced9073b: Download complete
+55fb0021dcce: Verifying Checksum
+55fb0021dcce: Download complete
+ff1b976e7153: Verifying Checksum
+ff1b976e7153: Download complete
+f1d807117a33: Download complete
+7d31f600e45a: Download complete
+617d489fb0ff: Verifying Checksum
+617d489fb0ff: Download complete
+d34165b1c55b: Verifying Checksum
+d34165b1c55b: Download complete
+b6bef3ad0664: Verifying Checksum
+b6bef3ad0664: Download complete
+4f37c2605e32: Download complete
+b2be1d2675c3: Verifying Checksum
+b2be1d2675c3: Download complete
+fa0db00dc6a5: Verifying Checksum
+fa0db00dc6a5: Download complete
+d55e7d8d2b27: Verifying Checksum
+d55e7d8d2b27: Download complete
+c0c9d370b64d: Download complete
+54cae01decac: Verifying Checksum
+54cae01decac: Download complete
+b35496a6fb17: Verifying Checksum
+b35496a6fb17: Download complete
+fef6e9e80ff8: Download complete
+d6f9105c021d: Verifying Checksum
+d6f9105c021d: Download complete
+75aebdaa1e2b: Verifying Checksum
+75aebdaa1e2b: Download complete
+707cab3cf55b: Verifying Checksum
+707cab3cf55b: Download complete
+95f52f522a04: Verifying Checksum
+95f52f522a04: Download complete
+4b26811a6f42: Verifying Checksum
+4b26811a6f42: Download complete
+45e5fe7eb0ed: Download complete
+dca1fb9f3244: Download complete
+ac29779389e3: Download complete
+7d134d68295b: Verifying Checksum
+7d134d68295b: Download complete
+f110eccaef71: Verifying Checksum
+bc7f0f533215: Download complete
+6b09fc509570: Download complete
+e1284d16f823: Download complete
+38ee44099f56: Verifying Checksum
+38ee44099f56: Download complete
+79885d007850: Download complete
+2f8e5add4a0f: Verifying Checksum
+2f8e5add4a0f: Download complete
+466e54a968c0: Download complete
+86e580a889f8: Verifying Checksum
+86e580a889f8: Download complete
+2623cab7e52d: Verifying Checksum
+2623cab7e52d: Download complete
+00f8d5c59159: Verifying Checksum
+00f8d5c59159: Download complete
+aeefcd499b15: Verifying Checksum
+aeefcd499b15: Download complete
+ec6e186e0e5b: Verifying Checksum
+ec6e186e0e5b: Download complete
+afa877572f93: Verifying Checksum
+afa877572f93: Download complete
+30ea6a117b39: Verifying Checksum
+30ea6a117b39: Download complete
+73db07ae8e4b: Verifying Checksum
+73db07ae8e4b: Download complete
+69b3efbf67c2: Pull complete
+78a03f6eaaba: Verifying Checksum
+78a03f6eaaba: Download complete
+e8f09ca0b132: Verifying Checksum
+e8f09ca0b132: Download complete
+fbb09bbf99a0: Verifying Checksum
+fbb09bbf99a0: Download complete
+00b14cf89619: Verifying Checksum
+00b14cf89619: Download complete
+fd09a91ef316: Verifying Checksum
+fd09a91ef316: Download complete
+2516a10e265c: Download complete
+2da7edc6705c: Verifying Checksum
+2da7edc6705c: Download complete
+63890895132b: Verifying Checksum
+63890895132b: Download complete
+7671d435f097: Verifying Checksum
+7671d435f097: Download complete
+87752c89326d: Verifying Checksum
+87752c89326d: Download complete
+13db1f68cb23: Verifying Checksum
+13db1f68cb23: Download complete
+4210ced9073b: Pull complete
+f8af44ff5673: Pull complete
+76b277469414: Pull complete
+4cc2ef8e9633: Pull complete
+ff1b976e7153: Pull complete
+55fb0021dcce: Pull complete
+f1d807117a33: Pull complete
+7d31f600e45a: Pull complete
+037dff4077de: Verifying Checksum
+037dff4077de: Download complete
+375aebe7f604: Verifying Checksum
+375aebe7f604: Download complete
+617d489fb0ff: Pull complete
+3de6c86d4dc6: Verifying Checksum
+3de6c86d4dc6: Download complete
+95c1dbfaaf28: Verifying Checksum
+95c1dbfaaf28: Download complete
+4cc8914621a8: Verifying Checksum
+4cc8914621a8: Download complete
+b2be1d2675c3: Pull complete
+75aebdaa1e2b: Pull complete
+d41fa4c58a41: Verifying Checksum
+d41fa4c58a41: Download complete
+2e8eefec9a23: Verifying Checksum
+2e8eefec9a23: Download complete
+252a9f06098d: Verifying Checksum
+252a9f06098d: Download complete
+d34165b1c55b: Pull complete
+742c7c8ea984: Verifying Checksum
+742c7c8ea984: Download complete
+b6bef3ad0664: Pull complete
+4f37c2605e32: Pull complete
+d55e7d8d2b27: Pull complete
+a77b056856e4: Download complete
+fa0db00dc6a5: Pull complete
+c0c9d370b64d: Pull complete
+17de5c798054: Pull complete
+b35496a6fb17: Pull complete
+54cae01decac: Pull complete
+fef6e9e80ff8: Pull complete
+d6f9105c021d: Pull complete
+0730c88209cb: Verifying Checksum
+0730c88209cb: Download complete
+39843bc46fb3: Download complete
+71b43cbe0d6f: Verifying Checksum
+71b43cbe0d6f: Download complete
+ef94b751e9fd: Verifying Checksum
+ef94b751e9fd: Download complete
+707cab3cf55b: Pull complete
+ba372903bf54: Verifying Checksum
+ba372903bf54: Download complete
+bb4b3f394cc7: Verifying Checksum
+18f1dec9107a: Verifying Checksum
+18f1dec9107a: Download complete
+c2d1b9497c8b: Verifying Checksum
+c2d1b9497c8b: Download complete
+2c33d7276701: Download complete
+1bb8d2017332: Verifying Checksum
+1bb8d2017332: Download complete
+2fd8d5d7475c: Verifying Checksum
+2fd8d5d7475c: Download complete
+71d79ee9a710: Verifying Checksum
+71d79ee9a710: Download complete
+83d27a2c373c: Verifying Checksum
+83d27a2c373c: Download complete
+e4ea1933371d: Verifying Checksum
+e4ea1933371d: Download complete
+1b0749c5a620: Verifying Checksum
+1b0749c5a620: Download complete
+f21541135459: Download complete
+6b7e65412b71: Download complete
+42806113e520: Verifying Checksum
+42806113e520: Download complete
+7e4501bbff87: Verifying Checksum
+7e4501bbff87: Download complete
+88bc9f22f7f0: Verifying Checksum
+88bc9f22f7f0: Download complete
+78a03f6eaaba: Pull complete
+4b26811a6f42: Pull complete
+95f52f522a04: Pull complete
+4f4fb700ef54: Pull complete
+45e5fe7eb0ed: Pull complete
+be36667d7291: Verifying Checksum
+be36667d7291: Download complete
+163c668a85e4: Verifying Checksum
+163c668a85e4: Download complete
+aa9abaa8d010: Download complete
+aebeb013f812: Download complete
+ff53235e40b2: Verifying Checksum
+ff53235e40b2: Download complete
+7d134d68295b: Pull complete
+dca1fb9f3244: Pull complete
+ac29779389e3: Pull complete
+ec0635ba3cc4: Verifying Checksum
+ec0635ba3cc4: Download complete
+6e42f57593cc: Verifying Checksum
+6e42f57593cc: Download complete
+b9df89708de2: Verifying Checksum
+b9df89708de2: Download complete
+f110eccaef71: Pull complete
+81ee5929ef96: Verifying Checksum
+81ee5929ef96: Download complete
+406957d50943: Verifying Checksum
+406957d50943: Download complete
+131c643b9636: Verifying Checksum
+131c643b9636: Download complete
+e00a7569d556: Verifying Checksum
+e00a7569d556: Download complete
+e9c500b3c5b0: Download complete
+942b30526013: Verifying Checksum
+942b30526013: Download complete
+efb9f0b5ea0f: Download complete
+2f8e5add4a0f: Pull complete
+bc7f0f533215: Pull complete
+6b09fc509570: Pull complete
+e1284d16f823: Pull complete
+38ee44099f56: Pull complete
+79885d007850: Pull complete
+466e54a968c0: Pull complete
+2623cab7e52d: Pull complete
+86e580a889f8: Pull complete
+2e8eefec9a23: Pull complete
+00f8d5c59159: Pull complete
+aeefcd499b15: Pull complete
+ec6e186e0e5b: Pull complete
+afa877572f93: Pull complete
+30ea6a117b39: Pull complete
+73db07ae8e4b: Pull complete
+87752c89326d: Pull complete
+e8f09ca0b132: Pull complete
+fbb09bbf99a0: Pull complete
+00b14cf89619: Pull complete
+fd09a91ef316: Pull complete
+2516a10e265c: Pull complete
+2da7edc6705c: Pull complete
+63890895132b: Pull complete
+7671d435f097: Pull complete
+037dff4077de: Pull complete
+13db1f68cb23: Pull complete
+900053c8da37: Verifying Checksum
+900053c8da37: Download complete
+900053c8da37: Pull complete
+375aebe7f604: Pull complete
+3de6c86d4dc6: Pull complete
+95c1dbfaaf28: Pull complete
+4cc8914621a8: Pull complete
+d41fa4c58a41: Pull complete
+0730c88209cb: Pull complete
+252a9f06098d: Pull complete
+742c7c8ea984: Pull complete
+a77b056856e4: Pull complete
+39843bc46fb3: Pull complete
+ef94b751e9fd: Pull complete
+71b43cbe0d6f: Pull complete
+40109045e940: Download complete
+942d0515a0aa: Download complete
+942d0515a0aa: Pull complete
+ba372903bf54: Pull complete
+bb4b3f394cc7: Pull complete
+18f1dec9107a: Pull complete
+c2d1b9497c8b: Pull complete
+2c33d7276701: Pull complete
+1bb8d2017332: Pull complete
+2fd8d5d7475c: Pull complete
+71d79ee9a710: Pull complete
+83d27a2c373c: Pull complete
+e4ea1933371d: Pull complete
+1b0749c5a620: Pull complete
+f21541135459: Pull complete
+6b7e65412b71: Pull complete
+42806113e520: Pull complete
+7e4501bbff87: Pull complete
+88bc9f22f7f0: Pull complete
+be36667d7291: Pull complete
+163c668a85e4: Pull complete
+aa9abaa8d010: Pull complete
+aebeb013f812: Pull complete
+ff53235e40b2: Pull complete
+ec0635ba3cc4: Pull complete
+6e42f57593cc: Pull complete
+b9df89708de2: Pull complete
+81ee5929ef96: Pull complete
+406957d50943: Pull complete
+131c643b9636: Pull complete
+e00a7569d556: Pull complete
+e9c500b3c5b0: Pull complete
+942b30526013: Pull complete
+efb9f0b5ea0f: Pull complete
+40109045e940: Pull complete
+Digest: sha256:c4627e4b1320b03db35dad7d3e7752458e0365eb2d04d378a4b1b394ef5ae59d
+Status: Downloaded newer image for sswiston/rb_tp:test
+docker.io/sswiston/rb_tp:test
+Setting up Docker container
+Performing simulation 1
+2023-10-26_18:45:40
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Thu Oct 26 00:55:50 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 1
+
+Whole tree root age = 23.3517
+Origin age of island radiation = 22.5011
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/415510.tmpdir/matplotlib-2kq0x5t4 because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+    sys.exit(load_entry_point('phylojunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.local/bin/pjcli", line 25, in importlib_load_entry_point
+    return next(matches).load()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/metadata/__init__.py", line 202, in load
+    module = import_module(match.group('module'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 6, in <module>
+    import phylojunction.interface.cmdbox.cmd_parse as cmd
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 5, in <module>
+    import matplotlib.pyplot as plt  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/pyplot.py", line 56, in <module>
+    import matplotlib.colorbar
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/colorbar.py", line 19, in <module>
+    from matplotlib import _api, cbook, collections, cm, colors, contour, ticker
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/contour.py", line 14, in <module>
+    from matplotlib.backend_bases import MouseButton
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/backend_bases.py", line 46, in <module>
+    from matplotlib import (
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/text.py", line 16, in <module>
+    from .font_manager import FontProperties
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1582, in <module>
+    fontManager = _load_fontmanager()
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1576, in _load_fontmanager
+    fm = FontManager()
+         ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1037, in __init__
+    timer.start()
+  File "/usr/lib/python3.11/threading.py", line 964, in start
+    _start_new_thread(self._bootstrap, ())
+RuntimeError: can't start new thread
+Simulating sequences
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Thu Oct 26 00:55:50 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-140.ris.wustl.edu>
+Subject: Job 415510: <1> in cluster <compute1-lsf> Done
+
+Job <1> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Thu Oct 26 12:21:58 2023
+Job was executed on host(s) <3*compute1-exec-140.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Thu Oct 26 13:31:07 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Thu Oct 26 13:31:07 2023
+Terminated at Thu Oct 26 13:47:56 2023
+Results reported at Thu Oct 26 13:47:56 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   134.59 sec.
+    Max Memory :                                 45704880 MB
+    Average Memory :                             682188.50 MB
+    Total Requested Memory :                     15360.00 MB
+    Delta Memory :                               -45689520.00 MB
+    Max Swap :                                   157 MB
+    Max Processes :                              8
+    Max Threads :                                28
+    Run time :                                   1009 sec.
+    Turnaround time :                            5158 sec.
+
+The output (if any) is above this job summary.
+
