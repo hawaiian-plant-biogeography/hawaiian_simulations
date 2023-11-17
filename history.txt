@@ -1,6 +1,3 @@
-s_idx=4;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev");
-s_idx=6;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev");
-s_idx=10;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev");
 s_idx=9;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev");
 s_idx=5;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev");
 s_idx=8;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev");
@@ -93,3 +90,11 @@ i=5;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experimen
 i=7;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
 i=1;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
 i=8;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
+q()
+str
+colonization_times
+q()
+colonization_times
+colonization_times[2]
+colonization_times[1][2]
+q()

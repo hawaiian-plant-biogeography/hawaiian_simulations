@@ -1,83 +1,85 @@
-if (!exists("i")) i = 1
+if (!exists("i")) i = 9
 
 if (!exists("exp_path")) exp_path = "experiment1/"
 pj_path = exp_path + "pj_output/"
 model_path = exp_path + "model_truth/"
 out_path = exp_path + "sim_data/"
 
-colonization_fp = model_path + "colonization_true_vals.tsv"
-colonization_times = readDataDelimitedFile(colonization_fp,sep="",header=TRUE)
+file = pj_path + "sample" + i + "_trs_complete.tsv"
+if (fileExists(file)) {
+    print("Working on simulation " + i)
 
-# for (i in 1:100) {
+    # Read the tree from pj_output
+    str = readDataDelimitedFile(file,sep="",header=TRUE)[1][3]
 
-    file = pj_path + "sample" + i + "_trs_complete.tsv"
-    if (fileExists(file)) {
-        print("Working on simulation " + i)
+    # Read the root age from model_truth
+    colonization_fp = model_path + "colonization_true_vals_sample" + i + ".tsv"
+    colonization_times = readDataDelimitedFile(colonization_fp,sep="",header=TRUE)
+    root_age = colonization_times[1][2]
+    colonization_age = colonization_times[1][3]
+    speciation_branch_length = str.substr(str.indexOf("root")+5,str.indexOf("origin")-2)
+    ingroup_branch_length = (root_age - colonization_age) + speciation_branch_length
+    print("Got root and colonization ages")
 
-        # Read the tree from pj_output
-        str = readDataDelimitedFile(file,sep="",header=TRUE)[1][3]
+    # Graft on outgroup to the tree
+    str = "(outgroup:" + root_age + "," + str.substr(2,str.size())
+    str = str.substr(1,str.indexOf("root")-1) + "sub" + str.substr(str.indexOf("root"),str.size())
+    str = str.substr(1,str.indexOf("origin")-1) + "root;"
+    print("Grafted outgroup onto tree")
 
-        # Read the root age from model_truth
-        root_age = colonization_times[i][2]
-        colonization_age = colonization_times[i][3]
-        speciation_branch_length = str.substr(str.indexOf("root")+5,str.indexOf("origin")-2)
-        ingroup_branch_length = (root_age - colonization_age) + speciation_branch_length
-
-        # Graft on outgroup to the tree
-        str = "(outgroup:" + root_age + "," + str.substr(2,str.size())
-        str = str.substr(1,str.indexOf("root")-1) + "sub" + str.substr(str.indexOf("root"),str.size())
-        str = str.substr(1,str.indexOf("origin")-1) + "root;"
-
-        # Graft on the outgroup to the tip data
-        tip_fp = pj_path + "sample" + i + "_trs_sample1_repl1.tsv"
-        tip_data = readDataDelimitedFile(tip_fp,sep="")
-        if (exists("new_data")) {clear(new_data)}
-        for (j in 1:tip_data.size()) {
-            new_data[j][1] = tip_data[j][1]
-            new_data[j][2] = tip_data[j][2]
-        }
-        new_data[tip_data.size()+1][1] = "outgroup"
-        new_data[tip_data.size()+1][2] = 5
-
-        # Save the new tip data in sim_data
-        data_fp = out_path + "sample" + i + ".data.tsv"
-        write(new_data,filename=data_fp,sep="\t")
-
-        # Get the set of taxa to retain in the final tree
-        for (j in 1:new_data.size()) {
-            taxa[j] = taxon(new_data[j][1])
-        }
-
-        # Remove all extinct taxa from the tree
-        tmp_fp = out_path + "tmp.tre"
-        write(str, file=tmp_fp)
-        tree = readTrees(file=tmp_fp)[1]
-        phy = fnPruneTree(tree, retain=taxa)
-
-        # Save the new tree in sim_data
-        tree_fp = out_path + "sample" + i + ".tre"
-        write(phy,filename=tree_fp)
-
-        # Simulate sequences over the full tree
-        # molecular model
-        mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
-        # Jukes-Cantor matrix
-        Q <- fnJC(4)
-        # branch rate variation
-        mu_mol_sd <- 0.587405 
-        # relative among branch rate variation
-        num_branches = 2 * phy.ntips() - 2
-        if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
-        for (j in 1:num_branches) {
-            ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
-            mu_mol_branch[j] ~ dnLnorm(ln_mean, mu_mol_sd)
-        }
-        # Sequence model
-        seq ~ dnPhyloCTMC(tree=phy,Q=Q,branchRates=mu_mol_branch,nSites=2000,type="DNA")
-
-        # Save the sequence data in sim_data
-        seq_fp = out_path + "sample" + i + ".sequences.nex"
-        writeNexus(seq_fp,seq)
+    # Graft on the outgroup to the tip data
+    tip_fp = pj_path + "sample" + i + "_trs_sample1_repl1.tsv"
+    tip_data = readDataDelimitedFile(tip_fp,sep="")
+    if (exists("new_data")) {clear(new_data)}
+    for (j in 1:tip_data.size()) {
+        new_data[j][1] = tip_data[j][1]
+        new_data[j][2] = tip_data[j][2]
     }
-# }
+    new_data[tip_data.size()+1][1] = "outgroup"
+    new_data[tip_data.size()+1][2] = 5
+    print("Grafted outgroup onto tip data")
+
+    # Save the new tip data in sim_data
+    data_fp = out_path + "sample" + i + ".data.tsv"
+    write(new_data,filename=data_fp,sep="\t")
+
+    # Get the set of taxa to retain in the final tree
+    for (j in 1:new_data.size()) {
+        taxa[j] = taxon(new_data[j][1])
+    }
+
+    # Remove all extinct taxa from the tree
+    tmp_fp = out_path + "tmp.tre"
+    write(str, file=tmp_fp)
+    tree = readTrees(file=tmp_fp)[1]
+    phy = fnPruneTree(tree, retain=taxa)
+    print("Removed extinct taxa")
+
+    # Save the new tree in sim_data
+    tree_fp = out_path + "sample" + i + ".tre"
+    write(phy,filename=tree_fp)
+
+    # Simulate sequences over the full tree
+    # molecular model
+    mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
+    # Jukes-Cantor matrix
+    Q <- fnJC(4)
+    # branch rate variation
+    mu_mol_sd <- 0.587405 
+    # relative among branch rate variation
+    num_branches = 2 * phy.ntips() - 2
+    if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
+    for (j in 1:num_branches) {
+        ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
+        mu_mol_branch[j] ~ dnLnorm(ln_mean, mu_mol_sd)
+    }
+    # Sequence model
+    seq ~ dnPhyloCTMC(tree=phy,Q=Q,branchRates=mu_mol_branch,nSites=2000,type="DNA")
+
+    # Save the sequence data in sim_data
+    seq_fp = out_path + "sample" + i + ".sequences.nex"
+    writeNexus(seq_fp,seq)
+    print("Simulated sequences")
+}
+
 q()
