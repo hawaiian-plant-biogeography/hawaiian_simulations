@@ -1,0 +1,399 @@
+test: Pulling from sswiston/rb_tp
+Digest: sha256:74289f6b1eebfade2a8113ee45445255fba17169b21f6ab696320ee7ad1e9d7f
+Status: Image is up to date for sswiston/rb_tp:test
+docker.io/sswiston/rb_tp:test
+Setting up Docker container
+Performing simulation 40
+2023-11-18_14:45:24
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Sat Nov 18 00:22:58 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 40
+
+Whole tree root age = 28.5432
+Origin age of island radiation = 28.4983
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/414538.tmpdir/matplotlib-kxmd4cso because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+    sys.exit(load_entry_point('phylojunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.local/bin/pjcli", line 25, in importlib_load_entry_point
+    return next(matches).load()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/metadata/__init__.py", line 202, in load
+    module = import_module(match.group('module'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 6, in <module>
+    import phylojunction.interface.cmdbox.cmd_parse as cmd
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 5, in <module>
+    import matplotlib.pyplot as plt  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/pyplot.py", line 56, in <module>
+    import matplotlib.colorbar
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/colorbar.py", line 19, in <module>
+    from matplotlib import _api, cbook, collections, cm, colors, contour, ticker
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/contour.py", line 15, in <module>
+    from matplotlib.backend_bases import MouseButton
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/backend_bases.py", line 46, in <module>
+    from matplotlib import (
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/text.py", line 16, in <module>
+    from .font_manager import FontProperties
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1582, in <module>
+    fontManager = _load_fontmanager()
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1576, in _load_fontmanager
+    fm = FontManager()
+         ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1037, in __init__
+    timer.start()
+  File "/usr/lib/python3.11/threading.py", line 964, in start
+    _start_new_thread(self._bootstrap, ())
+RuntimeError: can't start new thread
+Simulating sequences
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Sat Nov 18 00:22:58 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-64.ris.wustl.edu>
+Subject: Job 414538: <40> in cluster <compute1-lsf> Done
+
+Job <40> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Sat Nov 18 08:45:20 2023
+Job was executed on host(s) <4*compute1-exec-64.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Sat Nov 18 08:45:22 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Sat Nov 18 08:45:22 2023
+Terminated at Sat Nov 18 15:03:41 2023
+Results reported at Sat Nov 18 15:03:41 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   28.26 sec.
+    Max Memory :                                 43 MB
+    Average Memory :                             9.20 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16341.00 MB
+    Max Swap :                                   -
+    Max Processes :                              8
+    Max Threads :                                53
+    Run time :                                   22701 sec.
+    Turnaround time :                            22701 sec.
+
+The output (if any) is above this job summary.
+
+test: Pulling from sswiston/rb_tp
+Digest: sha256:74289f6b1eebfade2a8113ee45445255fba17169b21f6ab696320ee7ad1e9d7f
+Status: Image is up to date for sswiston/rb_tp:test
+docker.io/sswiston/rb_tp:test
+Setting up Docker container
+Performing simulation 40
+2023-11-18_21:29:28
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Sat Nov 18 00:22:58 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 40
+
+Whole tree root age = 28.5432
+Origin age of island radiation = 28.4983
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/417660.tmpdir/matplotlib-psloa5fc because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+    sys.exit(load_entry_point('phylojunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.local/bin/pjcli", line 25, in importlib_load_entry_point
+    return next(matches).load()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/metadata/__init__.py", line 202, in load
+    module = import_module(match.group('module'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 6, in <module>
+    import phylojunction.interface.cmdbox.cmd_parse as cmd
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 5, in <module>
+    import matplotlib.pyplot as plt  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/pyplot.py", line 56, in <module>
+    import matplotlib.colorbar
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/colorbar.py", line 19, in <module>
+    from matplotlib import _api, cbook, collections, cm, colors, contour, ticker
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/contour.py", line 15, in <module>
+    from matplotlib.backend_bases import MouseButton
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/backend_bases.py", line 46, in <module>
+    from matplotlib import (
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/text.py", line 16, in <module>
+    from .font_manager import FontProperties
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1582, in <module>
+    fontManager = _load_fontmanager()
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1576, in _load_fontmanager
+    fm = FontManager()
+         ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/font_manager.py", line 1037, in __init__
+    timer.start()
+  File "/usr/lib/python3.11/threading.py", line 964, in start
+    _start_new_thread(self._bootstrap, ())
+RuntimeError: can't start new thread
+Simulating sequences
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Sat Nov 18 00:22:58 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-88.ris.wustl.edu>
+Subject: Job 417660: <40> in cluster <compute1-lsf> Done
+
+Job <40> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Sat Nov 18 15:29:21 2023
+Job was executed on host(s) <4*compute1-exec-88.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Sat Nov 18 15:29:22 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Sat Nov 18 15:29:22 2023
+Terminated at Sat Nov 18 15:53:40 2023
+Results reported at Sat Nov 18 15:53:40 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   11.00 sec.
+    Max Memory :                                 41 MB
+    Average Memory :                             9.28 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16343.00 MB
+    Max Swap :                                   -
+    Max Processes :                              8
+    Max Threads :                                32
+    Run time :                                   1458 sec.
+    Turnaround time :                            1459 sec.
+
+The output (if any) is above this job summary.
+
+test: Pulling from sswiston/rb_tp
+Digest: sha256:74289f6b1eebfade2a8113ee45445255fba17169b21f6ab696320ee7ad1e9d7f
+Status: Image is up to date for sswiston/rb_tp:test
+docker.io/sswiston/rb_tp:test
+Setting up Docker container
+Performing simulation 40
+2023-11-19_02:24:57
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Sat Nov 18 00:22:58 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 40
+
+Whole tree root age = 28.5432
+Origin age of island radiation = 28.4983
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/419196.tmpdir/matplotlib-l2wg1uu6 because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Simulating sequences
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Sat Nov 18 00:22:58 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-163.ris.wustl.edu>
+Subject: Job 419196: <40> in cluster <compute1-lsf> Done
+
+Job <40> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Sat Nov 18 20:24:54 2023
+Job was executed on host(s) <4*compute1-exec-163.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Sat Nov 18 20:24:56 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Sat Nov 18 20:24:56 2023
+Terminated at Sat Nov 18 22:50:22 2023
+Results reported at Sat Nov 18 22:50:22 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   311.94 sec.
+    Max Memory :                                 153 MB
+    Average Memory :                             86.62 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16231.00 MB
+    Max Swap :                                   145 MB
+    Max Processes :                              11
+    Max Threads :                                33
+    Run time :                                   8726 sec.
+    Turnaround time :                            8728 sec.
+
+The output (if any) is above this job summary.
+

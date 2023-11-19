@@ -49,23 +49,25 @@ if (fileExists(file)) {
     }
 
     # Remove all extinct taxa from the tree
-    tmp_fp = out_path + "tmp.tre"
-    write(str, file=tmp_fp)
-    tree = readTrees(file=tmp_fp)[1]
-    phy = fnPruneTree(tree, retain=taxa)
-    print("Removed extinct taxa")
-
-    # Save the new tree in sim_data
     tree_fp = out_path + "sample" + i + ".tre"
+    write(str, file=tree_fp)
+    tree = readTrees(file=tree_fp)[1]
+    phy = fnPruneTree(tree, retain=taxa)
     write(phy,filename=tree_fp)
+    print("Removed extinct taxa and saved new tree")
 
     # Simulate sequences over the full tree
     # molecular model
     mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
+    mol_fp = out_path + "sample" + i + ".mol.tsv"
+    write(mu_mol_base,filename=mol_fp,sep="\t")
+
     # Jukes-Cantor matrix
     Q <- fnJC(4)
+    
     # branch rate variation
     mu_mol_sd <- 0.587405 
+    
     # relative among branch rate variation
     num_branches = 2 * phy.ntips() - 2
     if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
@@ -73,6 +75,9 @@ if (fileExists(file)) {
         ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
         mu_mol_branch[j] ~ dnLnorm(ln_mean, mu_mol_sd)
     }
+    branch_fp = out_path + "sample" + i + ".branches.tsv"
+    write(mu_mol_branch,filename=branch_fp,sep="\t")    
+
     # Sequence model
     seq ~ dnPhyloCTMC(tree=phy,Q=Q,branchRates=mu_mol_branch,nSites=2000,type="DNA")
 
