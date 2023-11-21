@@ -21,6 +21,5 @@ NAME="sample$SIM"
 timeout 3m pjcli $PJFILE -d -o /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_output/ -f 'trs' -p $NAME
 
 # Run the .Rev script to (possibly) generate simulated sequences
-echo "Simulating sequences"
 rb_command="i=${SIM};exp_path=\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/\";source(\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev\");"
 echo $rb_command | rb
