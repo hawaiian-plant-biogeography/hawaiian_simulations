@@ -17,6 +17,7 @@ loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
 
 # sim number
 if (!exists("s_idx")) s_idx = 1
+if (!exists("inf")) inf = FALSE
 
 # setting up paths
 if (!exists("exp_path")) exp_path = "experiment1/"
@@ -270,6 +271,11 @@ pi <- simplex(rep(1, n_ranges))
 condition = "survival"
 
 rho <- 1.0 # sampling probability
+
+if (inf==TRUE) {
+    source("scripts/rev_scripts/inf.Rev")
+    quit()
+}
 
 ###########################################
 # Making simulator (PhyloJunction) string #

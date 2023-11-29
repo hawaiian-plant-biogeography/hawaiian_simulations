@@ -845,3 +845,105 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+pj: Pulling from sswiston/rb_tp
+Digest: sha256:504df683a439e8cb482652de944165e1390e28bafa6e92755506649929b6e1e8
+Status: Image is up to date for sswiston/rb_tp:pj
+docker.io/sswiston/rb_tp:pj
+Setting up Docker container
+Performing simulation 186
+2023-11-29_16:27:00
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Tue Nov 21 20:29:41 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 186
+
+Whole tree root age = 19.8567
+Origin age of island radiation = 18.3905
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/608623.tmpdir/matplotlib-2sxrwqw4 because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Tue Nov 21 20:29:41 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-42.ris.wustl.edu>
+Subject: Job 608623: <186> in cluster <compute1-lsf> Done
+
+Job <186> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Wed Nov 29 10:01:38 2023
+Job was executed on host(s) <8*compute1-exec-42.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Nov 29 10:26:55 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Wed Nov 29 10:26:55 2023
+Terminated at Wed Nov 29 10:42:23 2023
+Results reported at Wed Nov 29 10:42:23 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   311.62 sec.
+    Max Memory :                                 134 MB
+    Average Memory :                             70.87 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16250.00 MB
+    Max Swap :                                   126 MB
+    Max Processes :                              9
+    Max Threads :                                24
+    Run time :                                   928 sec.
+    Turnaround time :                            2445 sec.
+
+The output (if any) is above this job summary.
+

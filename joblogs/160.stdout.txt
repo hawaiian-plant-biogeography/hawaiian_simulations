@@ -765,3 +765,432 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+pj: Pulling from sswiston/rb_tp
+2f088d622efd: Pulling fs layer
+8d350cb71e9e: Pulling fs layer
+9e8eba320cec: Pulling fs layer
+30dab7197e50: Pulling fs layer
+9e90259d8553: Pulling fs layer
+fee14fe39e9e: Pulling fs layer
+9b8b7474500e: Pulling fs layer
+d414497d98c8: Pulling fs layer
+30dab7197e50: Waiting
+9e90259d8553: Waiting
+fee14fe39e9e: Waiting
+9bfaf4b428f3: Pulling fs layer
+365137801deb: Pulling fs layer
+9c61914e6b5e: Pulling fs layer
+995f4f815bdb: Pulling fs layer
+d414497d98c8: Waiting
+4a185d49f238: Pulling fs layer
+9b8b7474500e: Waiting
+7757234e6484: Pulling fs layer
+365137801deb: Waiting
+9bfaf4b428f3: Waiting
+9c61914e6b5e: Waiting
+995f4f815bdb: Waiting
+188c55c1e7a2: Pulling fs layer
+4a185d49f238: Waiting
+3412c8073c98: Pulling fs layer
+7757234e6484: Waiting
+d67e76112be2: Pulling fs layer
+188c55c1e7a2: Waiting
+696eb1b8c37e: Pulling fs layer
+3412c8073c98: Waiting
+d67e76112be2: Waiting
+d254f0a47763: Pulling fs layer
+e5388dc9dd59: Pulling fs layer
+100b9c81f29f: Pulling fs layer
+c894fe42f76d: Pulling fs layer
+f201ab250bbe: Pulling fs layer
+6955c45d8b61: Pulling fs layer
+e5388dc9dd59: Waiting
+696eb1b8c37e: Waiting
+9a358b37081c: Pulling fs layer
+d254f0a47763: Waiting
+8a615ce37f9b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+8c8e67ce929f: Pulling fs layer
+8447840f4b08: Pulling fs layer
+2d2e60db3e22: Pulling fs layer
+7bc2cc8ca01e: Pulling fs layer
+f201ab250bbe: Waiting
+100b9c81f29f: Waiting
+c894fe42f76d: Waiting
+fd9437e13daa: Pulling fs layer
+4f4fb700ef54: Waiting
+d93c86cb3bae: Pulling fs layer
+8447840f4b08: Waiting
+6955c45d8b61: Waiting
+35dfc80f04e2: Pulling fs layer
+9a358b37081c: Waiting
+8a615ce37f9b: Waiting
+2d2e60db3e22: Waiting
+fd9437e13daa: Waiting
+7bc2cc8ca01e: Waiting
+d93c86cb3bae: Waiting
+8c8e67ce929f: Waiting
+347987de970b: Pulling fs layer
+88a89411143b: Pulling fs layer
+35dfc80f04e2: Waiting
+9548a7f2fef0: Pulling fs layer
+347987de970b: Waiting
+d45b3e218572: Pulling fs layer
+3110b044e620: Pulling fs layer
+88a89411143b: Waiting
+9548a7f2fef0: Waiting
+ec682afd7e86: Pulling fs layer
+d45b3e218572: Waiting
+1b02ac984c55: Pulling fs layer
+a70b0c197ace: Pulling fs layer
+89f5c2d131c8: Pulling fs layer
+3110b044e620: Waiting
+ec682afd7e86: Waiting
+1b02ac984c55: Waiting
+bd6e812fcabb: Pulling fs layer
+09d52d318ddb: Pulling fs layer
+a70b0c197ace: Waiting
+89f5c2d131c8: Waiting
+c1bd24a16715: Pulling fs layer
+a67f053877c6: Pulling fs layer
+bd6e812fcabb: Waiting
+0e33a18241f2: Pulling fs layer
+ec5984c59fae: Pulling fs layer
+ec5984c59fae: Waiting
+c1bd24a16715: Waiting
+a67f053877c6: Waiting
+09d52d318ddb: Waiting
+0e33a18241f2: Waiting
+9e8eba320cec: Verifying Checksum
+9e8eba320cec: Download complete
+30dab7197e50: Verifying Checksum
+30dab7197e50: Download complete
+9e90259d8553: Download complete
+2f088d622efd: Verifying Checksum
+2f088d622efd: Download complete
+9b8b7474500e: Verifying Checksum
+9b8b7474500e: Download complete
+d414497d98c8: Verifying Checksum
+d414497d98c8: Download complete
+8d350cb71e9e: Verifying Checksum
+8d350cb71e9e: Download complete
+9bfaf4b428f3: Download complete
+365137801deb: Download complete
+fee14fe39e9e: Verifying Checksum
+fee14fe39e9e: Download complete
+995f4f815bdb: Verifying Checksum
+995f4f815bdb: Download complete
+4a185d49f238: Verifying Checksum
+4a185d49f238: Download complete
+188c55c1e7a2: Download complete
+7757234e6484: Verifying Checksum
+7757234e6484: Download complete
+2f088d622efd: Pull complete
+3412c8073c98: Verifying Checksum
+3412c8073c98: Download complete
+d67e76112be2: Verifying Checksum
+d67e76112be2: Download complete
+696eb1b8c37e: Verifying Checksum
+696eb1b8c37e: Download complete
+9c61914e6b5e: Verifying Checksum
+9c61914e6b5e: Download complete
+d254f0a47763: Verifying Checksum
+d254f0a47763: Download complete
+e5388dc9dd59: Verifying Checksum
+e5388dc9dd59: Download complete
+f201ab250bbe: Download complete
+c894fe42f76d: Download complete
+9a358b37081c: Download complete
+6955c45d8b61: Verifying Checksum
+6955c45d8b61: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+100b9c81f29f: Verifying Checksum
+100b9c81f29f: Download complete
+8c8e67ce929f: Verifying Checksum
+8c8e67ce929f: Download complete
+8a615ce37f9b: Verifying Checksum
+8a615ce37f9b: Download complete
+2d2e60db3e22: Verifying Checksum
+2d2e60db3e22: Download complete
+7bc2cc8ca01e: Verifying Checksum
+7bc2cc8ca01e: Download complete
+d93c86cb3bae: Verifying Checksum
+d93c86cb3bae: Download complete
+fd9437e13daa: Verifying Checksum
+fd9437e13daa: Download complete
+35dfc80f04e2: Download complete
+347987de970b: Verifying Checksum
+347987de970b: Download complete
+9548a7f2fef0: Verifying Checksum
+9548a7f2fef0: Download complete
+d45b3e218572: Download complete
+8d350cb71e9e: Pull complete
+9e8eba320cec: Pull complete
+30dab7197e50: Pull complete
+9e90259d8553: Pull complete
+8447840f4b08: Verifying Checksum
+8447840f4b08: Download complete
+3110b044e620: Verifying Checksum
+3110b044e620: Download complete
+ec682afd7e86: Verifying Checksum
+ec682afd7e86: Download complete
+1b02ac984c55: Verifying Checksum
+1b02ac984c55: Download complete
+a70b0c197ace: Verifying Checksum
+a70b0c197ace: Download complete
+89f5c2d131c8: Download complete
+bd6e812fcabb: Verifying Checksum
+bd6e812fcabb: Download complete
+c1bd24a16715: Verifying Checksum
+c1bd24a16715: Download complete
+a67f053877c6: Download complete
+09d52d318ddb: Verifying Checksum
+09d52d318ddb: Download complete
+ec5984c59fae: Verifying Checksum
+ec5984c59fae: Download complete
+0e33a18241f2: Verifying Checksum
+0e33a18241f2: Download complete
+88a89411143b: Verifying Checksum
+88a89411143b: Download complete
+fee14fe39e9e: Pull complete
+9b8b7474500e: Pull complete
+d414497d98c8: Pull complete
+9bfaf4b428f3: Pull complete
+365137801deb: Pull complete
+9c61914e6b5e: Pull complete
+995f4f815bdb: Pull complete
+4a185d49f238: Pull complete
+7757234e6484: Pull complete
+188c55c1e7a2: Pull complete
+3412c8073c98: Pull complete
+d67e76112be2: Pull complete
+696eb1b8c37e: Pull complete
+d254f0a47763: Pull complete
+e5388dc9dd59: Pull complete
+100b9c81f29f: Pull complete
+c894fe42f76d: Pull complete
+f201ab250bbe: Pull complete
+6955c45d8b61: Pull complete
+9a358b37081c: Pull complete
+8a615ce37f9b: Pull complete
+4f4fb700ef54: Pull complete
+8c8e67ce929f: Pull complete
+8447840f4b08: Pull complete
+2d2e60db3e22: Pull complete
+7bc2cc8ca01e: Pull complete
+fd9437e13daa: Pull complete
+d93c86cb3bae: Pull complete
+35dfc80f04e2: Pull complete
+347987de970b: Pull complete
+88a89411143b: Pull complete
+9548a7f2fef0: Pull complete
+d45b3e218572: Pull complete
+3110b044e620: Pull complete
+ec682afd7e86: Pull complete
+1b02ac984c55: Pull complete
+a70b0c197ace: Pull complete
+89f5c2d131c8: Pull complete
+bd6e812fcabb: Pull complete
+09d52d318ddb: Pull complete
+c1bd24a16715: Pull complete
+a67f053877c6: Pull complete
+0e33a18241f2: Pull complete
+ec5984c59fae: Pull complete
+Digest: sha256:504df683a439e8cb482652de944165e1390e28bafa6e92755506649929b6e1e8
+Status: Downloaded newer image for sswiston/rb_tp:pj
+docker.io/sswiston/rb_tp:pj
+Setting up Docker container
+Performing simulation 160
+2023-11-29_16:03:35
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Tue Nov 21 20:29:41 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 160
+
+Whole tree root age = 25.1013
+Origin age of island radiation = 25.064
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+OpenBLAS blas_thread_init: pthread_create failed for thread 1 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 2 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 3 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 4 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 5 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 6 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 7 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 8 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 9 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 10 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 11 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 12 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 13 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 14 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 15 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 16 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 17 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 18 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 19 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 20 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 21 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 22 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 23 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 24 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 25 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 26 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 27 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 28 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 29 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 30 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+OpenBLAS blas_thread_init: pthread_create failed for thread 31 of 32: Operation not permitted
+OpenBLAS blas_thread_init: RLIMIT_NPROC -1 current, -1 max
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+    sys.exit(load_entry_point('phylojunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/.local/bin/pjcli", line 25, in importlib_load_entry_point
+    return next(matches).load()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/metadata/__init__.py", line 202, in load
+    module = import_module(match.group('module'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 6, in <module>
+    import phylojunction.interface.cmdbox.cmd_parse as cmd
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 5, in <module>
+    import matplotlib.pyplot as plt  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/matplotlib/__init__.py", line 156, in <module>
+    import numpy
+  File "/usr/lib/python3/dist-packages/numpy/__init__.py", line 141, in <module>
+    from . import core
+  File "/usr/lib/python3/dist-packages/numpy/core/__init__.py", line 23, in <module>
+    from . import multiarray
+  File "/usr/lib/python3/dist-packages/numpy/core/multiarray.py", line 10, in <module>
+    from . import overrides
+  File "/usr/lib/python3/dist-packages/numpy/core/overrides.py", line 6, in <module>
+    from numpy.core._multiarray_umath import (
+KeyboardInterrupt
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Tue Nov 21 20:29:41 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-39.ris.wustl.edu>
+Subject: Job 608586: <160> in cluster <compute1-lsf> Done
+
+Job <160> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Wed Nov 29 10:01:36 2023
+Job was executed on host(s) <8*compute1-exec-39.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Nov 29 10:01:38 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Wed Nov 29 10:01:38 2023
+Terminated at Wed Nov 29 10:33:08 2023
+Results reported at Wed Nov 29 10:33:08 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   11.84 sec.
+    Max Memory :                                 37 MB
+    Average Memory :                             9.16 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16347.00 MB
+    Max Swap :                                   -
+    Max Processes :                              8
+    Max Threads :                                35
+    Run time :                                   1893 sec.
+    Turnaround time :                            1892 sec.
+
+The output (if any) is above this job summary.
+
