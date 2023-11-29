@@ -418,3 +418,273 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+pj: Pulling from sswiston/rb_tp
+2f088d622efd: Already exists
+8d350cb71e9e: Already exists
+9e8eba320cec: Already exists
+30dab7197e50: Already exists
+9e90259d8553: Already exists
+fee14fe39e9e: Already exists
+9b8b7474500e: Already exists
+d414497d98c8: Already exists
+9bfaf4b428f3: Already exists
+365137801deb: Already exists
+9c61914e6b5e: Already exists
+995f4f815bdb: Already exists
+4a185d49f238: Already exists
+7757234e6484: Already exists
+188c55c1e7a2: Already exists
+3412c8073c98: Already exists
+d67e76112be2: Already exists
+696eb1b8c37e: Already exists
+d254f0a47763: Already exists
+e5388dc9dd59: Already exists
+100b9c81f29f: Pulling fs layer
+c894fe42f76d: Pulling fs layer
+f201ab250bbe: Pulling fs layer
+6955c45d8b61: Pulling fs layer
+9a358b37081c: Pulling fs layer
+8a615ce37f9b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+8c8e67ce929f: Pulling fs layer
+8447840f4b08: Pulling fs layer
+6955c45d8b61: Waiting
+4f4fb700ef54: Waiting
+2d2e60db3e22: Pulling fs layer
+9a358b37081c: Waiting
+8a615ce37f9b: Waiting
+8c8e67ce929f: Waiting
+7bc2cc8ca01e: Pulling fs layer
+8447840f4b08: Waiting
+2d2e60db3e22: Waiting
+fd9437e13daa: Pulling fs layer
+7bc2cc8ca01e: Waiting
+d93c86cb3bae: Pulling fs layer
+35dfc80f04e2: Pulling fs layer
+fd9437e13daa: Waiting
+347987de970b: Pulling fs layer
+347987de970b: Waiting
+35dfc80f04e2: Waiting
+88a89411143b: Pulling fs layer
+9548a7f2fef0: Pulling fs layer
+88a89411143b: Waiting
+d45b3e218572: Pulling fs layer
+9548a7f2fef0: Waiting
+3110b044e620: Pulling fs layer
+d45b3e218572: Waiting
+ec682afd7e86: Pulling fs layer
+3110b044e620: Waiting
+1b02ac984c55: Pulling fs layer
+ec682afd7e86: Waiting
+a70b0c197ace: Pulling fs layer
+1b02ac984c55: Waiting
+89f5c2d131c8: Pulling fs layer
+bd6e812fcabb: Pulling fs layer
+09d52d318ddb: Pulling fs layer
+a70b0c197ace: Waiting
+c1bd24a16715: Pulling fs layer
+89f5c2d131c8: Waiting
+09d52d318ddb: Waiting
+a67f053877c6: Pulling fs layer
+c1bd24a16715: Waiting
+0e33a18241f2: Pulling fs layer
+a67f053877c6: Waiting
+ec5984c59fae: Pulling fs layer
+0e33a18241f2: Waiting
+ec5984c59fae: Waiting
+f201ab250bbe: Verifying Checksum
+f201ab250bbe: Download complete
+c894fe42f76d: Verifying Checksum
+c894fe42f76d: Download complete
+9a358b37081c: Verifying Checksum
+9a358b37081c: Download complete
+6955c45d8b61: Download complete
+4f4fb700ef54: Download complete
+100b9c81f29f: Download complete
+8c8e67ce929f: Verifying Checksum
+8c8e67ce929f: Download complete
+2d2e60db3e22: Verifying Checksum
+2d2e60db3e22: Download complete
+7bc2cc8ca01e: Verifying Checksum
+7bc2cc8ca01e: Download complete
+fd9437e13daa: Download complete
+8a615ce37f9b: Download complete
+35dfc80f04e2: Verifying Checksum
+35dfc80f04e2: Download complete
+d93c86cb3bae: Verifying Checksum
+d93c86cb3bae: Download complete
+100b9c81f29f: Pull complete
+c894fe42f76d: Pull complete
+f201ab250bbe: Pull complete
+6955c45d8b61: Pull complete
+9a358b37081c: Pull complete
+347987de970b: Verifying Checksum
+347987de970b: Download complete
+8a615ce37f9b: Pull complete
+4f4fb700ef54: Pull complete
+9548a7f2fef0: Verifying Checksum
+9548a7f2fef0: Download complete
+8c8e67ce929f: Pull complete
+d45b3e218572: Verifying Checksum
+d45b3e218572: Download complete
+8447840f4b08: Download complete
+3110b044e620: Verifying Checksum
+3110b044e620: Download complete
+ec682afd7e86: Verifying Checksum
+ec682afd7e86: Download complete
+a70b0c197ace: Verifying Checksum
+a70b0c197ace: Download complete
+89f5c2d131c8: Download complete
+1b02ac984c55: Verifying Checksum
+1b02ac984c55: Download complete
+bd6e812fcabb: Download complete
+c1bd24a16715: Verifying Checksum
+c1bd24a16715: Download complete
+a67f053877c6: Download complete
+8447840f4b08: Pull complete
+2d2e60db3e22: Pull complete
+0e33a18241f2: Verifying Checksum
+0e33a18241f2: Download complete
+ec5984c59fae: Download complete
+7bc2cc8ca01e: Pull complete
+09d52d318ddb: Verifying Checksum
+09d52d318ddb: Download complete
+fd9437e13daa: Pull complete
+d93c86cb3bae: Pull complete
+35dfc80f04e2: Pull complete
+347987de970b: Pull complete
+88a89411143b: Verifying Checksum
+88a89411143b: Download complete
+88a89411143b: Pull complete
+9548a7f2fef0: Pull complete
+d45b3e218572: Pull complete
+3110b044e620: Pull complete
+ec682afd7e86: Pull complete
+1b02ac984c55: Pull complete
+a70b0c197ace: Pull complete
+89f5c2d131c8: Pull complete
+bd6e812fcabb: Pull complete
+09d52d318ddb: Pull complete
+c1bd24a16715: Pull complete
+a67f053877c6: Pull complete
+0e33a18241f2: Pull complete
+ec5984c59fae: Pull complete
+Digest: sha256:504df683a439e8cb482652de944165e1390e28bafa6e92755506649929b6e1e8
+Status: Downloaded newer image for sswiston/rb_tp:pj
+docker.io/sswiston/rb_tp:pj
+Setting up Docker container
+Performing simulation 106
+2023-11-21_22:30:16
+Generating PhyloJunction script
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Tue Nov 21 20:29:41 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev"
+Reading features in time slice 1
+Reading features in time slice 2
+Reading features in time slice 3
+Reading features in time slice 4
+Reading features in time slice 5
+
+Preparing .pj script string for sample 106
+Having trouble colonizing!
+
+Preparing .pj script string for sample 106
+
+Whole tree root age = 28.3288
+Origin age of island radiation = 24.2019
+Island that got colonized = Northwestern islands
+    Doing time slice 1
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 2
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 3
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 4
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+    Doing time slice 5
+      Doing extinction rates
+      Doing transition rates
+      Doing birth rates
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/447702.tmpdir/matplotlib-s78gkwdn because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:456: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '23.9031' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  tree_summary_df_dict[rv_name].at[idx, "root_age"] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:460: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '24.2019' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  tree_summary_df_dict[rv_name].at[idx, "origin_age"] = \
+Reading script /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts/sim106.pj
+    ... done!
+outfile_path = /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_output/figures/sample106_trs1_1
+
+RevBayes version (1.2.1)
+Build from hawaii_fix (rapture-2191-gf38548) on Tue Nov 21 20:29:41 UTC 2023
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+Working on simulation 106
+Got root and colonization ages
+Grafted outgroup onto tree
+Grafted outgroup onto tip data
+   Attempting to read the contents of file "sample106.tre"
+   Successfully read file
+Removed extinct taxa and saved new tree
+Simulated sequences
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-86.ris.wustl.edu>
+Subject: Job 447702: <106> in cluster <compute1-lsf> Done
+
+Job <106> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Tue Nov 21 16:29:08 2023
+Job was executed on host(s) <4*compute1-exec-86.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Tue Nov 21 16:29:09 2023
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Tue Nov 21 16:29:09 2023
+Terminated at Tue Nov 21 17:10:02 2023
+Results reported at Tue Nov 21 17:10:02 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   136.52 sec.
+    Max Memory :                                 135 MB
+    Average Memory :                             98.45 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16249.00 MB
+    Max Swap :                                   126 MB
+    Max Processes :                              11
+    Max Threads :                                31
+    Run time :                                   2452 sec.
+    Turnaround time :                            2454 sec.
+
+The output (if any) is above this job summary.
+
