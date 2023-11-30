@@ -3,9 +3,12 @@
 # setup
 seed(s_idx)
 
+# analysis settings
+n_proc <- 4
+
 # reading tree
-tree_fp = exp_path + "sim_data/" + "sample" + s_idx + ".tre"
-phy = readTrees(file=tree_fp)[1]
+tree_fp      = exp_path + "sim_data/" + "sample" + s_idx + ".tre"
+phy          = readTrees(file=tree_fp)[1]
 tree_height  <- phy.rootAge()
 taxa         = phy.taxa()
 num_taxa     = taxa.size()
@@ -18,32 +21,72 @@ num_sites = dat_mol.nchar()
 
 # reading range data
 bg_fp = exp_path + "sim_data/" + "sample" + s_idx + ".data.tsv"
-dat_01 <- readCharacterDataDelimited( bg_fp,
-                                   type="NaturalNumbers",
-                                   stateLabels=63,
-                                   delimiter="\t",
-                                   header=false )
-print(dat_01.show())
-print(dat_01.nchar())
-dat_nn = formatDiscreteCharacterData(dat_01, format="GeoSSE", numStates=63)
+num_states <- 63
+dat_nn <- readCharacterDataDelimited( bg_fp,
+                                      type="NaturalNumbers",
+                                      stateLabels=num_states,
+                                      delimiter="\t",
+                                      header=false )
+
+# We might not need the next command because the RevBayes script will output ranges in
+# natural number encoding (not bit-vector encoding).
+# Uncomment to test (will segfault)
+#dat_nn = formatDiscreteCharacterData(dat_01, format="GeoSSE", numStates=100)
 
 # tree model
-#timetree ~ dnGLHBDSP( rootAge      = root_age,
-#                          lambda       = lambda,
-#                          mu           = mu,
-#                          eta          = Q_bg,
-#                          omega        = omega,
-#                          lambdaTimes  = times,
-#                          muTimes      = times,
-#                          etaTimes     = times,
-#                          omegaTimes   = times,
-#                          rhoTimes     = rho_times,
-#                          pi           = pi_bg,
-#                          rho          = rho_sample,
-#                          condition    = condition,
-#                          taxa         = taxa,
-#                          nStates      = num_ranges,
-#                          nProc        = n_proc )
+whole_tree_age ~ dnUniform(0,30)
+whole_tree_age.setValue(tree_height)
+
+# expected number of taxa
+outgroup_region <- 6
+outgroup_birth_rate <- rho_w * m_w[1][1][outgroup_region]
+outgroup_death_rate <- rho_e * m_e[1][1][outgroup_region]
+n_expected_outgroup_taxa <- 2 * exp((outgroup_birth_rate - outgroup_death_rate) * tree_height)
+rho_outgroup <- Probability(1.0 / n_expected_outgroup_taxa)
+
+# rho sample
+for (i in 1:num_states) {
+    rho_sample[1][i] <- 1.0
+}
+rho_sample[1][outgroup_region] <- rho_outgroup
+rho_times <- [ 0.0 ]
+
+# root state frequencies
+for (i in 1:num_states) {
+    pi_root_region_vec[i] <- 0.0
+}
+pi_root_region_vec[outgroup_region] <- 1.0
+pi_root_region <- simplex(pi_root_region_vec)
+
+# convert RevBayes epoch times (descending order) into Tensorphylo
+# epoch times (ascending order)
+
+for (i in 1:times.size()) {
+    j <- times.size() - i + 1
+    reverse_times[j] <- times[i]
+}
+
+# set up Tensorphylo SSE model
+timetree ~ dnGLHBDSP( rootAge          = whole_tree_age,
+                          lambda       = lambda,
+                          mu           = mu,
+                          eta          = Q,
+                          omega        = omega,
+                          lambdaTimes  = reverse_times,
+                          muTimes      = reverse_times,
+                          etaTimes     = reverse_times,
+                          omegaTimes   = reverse_times,
+                          rhoTimes     = rho_times,
+                          pi           = pi_root_region,
+                          rho          = rho_sample,
+                          condition    = condition,
+                          taxa         = taxa,
+                          nStates      = num_states,
+                          nProc        = n_proc )
+
+
+
+print(lambda)
 
 # molecular model
 #mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
@@ -57,14 +100,14 @@ dat_nn = formatDiscreteCharacterData(dat_01, format="GeoSSE", numStates=63)
 #seq ~ dnPhyloCTMC(tree=phy,Q=Q,branchRates=mu_mol_branch,nSites=2000,type="DNA")
 
 # clamping data
-#timetree.setValue(phy)
-#timetree.clampCharData(dat_nn)
+timetree.setValue(phy)
+timetree.clampCharData(dat_nn)
 #seq.clamp(dat_mol)
 
 # setting up MCMC
-#print("Compute Tensorphylo model probability...")
-#timetree.lnProbability()
-#print("...done!")
+print("Compute Tensorphylo model probability...")
+timetree.lnProbability()
+print("...done!")
 
 # creating moves
 #print("Creating moves...")
