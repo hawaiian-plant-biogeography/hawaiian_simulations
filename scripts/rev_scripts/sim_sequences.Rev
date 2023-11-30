@@ -41,7 +41,11 @@ if (fileExists(file)) {
 
     # Save the new tip data in sim_data
     data_fp = out_path + "sample" + i + ".data.tsv"
-    write(new_data,filename=data_fp,sep="\t")
+    write("",filename=data_fp,sep="\t")
+    for (j in 1:(tip_data.size()+1)) {
+        dat_str <- new_data[j][1] + "\t" + new_data[j][2] + "\n"
+        write(dat_str,filename=data_fp,append=TRUE)
+    }
 
     # Get the set of taxa to retain in the final tree
     for (j in 1:new_data.size()) {
