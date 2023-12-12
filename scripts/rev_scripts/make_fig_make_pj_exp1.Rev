@@ -13,7 +13,8 @@
 # Initial setup #
 #################
 
-loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
+#loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
+loadPlugin("TensorPhylo","/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
 if (!exists("s_idx")) s_idx = 1

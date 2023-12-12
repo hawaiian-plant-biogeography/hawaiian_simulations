@@ -1,5 +1,8 @@
 ##### THIS SCRIPT IS STILL IN PROGRESS AND DOES NOT WORK YET #####
 
+if (!exists("s_idx")) s_idx = 101
+if (!exists("exp_path")) exp_path = "../../experiment1/"
+
 # setup
 seed(s_idx)
 
