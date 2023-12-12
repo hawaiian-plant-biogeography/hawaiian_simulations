@@ -22,9 +22,10 @@ if (!exists("inf")) inf = FALSE
 
 # setting up paths
 if (!exists("exp_path")) exp_path = "experiment1/"
-if (!exists("features_path"))   features_path = exp_path + "feature_summary.csv"
-if (!exists("times_path"))      times_path = exp_path + "age_summary.csv"
-if (!exists("pj_scripts_dir"))  pj_scripts_dir = exp_path + "pj_scripts/"
+if (!exists("geo_path")) geo_path = "realistic_paleogeo/"
+if (!exists("features_path"))    features_path = exp_path + geo_path + "feature_summary.csv"
+if (!exists("times_path"))       times_path = exp_path + geo_path + "age_summary.csv"
+if (!exists("pj_scripts_dir"))   pj_scripts_dir = exp_path + "pj_scripts/"
 if (!exists("model_truth_dir"))  model_truth_dir = exp_path + "model_truth/"
 
 # setting up FIG model quantities we may need to tweak
@@ -278,6 +279,7 @@ if (inf==TRUE) {
     quit()
 }
 
+
 ###########################################
 # Making simulator (PhyloJunction) string #
 ###########################################
@@ -352,16 +354,19 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
         # origin (seed) age
         or_age = -1.0
 
-        # R, K, O, M, H, Z
-        non_continent_region_idxs = [1, 2, 3, 4, 5]
+        # G, N, K, O, M, H, Z
+        # NOTE: base-index 1 for RevBayes arrays
+        #       base-index 0 for RevBayes states in nex file
+        non_continent_region_idxs = [1, 2, 3, 4, 5, 6]
 
-        # 16, 100001, R+Z
-        # 17, 010001, K+Z
-        # 18, 001001, O+Z
-        # 19, 000101, M+Z
-        # 20, 000011, H+Z
-        translation_table = [16, 17, 18, 19, 20]
-        island_names = ["Northwestern islands", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
+        # 22, 1000001, G+Z
+        # 23, 0100001, N+Z
+        # 24, 0010001, K+Z
+        # 25, 0001001, O+Z
+        # 26, 0000101, M+Z
+        # 27, 0000011, H+Z
+        translation_table = [22, 23, 24, 25, 26, 27]
+        island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
 
         max_attempts = 1000
         while (!valid) {
