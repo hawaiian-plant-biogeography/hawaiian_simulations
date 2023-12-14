@@ -1,6 +1,10 @@
-if (!exists("i")) i = 9
+# Grafts outgroup taxon on to ingroup clade and simulates sequence data
 
+if (!exists("i")) i = 9
 if (!exists("exp_path")) exp_path = "experiment1/"
+if (!exists("continent_region_idx")) continent_region_idx = 7
+
+
 pj_path = exp_path + "pj_output/"
 model_path = exp_path + "model_truth/"
 out_path = exp_path + "sim_data/"
@@ -36,7 +40,7 @@ if (fileExists(file)) {
         new_data[j][2] = tip_data[j][2]
     }
     new_data[tip_data.size()+1][1] = "outgroup"
-    new_data[tip_data.size()+1][2] = 5
+    new_data[tip_data.size()+1][2] = continent_region_idx
     print("Grafted outgroup onto tip data")
 
     # Save the new tip data in sim_data
@@ -92,3 +96,4 @@ if (fileExists(file)) {
 }
 
 q()
+

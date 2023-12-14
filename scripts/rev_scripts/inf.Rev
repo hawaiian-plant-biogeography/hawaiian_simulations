@@ -3,6 +3,9 @@
 if (!exists("s_idx")) s_idx = 101
 if (!exists("exp_path")) exp_path = "../../experiment1/"
 
+# load core model
+source("scripts/rev_scripts/model.Rev")
+
 # setup
 seed(s_idx)
 
