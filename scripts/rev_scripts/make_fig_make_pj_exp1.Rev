@@ -76,6 +76,9 @@ n_epochs = times_table.size() + 1 # times.size()
 for (i in 1:(n_epochs-1)) {
     times[i] <- times_table[i][2]
 }
+for (i in 1:times.size()) {
+    times_fwd[i] <- times[n_epochs-i]
+}
 
 ####################
 # Reading features #
@@ -358,6 +361,7 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
         # NOTE: base-index 1 for RevBayes arrays
         #       base-index 0 for RevBayes states in nex file
         non_continent_region_idxs = [1, 2, 3, 4, 5, 6]
+        continent_region_idx = max(non_continent_region_idxs) + 1
 
         # 22, 1000001, G+Z
         # 23, 0100001, N+Z
@@ -388,18 +392,23 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
             whole_tree_age.redraw()
 
             # old -> young
-            for (t in 1:n_epochs) {
-                
+            #for (t_bwd in 1:n_epochs) {
+            for (t in n_epochs:1) {
+                # convert backward time-index for Tensorphylo into
+                # forward time-index for Phylojunction
+                #t = n_epochs - t_bwd + 1
+
                 # adding all dispersal rates from continent into any non-continent region
                 d2island_total_rate = 0.0
                 for (i in non_continent_region_idxs) {
-                    d2island_total_rate += r_d[t][6][i]
+                    d2island_total_rate += r_d[t][continent_region_idx][i]
                 }
 
                 t_d ~ dnExp(d2island_total_rate)
 
                 # if we're in the oldest epoch
-                if (t == 1) {
+                #if (t == 1) {
+                if (t == n_epochs) {
                     island_ori_age = whole_tree_age - t_d
                 } else {
                     island_ori_age = min(v(times[t-1], whole_tree_age)) - t_d
@@ -410,20 +419,23 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
                     break
                 }
 
-                # overan time interval while still in the second youngest epoch at most
-                if (t < n_epochs && (island_ori_age < times[t])) {
+                # overan time interval while outside final epoch that contains the present
+                #if (t < n_epochs && (island_ori_age < times[t])) {
+                if (t > 1 && (island_ori_age < times[t-1])) {
                     next
                 } else {
                     # event happened within interval t
                     islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
 
                     for (i in non_continent_region_idxs) {
-                        islands_relative_rates[i] = r_d[t][6][i] / d2island_total_rate
+                        islands_relative_rates[i] = r_d[t][continent_region_idx][i] / d2island_total_rate
                     }
+                    print(islands_relative_rates)
+                    print(islands_relative_rates.size())
 
                     # starting region (island), between 1 and 5
                     island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
-                    island_subroot_idx.redraw()
+                    #island_subroot_idx.redraw()
 
                     # note that we have to add the island to the continent
                     # and find that widespread range integer ID
@@ -455,7 +467,12 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
     var_names = [""]
     vidx = 1
 
-    for (t in 1:n_epochs) {
+    #for (t_bwd in 1:n_epochs) {
+    for (t in n_epochs:1) {
+        # convert backward time-index for Tensorphylo into
+        # forward time-index for Phylojunction
+        #t = n_epochs - t_bwd + 1
+
         print("    Doing time slice " + t)
 
         processed_anc_states_bw_speciation = [-1]
@@ -467,14 +484,14 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
         print("      Doing extinction rates")
 
         for (i in 1:n_regions) {
-	    if (r_e[t][i] > 0.0) {
-                ii = i - 1
-                var_names[vidx] = "det_death_rate" + ii + "_t" + t
-                s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\", epoch=" + t + ")\n"
-                write(s, append=TRUE, file=pj_script_idx_path)
+            if (r_e[t][i] > 0.0) {
+                    ii = i - 1
+                    var_names[vidx] = "det_death_rate" + ii + "_t" + t
+                    s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\", epoch=" + t + ")\n"
+                    write(s, append=TRUE, file=pj_script_idx_path)
 
-                vidx = vidx + 1
-	    }
+                    vidx = vidx + 1
+            }
         }
 
         print("      Doing transition rates")
