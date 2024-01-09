@@ -1,7 +1,7 @@
 ##### THIS SCRIPT IS STILL IN PROGRESS AND DOES NOT WORK YET #####
 
-if (!exists("s_idx")) s_idx = 101
-if (!exists("exp_path")) exp_path = "../../experiment1/"
+if (!exists("s_idx")) s_idx = 9999 #101
+if (!exists("exp_path")) exp_path = "./experiment1/"
 
 # load core model
 source("scripts/rev_scripts/model.Rev")
@@ -13,7 +13,7 @@ seed(s_idx)
 n_proc <- 4
 
 # reading tree
-tree_fp      = exp_path + "sim_data/" + "sample" + s_idx + ".tre"
+tree_fp      = exp_path + "sim_data/sample" + s_idx + ".tre"
 phy          = readTrees(file=tree_fp)[1]
 tree_height  <- phy.rootAge()
 taxa         = phy.taxa()
@@ -21,17 +21,19 @@ num_taxa     = taxa.size()
 num_branches = 2 * num_taxa - 2
 
 # reading molecular data
-mol_fp = exp_path + "sim_data/" + "sample" + s_idx + ".sequences.nex"
-dat_mol = readDiscreteCharacterData(mol_fp)
+mol_fp    = exp_path + "sim_data/" + "sample" + s_idx + ".sequences.nex"
+dat_mol   = readDiscreteCharacterData(mol_fp)
 num_sites = dat_mol.nchar()
 
 # reading range data
 bg_fp = exp_path + "sim_data/" + "sample" + s_idx + ".data.tsv"
-num_states <- 63
+num_regions <- 7  # TODO: possibly learn this from regional feature files
+num_states <- floor(2^num_regions - 1)
+#num_states <- 63
 dat_nn <- readCharacterDataDelimited( bg_fp,
                                       type="NaturalNumbers",
                                       stateLabels=num_states,
-                                      delimiter="\t",
+                                      delimiter=",",
                                       header=false )
 
 # We might not need the next command because the RevBayes script will output ranges in
@@ -44,7 +46,7 @@ whole_tree_age ~ dnUniform(0,30)
 whole_tree_age.setValue(tree_height)
 
 # expected number of taxa
-outgroup_region <- 6
+outgroup_region     <- 7
 outgroup_birth_rate <- rho_w * m_w[1][1][outgroup_region]
 outgroup_death_rate <- rho_e * m_e[1][1][outgroup_region]
 n_expected_outgroup_taxa <- 2 * exp((outgroup_birth_rate - outgroup_death_rate) * tree_height)
@@ -66,31 +68,42 @@ pi_root_region <- simplex(pi_root_region_vec)
 
 # convert RevBayes epoch times (descending order) into Tensorphylo
 # epoch times (ascending order)
-
 for (i in 1:times.size()) {
     j <- times.size() - i + 1
     reverse_times[j] <- times[i]
 }
 
+lambda[1].size()
+mu[1].size()
+Q[1].size()
+#omega[1]
+#
+# TODO: Running this model generates the error
+# Compute Tensorphylo model probability...
+# Assertion failed: (times.size() >= 1 && "The initial (t=0) mass sampling event must be defined as a mass sampling event."), function setSynchronousEvents, file BaseScheduler.cpp, line 72.
+# [1]    3887 abort      rb scripts/rev_scripts/inf.Rev
+# 
+# ... however I don't see anything that would cause the model to have multiple times for a mass sampling event.
+
 # set up Tensorphylo SSE model
 timetree ~ dnGLHBDSP( rootAge          = whole_tree_age,
-                          lambda       = lambda,
-                          mu           = mu,
-                          eta          = Q,
-                          omega        = omega,
-                          lambdaTimes  = reverse_times,
-                          muTimes      = reverse_times,
-                          etaTimes     = reverse_times,
-                          omegaTimes   = reverse_times,
-                          rhoTimes     = rho_times,
+                          lambda       = lambda[1],
+                          mu           = mu[1],
+                          eta          = Q[1],
                           pi           = pi_root_region,
-                          rho          = rho_sample,
                           condition    = condition,
                           taxa         = taxa,
                           nStates      = num_states,
                           nProc        = n_proc )
 
 
+                          #omega        = omega[1],
+                          #rho          = rho_sample[1],
+                          #lambdaTimes  = times,
+                          #muTimes      = times,
+                          #etaTimes     = times,
+                          #omegaTimes   = times,
+                          #rhoTimes     = rho_times,
 
 print(lambda)
 

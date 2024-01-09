@@ -162,8 +162,6 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
                     for (i in non_continent_region_idxs) {
                         islands_relative_rates[i] = r_d[t][continent_region_idx][i] / d2island_total_rate
                     }
-                    print(islands_relative_rates)
-                    print(islands_relative_rates.size())
 
                     # starting region (island), between 1 and 5
                     island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
