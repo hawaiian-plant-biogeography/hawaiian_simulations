@@ -220,10 +220,10 @@ phi_b[1].setValue(0.00001)
 # first t is oldest
 # last t is youngest
 for (t in 1:n_epochs) {
-    m_w[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_w, phi_w)
-    m_e[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_e, phi_e)
-    m_d[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_d, phi_d)
-    m_b[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_b, phi_b)
+    m_w[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_w, phi_w, null_rate=0)
+    m_e[t] := fnFeatureInformedRates(layer_CW[t], layer_QW[t], sigma_e, phi_e, null_rate=1e3)
+    m_d[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_d, phi_d, null_rate=0)
+    m_b[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_b, phi_b, null_rate=1)
 }
 
 # quantities we need for later
@@ -288,10 +288,12 @@ for (t in 1:n_epochs) {
 
 # other SSE parameters
 # eq. freq at start of process
-pi <- simplex(rep(1, n_ranges))
 
-condition = "survival"
+# MJL 240111: not used? uncomment if needed
+# pi <- simplex(rep(1, n_ranges))
 
-rho <- 1.0 # sampling probability
+# condition = "survival"
+
+# rho <- 1.0 # sampling probability
 
 # ... done running, expects another script to take over ...
