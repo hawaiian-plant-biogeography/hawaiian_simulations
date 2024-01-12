@@ -3,8 +3,8 @@ LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/st
 JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
 
 # Create a list of sims to run (numbers)
-#RUN_LIST=$(seq 101 200)
-RUN_LIST=(101)
+#RUN_LIST=$(seq 1 100)
+RUN_LIST=(9999)
 
 # Create and run a job for each sim
 for i in ${RUN_LIST[@]}

@@ -1,6 +1,6 @@
 # Grafts outgroup taxon on to ingroup clade and simulates sequence data
 
-if (!exists("i")) i = 9
+if (!exists("i")) i = 9999
 if (!exists("exp_path")) exp_path = "experiment1/"
 if (!exists("continent_region_idx")) continent_region_idx = 7
 

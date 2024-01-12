@@ -13,12 +13,11 @@
 # Initial setup #
 #################
 
-#loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
-loadPlugin("TensorPhylo","/Users/mlandis/.local/lib/tensorphylo")
+loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
+#loadPlugin("TensorPhylo","/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
-if (!exists("s_idx")) s_idx = 1
-if (!exists("inf"))   inf = FALSE
+if (!exists("s_idx")) s_idx = 9999
 
 # setting up paths
 if (!exists("exp_path")) exp_path = "experiment1/"

@@ -1,9 +1,6 @@
 # Run startup script that sets path variables
 echo "Setting up Docker container"
 source /start.sh
-#export PYTHONPATH=/PhyloJunction/src
-
-#export OMP_NUM_THREADS=1
 
 # Recording date and time of simulation
 SIM=$LSB_JOBNAME
