@@ -1,6 +1,22 @@
-##### THIS SCRIPT IS STILL IN PROGRESS AND DOES NOT WORK YET #####
+# Script: sim_sequences.Rev
+# Authors: Sarah K. Swiston (sarah.k.swiston@wustl.edu) & Michael J. Landis
+# Date: January 15, 2024
 
-if (!exists("s_idx")) s_idx = 9999 #101
+# This script will:
+# (1) Call the model.Rev script to construct a FIG model
+# (2) Perform inference on a datset under that model
+#
+# NOTE: Run this script from hawaiian_simulations/
+
+# Script: sim_sequences.Rev
+# Authors: Sarah K. Swiston (sarah.k.swiston@wustl.edu)
+# Date: January 15, 2024
+
+#################
+# Initial Setup #
+#################
+
+if (!exists("s_idx")) s_idx = 9999
 if (!exists("exp_path")) exp_path = "./experiment1/"
 
 # load core model
@@ -17,6 +33,10 @@ under_prior = false
 move_schedule = v("single","random")[1]
 update_topology = false
 analysis = "sim_" + s_idx
+
+################
+# Reading Data #
+################
 
 # reading tree
 tree_fp      = exp_path + "sim_data/sample" + s_idx + ".tre"
@@ -41,10 +61,9 @@ dat_nn <- readCharacterDataDelimited( bg_fp,
                                       delimiter=",",
                                       header=false )
 
-# We might not need the next command because the RevBayes script will output ranges in
-# natural number encoding (not bit-vector encoding).
-# Uncomment to test (will segfault)
-#dat_nn = formatDiscreteCharacterData(dat_01, format="GeoSSE", numStates=100)
+##############
+# Tree Model #
+##############
 
 # tree model
 whole_tree_age ~ dnUniform(0,30)
@@ -71,25 +90,29 @@ for (i in 1:num_states) {
 pi_root_region_vec[outgroup_region] <- 1.0
 pi_root_region <- simplex(pi_root_region_vec)
 
+# TODO: MAKE SURE TENSORPHYLO IS GETTING THE CORRECT TIMES
+
 # convert RevBayes epoch times (descending order) into Tensorphylo
-# epoch times (ascending order)
+# epoch times (ascending order) --> have times_fwd[] from model script
 for (i in 1:times.size()) {
-    j <- times.size() - i + 1
-    reverse_times[j] <- times[i]
+    lambda_fwd[i] := lambda[times.size()-i+1]
+    mu_fwd[i] := mu[times.size()-i+1]
+    Q_fwd[i] := Q[times.size()-i+1]
+    omega_fwd[i] := omega[times.size()-i+1]
 }
 
 # set up Tensorphylo SSE model
 condition="survival"
 timetree ~ dnGLHBDSP( rootAge          = whole_tree_age,
-                          lambda       = lambda,
-                          mu           = mu,
-                          eta          = Q,
-                          omega        = omega,
+                          lambda       = lambda_fwd,
+                          mu           = mu_fwd,
+                          eta          = Q_fwd,
+                          omega        = omega_fwd,
                           pi           = pi_root_region,
-                          lambdaTimes  = times,
-                          muTimes      = times,
-                          etaTimes     = times,
-                          omegaTimes   = times,
+                          lambdaTimes  = times_fwd,
+                          muTimes      = times_fwd,
+                          etaTimes     = times_fwd,
+                          omegaTimes   = times_fwd,
                           rho          = rho_sample,
                           rhoTimes     = rho_times,
                           condition    = condition,
@@ -98,12 +121,11 @@ timetree ~ dnGLHBDSP( rootAge          = whole_tree_age,
                           nProc        = n_proc )
 
 
-
 # molecular model
 mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
 Q_mol <- fnJC(4)
 mu_mol_sd <- 0.587405 
-#if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
+if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
 for (j in 1:num_branches) {
     ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
     mu_mol_branch[j] ~ dnLnorm(ln_mean, mu_mol_sd)
@@ -117,6 +139,10 @@ seq ~ dnPhyloCTMC(tree=timetree,
 timetree.clamp(phy)
 timetree.clampCharData(dat_nn)
 seq.clamp(dat_mol)
+
+########
+# MCMC #
+########
 
 # setting up MCMC
 print("Compute Tensorphylo model probability...")

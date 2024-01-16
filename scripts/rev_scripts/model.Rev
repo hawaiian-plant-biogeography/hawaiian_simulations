@@ -1,11 +1,10 @@
-# Script: make_fig_make_pj_exp1.Rev
+# Script: model.Rev
 # Authors: Fabio K. Mendes (f.mendes@wustl.edu) & Sarah K. Swiston (sarah.k.swiston@wustl.edu)
-# Date: Oct, 2023
+# Date: January 15, 2024
 
 # This script will:
-# (1) Read in all features and epoch information,
-# (2) Build the FIG model,
-# (3) Build a string specifying a PhyloJunction script
+# (1) Read in all features and epoch information
+# (2) Build the FIG model
 #
 # NOTE: Run this script from hawaiian_simulations/
 
@@ -19,13 +18,16 @@ loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
 # sim number
 if (!exists("s_idx")) s_idx = 9999
 
+# settings
+if (!exists("use_rj")) use_rj = false
+
 # setting up paths
-if (!exists("exp_path")) exp_path = "experiment1/"
-if (!exists("geo_path")) geo_path = "realistic_paleogeo/"
-if (!exists("features_path"))    features_path = exp_path + geo_path + "feature_summary.csv"
-if (!exists("times_path"))       times_path = exp_path + geo_path + "age_summary.csv"
-if (!exists("pj_scripts_dir"))   pj_scripts_dir = exp_path + "pj_scripts/"
-if (!exists("model_truth_dir"))  model_truth_dir = exp_path + "model_truth/"
+if (!exists("exp_path")) exp_path               = "experiment1/"
+if (!exists("geo_path")) geo_path               = v("realistic_paleogeo/","present_only_geo/")[1]
+if (!exists("features_path")) features_path     = exp_path + geo_path + "feature_summary.csv"
+if (!exists("times_path")) times_path           = exp_path + geo_path + "age_summary.csv"
+if (!exists("pj_scripts_dir")) pj_scripts_dir   = exp_path + "pj_scripts/"
+if (!exists("model_truth_dir")) model_truth_dir = exp_path + "model_truth/"
 
 # setting up FIG model quantities we may need to tweak
 #
@@ -44,39 +46,41 @@ if (!exists("phi_d_init"))     phi_d_init = 0.00001
 if (!exists("phi_e_init"))     phi_e_init = 0.00001
 if (!exists("phi_w_init"))     phi_w_init = 0.00001
 if (!exists("phi_b_init"))     phi_b_init = 0.00001
-#
-# reversible-jump?
-if (!exists("use_rj")) use_rj = false
 
 ############################
 # Reading epoch age limits #
 ############################
 
-# reading age ends, old at the top, young at the bottom
+# reading age ends, young at the top, old at the bottom
 #
 # e.g.,
 # index,age_end
-# 4,6.15
-# 3,4.135
-# 2,2.55
-# 1,1.20 
+# 1,1.10
+# 2,2.10
+# 3,3.93
+# 4,6.00
+# 5,7.75
+# 6,17.75 
 #
 # i.e.,
 # last entry gives the age at which the youngest epoch ends
-# the first entry gives the age at which the fourth epoch ends
+# the first entry gives the age at which the oldest epoch ends
 # (the oldest epoch runs infinitely into the past, and is not
-# specified an end)
+# specified a start)
 
 times_table = readDataDelimitedFile(times_path, delimiter=",", header=true)
-n_epochs = times_table.size() + 1 # times.size()
+n_epochs = times_table.size() + 1
 
-# 2nd element is the epoch's age end
+
+# 4th element is the epoch's age end
+# young -> old (forward in time, NOT how PhyloJunction likes it)
+for (i in 1:(n_epochs-1)) {
+    times_fwd[i] <- times_table[i][4]
+}
+
 # old -> young
 for (i in 1:(n_epochs-1)) {
-    times[i] <- times_table[i][2]
-}
-for (i in 1:times.size()) {
-    times_fwd[i] <- times[n_epochs-i]
+    times[i] <- times_fwd[n_epochs-i]
 }
 
 ####################
@@ -89,6 +93,8 @@ geo_features.normalize("between")
 
 # first t is oldest
 # last t is youngest
+# SKS 2024/01/15 I rearranged the realistic_paleogeo dataset to reflect this
+# May have to update other analyses?
 for (t in 1:n_epochs) {
     print("Reading features in time slice " + t)
 

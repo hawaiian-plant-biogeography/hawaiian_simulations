@@ -3,8 +3,8 @@ LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/st
 JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
 
 # Create a list of sims to run (numbers)
-#RUN_LIST=$(seq 1 100)
-RUN_LIST=(9999)
+RUN_LIST=$(seq 1 500)
+#RUN_LIST=(9999)
 
 # Create and run a job for each sim
 for i in ${RUN_LIST[@]}
@@ -15,6 +15,6 @@ do
 	-o $JOBDIR/$i.stdout.txt \
 	-J $i \
 	-q general \
-	-n 8 -M 16GB -R "rusage [mem=16GB] span[hosts=1]" \
+	-n 1 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \
 	-a 'docker(sswiston/rb_tp:pj)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
 done

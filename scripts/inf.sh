@@ -2,9 +2,9 @@
 echo "Setting up Docker container"
 source /start.sh
 
-# Recording date and time of simulation
+# Recording date and time of inference
 SIM=$LSB_JOBNAME
-echo "Performing simulation $SIM"
+echo "Performing inference $SIM"
 NOW=$( date '+%F_%H:%M:%S' )
 echo $NOW
 

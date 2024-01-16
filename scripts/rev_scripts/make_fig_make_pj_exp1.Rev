@@ -1,10 +1,10 @@
 # Script: make_fig_make_pj_exp1.Rev
 # Authors: Fabio K. Mendes (f.mendes@wustl.edu) & Sarah K. Swiston (sarah.k.swiston@wustl.edu)
-# Date: Oct, 2023
+# Date: January 15, 2024
 
 # This script will:
-# (1) Read in all features and epoch information,
-# (2) Build the FIG model,
+# (1) Call the model.Rev script to generate the FIG model
+# (2) Simulate an island colonization event
 # (3) Build a string specifying a PhyloJunction script
 #
 # NOTE: Run this script from hawaiian_simulations/
@@ -15,319 +15,309 @@
 
 source("scripts/rev_scripts/model.Rev")
 
-###########################################
-# Making simulator (PhyloJunction) string #
-###########################################
+# simulation config
+# n_samples = 100
 
-sigma_true_values_path = model_truth_dir + "sigma_true_vals.tsv"
-phi_true_values_path = model_truth_dir + "phi_true_vals.tsv"
-rho_true_values_path = model_truth_dir + "rho_true_vals.tsv"
-colonization_true_values_path = model_truth_dir + "colonization_true_vals.tsv"
+# setting a unique seed for each simulation (makes replication possible)
+seed(s_idx)
+
+####################################
+# GENERATING SIMULATION PARAMETERS #
+####################################
 
 sigma_true_vals_s = "sample\tfeature\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
 phi_true_vals_s = "sample\tfeature\tphi_d\tphi_e\tphi_w\tphi_b\n"
 rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n"
 colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
 
-# simulation config
-# n_samples = 100
+valid = false
+while (!valid) {
 
-# for (s_idx in 1:n_samples) {
+    print("\nPreparing .pj script string for sample " + s_idx)
+    pj_script_idx_path = pj_scripts_dir + "sim" + s_idx + ".pj"
 
-    # setting a unique seed for each simulation (makes replication possible)
-    seed(s_idx)
+    feat_specific_sigma_true_vals_s = "sample\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
+    for (c_feat_idx in 1:sigma_d.size()) {
+        sigma_d[c_feat_idx].redraw()
+        sigma_e[c_feat_idx].redraw()
+        sigma_w[c_feat_idx].redraw()
+        sigma_b[c_feat_idx].redraw()
+        sigma_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
 
-    valid = false
+        feat_specific_sigma_true_values_path = model_truth_dir + "sigma_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
+        feat_specific_sigma_true_vals_s += s_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
+
+        # print("Writing true feature effect values for categorical feature " + c_feat_idx + " in " + feat_specific_sigma_true_values_path)
+        write(feat_specific_sigma_true_vals_s, file=feat_specific_sigma_true_values_path)
+    }
+
+    feat_specific_phi_true_vals_s = "sample\tphi_d\tphi_e\tphi_w\tphi_b\n"
+    for (q_feat_idx in 1:phi_d.size()) {
+        phi_d[q_feat_idx].redraw()
+        phi_e[q_feat_idx].redraw()
+        phi_w[q_feat_idx].redraw()
+        phi_b[q_feat_idx].redraw()
+        phi_true_vals_s += s_idx + "\t" + q_feat_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
+
+        feat_specific_phi_true_values_path = model_truth_dir + "phi_true_vals_sample" + s_idx + "_feat" + q_feat_idx + ".tsv"
+        feat_specific_phi_true_vals_s += s_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
+    
+        # print("Writing true feature effect values for quantitative feature " + q_feat_idx + " in " + feat_specific_phi_true_values_path)
+        write(feat_specific_phi_true_vals_s, file=feat_specific_phi_true_values_path)
+    }
+
+    rho_d.redraw()
+    rho_e.redraw()
+    rho_w.redraw()
+    rho_b.redraw()
+    
+    rho_true_vals_s += s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
+
+    sample_rho_true_values_path = model_truth_dir + "rho_true_vals_sample" + s_idx + ".tsv"
+    sample_rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n" + s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
+
+    # print("Writing true base rate values for sample " + s_idx + " in " + sample_rho_true_values_path)
+    write(sample_rho_true_vals_s, file=sample_rho_true_values_path)
+
+#################################
+# SIMULATING COLONIZATION EVENT #
+#################################
+
+    # origin (seed) age
+    or_age = -1.0
+
+    # G, N, K, O, M, H, Z
+    # NOTE: base-index 1 for RevBayes arrays
+    #       base-index 0 for RevBayes states in nex file
+    non_continent_region_idxs = [1, 2, 3, 4, 5, 6]
+    continent_region_idx = max(non_continent_region_idxs) + 1
+
+    # 22, 1000001, G+Z
+    # 23, 0100001, N+Z
+    # 24, 0010001, K+Z
+    # 25, 0001001, O+Z
+    # 26, 0000101, M+Z
+    # 27, 0000011, H+Z
+    translation_table = [22, 23, 24, 25, 26, 27]
+    island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
+
+    max_attempts = 1000
     while (!valid) {
-
-        print("\nPreparing .pj script string for sample " + s_idx)
-        pj_script_idx_path = pj_scripts_dir + "sim" + s_idx + ".pj"
-
-        feat_specific_sigma_true_vals_s = "sample\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
-        for (c_feat_idx in 1:sigma_d.size()) {
-            sigma_d[c_feat_idx].redraw()
-            sigma_e[c_feat_idx].redraw()
-            sigma_w[c_feat_idx].redraw()
-            sigma_b[c_feat_idx].redraw()
-            sigma_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
-
-            feat_specific_sigma_true_values_path = model_truth_dir + "sigma_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
-            feat_specific_sigma_true_vals_s += s_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
-
-            # print("Writing true feature effect values for categorical feature " + c_feat_idx + " in " + feat_specific_sigma_true_values_path)
-            write(feat_specific_sigma_true_vals_s, file=feat_specific_sigma_true_values_path)
+        # cap rejection sampling
+        max_attempts -= 1
+        # redraw new parameters if we have reached the max attempts allowed
+        if (max_attempts == 0) {
+            print("Having trouble colonizing!")
+            break
         }
 
-        feat_specific_phi_true_vals_s = "sample\tphi_d\tphi_e\tphi_w\tphi_b\n"
-        for (q_feat_idx in 1:phi_d.size()) {
-            phi_d[q_feat_idx].redraw()
-            phi_e[q_feat_idx].redraw()
-            phi_w[q_feat_idx].redraw()
-            phi_b[q_feat_idx].redraw()
-            phi_true_vals_s += s_idx + "\t" + q_feat_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
-
-            feat_specific_phi_true_values_path = model_truth_dir + "phi_true_vals_sample" + s_idx + "_feat" + q_feat_idx + ".tsv"
-            feat_specific_phi_true_vals_s += s_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
+        # decreasing ages
+        # times: breakpoints
         
-            # print("Writing true feature effect values for quantitative feature " + q_feat_idx + " in " + feat_specific_phi_true_values_path)
-            write(feat_specific_phi_true_vals_s, file=feat_specific_phi_true_values_path)
-        }
+        # draw root age for the whole tree
+        # this is the age of the MRCA that separates
+        # the ingroup (stem) and the outgroup
+        whole_tree_age ~ dnUnif(0,30)
+        whole_tree_age.redraw()
 
-        rho_d.redraw()
-        rho_e.redraw()
-        rho_w.redraw()
-        rho_b.redraw()
-        
-        rho_true_vals_s += s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
+        # old -> young
+        for (t in 1:n_epochs) {
 
-        sample_rho_true_values_path = model_truth_dir + "rho_true_vals_sample" + s_idx + ".tsv"
-        sample_rho_true_vals_s = "sample\trho_d\trho_e\trho_w\trho_b\n" + s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
+            # adding all dispersal rates from continent into any non-continent region
+            d2island_total_rate = 0.0
+            for (i in non_continent_region_idxs) {
+                d2island_total_rate += r_d[t][continent_region_idx][i]
+            }
 
-        # print("Writing true base rate values for sample " + s_idx + " in " + sample_rho_true_values_path)
-        write(sample_rho_true_vals_s, file=sample_rho_true_values_path)
+            # get the waiting time until the dispersal event
+            t_d ~ dnExp(d2island_total_rate)
 
-        # origin (seed) age
-        or_age = -1.0
-
-        # G, N, K, O, M, H, Z
-        # NOTE: base-index 1 for RevBayes arrays
-        #       base-index 0 for RevBayes states in nex file
-        non_continent_region_idxs = [1, 2, 3, 4, 5, 6]
-        continent_region_idx = max(non_continent_region_idxs) + 1
-
-        # 22, 1000001, G+Z
-        # 23, 0100001, N+Z
-        # 24, 0010001, K+Z
-        # 25, 0001001, O+Z
-        # 26, 0000101, M+Z
-        # 27, 0000011, H+Z
-        translation_table = [22, 23, 24, 25, 26, 27]
-        island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
-
-        max_attempts = 1000
-        while (!valid) {
-            # cap rejection sampling
-            max_attempts -= 1
-            # use as many successes we got so far
-            if (max_attempts == 0) {
-                print("Having trouble colonizing!")
+            # if we're in the oldest epoch, colonization age comes after the start of the tree
+            # if not, colonization age comes after BOTH the start of the epoch AND the start of the tree
+            if (t == 1) {
+                island_ori_age = whole_tree_age - t_d
+            } else {
+                island_ori_age = min(v(times[t-1], whole_tree_age)) - t_d
+            }
+            
+            # check if we have run out of time, and start trying to colonize again if so
+            if (island_ori_age < 0) {
+                # island_ori_age cannot be negative, done!
                 break
             }
 
-            # decreasing ages
-            # times: breakpoints
-            
-            # draw root age for the whole tree
-            # this is the age of the MRCA that separates
-            # the ingroup (stem) and the outgroup
-            whole_tree_age ~ dnUnif(0,30)
-            whole_tree_age.redraw()
+            # if we overan time interval while outside the youngest epoch, proceed to next epoch
+            # otherwise the colonization event happens in this epoch
+            if (t < n_epochs && (island_ori_age < times[t])) {
+                next
+            } else {
+                # event happened within interval t
+                islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
 
-            # old -> young
-            #for (t_bwd in 1:n_epochs) {
-            for (t in n_epochs:1) {
-                # convert backward time-index for Tensorphylo into
-                # forward time-index for Phylojunction
-                #t = n_epochs - t_bwd + 1
-
-                # adding all dispersal rates from continent into any non-continent region
-                d2island_total_rate = 0.0
+                # getting relative rates for colonizing each non-continental region
                 for (i in non_continent_region_idxs) {
-                    d2island_total_rate += r_d[t][continent_region_idx][i]
+                    islands_relative_rates[i] = r_d[t][continent_region_idx][i] / d2island_total_rate
                 }
 
-                t_d ~ dnExp(d2island_total_rate)
+                # starting region (island), between 1 and 6
+                island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
+                island_subroot_idx.redraw()
 
-                # if we're in the oldest epoch
-                #if (t == 1) {
-                if (t == n_epochs) {
-                    island_ori_age = whole_tree_age - t_d
-                } else {
-                    island_ori_age = min(v(times[t-1], whole_tree_age)) - t_d
-                }
+                # note that we have to add the island to the continent
+                # and find that widespread range integer ID
+                subroot_range = translation_table[island_subroot_idx]
+                colonized_island_name = island_names[island_subroot_idx]
                 
-                if (island_ori_age < 0) {
-                    # island_ori_age cannot be negative, done!
-                    break
-                }
-
-                # overan time interval while outside final epoch that contains the present
-                #if (t < n_epochs && (island_ori_age < times[t])) {
-                if (t > 1 && (island_ori_age < times[t-1])) {
-                    next
-                } else {
-                    # event happened within interval t
-                    islands_relative_rates = rep(0.0, non_continent_region_idxs.size())
-
-                    for (i in non_continent_region_idxs) {
-                        islands_relative_rates[i] = r_d[t][continent_region_idx][i] / d2island_total_rate
-                    }
-
-                    # starting region (island), between 1 and 5
-                    island_subroot_idx ~ dnCat(simplex(islands_relative_rates))
-                    #island_subroot_idx.redraw()
-
-                    # note that we have to add the island to the continent
-                    # and find that widespread range integer ID
-                    subroot_range = translation_table[island_subroot_idx]
-                    colonized_island_name = island_names[island_subroot_idx]
-                    
-                    valid = true
-                    break
-                }
-            }
-        }
-
-        if (valid) {
-            print("\nWhole tree root age = " + whole_tree_age)
-            print("Origin age of island radiation = " + island_ori_age)
-            print("Island that got colonized = " + colonized_island_name)
-
-            colonization_true_vals_s += s_idx + "\t" + whole_tree_age + "\t" + island_ori_age + "\t" + subroot_range + "\n"
-            sample_colonization_true_values_path = model_truth_dir + "colonization_true_vals_sample" + s_idx + ".tsv"
-            sample_colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n" + s_idx + "\t" + whole_tree_age + "\t" + island_ori_age + "\t" + subroot_range + "\n"
-            # print("Writing true colonization times for sample " + s_idx + " in " + sample_colonization_true_values_path)
-            write(sample_colonization_true_vals_s, file=sample_colonization_true_values_path)
-        }
-    }
-
-    s = "# deterministic nodes\n"
-    write(s, file=pj_script_idx_path)
-
-    var_names = [""]
-    vidx = 1
-
-    #for (t_bwd in 1:n_epochs) {
-    for (t in n_epochs:1) {
-        # convert backward time-index for Tensorphylo into
-        # forward time-index for Phylojunction
-        #t = n_epochs - t_bwd + 1
-
-        print("    Doing time slice " + t)
-
-        processed_anc_states_bw_speciation = [-1]
-        anc_state_idx = 1
-
-        s += "\n# time slice " + t + "\n"
-        # write to existing PJ script file here
-
-        print("      Doing extinction rates")
-
-        for (i in 1:n_regions) {
-            if (r_e[t][i] > 0.0) {
-                    ii = i - 1
-                    var_names[vidx] = "det_death_rate" + ii + "_t" + t
-                    s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\", epoch=" + t + ")\n"
-                    write(s, append=TRUE, file=pj_script_idx_path)
-
-                    vidx = vidx + 1
-            }
-        }
-
-        print("      Doing transition rates")
-
-        for (i in 1:n_ranges) {
-            ii = i - 1
-            rate_open = "det_trans_rate" + ii + "_"
-            rate_middle = " := sse_rate(" + "name=\"q_" + ii + "_"
-            i_state = ", states=[" + ii + ","
-            rate_close = "], event=\"transition\", epoch=" + t + ")\n"
-        
-            for (j in 1:n_ranges) {
-                q_tij = Q[t][i][j]
-                jj = j - 1
-
-                if (ii != jj) {
-		    if (q_tij > 0.0) {
-                        var_names[vidx] = rate_open + jj + "_t" + t
-                        # var_names[vidx] = "det_trans_rate" + ii  + "_" + jj + "_t" + t
-                        # s = var_names[vidx] + " := sse_rate(" + "name=\"q_"+ ii + "_" + jj + "_t" + t + "\", " + "value=" + q_tij + ", states=[" + ii + "," + jj + "], " + "event=\"transition\", epoch=" + t + ")\n"
-		        s = var_names[vidx] + rate_middle + jj + "_t" + t + "\", " + "value=" + q_tij + i_state + jj + rate_close
-
-                        write(s, append=TRUE, file=pj_script_idx_path)
-                    
-                        vidx = vidx + 1
-		    }
-                }
-            }
-        }
-
-        # print(s + "\n")
-
-        clado_map_tmp <- clado_map[t]
-        clado_map_events_tmp <- clado_map_tmp.getEvents()
-
-        print("      Doing birth rates")
-
-        for (i in 1:clado_map_events_tmp.size()) {
-	    idx = clado_map_events_tmp[i]
-
-            if (clado_map_tmp.getRate(idx[1], idx[2], idx[3]) > 0.0) {
-                ii = idx[1]
-                jj = idx[2]
-                kk = idx[3]
-                sp_label = "w_speciation"
-
-                if (ii != jj && ii != kk) {
-                    sp_label = "bw_speciation"
-                }
-
-                if ((ii == jj && ii != kk) || (ii != jj && ii == kk)) {
-                    sp_label = "asym_speciation"
-                }
-
-                if (sp_label == "bw_speciation" || sp_label=="asym_speciation") {
-                # if ((sp_label == "bw_speciation" && (!processed_anc_states_bw_speciation.contains(ii))) || (sp_label=="asym_speciation" && jj >= kk)) {
-                    processed_anc_states_bw_speciation[anc_state_idx] = ii
-                    anc_state_idx = anc_state_idx + 1
-                    var_names[vidx] = "det_birth_rate" + ii + "_" + jj + "_" + kk + "_t" + t
-
-                    s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + jj + "," + kk + "], " + "event=\"" + sp_label + "\", epoch=" + t + ")\n"
-                
-                    write(s, append=TRUE, file=pj_script_idx_path)
-
-                    vidx = vidx + 1
-		}
-            }
-
-            if (sp_label == "w_speciation" && (ii == jj) && (ii == kk)) {
-	        if (clado_map_tmp.getRate(idx[1], idx[2], idx[3]) > 0.0) {
-                    var_names[vidx] = "det_birth_rate" + ii + "_t" + t
-                
-                    s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + ii + "," + ii + "], " + "event=\"" + sp_label + "\", epoch=" + t + ")\n"
-
-                    write(s, append=TRUE, file=pj_script_idx_path)
-                
-                    vidx = vidx + 1
-		}
+                valid = true
+                break
             }
         }
     }
 
-    # print("      Doing sse_stash()")
+    if (valid) {
+        print("\nWhole tree root age = " + whole_tree_age)
+        print("Origin age of island radiation = " + island_ori_age)
+        print("Island that got colonized = " + colonized_island_name)
 
-    s = "\n# macroevolutionary event handler\nstash := sse_stash(flat_rate_mat="
+        # save the colonization information to a file
+        colonization_true_vals_s += s_idx + "\t" + whole_tree_age + "\t" + island_ori_age + "\t" + subroot_range + "\n"
+        sample_colonization_true_values_path = model_truth_dir + "colonization_true_vals_sample" + s_idx + ".tsv"
+        sample_colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\t\colonized_island_name\n" + s_idx + "\t" + whole_tree_age + "\t" + island_ori_age + "\t" + subroot_range + "\t" + colonized_island_name + "\n"
+        # print("Writing true colonization times for sample " + s_idx + " in " + sample_colonization_true_values_path)
+        write(sample_colonization_true_vals_s, file=sample_colonization_true_values_path)
+    }
+}
+
+######################################
+# GENERATING THE PHYLOJUCTION SCRIPT #
+######################################
+
+s = "# deterministic nodes\n"
+write(s, file=pj_script_idx_path)
+
+var_names = [""]
+vidx = 1
+
+# t = 1 is oldest epoch
+for (t in 1:n_epochs) {
+
+    print("    Doing time slice " + t)
+
+    processed_anc_states_bw_speciation = [-1]
+    anc_state_idx = 1
+
+    s += "\n# time slice " + t + "\n"
+    # write to existing PJ script file here
+
+    print("      Doing extinction rates")
+
+    for (i in 1:n_regions) {
+        if (r_e[t][i] > 0.0) {
+                ii = i - 1
+                var_names[vidx] = "det_death_rate" + ii + "_t" + t
+                s = var_names[vidx] + " := sse_rate(" + "name=\"mu_" + ii + "_t" + t + "\", " + "value=" + r_e[t][i] + ", " + "states=[" + ii + "], " + "event=\"extinction\", epoch=" + t + ")\n"
+                write(s, append=TRUE, file=pj_script_idx_path)
+
+                vidx = vidx + 1
+        }
+    }
+
+    print("      Doing transition rates")
+
+    for (i in 1:n_ranges) {
+        ii = i - 1
+        rate_open = "det_trans_rate" + ii + "_"
+        rate_middle = " := sse_rate(" + "name=\"q_" + ii + "_"
+        i_state = ", states=[" + ii + ","
+        rate_close = "], event=\"transition\", epoch=" + t + ")\n"
     
-    write(s, append=TRUE, file=pj_script_idx_path)
-    
-    write(var_names, separator=", ", append=TRUE, file=pj_script_idx_path)
-    
-    s = ", n_states=" + n_ranges + ", n_epochs=" + n_epochs + ", seed_age=" + island_ori_age + ", epoch_age_ends="
-    
-    write(s, append=TRUE, file=pj_script_idx_path)
+        for (j in 1:n_ranges) {
+            q_tij = Q[t][i][j]
+            jj = j - 1
 
-    write(times, separator=", ", append=TRUE, file=pj_script_idx_path)
+            if (ii != jj) {
+        if (q_tij > 0.0) {
+                    var_names[vidx] = rate_open + jj + "_t" + t
+                    # var_names[vidx] = "det_trans_rate" + ii  + "_" + jj + "_t" + t
+                    # s = var_names[vidx] + " := sse_rate(" + "name=\"q_"+ ii + "_" + jj + "_t" + t + "\", " + "value=" + q_tij + ", states=[" + ii + "," + jj + "], " + "event=\"transition\", epoch=" + t + ")\n"
+            s = var_names[vidx] + rate_middle + jj + "_t" + t + "\", " + "value=" + q_tij + i_state + jj + rate_close
 
-    s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", stash=stash, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"true\", min_rec_taxa=15, max_rec_taxa=200, abort_at_obs=5000)"
+                    write(s, append=TRUE, file=pj_script_idx_path)
+                
+                    vidx = vidx + 1
+        }
+            }
+        }
+    }
 
-    write(s, append=TRUE, file=pj_script_idx_path)
-# }
+    # print(s + "\n")
 
-# if doing more than one sample with this script
-#
-write(sigma_true_vals_s, file=sigma_true_values_path)
-write(phi_true_vals_s, file=phi_true_values_path)
-write(rho_true_vals_s, file=rho_true_values_path)
-write(colonization_true_vals_s, file=colonization_true_values_path)
+    clado_map_tmp <- clado_map[t]
+    clado_map_events_tmp <- clado_map_tmp.getEvents()
+
+    print("      Doing birth rates")
+
+    for (i in 1:clado_map_events_tmp.size()) {
+    idx = clado_map_events_tmp[i]
+
+        if (clado_map_tmp.getRate(idx[1], idx[2], idx[3]) > 0.0) {
+            ii = idx[1]
+            jj = idx[2]
+            kk = idx[3]
+            sp_label = "w_speciation"
+
+            if (ii != jj && ii != kk) {
+                sp_label = "bw_speciation"
+            }
+
+            if ((ii == jj && ii != kk) || (ii != jj && ii == kk)) {
+                sp_label = "asym_speciation"
+            }
+
+            if (sp_label == "bw_speciation" || sp_label=="asym_speciation") {
+            # if ((sp_label == "bw_speciation" && (!processed_anc_states_bw_speciation.contains(ii))) || (sp_label=="asym_speciation" && jj >= kk)) {
+                processed_anc_states_bw_speciation[anc_state_idx] = ii
+                anc_state_idx = anc_state_idx + 1
+                var_names[vidx] = "det_birth_rate" + ii + "_" + jj + "_" + kk + "_t" + t
+
+                s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + jj + "," + kk + "], " + "event=\"" + sp_label + "\", epoch=" + t + ")\n"
+            
+                write(s, append=TRUE, file=pj_script_idx_path)
+
+                vidx = vidx + 1
+    }
+        }
+
+        if (sp_label == "w_speciation" && (ii == jj) && (ii == kk)) {
+        if (clado_map_tmp.getRate(idx[1], idx[2], idx[3]) > 0.0) {
+                var_names[vidx] = "det_birth_rate" + ii + "_t" + t
+            
+                s = var_names[vidx] + " := sse_rate(" + "name=\"lambda_" + ii + "_" + jj + "_" + kk + "_t" + t + "\", " + "value=" + clado_map_tmp.getRate(idx[1], idx[2], idx[3]) + ", " + "states=["+ ii + "," + ii + "," + ii + "], " + "event=\"" + sp_label + "\", epoch=" + t + ")\n"
+
+                write(s, append=TRUE, file=pj_script_idx_path)
+            
+                vidx = vidx + 1
+    }
+        }
+    }
+}
+
+# print("      Doing sse_stash()")
+
+s = "\n# macroevolutionary event handler\nstash := sse_stash(flat_rate_mat="
+
+write(s, append=TRUE, file=pj_script_idx_path)
+
+write(var_names, separator=", ", append=TRUE, file=pj_script_idx_path)
+
+s = ", n_states=" + n_ranges + ", n_epochs=" + n_epochs + ", seed_age=" + island_ori_age + ", epoch_age_ends="
+
+write(s, append=TRUE, file=pj_script_idx_path)
+
+write(times, separator=", ", append=TRUE, file=pj_script_idx_path)
+
+s = ")\n\n# tree is distributed as discrete sse\ntrs ~ discrete_sse(n=1" + ", stash=stash, start_state=[" + subroot_range + "], stop=\"age\", stop_value=" + island_ori_age + ", cond_surv=\"true\", cond_obs_both_sides=\"false\", origin=\"true\", min_rec_taxa=15, max_rec_taxa=200, abort_at_obs=5000)"
+
+write(s, append=TRUE, file=pj_script_idx_path)
 
 q()
