@@ -17,7 +17,7 @@ treefiles <- list.files(path=trees_path,pattern=tree_pattern,full.names=TRUE)
 sims <- c()
 colonization_ages_paleo <- c()
 colonization_ages_nopaleo <- c()
-for (sim in 1:200) {
+for (sim in 1:500) {
   file <- paste(colonization_ages_path, "/colonization_true_vals_sample", sim, ".tsv", sep="")
   treefile <- paste(trees_path, "/sample", sim ,".tre", sep="")
   if ((file %in% files) & (treefile %in% treefiles)) {
@@ -27,7 +27,7 @@ for (sim in 1:200) {
     sims <- c(sims, sim)
   }
 }
-for (sim in 201:400) {
+for (sim in 501:1000) {
   file <- paste(colonization_ages_path, "/colonization_true_vals_sample", sim, ".tsv", sep="")
   treefile <- paste(trees_path, "/sample", sim ,".tre", sep="")
   if ((file %in% files) & (treefile %in% treefiles)) {
@@ -49,18 +49,25 @@ df$age <- as.numeric(df$age)
 
 # Plotting Colonization Ages
 ggplot(df, aes(x=age,fill=geo)) +
-  geom_density(alpha=0.6) +
-  scale_x_reverse(breaks=seq(15,30), expand=c(0,0)) +
+  geom_density(bw=1.25,alpha=0.6) +
+  scale_x_reverse(breaks=seq(0,30), expand=c(0,0)) +
   scale_y_continuous(limits=c(0,0.15), expand=c(0,0)) +
   scale_fill_manual(labels=c("No Paleo", "Paleo"),
                     values=c("salmon", "cyan3")) +
-  labs(x="Colonization Age",
+  geom_vline(xintercept=1.1) +
+  geom_vline(xintercept=2.1) +
+  geom_vline(xintercept=3.93) +
+  geom_vline(xintercept=6) +
+  geom_vline(xintercept=7.75) +
+  geom_vline(xintercept=17.75) +
+  labs(x="Colonization Age (MYA)",
        y="Density",
        fill="Geography") +
   theme_bw() +
   theme(aspect.ratio=1/2,
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
+        panel.grid.major.x=element_blank(),
         panel.grid.minor.x=element_blank(),
         panel.grid.major.y=element_blank(),
         panel.grid.minor.y=element_blank())
