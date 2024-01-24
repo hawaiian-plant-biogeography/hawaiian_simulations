@@ -10,7 +10,7 @@ echo $NOW
 
 # Run .Rev script to generate the simulation .pj script for s_idx
 echo "Generating PhyloJunction script"
-rb_command="s_idx=${SIM};exp_path=\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/\";source(\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_exp1.Rev\");"
+rb_command="s_idx=${SIM};exp_path=\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/\";source(\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_unif_coltime.Rev\");"
 echo $rb_command | rb
 
 # Run the .pj script to (possibly) generate a simulated tree
