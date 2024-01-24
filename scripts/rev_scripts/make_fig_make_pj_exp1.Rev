@@ -79,9 +79,9 @@ while (!valid) {
     # print("Writing true base rate values for sample " + s_idx + " in " + sample_rho_true_values_path)
     write(sample_rho_true_vals_s, file=sample_rho_true_values_path)
 
-#################################
-# SIMULATING COLONIZATION EVENT #
-#################################
+    #################################
+    # SIMULATING COLONIZATION EVENT #
+    #################################
 
     # origin (seed) age
     or_age = -1.0

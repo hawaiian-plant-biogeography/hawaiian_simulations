@@ -12,8 +12,8 @@
 # Initial setup #
 #################
 
-loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
-#loadPlugin("TensorPhylo","/Users/mlandis/.local/lib/tensorphylo")
+#loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
+loadPlugin("TensorPhylo","/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
 if (!exists("s_idx")) s_idx = 9999
@@ -148,7 +148,7 @@ island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawa
 ###################################
 
 # base rate parameters
-rho_d ~ dnGamma(0.125,5)
+rho_d ~ dnGamma(8,32)
 rho_e ~ dnGamma(8,32)
 rho_w ~ dnGamma(3,20)
 rho_b ~ dnGamma(3,20)
