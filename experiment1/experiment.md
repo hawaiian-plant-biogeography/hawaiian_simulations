@@ -1,5 +1,5 @@
 # SIMULATIONS
-1-500: include realistic_paleogeo
-501-1000: present-only features
+1-200: present-only features
+201-400: realistic paleogeo
 
 # PROBLEMS

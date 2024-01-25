@@ -115,11 +115,14 @@ whole_tree_age.redraw()
 island_ori_age ~ dnUnif(0, whole_tree_age)
 island_ori_age.redraw()
 
+
 # old -> young
+time_ends <- times
+time_ends[n_epochs] <- 0
 for (t in 1:n_epochs) {
 
     # find the epoch corresponding to island_ori_asge
-    if (t < n_epochs && (island_ori_age < times[t])) {
+    if (t < n_epochs && (island_ori_age < time_ends[t])) {
         next
     } else {
 

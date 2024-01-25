@@ -23,7 +23,7 @@ if (!exists("use_rj")) use_rj = false
 
 # setting up paths
 if (!exists("exp_path")) exp_path               = "experiment1/"
-if (!exists("geo_path")) geo_path               = v("realistic_paleogeo/","present_only_geo/")[2]
+if (!exists("geo_path")) geo_path               = v("realistic_paleogeo/","present_only_geo/")[1]
 if (!exists("features_path")) features_path     = exp_path + geo_path + "feature_summary.csv"
 if (!exists("times_path")) times_path           = exp_path + geo_path + "age_summary.csv"
 if (!exists("pj_scripts_dir")) pj_scripts_dir   = exp_path + "pj_scripts/"
