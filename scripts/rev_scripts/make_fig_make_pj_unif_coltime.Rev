@@ -104,24 +104,23 @@ island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawa
 # decreasing ages
 # times: breakpoints
 
+# origination age of *lineage* within islands
+# i.e. first colonization time
+island_ori_age ~ dnUnif(0, 20)
+island_ori_age.redraw()
+
 # draw root age for the whole tree
 # this is the age of the MRCA that separates
 # the ingroup (stem) and the outgroup
-whole_tree_age ~ dnUnif(0,30)
+whole_tree_age ~ dnUnif(island_ori_age,30)
 whole_tree_age.redraw()
-
-# origination age of *lineage* within islands
-# i.e. first colonization time
-island_ori_age ~ dnUnif(0, whole_tree_age)
-island_ori_age.redraw()
-
 
 # old -> young
 time_ends <- times
 time_ends[n_epochs] <- 0
 for (t in 1:n_epochs) {
 
-    # find the epoch corresponding to island_ori_asge
+    # find the epoch corresponding to island_ori_age
     if (t < n_epochs && (island_ori_age < time_ends[t])) {
         next
     } else {
