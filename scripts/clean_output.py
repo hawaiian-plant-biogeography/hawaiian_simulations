@@ -1,5 +1,15 @@
 #!/usr/bin/python3
 
+# run code from base directory of repostiory, e.g.
+#
+#   python3 scripts/clean_output.py
+#
+# expects input and stores output in 
+#
+#   ./raw_test_output/
+#
+
+# libraries
 import ast
 import re
 
@@ -70,7 +80,6 @@ for i,x in enumerate(trans):
                 pj_trans_str = pj_trans_template_str.replace('FROMSTATE', from_state).replace('TOSTATE', to_state).replace('EPOCH', epoch).replace('VALUE',val)
                 rate_commands.append( pj_trans_str )
                 rate_names.append( f'q{from_state}_{to_state}_t{epoch}' )
-                # print(pj_trans_str)
 
 trans_file.close()
 
@@ -80,11 +89,11 @@ trans_file.close()
 ################
 
 # det_w_birth_rate1_t1 := sse_rate(name="lambda1_t1", value=w_birth_rate1_t1, states=[1,1,1], event="w_speciation", epoch=2)
-pj_clado_w_template_str = 'det_w_birth_rateANC_tEPOCH := sse_rate(name="lambdaANC_tEPOCH", value=w_birth_rateANC_tEPOCH, states=[ANC,ANC,ANC], event="w_speciation", epoch=EPOCH)'
-# det_b_birth_rate2_0_2_t1 := sse_rate(name="lambda202_t1", value=b_birth_rate2_0_2_t1, states=[2,0,2], event="asym_speciation", epoch=2)
-pj_clado_asym_template_str = 'det_b_birth_rateANC_LEFT_ANC_tEPOCH := sse_rate(name="lambdaANCLEFTANC_tEPOCH", value=b_birth_rateANC_LEFT_ANC_t1, states=[ANC,LEFT,ANC], event="asym_speciation", epoch=EPOCH)'
-# det_b_birth_rate2_0_1_t1 := sse_rate(name="lambda201_t1", value=b_birth_rate2_0_1_t1, states=[2,0,1], event="bw_speciation", epoch=2)
-pj_clado_bw_template_str = 'det_b_birth_rateANC_LEFT_RIGHT_tEPOCH := sse_rate(name="lambdaANCLEFTRIGHT_tEPOCH", value=b_birth_rateANC_LEFT_RIGHT_tEPOCH, states=[ANC,LEFT,RIGHT], event="bw_speciation", epoch=EPOCH)'
+pj_clado_w_template_str = 'det_w_birth_rateANC_tEPOCH := sse_rate(name="lambdaANC_tEPOCH", value=VALUE, states=[ANC,ANC,ANC], event="w_speciation", epoch=EPOCH)'
+#pj_clado_asym_template_str = 'det_b_birth_rateANC_LEFT_ANC_tEPOCH := sse_rate(name="lambdaANCLEFTANC_tEPOCH", value=b_birth_rateANC_LEFT_ANC_t1, states=[ANC,LEFT,ANC], event="asym_speciation", epoch=EPOCH)'
+pj_clado_asym_template_str = 'det_b_birth_rateANC_LEFT_RIGHT_tEPOCH := sse_rate(name="lambdaANCLEFTRIGHT_tEPOCH", value=VALUE, states=[ANC,LEFT,RIGHT], event="asym_speciation", epoch=EPOCH)'
+#pj_clado_bw_template_str = 'det_b_birth_rateANC_LEFT_RIGHT_tEPOCH := sse_rate(name="lambdaANCLEFTRIGHT_tEPOCH", value=b_birth_rateANC_LEFT_RIGHT_tEPOCH, states=[ANC,LEFT,RIGHT], event="bw_speciation", epoch=EPOCH)'
+pj_clado_bw_template_str = 'det_b_birth_rateANC_LEFT_RIGHT_tEPOCH := sse_rate(name="lambdaANCLEFTRIGHT_tEPOCH", value=VALUE, states=[ANC,LEFT,RIGHT], event="bw_speciation", epoch=EPOCH)'
 
 # process clado rates
 clado_file = open(clado_fn, 'r')
@@ -100,15 +109,18 @@ for i,clado_map in enumerate(toks):
         anc_state, left_state, right_state, val = res
         if float(val) > 0:
             if anc_state == left_state and anc_state == right_state:
-                pj_clado_str = pj_clado_w_template_str.replace('ANC', anc_state).replace('EPOCH', epoch)
+                pj_clado_str = pj_clado_w_template_str.replace('ANC', anc_state).replace('EPOCH', epoch).replace("VALUE",val)
                 rate_commands.append( pj_clado_str )
                 rate_names.append( f'lambda{anc_state}_t{epoch}' )
-            elif anc_state != left_state and anc_state != right_state:
-                pj_clado_str = pj_clado_bw_template_str.replace('ANC', anc_state).replace('LEFT', left_state).replace('RIGHT', right_state).replace('EPOCH', epoch)
+            elif anc_state != left_state and anc_state != right_state and left_state < right_state:
+                # only consider anc -> left,right patterns where left<right; ignore cases where right>left to avoid double-counting
+                pj_clado_str = pj_clado_bw_template_str.replace('ANC', anc_state).replace('LEFT', left_state).replace('RIGHT', right_state).replace('EPOCH', epoch).replace("VALUE",val)
+
                 rate_commands.append( pj_clado_str )
                 rate_names.append( f'lambda{anc_state}{left_state}{anc_state}_t{epoch}' )
-            else:
-                pj_clado_str = pj_clado_asym_template_str.replace('ANC', anc_state).replace('LEFT', left_state).replace('EPOCH', epoch)
+            elif anc_state == right_state:
+                # only consider anc -> left,anc patterns; skip anc -> anc,right patterns to avoid double-counting
+                pj_clado_str = pj_clado_asym_template_str.replace('ANC', anc_state).replace('LEFT', left_state).replace('RIGHT',right_state).replace('EPOCH', epoch).replace("VALUE",val)
                 rate_commands.append( pj_clado_str )
                 rate_names.append( f'lambda{anc_state}{left_state}{right_state}_t{epoch}' )
 
