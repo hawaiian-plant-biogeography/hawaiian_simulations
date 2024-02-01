@@ -162,6 +162,8 @@ write(sample_colonization_true_vals_s, file=sample_colonization_true_values_path
 # GENERATING THE PHYLOJUCTION SCRIPT #
 ######################################
 
+xxx
+
 s = "# deterministic nodes\n"
 write(s, file=pj_script_idx_path)
 
