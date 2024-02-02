@@ -12,8 +12,9 @@
 # Initial setup #
 #################
 
-#loadPlugin("TensorPhylo","/tensorphylo/build/installer/lib")
-loadPlugin("TensorPhylo","/Users/mlandis/.local/lib/tensorphylo")
+loadPlugin("TensorPhylo", "/Users/binho/.local/lib/")
+# loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
+# loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
 if (!exists("s_idx")) s_idx = 9999
@@ -22,12 +23,14 @@ if (!exists("s_idx")) s_idx = 9999
 if (!exists("use_rj")) use_rj = false
 
 # setting up paths
-if (!exists("exp_path")) exp_path               = "experiment1/"
-if (!exists("geo_path")) geo_path               = v("realistic_paleogeo/","present_only_geo/")[1]
-if (!exists("features_path")) features_path     = exp_path + geo_path + "feature_summary.csv"
-if (!exists("times_path")) times_path           = exp_path + geo_path + "age_summary.csv"
-if (!exists("pj_scripts_dir")) pj_scripts_dir   = exp_path + "pj_scripts/"
-if (!exists("model_truth_dir")) model_truth_dir = exp_path + "model_truth/"
+if (!exists("exp_path")) exp_path                 = "experiment1/"
+if (!exists("geo_path")) geo_path                 = v("realistic_paleogeo/","present_only_geo/")[1]
+if (!exists("features_path")) features_path       = exp_path + geo_path + "feature_summary.csv"
+if (!exists("times_path")) times_path             = exp_path + geo_path + "age_summary.csv"
+if (!exists("pj_scripts_dir")) pj_scripts_dir     = exp_path + "pj_scripts/"
+if (!exists("pj_scripts_py_dir")) pj_scripts_py_dir     = exp_path + "pj_scripts_generated_in_py/"
+if (!exists("model_truth_dir")) model_truth_dir   = exp_path + "model_truth/"
+if (!exists("geosse_rates_dir")) geosse_rates_dir = exp_path + "geosse_rates_for_pj_scripts/"
 
 # setting up FIG model quantities we may need to tweak
 #
