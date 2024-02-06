@@ -23,6 +23,7 @@ source("scripts/rev_scripts/model.Rev")
 # n_samples = 100
 
 # setting a unique seed for each simulation (makes replication possible)
+print("Setting seed to " + s_idx)
 seed(s_idx)
 
 ####################################
@@ -174,6 +175,8 @@ write(clado_map, file=geosse_rates_idx_clado_path)
 ######################################
 # GENERATING THE PHYLOJUCTION SCRIPT #
 ######################################
+
+quit()
 
 xxx
 
