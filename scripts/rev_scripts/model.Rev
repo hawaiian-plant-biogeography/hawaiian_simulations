@@ -13,11 +13,11 @@
 #################
 
 #loadPlugin("TensorPhylo", "/Users/binho/.local/lib/")
-loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
-#loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
+#loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
+loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
-if (!exists("s_idx")) s_idx = 9999
+if (!exists("s_idx")) s_idx = 18 #9999
 
 # settings
 if (!exists("use_rj")) use_rj = false
@@ -39,7 +39,7 @@ if (!exists("geosse_rates_dir")) geosse_rates_dir = exp_path + "geosse_rates_for
 if (!exists("rho_d_init")) rho_d_init = 0.125/5
 if (!exists("rho_e_init")) rho_e_init = 8/32
 if (!exists("rho_w_init")) rho_w_init = 3/20
-if (!exists("rho_b_init")) rho_b_init = 3/20
+if (!exists("rho_b_init")) rho_b_init = 3*5/20
 
 # feature effect parameters
 if (!exists("sigma_d_init")) sigma_d_init = 0.00001
@@ -138,7 +138,7 @@ for (t in 1:n_epochs) {
 rho_d ~ dnGamma(8,32)
 rho_e ~ dnGamma(8,32)
 rho_w ~ dnGamma(3,20)
-rho_b ~ dnGamma(3,20)
+rho_b ~ dnGamma(3*5,20)
 
 # initializing values (only relevant for inference later)
 rho_d.setValue(rho_d_init)
@@ -228,6 +228,7 @@ if (analysis_type == "sim") {
     }
 }
 phi_d[1].setValue(-0.00001)
+phi_d[1].setValue(-2.81)
 phi_b[1].setValue(0.00001)
 
 # base-rate multipliers

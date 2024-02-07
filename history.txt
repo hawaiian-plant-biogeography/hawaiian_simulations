@@ -1,7 +1,3 @@
-s_idx=51;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev");
-i=50;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
-s_idx=52;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev");
-i=51;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
 s_idx=53;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev");
 i=52;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
 s_idx=55;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev");
@@ -98,3 +94,7 @@ i=89;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experime
 i=94;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
 i=100;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
 i=97;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev");
+rho_b
+rho_d
+rho_w
+dnGamma
