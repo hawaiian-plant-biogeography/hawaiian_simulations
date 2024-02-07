@@ -17,6 +17,7 @@
 # Initial setup #
 #################
 
+analysis_type = v("sim","inf")[1]
 source("scripts/rev_scripts/model.Rev")
 
 # simulation config
@@ -100,7 +101,7 @@ continent_region_idx = max(non_continent_region_idxs) + 1
 # 25, 0001001, O+Z
 # 26, 0000101, M+Z
 # 27, 0000011, H+Z
-translation_table = [22, 23, 24, 25, 26, 27]
+translation_table = [0, 1, 2, 3, 4, 5]
 island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
 
 # decreasing ages

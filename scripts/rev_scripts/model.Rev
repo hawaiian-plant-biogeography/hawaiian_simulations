@@ -21,6 +21,7 @@ if (!exists("s_idx")) s_idx = 9999
 
 # settings
 if (!exists("use_rj")) use_rj = false
+if (!exists("analysis_type")) analysis_type = v("sim","inf")[1]
 
 # setting up paths
 if (!exists("exp_path")) exp_path                 = "experiment1/"
@@ -129,23 +130,6 @@ for (t in 1:n_epochs) {
 # 3D: from-atomic region (rows); two level deeper comma
 # 4D: to-atomic region (cols); innermost comma
 
-
-# G, N, K, O, M, H, Z
-# NOTE: base-index 1 for RevBayes arrays
-#       base-index 0 for RevBayes states in nex file
-non_continent_region_idxs = [1, 2, 3, 4, 5, 6]
-continent_region_idx = max(non_continent_region_idxs) + 1
-
-# 22, 1000001, G+Z
-# 23, 0100001, N+Z
-# 24, 0010001, K+Z
-# 25, 0001001, O+Z
-# 26, 0000101, M+Z
-# 27, 0000011, H+Z
-translation_table = [22, 23, 24, 25, 26, 27]
-island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawaii"]
-
-
 ###################################
 # Setting up FIG model parameters #
 ###################################
@@ -163,14 +147,26 @@ rho_w.setValue(rho_w_init)
 rho_b.setValue(rho_b_init)
 
 # feature effect parameters
-rj_base_sigma_w  = dnNormal(0,1) # prior of "on-value" for RJMCMC
-rj_base_sigma_e  = dnNormal(0,1)
-rj_base_sigma_d  = dnNormal(0,1)
-rj_base_sigma_b  = dnNormal(0,1)
-rj_base_phi_w    = dnNormal(0,1)
-rj_base_phi_e    = dnNormal(0,1)
-rj_base_phi_d    = dnNormal(0,1)
-rj_base_phi_b    = dnNormal(0,1)
+if (analysis_type == "inf") {
+    rj_base_sigma_w  = dnNormal(0,1) # prior of "on-value" for RJMCMC
+    rj_base_sigma_e  = dnNormal(0,1)
+    rj_base_sigma_d  = dnNormal(0,1)
+    rj_base_sigma_b  = dnNormal(0,1)
+    rj_base_phi_w    = dnNormal(0,1)
+    rj_base_phi_e    = dnNormal(0,1)
+    rj_base_phi_d    = dnNormal(0,1)
+    rj_base_phi_b    = dnNormal(0,1)
+}
+if (analysis_type == "sim") {
+    rj_base_sigma_w  = dnUniform(-2,2) # prior of "on-value" for RJMCMC
+    rj_base_sigma_e  = dnUniform(-2,2)
+    rj_base_sigma_d  = dnUniform(-2,2)
+    rj_base_sigma_b  = dnUniform(-2,2)
+    rj_base_phi_w    = dnUniform(-2,2)
+    rj_base_phi_e    = dnUniform(-2,2)
+    rj_base_phi_d    = dnUniform(-2,2)
+    rj_base_phi_b    = dnUniform(-2,2)
+}
 rj_sigma_w       = dnRJMixture(0.0, rj_base_sigma_w, p=0.5)
 rj_sigma_e       = dnRJMixture(0.0, rj_base_sigma_e, p=0.5)
 rj_sigma_d       = dnRJMixture(0.0, rj_base_sigma_d, p=0.5)
@@ -214,12 +210,22 @@ for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
 for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
 
 # hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
-if (use_rj) {
-    phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
-    phi_b[1] ~ dnRJMixture(0.0, dnHalfNormal(offset=0,sd=1), p=0.5)
-} else {
-    phi_d[1] ~ dnUniform(-3,0)
-    phi_b[1] ~ dnHalfNormal(offset=0,sd=1)
+if (analysis_type == "sim") {
+    if (use_rj) {
+        #phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
+        #phi_b[1] ~ dnRJMixture(0.0, dnHalfNormal(offset=0,sd=1), p=0.5)
+        phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
+        phi_b[1] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)
+        #phi_d[2] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
+        #phi_b[2] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)
+    } else {
+        #phi_d[1] ~ dnUniform(-4,0)
+        #phi_b[1] ~ dnHalfNormal(offset=0,sd=1)
+        phi_d[1] ~ dnUniform(-4,0)
+        phi_b[1] ~ dnUniform(0,4)
+        #phi_d[2] ~ dnUniform(-4,0)
+        #phi_b[2] ~ dnUniform(0,4)
+    }
 }
 phi_d[1].setValue(-0.00001)
 phi_b[1].setValue(0.00001)
@@ -293,15 +299,5 @@ for (t in 1:n_epochs) {
         }
     }
 }
-
-# other SSE parameters
-# eq. freq at start of process
-
-# MJL 240111: not used? uncomment if needed
-# pi <- simplex(rep(1, n_ranges))
-
-# condition = "survival"
-
-# rho <- 1.0 # sampling probability
 
 # ... done running, expects another script to take over ...

@@ -18,6 +18,7 @@
 
 if (!exists("s_idx")) s_idx = 9999
 if (!exists("exp_path")) exp_path = "./experiment1/"
+analysis_type = v("sim","inf")[2]
 
 # load core model
 source("scripts/rev_scripts/model.Rev")
