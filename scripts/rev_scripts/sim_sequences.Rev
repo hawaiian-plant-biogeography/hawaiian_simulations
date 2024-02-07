@@ -15,7 +15,7 @@
 
 if (!exists("i")) i = 9999
 if (!exists("exp_path")) exp_path = "experiment1/"
-if (!exists("continent_region_idx")) continent_region_idx = 7
+if (!exists("continent_region_idx")) continent_region_idx = 6
 
 pj_path = exp_path + "pj_output/"
 model_path = exp_path + "model_truth/"

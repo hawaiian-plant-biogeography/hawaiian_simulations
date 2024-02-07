@@ -1,14 +1,14 @@
 pj: Pulling from sswiston/rb_tp
-Digest: sha256:e849496dd68b3ce2754532044c538a6d681b23b262977f6a2da8deb3a9e6bf90
+Digest: sha256:8a960c0d392cc6c08aa640ba8b624d29c9316f2a483b87b8908f3083062a233b
 Status: Image is up to date for sswiston/rb_tp:pj
 docker.io/sswiston/rb_tp:pj
 Setting up Docker container
 Performing simulation 23
-2024-01-24_18:12:16
-Generating PhyloJunction script
+2024-02-07_08:42:57
+Generating model parameters
 
 RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
+Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -17,7 +17,7 @@ RevBayes is free software released under the GPL license, version 3. Type 'licen
 To quit RevBayes type 'quit()' or 'q()'.
 
 
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_unif_coltime.Rev"
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
    Processing file "scripts/rev_scripts/model.Rev"
 Reading features in time slice 1
 Reading features in time slice 2
@@ -27,144 +27,100 @@ Reading features in time slice 5
 Reading features in time slice 6
 Reading features in time slice 7
    Processing of file "scripts/rev_scripts/model.Rev" completed
+Setting seed to 23
+Writing true feature effect values for categorical feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/sigma_true_vals_sample23_feat1.tsv
+Writing true feature effect values for quantitative feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/phi_true_vals_sample23_feat1.tsv
+Writing true base rate values for sample 23 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/rho_true_vals_sample23.tsv
 
-Preparing .pj script string for sample 23
-
-Whole tree root age = 8.63803
-Origin age of island radiation = 7.10449
+Whole tree root age = 25.6964
+Origin age of island radiation = 5.75869
 Island that got colonized = Necker
-    Doing time slice 1
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 2
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 3
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 4
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 5
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 6
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 7
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
+Generating PhyloJunction script
+Everything OK with provided arguments!
+Preparing .pj script for simulation 23.
+...done!
 Running PhyloJunction script
-Matplotlib created a temporary cache directory at /tmp/790380.tmpdir/matplotlib-smwgfc05 because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:456: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '2.1385' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+Matplotlib created a temporary cache directory at /tmp/224378.tmpdir/matplotlib-d_24o92v because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:455: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '2.7437' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
   tree_summary_df_dict[rv_name].at[idx, "root_age"] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:460: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value '7.1045' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:459: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '5.7587' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
   tree_summary_df_dict[rv_name].at[idx, "origin_age"] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-/PhyloJunction/src/phylojunction/readwrite/pj_write.py:480: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
   tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
-Reading script /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts/sim23.pj
+Reading script /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts_generated_in_py/sim23.pj
     ... done!
 outfile_path = /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_output/figures/sample23_trs1_1
-Traceback (most recent call last):
-  File "/.local/bin/pjcli", line 33, in <module>
-    sys.exit(load_entry_point('phylojunction', 'console_scripts', 'pjcli')())
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 156, in call_cli
-    execute_pj_script(
-  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 83, in execute_pj_script
-    cliplt.call_node_plot_cli(
-  File "/PhyloJunction/src/phylojunction/interface/pjcli/cli_plotting.py", line 139, in call_node_plot_cli
-    selected_node_plot_cli(
-  File "/PhyloJunction/src/phylojunction/interface/pjcli/cli_plotting.py", line 78, in selected_node_plot_cli
-    node_pgm.plot_node(
-  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 567, in plot_node
-    .plot_node(axes, node_attr=branch_attr)
-     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/PhyloJunction/src/phylojunction/data/tree.py", line 1035, in plot_node
-    return plot_ann_tree(self, axes, attr_of_interest=node_attr)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/PhyloJunction/src/phylojunction/data/tree.py", line 1571, in plot_ann_tree
-    color = color_map[attr_idx]
-            ~~~~~~~~~^^^^^^^^^^
-KeyError: 23
 
 RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
+Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -175,7 +131,7 @@ To quit RevBayes type 'quit()' or 'q()'.
 
 >    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
 Working on simulation 23
-root age 8.63803 colonization age 7.10449 origin time 4.96603 ingroup branch 6.49957
+root age 25.6964 colonization age 5.75869 origin time 3.01502 ingroup branch 22.9527
 Got root and colonization ages
 Grafted outgroup onto tree
 Grafted outgroup onto tip data
@@ -185,16 +141,16 @@ Removed extinct taxa and saved new tree
 Simulated sequences
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@compute1-exec-109.ris.wustl.edu>
-Subject: Job 790380: <23> in cluster <compute1-lsf> Done
+Sender: LSF System <lsfadmin@compute1-exec-106.ris.wustl.edu>
+Subject: Job 224378: <23> in cluster <compute1-lsf> Done
 
-Job <23> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 11:42:04 2024
-Job was executed on host(s) <8*compute1-exec-109.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 12:12:14 2024
+Job <23> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Tue Feb  6 22:03:44 2024
+Job was executed on host(s) <4*compute1-exec-106.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Feb  7 02:42:57 2024
 </home/k.swiston> was used as the home directory.
 </storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
-Started at Wed Jan 24 12:12:14 2024
-Terminated at Wed Jan 24 12:41:36 2024
-Results reported at Wed Jan 24 12:41:36 2024
+Started at Wed Feb  7 02:42:57 2024
+Terminated at Wed Feb  7 02:43:15 2024
+Results reported at Wed Feb  7 02:43:15 2024
 
 Your job looked like:
 
@@ -207,16 +163,16 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   11.21 sec.
-    Max Memory :                                 24 MB
-    Average Memory :                             9.12 MB
-    Total Requested Memory :                     16384.00 MB
-    Delta Memory :                               16360.00 MB
-    Max Swap :                                   -
-    Max Processes :                              8
-    Max Threads :                                32
-    Run time :                                   1759 sec.
-    Turnaround time :                            3572 sec.
+    CPU time :                                   13.19 sec.
+    Max Memory :                                 143 MB
+    Average Memory :                             106.25 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3953.00 MB
+    Max Swap :                                   135 MB
+    Max Processes :                              9
+    Max Threads :                                15
+    Run time :                                   19 sec.
+    Turnaround time :                            16771 sec.
 
 The output (if any) is above this job summary.
 

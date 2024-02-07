@@ -1,14 +1,14 @@
 pj: Pulling from sswiston/rb_tp
-Digest: sha256:e849496dd68b3ce2754532044c538a6d681b23b262977f6a2da8deb3a9e6bf90
+Digest: sha256:8a960c0d392cc6c08aa640ba8b624d29c9316f2a483b87b8908f3083062a233b
 Status: Image is up to date for sswiston/rb_tp:pj
 docker.io/sswiston/rb_tp:pj
 Setting up Docker container
 Performing simulation 84
-2024-01-24_20:18:05
-Generating PhyloJunction script
+2024-02-07_09:26:38
+Generating model parameters
 
 RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
+Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -17,7 +17,7 @@ RevBayes is free software released under the GPL license, version 3. Type 'licen
 To quit RevBayes type 'quit()' or 'q()'.
 
 
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_unif_coltime.Rev"
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
    Processing file "scripts/rev_scripts/model.Rev"
 Reading features in time slice 1
 Reading features in time slice 2
@@ -27,45 +27,23 @@ Reading features in time slice 5
 Reading features in time slice 6
 Reading features in time slice 7
    Processing of file "scripts/rev_scripts/model.Rev" completed
+Setting seed to 84
+Writing true feature effect values for categorical feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/sigma_true_vals_sample84_feat1.tsv
+Writing true feature effect values for quantitative feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/phi_true_vals_sample84_feat1.tsv
+Writing true base rate values for sample 84 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/rho_true_vals_sample84.tsv
 
-Preparing .pj script string for sample 84
-
-Whole tree root age = 5.35772
-Origin age of island radiation = 0.39742
-Island that got colonized = Hawaii
-    Doing time slice 1
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 2
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 3
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 4
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 5
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 6
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 7
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
+Whole tree root age = 5.53218
+Origin age of island radiation = 3.57182
+Island that got colonized = Oahu
+Generating PhyloJunction script
+Everything OK with provided arguments!
+Preparing .pj script for simulation 84.
+...done!
 Running PhyloJunction script
-Matplotlib created a temporary cache directory at /tmp/790474.tmpdir/matplotlib-l3mfw3yg because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib created a temporary cache directory at /tmp/224439.tmpdir/matplotlib-kq3myh6l because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
 
 RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
+Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -77,16 +55,16 @@ To quit RevBayes type 'quit()' or 'q()'.
 >    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@compute1-exec-109.ris.wustl.edu>
-Subject: Job 790474: <84> in cluster <compute1-lsf> Done
+Sender: LSF System <lsfadmin@compute1-exec-90.ris.wustl.edu>
+Subject: Job 224439: <84> in cluster <compute1-lsf> Done
 
-Job <84> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 11:42:09 2024
-Job was executed on host(s) <8*compute1-exec-109.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 14:18:02 2024
+Job <84> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Tue Feb  6 22:03:50 2024
+Job was executed on host(s) <4*compute1-exec-90.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Feb  7 03:26:34 2024
 </home/k.swiston> was used as the home directory.
 </storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
-Started at Wed Jan 24 14:18:02 2024
-Terminated at Wed Jan 24 14:53:09 2024
-Results reported at Wed Jan 24 14:53:09 2024
+Started at Wed Feb  7 03:26:34 2024
+Terminated at Wed Feb  7 03:29:53 2024
+Results reported at Wed Feb  7 03:29:53 2024
 
 Your job looked like:
 
@@ -99,16 +77,16 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   11.39 sec.
-    Max Memory :                                 9 MB
-    Average Memory :                             8.98 MB
-    Total Requested Memory :                     16384.00 MB
-    Delta Memory :                               16375.00 MB
+    CPU time :                                   10.10 sec.
+    Max Memory :                                 20 MB
+    Average Memory :                             8.86 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               4076.00 MB
     Max Swap :                                   -
-    Max Processes :                              6
-    Max Threads :                                23
-    Run time :                                   2106 sec.
-    Turnaround time :                            11460 sec.
+    Max Processes :                              8
+    Max Threads :                                21
+    Run time :                                   199 sec.
+    Turnaround time :                            19563 sec.
 
 The output (if any) is above this job summary.
 

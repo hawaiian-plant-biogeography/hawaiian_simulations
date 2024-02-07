@@ -1,585 +1,255 @@
 pj: Pulling from sswiston/rb_tp
-e455cf41eadb: Pulling fs layer
-ea63c25b051e: Pulling fs layer
-b8f0fd91842f: Pulling fs layer
-80ff562f94fd: Pulling fs layer
-bb622cd75972: Pulling fs layer
-e2448062f8e1: Pulling fs layer
-dce213b97634: Pulling fs layer
-d9a3b75dfae1: Pulling fs layer
-7134a2f88f91: Pulling fs layer
-ac568d76705b: Pulling fs layer
-1b8ba1965843: Pulling fs layer
-df1c790f3860: Pulling fs layer
-6b9a70cf77ca: Pulling fs layer
-249e48657600: Pulling fs layer
-3be144b8ea5f: Pulling fs layer
-686b87e56f46: Pulling fs layer
-82f0fd4360f2: Pulling fs layer
-43c3d1b3cb2e: Pulling fs layer
-860cbc328b98: Pulling fs layer
-f3be334a02d1: Pulling fs layer
-c3e78aaadfe0: Pulling fs layer
-6a45fb566c99: Pulling fs layer
-2c9e49861318: Pulling fs layer
-40600080be97: Pulling fs layer
-870ad7dec50b: Pulling fs layer
-6f9bb40d2014: Pulling fs layer
+7faaa42ac0c1: Pulling fs layer
+259564f9e921: Pulling fs layer
+37d2c5aacb5c: Pulling fs layer
+301c0f932d05: Pulling fs layer
+95782daf2470: Pulling fs layer
+ba90500ec825: Pulling fs layer
+5fd4ea7000a4: Pulling fs layer
+445c3fd9e01d: Pulling fs layer
+d36f097804f7: Pulling fs layer
+643f0d94093b: Pulling fs layer
+99cde4c7e6cb: Pulling fs layer
+9cc1f87a3101: Pulling fs layer
+015b9b463ab9: Pulling fs layer
+301c0f932d05: Waiting
+95782daf2470: Waiting
+ba90500ec825: Waiting
+5fd4ea7000a4: Waiting
+69857da9dcc9: Pulling fs layer
+63a68e0fc2e0: Pulling fs layer
+1e574d3851a9: Pulling fs layer
+55cb539c2eed: Pulling fs layer
+519c8a896a0d: Pulling fs layer
+56f84f246308: Pulling fs layer
+445c3fd9e01d: Waiting
+d36f097804f7: Waiting
+81949ee1a8ee: Pulling fs layer
+643f0d94093b: Waiting
+a3cfbf31d985: Pulling fs layer
+99cde4c7e6cb: Waiting
+35a5697ac0f5: Pulling fs layer
+9cc1f87a3101: Waiting
+015b9b463ab9: Waiting
+9b12ca219464: Pulling fs layer
+69857da9dcc9: Waiting
+eba7b17a56c8: Pulling fs layer
+519c8a896a0d: Waiting
+63a68e0fc2e0: Waiting
+56f84f246308: Waiting
+1e574d3851a9: Waiting
+81949ee1a8ee: Waiting
+55cb539c2eed: Waiting
+148190f05d4a: Pulling fs layer
+35a5697ac0f5: Waiting
+a3cfbf31d985: Waiting
+bd852423970b: Pulling fs layer
+9b12ca219464: Waiting
+148190f05d4a: Waiting
+eba7b17a56c8: Waiting
 4f4fb700ef54: Pulling fs layer
-4036fe2c4519: Pulling fs layer
-80ff562f94fd: Waiting
-dce213b97634: Waiting
-d9a3b75dfae1: Waiting
-bb622cd75972: Waiting
-e2448062f8e1: Waiting
-7134a2f88f91: Waiting
-df1c790f3860: Waiting
-ea694f77e69a: Pulling fs layer
-6b9a70cf77ca: Waiting
-ac568d76705b: Waiting
-1b8ba1965843: Waiting
-3be144b8ea5f: Waiting
-686b87e56f46: Waiting
-f3be334a02d1: Waiting
-810ec912723d: Pulling fs layer
-c3e78aaadfe0: Waiting
-52f44d478870: Pulling fs layer
-6a45fb566c99: Waiting
-82f0fd4360f2: Waiting
-43c3d1b3cb2e: Waiting
-2c9e49861318: Waiting
-860cbc328b98: Waiting
-83872a80c14c: Pulling fs layer
-40600080be97: Waiting
-6f9bb40d2014: Waiting
+bd852423970b: Waiting
 4f4fb700ef54: Waiting
-870ad7dec50b: Waiting
-4036fe2c4519: Waiting
-810ec912723d: Waiting
-706a5a776fd3: Pulling fs layer
-52f44d478870: Waiting
-ea694f77e69a: Waiting
-249e48657600: Waiting
-83872a80c14c: Waiting
-045d9d6dec0a: Pulling fs layer
-706a5a776fd3: Waiting
-ad988e0c369b: Pulling fs layer
-5e5f43bd0d60: Pulling fs layer
-a83230eec034: Pulling fs layer
-aa34220e412e: Pulling fs layer
-5e5f43bd0d60: Waiting
-b98658cdf372: Pulling fs layer
-045d9d6dec0a: Waiting
-ad988e0c369b: Waiting
-a83230eec034: Waiting
-aa34220e412e: Waiting
-b98658cdf372: Waiting
-fac52cbc995f: Pulling fs layer
-6b8febe6678e: Pulling fs layer
-b4e3e66ca648: Pulling fs layer
-2dfafb875384: Pulling fs layer
-cbd8dba32301: Pulling fs layer
-fac52cbc995f: Waiting
-b4e3e66ca648: Waiting
-6b8febe6678e: Waiting
-7389ee5b98db: Pulling fs layer
-2dfafb875384: Waiting
-cbd8dba32301: Waiting
-12d8cbb5b62e: Pulling fs layer
-c0cdad6215b7: Pulling fs layer
+2da145333255: Pulling fs layer
+da9f97032281: Pulling fs layer
+12b9705abfb4: Pulling fs layer
+3fcc9927493b: Pulling fs layer
+2da145333255: Waiting
+da9f97032281: Waiting
+af508e4e47f0: Pulling fs layer
+12b9705abfb4: Waiting
+3fcc9927493b: Waiting
+e2633376ca26: Pulling fs layer
+6a094d88136e: Pulling fs layer
+add382e10c9c: Pulling fs layer
+30355687ee93: Pulling fs layer
+3379f6ca3f28: Pulling fs layer
+fe692bbcc5b1: Pulling fs layer
+30355687ee93: Waiting
+add382e10c9c: Waiting
+e2633376ca26: Waiting
+3379f6ca3f28: Waiting
+6a094d88136e: Waiting
+0220f7630717: Pulling fs layer
+5e7700541479: Pulling fs layer
+206cdb7fce28: Pulling fs layer
+63a32f058a1e: Pulling fs layer
+34f2e3e1cc9a: Pulling fs layer
+996a20b9df68: Pulling fs layer
+6997756d443c: Pulling fs layer
+eeb88d7643cc: Pulling fs layer
+ce1a77a6dcc7: Pulling fs layer
+0220f7630717: Waiting
+34f2e3e1cc9a: Waiting
 a67f053877c6: Pulling fs layer
-927d3c4615e9: Pulling fs layer
-7389ee5b98db: Waiting
-c0cdad6215b7: Waiting
-a67f053877c6: Waiting
-12d8cbb5b62e: Waiting
+5e7700541479: Waiting
+996a20b9df68: Waiting
+206cdb7fce28: Waiting
+6d4603ba01f6: Pulling fs layer
+6997756d443c: Waiting
+63a32f058a1e: Waiting
 ec5984c59fae: Pulling fs layer
-927d3c4615e9: Waiting
-ec5984c59fae: Waiting
-b8f0fd91842f: Download complete
-e455cf41eadb: Verifying Checksum
-e455cf41eadb: Download complete
-bb622cd75972: Verifying Checksum
-bb622cd75972: Download complete
-ea63c25b051e: Verifying Checksum
-ea63c25b051e: Download complete
-80ff562f94fd: Download complete
-e455cf41eadb: Pull complete
-d9a3b75dfae1: Verifying Checksum
-d9a3b75dfae1: Download complete
-dce213b97634: Verifying Checksum
-dce213b97634: Download complete
-7134a2f88f91: Verifying Checksum
-7134a2f88f91: Download complete
-e2448062f8e1: Verifying Checksum
-e2448062f8e1: Download complete
-ac568d76705b: Verifying Checksum
-ac568d76705b: Download complete
-6b9a70cf77ca: Download complete
-249e48657600: Verifying Checksum
-249e48657600: Download complete
-ea63c25b051e: Pull complete
-b8f0fd91842f: Pull complete
-80ff562f94fd: Pull complete
-bb622cd75972: Pull complete
-1b8ba1965843: Verifying Checksum
-1b8ba1965843: Download complete
-df1c790f3860: Verifying Checksum
-df1c790f3860: Download complete
-3be144b8ea5f: Verifying Checksum
-3be144b8ea5f: Download complete
-82f0fd4360f2: Verifying Checksum
-82f0fd4360f2: Download complete
-686b87e56f46: Download complete
-e2448062f8e1: Pull complete
-dce213b97634: Pull complete
-d9a3b75dfae1: Pull complete
-7134a2f88f91: Pull complete
-ac568d76705b: Pull complete
-43c3d1b3cb2e: Verifying Checksum
-43c3d1b3cb2e: Download complete
-860cbc328b98: Verifying Checksum
-860cbc328b98: Download complete
-f3be334a02d1: Verifying Checksum
-f3be334a02d1: Download complete
-2c9e49861318: Verifying Checksum
-2c9e49861318: Download complete
-6a45fb566c99: Verifying Checksum
-6a45fb566c99: Download complete
-870ad7dec50b: Verifying Checksum
-870ad7dec50b: Download complete
-40600080be97: Verifying Checksum
-40600080be97: Download complete
-4f4fb700ef54: Verifying Checksum
-4f4fb700ef54: Download complete
-c3e78aaadfe0: Verifying Checksum
-c3e78aaadfe0: Download complete
-4036fe2c4519: Download complete
-6f9bb40d2014: Verifying Checksum
-6f9bb40d2014: Download complete
-810ec912723d: Verifying Checksum
-810ec912723d: Download complete
-83872a80c14c: Download complete
-52f44d478870: Verifying Checksum
-52f44d478870: Download complete
-045d9d6dec0a: Download complete
-706a5a776fd3: Verifying Checksum
-706a5a776fd3: Download complete
-5e5f43bd0d60: Verifying Checksum
-5e5f43bd0d60: Download complete
-ea694f77e69a: Verifying Checksum
-ea694f77e69a: Download complete
-ad988e0c369b: Verifying Checksum
-ad988e0c369b: Download complete
-b98658cdf372: Download complete
-fac52cbc995f: Verifying Checksum
-fac52cbc995f: Download complete
-aa34220e412e: Verifying Checksum
-aa34220e412e: Download complete
-6b8febe6678e: Verifying Checksum
-6b8febe6678e: Download complete
-1b8ba1965843: Pull complete
-df1c790f3860: Pull complete
-6b9a70cf77ca: Pull complete
-249e48657600: Pull complete
-3be144b8ea5f: Pull complete
-686b87e56f46: Pull complete
-82f0fd4360f2: Pull complete
-43c3d1b3cb2e: Pull complete
-860cbc328b98: Pull complete
-f3be334a02d1: Pull complete
-b4e3e66ca648: Verifying Checksum
-b4e3e66ca648: Download complete
-cbd8dba32301: Verifying Checksum
-cbd8dba32301: Download complete
-7389ee5b98db: Verifying Checksum
-7389ee5b98db: Download complete
-2dfafb875384: Download complete
-c3e78aaadfe0: Pull complete
-6a45fb566c99: Pull complete
-2c9e49861318: Pull complete
-12d8cbb5b62e: Verifying Checksum
-12d8cbb5b62e: Download complete
-c0cdad6215b7: Verifying Checksum
-c0cdad6215b7: Download complete
-40600080be97: Pull complete
-870ad7dec50b: Pull complete
-a67f053877c6: Verifying Checksum
-a67f053877c6: Download complete
-ec5984c59fae: Download complete
-927d3c4615e9: Verifying Checksum
-927d3c4615e9: Download complete
-6f9bb40d2014: Pull complete
-4f4fb700ef54: Pull complete
-4036fe2c4519: Pull complete
-ea694f77e69a: Pull complete
-810ec912723d: Pull complete
-52f44d478870: Pull complete
-83872a80c14c: Pull complete
-a83230eec034: Verifying Checksum
-a83230eec034: Download complete
-706a5a776fd3: Pull complete
-045d9d6dec0a: Pull complete
-ad988e0c369b: Pull complete
-5e5f43bd0d60: Pull complete
-a83230eec034: Pull complete
-aa34220e412e: Pull complete
-b98658cdf372: Pull complete
-fac52cbc995f: Pull complete
-6b8febe6678e: Pull complete
-b4e3e66ca648: Pull complete
-2dfafb875384: Pull complete
-cbd8dba32301: Pull complete
-7389ee5b98db: Pull complete
-12d8cbb5b62e: Pull complete
-c0cdad6215b7: Pull complete
-a67f053877c6: Pull complete
-927d3c4615e9: Pull complete
-ec5984c59fae: Pull complete
-Digest: sha256:e849496dd68b3ce2754532044c538a6d681b23b262977f6a2da8deb3a9e6bf90
-Status: Downloaded newer image for sswiston/rb_tp:pj
-docker.io/sswiston/rb_tp:pj
-Setting up Docker container
-Performing simulation 1
-2024-01-24_17:18:50
-Generating PhyloJunction script
-
-RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
-
-Visit the website www.RevBayes.com for more information about RevBayes.
-
-RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
-
-To quit RevBayes type 'quit()' or 'q()'.
-
-
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_unif_coltime.Rev"
-   Processing file "scripts/rev_scripts/model.Rev"
-Reading features in time slice 1
-Reading features in time slice 2
-Reading features in time slice 3
-Reading features in time slice 4
-Reading features in time slice 5
-Reading features in time slice 6
-Reading features in time slice 7
-   Processing of file "scripts/rev_scripts/model.Rev" completed
-
-Preparing .pj script string for sample 1
-   Error:	Vector index out of range: 6 of 6
-   Error:	Problem processing line 147 in file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_unif_coltime.Rev"
-> Running PhyloJunction script
-Matplotlib created a temporary cache directory at /tmp/788774.tmpdir/matplotlib-zziw85v3 because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
-Traceback (most recent call last):
-  File "/.local/bin/pjcli", line 33, in <module>
-    sys.exit(load_entry_point('phylojunction', 'console_scripts', 'pjcli')())
-Reading script /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts/sim1.pj
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 156, in call_cli
-    execute_pj_script(
-  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 36, in execute_pj_script
-    pgm_obj = cmd.script2pgm(model, in_pj_file=True)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 48, in script2pgm
-    with open(script_file_path_or_model_spec, "r") as infile:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts/sim1.pj'
-
-RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
-
-Visit the website www.RevBayes.com for more information about RevBayes.
-
-RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
-
-To quit RevBayes type 'quit()' or 'q()'.
-
-
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
-
-------------------------------------------------------------
-Sender: LSF System <lsfadmin@compute1-exec-107.ris.wustl.edu>
-Subject: Job 788774: <1> in cluster <compute1-lsf> Done
-
-Job <1> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 11:17:08 2024
-Job was executed on host(s) <8*compute1-exec-107.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 11:17:10 2024
-</home/k.swiston> was used as the home directory.
-</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
-Started at Wed Jan 24 11:17:10 2024
-Terminated at Wed Jan 24 11:19:03 2024
-Results reported at Wed Jan 24 11:19:03 2024
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
-------------------------------------------------------------
-
-Successfully completed.
-
-Resource usage summary:
-
-    CPU time :                                   10.43 sec.
-    Max Memory :                                 9 MB
-    Average Memory :                             8.50 MB
-    Total Requested Memory :                     16384.00 MB
-    Delta Memory :                               16375.00 MB
-    Max Swap :                                   -
-    Max Processes :                              5
-    Max Threads :                                16
-    Run time :                                   113 sec.
-    Turnaround time :                            115 sec.
-
-The output (if any) is above this job summary.
-
-pj: Pulling from sswiston/rb_tp
-e455cf41eadb: Pulling fs layer
-ea63c25b051e: Pulling fs layer
-b8f0fd91842f: Pulling fs layer
-80ff562f94fd: Pulling fs layer
-bb622cd75972: Pulling fs layer
-e2448062f8e1: Pulling fs layer
-dce213b97634: Pulling fs layer
-d9a3b75dfae1: Pulling fs layer
-7134a2f88f91: Pulling fs layer
-ac568d76705b: Pulling fs layer
-1b8ba1965843: Pulling fs layer
-df1c790f3860: Pulling fs layer
-6b9a70cf77ca: Pulling fs layer
-249e48657600: Pulling fs layer
-3be144b8ea5f: Pulling fs layer
-686b87e56f46: Pulling fs layer
-82f0fd4360f2: Pulling fs layer
-43c3d1b3cb2e: Pulling fs layer
-860cbc328b98: Pulling fs layer
-bb622cd75972: Waiting
-f3be334a02d1: Pulling fs layer
-e2448062f8e1: Waiting
-c3e78aaadfe0: Pulling fs layer
-dce213b97634: Waiting
-d9a3b75dfae1: Waiting
-7134a2f88f91: Waiting
-ac568d76705b: Waiting
-6a45fb566c99: Pulling fs layer
-1b8ba1965843: Waiting
-df1c790f3860: Waiting
-2c9e49861318: Pulling fs layer
-6b9a70cf77ca: Waiting
-82f0fd4360f2: Waiting
-40600080be97: Pulling fs layer
-249e48657600: Waiting
-43c3d1b3cb2e: Waiting
-870ad7dec50b: Pulling fs layer
-3be144b8ea5f: Waiting
-6f9bb40d2014: Pulling fs layer
-860cbc328b98: Waiting
-f3be334a02d1: Waiting
-2c9e49861318: Waiting
-4f4fb700ef54: Pulling fs layer
-40600080be97: Waiting
-c3e78aaadfe0: Waiting
-80ff562f94fd: Waiting
-6a45fb566c99: Waiting
-4036fe2c4519: Pulling fs layer
-870ad7dec50b: Waiting
-4f4fb700ef54: Waiting
-6f9bb40d2014: Waiting
-4036fe2c4519: Waiting
-ea694f77e69a: Pulling fs layer
-810ec912723d: Pulling fs layer
-52f44d478870: Pulling fs layer
-83872a80c14c: Pulling fs layer
-810ec912723d: Waiting
-ea694f77e69a: Waiting
-52f44d478870: Waiting
-706a5a776fd3: Pulling fs layer
-045d9d6dec0a: Pulling fs layer
-706a5a776fd3: Waiting
-83872a80c14c: Waiting
-ad988e0c369b: Pulling fs layer
-5e5f43bd0d60: Pulling fs layer
-a83230eec034: Pulling fs layer
-aa34220e412e: Pulling fs layer
-b98658cdf372: Pulling fs layer
-045d9d6dec0a: Waiting
-ad988e0c369b: Waiting
-fac52cbc995f: Pulling fs layer
-a83230eec034: Waiting
-aa34220e412e: Waiting
-6b8febe6678e: Pulling fs layer
-b98658cdf372: Waiting
-b4e3e66ca648: Pulling fs layer
-fac52cbc995f: Waiting
-6b8febe6678e: Waiting
-2dfafb875384: Pulling fs layer
-cbd8dba32301: Pulling fs layer
-7389ee5b98db: Pulling fs layer
-12d8cbb5b62e: Pulling fs layer
-c0cdad6215b7: Pulling fs layer
-a67f053877c6: Pulling fs layer
-b4e3e66ca648: Waiting
-2dfafb875384: Waiting
-927d3c4615e9: Pulling fs layer
-7389ee5b98db: Waiting
-cbd8dba32301: Waiting
-c0cdad6215b7: Waiting
-ec5984c59fae: Pulling fs layer
-12d8cbb5b62e: Waiting
+eeb88d7643cc: Waiting
+ce1a77a6dcc7: Waiting
 a67f053877c6: Waiting
 ec5984c59fae: Waiting
-b8f0fd91842f: Download complete
-80ff562f94fd: Verifying Checksum
-80ff562f94fd: Download complete
-e455cf41eadb: Verifying Checksum
-e455cf41eadb: Download complete
-bb622cd75972: Verifying Checksum
-bb622cd75972: Download complete
-dce213b97634: Verifying Checksum
-dce213b97634: Download complete
-d9a3b75dfae1: Download complete
-ea63c25b051e: Verifying Checksum
-ea63c25b051e: Download complete
-7134a2f88f91: Download complete
-ac568d76705b: Verifying Checksum
-ac568d76705b: Download complete
-e2448062f8e1: Verifying Checksum
-e2448062f8e1: Download complete
-6b9a70cf77ca: Verifying Checksum
-6b9a70cf77ca: Download complete
-df1c790f3860: Verifying Checksum
-df1c790f3860: Download complete
-3be144b8ea5f: Verifying Checksum
-3be144b8ea5f: Download complete
-249e48657600: Verifying Checksum
-249e48657600: Download complete
-82f0fd4360f2: Download complete
-1b8ba1965843: Verifying Checksum
-1b8ba1965843: Download complete
-686b87e56f46: Verifying Checksum
-686b87e56f46: Download complete
-860cbc328b98: Verifying Checksum
-860cbc328b98: Download complete
-43c3d1b3cb2e: Verifying Checksum
-43c3d1b3cb2e: Download complete
-e455cf41eadb: Pull complete
-f3be334a02d1: Download complete
-6a45fb566c99: Verifying Checksum
-6a45fb566c99: Download complete
-2c9e49861318: Verifying Checksum
-2c9e49861318: Download complete
-40600080be97: Verifying Checksum
-40600080be97: Download complete
-c3e78aaadfe0: Verifying Checksum
-c3e78aaadfe0: Download complete
-870ad7dec50b: Download complete
+6d4603ba01f6: Waiting
+7faaa42ac0c1: Verifying Checksum
+7faaa42ac0c1: Download complete
+37d2c5aacb5c: Verifying Checksum
+37d2c5aacb5c: Download complete
+301c0f932d05: Verifying Checksum
+301c0f932d05: Download complete
+95782daf2470: Verifying Checksum
+95782daf2470: Download complete
+5fd4ea7000a4: Verifying Checksum
+5fd4ea7000a4: Download complete
+259564f9e921: Verifying Checksum
+259564f9e921: Download complete
+445c3fd9e01d: Download complete
+ba90500ec825: Verifying Checksum
+ba90500ec825: Download complete
+d36f097804f7: Verifying Checksum
+d36f097804f7: Download complete
+643f0d94093b: Verifying Checksum
+643f0d94093b: Download complete
+015b9b463ab9: Verifying Checksum
+015b9b463ab9: Download complete
+7faaa42ac0c1: Pull complete
+9cc1f87a3101: Verifying Checksum
+9cc1f87a3101: Download complete
+69857da9dcc9: Verifying Checksum
+69857da9dcc9: Download complete
+1e574d3851a9: Verifying Checksum
+1e574d3851a9: Download complete
+63a68e0fc2e0: Download complete
+55cb539c2eed: Verifying Checksum
+55cb539c2eed: Download complete
+519c8a896a0d: Verifying Checksum
+519c8a896a0d: Download complete
+99cde4c7e6cb: Verifying Checksum
+99cde4c7e6cb: Download complete
+81949ee1a8ee: Verifying Checksum
+81949ee1a8ee: Download complete
+35a5697ac0f5: Verifying Checksum
+35a5697ac0f5: Download complete
+56f84f246308: Verifying Checksum
+56f84f246308: Download complete
+9b12ca219464: Download complete
+eba7b17a56c8: Verifying Checksum
+eba7b17a56c8: Download complete
+a3cfbf31d985: Verifying Checksum
+a3cfbf31d985: Download complete
+148190f05d4a: Verifying Checksum
+148190f05d4a: Download complete
 4f4fb700ef54: Verifying Checksum
 4f4fb700ef54: Download complete
-6f9bb40d2014: Verifying Checksum
-6f9bb40d2014: Download complete
-810ec912723d: Download complete
-4036fe2c4519: Verifying Checksum
-4036fe2c4519: Download complete
-83872a80c14c: Verifying Checksum
-83872a80c14c: Download complete
-52f44d478870: Verifying Checksum
-52f44d478870: Download complete
-045d9d6dec0a: Download complete
-ad988e0c369b: Verifying Checksum
-ad988e0c369b: Download complete
-706a5a776fd3: Verifying Checksum
-706a5a776fd3: Download complete
-ea63c25b051e: Pull complete
-b8f0fd91842f: Pull complete
-80ff562f94fd: Pull complete
-ea694f77e69a: Verifying Checksum
-ea694f77e69a: Download complete
-bb622cd75972: Pull complete
-aa34220e412e: Verifying Checksum
-aa34220e412e: Download complete
-5e5f43bd0d60: Verifying Checksum
-5e5f43bd0d60: Download complete
-b98658cdf372: Verifying Checksum
-b98658cdf372: Download complete
-fac52cbc995f: Verifying Checksum
-fac52cbc995f: Download complete
-6b8febe6678e: Verifying Checksum
-6b8febe6678e: Download complete
-e2448062f8e1: Pull complete
-2dfafb875384: Verifying Checksum
-2dfafb875384: Download complete
-cbd8dba32301: Verifying Checksum
-cbd8dba32301: Download complete
-b4e3e66ca648: Verifying Checksum
-b4e3e66ca648: Download complete
-dce213b97634: Pull complete
-7389ee5b98db: Verifying Checksum
-7389ee5b98db: Download complete
-d9a3b75dfae1: Pull complete
-7134a2f88f91: Pull complete
-ac568d76705b: Pull complete
-c0cdad6215b7: Verifying Checksum
-c0cdad6215b7: Download complete
-a67f053877c6: Verifying Checksum
+2da145333255: Verifying Checksum
+2da145333255: Download complete
+bd852423970b: Verifying Checksum
+bd852423970b: Download complete
+12b9705abfb4: Verifying Checksum
+12b9705abfb4: Download complete
+3fcc9927493b: Verifying Checksum
+3fcc9927493b: Download complete
+af508e4e47f0: Verifying Checksum
+af508e4e47f0: Download complete
+e2633376ca26: Verifying Checksum
+e2633376ca26: Download complete
+6a094d88136e: Verifying Checksum
+6a094d88136e: Download complete
+add382e10c9c: Verifying Checksum
+add382e10c9c: Download complete
+da9f97032281: Verifying Checksum
+da9f97032281: Download complete
+fe692bbcc5b1: Verifying Checksum
+fe692bbcc5b1: Download complete
+259564f9e921: Pull complete
+37d2c5aacb5c: Pull complete
+0220f7630717: Verifying Checksum
+0220f7630717: Download complete
+301c0f932d05: Pull complete
+95782daf2470: Pull complete
+5e7700541479: Verifying Checksum
+5e7700541479: Download complete
+30355687ee93: Verifying Checksum
+30355687ee93: Download complete
+206cdb7fce28: Verifying Checksum
+206cdb7fce28: Download complete
+34f2e3e1cc9a: Verifying Checksum
+34f2e3e1cc9a: Download complete
+996a20b9df68: Verifying Checksum
+996a20b9df68: Download complete
+6997756d443c: Verifying Checksum
+6997756d443c: Download complete
+eeb88d7643cc: Verifying Checksum
+eeb88d7643cc: Download complete
+3379f6ca3f28: Verifying Checksum
+3379f6ca3f28: Download complete
+ba90500ec825: Pull complete
 a67f053877c6: Download complete
-927d3c4615e9: Verifying Checksum
-927d3c4615e9: Download complete
+63a32f058a1e: Verifying Checksum
+63a32f058a1e: Download complete
+6d4603ba01f6: Verifying Checksum
+6d4603ba01f6: Download complete
+ce1a77a6dcc7: Verifying Checksum
+ce1a77a6dcc7: Download complete
+5fd4ea7000a4: Pull complete
+445c3fd9e01d: Pull complete
+d36f097804f7: Pull complete
+643f0d94093b: Pull complete
 ec5984c59fae: Verifying Checksum
 ec5984c59fae: Download complete
-12d8cbb5b62e: Verifying Checksum
-12d8cbb5b62e: Download complete
-a83230eec034: Verifying Checksum
-a83230eec034: Download complete
-1b8ba1965843: Pull complete
-df1c790f3860: Pull complete
-6b9a70cf77ca: Pull complete
-249e48657600: Pull complete
-3be144b8ea5f: Pull complete
-686b87e56f46: Pull complete
-82f0fd4360f2: Pull complete
-43c3d1b3cb2e: Pull complete
-860cbc328b98: Pull complete
-f3be334a02d1: Pull complete
-c3e78aaadfe0: Pull complete
-6a45fb566c99: Pull complete
-2c9e49861318: Pull complete
-40600080be97: Pull complete
-870ad7dec50b: Pull complete
-6f9bb40d2014: Pull complete
+99cde4c7e6cb: Pull complete
+9cc1f87a3101: Pull complete
+015b9b463ab9: Pull complete
+69857da9dcc9: Pull complete
+63a68e0fc2e0: Pull complete
+1e574d3851a9: Pull complete
+55cb539c2eed: Pull complete
+519c8a896a0d: Pull complete
+56f84f246308: Pull complete
+81949ee1a8ee: Pull complete
+a3cfbf31d985: Pull complete
+35a5697ac0f5: Pull complete
+9b12ca219464: Pull complete
+eba7b17a56c8: Pull complete
+148190f05d4a: Pull complete
+bd852423970b: Pull complete
 4f4fb700ef54: Pull complete
-4036fe2c4519: Pull complete
-ea694f77e69a: Pull complete
-810ec912723d: Pull complete
-52f44d478870: Pull complete
-83872a80c14c: Pull complete
-706a5a776fd3: Pull complete
-045d9d6dec0a: Pull complete
-ad988e0c369b: Pull complete
-5e5f43bd0d60: Pull complete
-a83230eec034: Pull complete
-aa34220e412e: Pull complete
-b98658cdf372: Pull complete
-fac52cbc995f: Pull complete
-6b8febe6678e: Pull complete
-b4e3e66ca648: Pull complete
-2dfafb875384: Pull complete
-cbd8dba32301: Pull complete
-7389ee5b98db: Pull complete
-12d8cbb5b62e: Pull complete
-c0cdad6215b7: Pull complete
+2da145333255: Pull complete
+da9f97032281: Pull complete
+12b9705abfb4: Pull complete
+3fcc9927493b: Pull complete
+af508e4e47f0: Pull complete
+e2633376ca26: Pull complete
+6a094d88136e: Pull complete
+add382e10c9c: Pull complete
+30355687ee93: Pull complete
+3379f6ca3f28: Pull complete
+fe692bbcc5b1: Pull complete
+0220f7630717: Pull complete
+5e7700541479: Pull complete
+206cdb7fce28: Pull complete
+63a32f058a1e: Pull complete
+34f2e3e1cc9a: Pull complete
+996a20b9df68: Pull complete
+6997756d443c: Pull complete
+eeb88d7643cc: Pull complete
+ce1a77a6dcc7: Pull complete
 a67f053877c6: Pull complete
-927d3c4615e9: Pull complete
+6d4603ba01f6: Pull complete
 ec5984c59fae: Pull complete
-Digest: sha256:e849496dd68b3ce2754532044c538a6d681b23b262977f6a2da8deb3a9e6bf90
+Digest: sha256:8a960c0d392cc6c08aa640ba8b624d29c9316f2a483b87b8908f3083062a233b
 Status: Downloaded newer image for sswiston/rb_tp:pj
 docker.io/sswiston/rb_tp:pj
 Setting up Docker container
 Performing simulation 1
-2024-01-24_17:43:34
-Generating PhyloJunction script
+2024-02-07_08:16:38
+Generating model parameters
 
 RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
+Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -588,7 +258,7 @@ RevBayes is free software released under the GPL license, version 3. Type 'licen
 To quit RevBayes type 'quit()' or 'q()'.
 
 
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_pj_unif_coltime.Rev"
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
    Processing file "scripts/rev_scripts/model.Rev"
 Reading features in time slice 1
 Reading features in time slice 2
@@ -598,45 +268,100 @@ Reading features in time slice 5
 Reading features in time slice 6
 Reading features in time slice 7
    Processing of file "scripts/rev_scripts/model.Rev" completed
+Setting seed to 1
+Writing true feature effect values for categorical feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/sigma_true_vals_sample1_feat1.tsv
+Writing true feature effect values for quantitative feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/phi_true_vals_sample1_feat1.tsv
+Writing true base rate values for sample 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/rho_true_vals_sample1.tsv
 
-Preparing .pj script string for sample 1
-
-Whole tree root age = 4.21161
-Origin age of island radiation = 0.834326
-Island that got colonized = Maui-Nui complex
-    Doing time slice 1
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 2
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 3
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 4
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 5
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 6
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
-    Doing time slice 7
-      Doing extinction rates
-      Doing transition rates
-      Doing birth rates
+Whole tree root age = 8.19457
+Origin age of island radiation = 2.80774
+Island that got colonized = Oahu
+Generating PhyloJunction script
+Everything OK with provided arguments!
+Preparing .pj script for simulation 1.
+...done!
 Running PhyloJunction script
-Matplotlib created a temporary cache directory at /tmp/790345.tmpdir/matplotlib-4o0szdyh because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib created a temporary cache directory at /tmp/224356.tmpdir/matplotlib-xiideqqw because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:455: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '2.6209' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  tree_summary_df_dict[rv_name].at[idx, "root_age"] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:459: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '2.8077' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  tree_summary_df_dict[rv_name].at[idx, "origin_age"] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+Reading script /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts_generated_in_py/sim1.pj
+    ... done!
+outfile_path = /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_output/figures/sample1_trs1_1
 
 RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Fri Jan 12 23:23:51 UTC 2024
+Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -646,18 +371,27 @@ To quit RevBayes type 'quit()' or 'q()'.
 
 
 >    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+Working on simulation 1
+root age 8.19457 colonization age 2.80774 origin time 0.186804 ingroup branch 5.57363
+Got root and colonization ages
+Grafted outgroup onto tree
+Grafted outgroup onto tip data
+   Attempting to read the contents of file "sample1.tre"
+   Successfully read file
+Removed extinct taxa and saved new tree
+Simulated sequences
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@compute1-exec-183.ris.wustl.edu>
-Subject: Job 790345: <1> in cluster <compute1-lsf> Done
+Sender: LSF System <lsfadmin@compute1-exec-163.ris.wustl.edu>
+Subject: Job 224356: <1> in cluster <compute1-lsf> Done
 
-Job <1> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 11:42:03 2024
-Job was executed on host(s) <8*compute1-exec-183.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Jan 24 11:42:04 2024
+Job <1> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Tue Feb  6 22:03:42 2024
+Job was executed on host(s) <4*compute1-exec-163.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Feb  7 02:14:50 2024
 </home/k.swiston> was used as the home directory.
 </storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
-Started at Wed Jan 24 11:42:04 2024
-Terminated at Wed Jan 24 12:10:44 2024
-Results reported at Wed Jan 24 12:10:44 2024
+Started at Wed Feb  7 02:14:50 2024
+Terminated at Wed Feb  7 02:17:12 2024
+Results reported at Wed Feb  7 02:17:12 2024
 
 Your job looked like:
 
@@ -670,16 +404,16 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   11.23 sec.
-    Max Memory :                                 25 MB
-    Average Memory :                             9.04 MB
-    Total Requested Memory :                     16384.00 MB
-    Delta Memory :                               16359.00 MB
-    Max Swap :                                   -
-    Max Processes :                              8
-    Max Threads :                                33
-    Run time :                                   1720 sec.
-    Turnaround time :                            1721 sec.
+    CPU time :                                   28.39 sec.
+    Max Memory :                                 41964189 MB
+    Average Memory :                             2208672.50 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -41960092.00 MB
+    Max Swap :                                   143 MB
+    Max Processes :                              9
+    Max Threads :                                16
+    Run time :                                   141 sec.
+    Turnaround time :                            15210 sec.
 
 The output (if any) is above this job summary.
 
