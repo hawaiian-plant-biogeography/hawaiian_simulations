@@ -90,3 +90,83 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+pj: Pulling from sswiston/rb_tp
+Digest: sha256:6fbf4ccd7a9b854cf2f7d855afca38f7eaa0ee4f0f0179737b55b78f1c8d30ff
+Status: Image is up to date for sswiston/rb_tp:pj
+docker.io/sswiston/rb_tp:pj
+Setting up Docker container
+Performing simulation 21
+2024-02-15_16:46:50
+Generating model parameters
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2386-gf9f25c) on Thu Feb  8 16:07:25 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
+   Processing file "scripts/rev_scripts/model.Rev"
+   Error:	The folder doesn't exist.
+   Error:	Problem processing line 17 in file "scripts/rev_scripts/model.Rev"
+   Error:	Problem processing line 21 in file
+   "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
+> Generating PhyloJunction script
+Everything OK with provided arguments!
+Preparing .pj script for simulation 21.
+...done!
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/421348.tmpdir/matplotlib-q8cbcius because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2386-gf9f25c) on Thu Feb  8 16:07:25 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-168.ris.wustl.edu>
+Subject: Job 421348: <21> in cluster <compute1-lsf> Done
+
+Job <21> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Thu Feb 15 10:21:17 2024
+Job was executed on host(s) <4*compute1-exec-168.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Thu Feb 15 10:46:49 2024
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Thu Feb 15 10:46:49 2024
+Terminated at Thu Feb 15 10:50:00 2024
+Results reported at Thu Feb 15 10:50:00 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   189.28 sec.
+    Max Memory :                                 173 MB
+    Average Memory :                             160.10 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3923.00 MB
+    Max Swap :                                   165 MB
+    Max Processes :                              9
+    Max Threads :                                15
+    Run time :                                   191 sec.
+    Turnaround time :                            1723 sec.
+
+The output (if any) is above this job summary.
+

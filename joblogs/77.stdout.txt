@@ -176,3 +176,412 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+pj: Pulling from sswiston/rb_tp
+7faaa42ac0c1: Pulling fs layer
+dc5e6d8932d6: Pulling fs layer
+fd57cfef67c9: Pulling fs layer
+548710b1e011: Pulling fs layer
+71a1601c42b8: Pulling fs layer
+5197d2692fad: Pulling fs layer
+8eaf5a6619c4: Pulling fs layer
+9ff489941752: Pulling fs layer
+ef8f06cef71c: Pulling fs layer
+757155e10569: Pulling fs layer
+484607d1e923: Pulling fs layer
+acf418395441: Pulling fs layer
+fd40623afbad: Pulling fs layer
+514b465c8260: Pulling fs layer
+1a7d0731d762: Pulling fs layer
+b117f557e18e: Pulling fs layer
+3e062b8f9ba8: Pulling fs layer
+2a87f10191d2: Pulling fs layer
+4440bc3d28f6: Pulling fs layer
+69a4398a073c: Pulling fs layer
+13e5978180f0: Pulling fs layer
+b61ebe896cee: Pulling fs layer
+bed57baaca45: Pulling fs layer
+d77249c0191a: Pulling fs layer
+32e1428d2005: Pulling fs layer
+bce2f1ea1f44: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+aeb08b479e42: Pulling fs layer
+2f787524a343: Pulling fs layer
+0fa93c2edd04: Pulling fs layer
+f55fa8e1308a: Pulling fs layer
+02bfb4431d5e: Pulling fs layer
+bf2493af10d6: Pulling fs layer
+1264849f33a5: Pulling fs layer
+32ccebfba981: Pulling fs layer
+639b38c68d95: Pulling fs layer
+4c4db6302c90: Pulling fs layer
+45f3513f0141: Pulling fs layer
+0009bada8345: Pulling fs layer
+9b67c79adf61: Pulling fs layer
+75190ae0f4a2: Pulling fs layer
+94201d697422: Pulling fs layer
+51fb8fb7faf8: Pulling fs layer
+fe44a9853c38: Pulling fs layer
+75570dfcb786: Pulling fs layer
+0e62915f9e83: Pulling fs layer
+fe7554bd3ccc: Pulling fs layer
+a67f053877c6: Pulling fs layer
+53c61d1c672e: Pulling fs layer
+ec5984c59fae: Pulling fs layer
+aeb08b479e42: Waiting
+2f787524a343: Waiting
+0fa93c2edd04: Waiting
+f55fa8e1308a: Waiting
+02bfb4431d5e: Waiting
+bf2493af10d6: Waiting
+1264849f33a5: Waiting
+32ccebfba981: Waiting
+639b38c68d95: Waiting
+4c4db6302c90: Waiting
+45f3513f0141: Waiting
+0009bada8345: Waiting
+9b67c79adf61: Waiting
+75190ae0f4a2: Waiting
+94201d697422: Waiting
+51fb8fb7faf8: Waiting
+514b465c8260: Waiting
+1a7d0731d762: Waiting
+b117f557e18e: Waiting
+3e062b8f9ba8: Waiting
+2a87f10191d2: Waiting
+4440bc3d28f6: Waiting
+69a4398a073c: Waiting
+13e5978180f0: Waiting
+b61ebe896cee: Waiting
+bed57baaca45: Waiting
+d77249c0191a: Waiting
+32e1428d2005: Waiting
+bce2f1ea1f44: Waiting
+4f4fb700ef54: Waiting
+9ff489941752: Waiting
+ef8f06cef71c: Waiting
+757155e10569: Waiting
+484607d1e923: Waiting
+acf418395441: Waiting
+fd40623afbad: Waiting
+71a1601c42b8: Waiting
+fe44a9853c38: Waiting
+75570dfcb786: Waiting
+0e62915f9e83: Waiting
+548710b1e011: Waiting
+5197d2692fad: Waiting
+fe7554bd3ccc: Waiting
+a67f053877c6: Waiting
+8eaf5a6619c4: Waiting
+53c61d1c672e: Waiting
+ec5984c59fae: Waiting
+fd57cfef67c9: Verifying Checksum
+fd57cfef67c9: Download complete
+548710b1e011: Download complete
+71a1601c42b8: Verifying Checksum
+71a1601c42b8: Download complete
+7faaa42ac0c1: Verifying Checksum
+7faaa42ac0c1: Download complete
+dc5e6d8932d6: Verifying Checksum
+dc5e6d8932d6: Download complete
+8eaf5a6619c4: Verifying Checksum
+8eaf5a6619c4: Download complete
+9ff489941752: Verifying Checksum
+9ff489941752: Download complete
+ef8f06cef71c: Verifying Checksum
+ef8f06cef71c: Download complete
+757155e10569: Verifying Checksum
+757155e10569: Download complete
+5197d2692fad: Download complete
+acf418395441: Verifying Checksum
+acf418395441: Download complete
+fd40623afbad: Verifying Checksum
+fd40623afbad: Download complete
+514b465c8260: Verifying Checksum
+514b465c8260: Download complete
+1a7d0731d762: Verifying Checksum
+1a7d0731d762: Download complete
+b117f557e18e: Verifying Checksum
+b117f557e18e: Download complete
+3e062b8f9ba8: Verifying Checksum
+3e062b8f9ba8: Download complete
+2a87f10191d2: Verifying Checksum
+2a87f10191d2: Download complete
+4440bc3d28f6: Verifying Checksum
+4440bc3d28f6: Download complete
+484607d1e923: Download complete
+b61ebe896cee: Verifying Checksum
+b61ebe896cee: Download complete
+69a4398a073c: Verifying Checksum
+69a4398a073c: Download complete
+bed57baaca45: Verifying Checksum
+bed57baaca45: Download complete
+d77249c0191a: Verifying Checksum
+d77249c0191a: Download complete
+32e1428d2005: Verifying Checksum
+32e1428d2005: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+7faaa42ac0c1: Pull complete
+aeb08b479e42: Verifying Checksum
+aeb08b479e42: Download complete
+13e5978180f0: Verifying Checksum
+13e5978180f0: Download complete
+bce2f1ea1f44: Verifying Checksum
+bce2f1ea1f44: Download complete
+0fa93c2edd04: Verifying Checksum
+0fa93c2edd04: Download complete
+f55fa8e1308a: Verifying Checksum
+f55fa8e1308a: Download complete
+02bfb4431d5e: Verifying Checksum
+02bfb4431d5e: Download complete
+bf2493af10d6: Verifying Checksum
+bf2493af10d6: Download complete
+32ccebfba981: Verifying Checksum
+32ccebfba981: Download complete
+1264849f33a5: Download complete
+639b38c68d95: Verifying Checksum
+639b38c68d95: Download complete
+2f787524a343: Verifying Checksum
+2f787524a343: Download complete
+0009bada8345: Verifying Checksum
+0009bada8345: Download complete
+45f3513f0141: Verifying Checksum
+45f3513f0141: Download complete
+9b67c79adf61: Verifying Checksum
+9b67c79adf61: Download complete
+75190ae0f4a2: Verifying Checksum
+75190ae0f4a2: Download complete
+51fb8fb7faf8: Verifying Checksum
+51fb8fb7faf8: Download complete
+fe44a9853c38: Verifying Checksum
+fe44a9853c38: Download complete
+75570dfcb786: Verifying Checksum
+75570dfcb786: Download complete
+94201d697422: Verifying Checksum
+94201d697422: Download complete
+fe7554bd3ccc: Verifying Checksum
+fe7554bd3ccc: Download complete
+dc5e6d8932d6: Pull complete
+fd57cfef67c9: Pull complete
+a67f053877c6: Verifying Checksum
+a67f053877c6: Download complete
+548710b1e011: Pull complete
+71a1601c42b8: Pull complete
+53c61d1c672e: Verifying Checksum
+53c61d1c672e: Download complete
+ec5984c59fae: Verifying Checksum
+ec5984c59fae: Download complete
+0e62915f9e83: Verifying Checksum
+0e62915f9e83: Download complete
+4c4db6302c90: Verifying Checksum
+4c4db6302c90: Download complete
+5197d2692fad: Pull complete
+8eaf5a6619c4: Pull complete
+9ff489941752: Pull complete
+ef8f06cef71c: Pull complete
+757155e10569: Pull complete
+484607d1e923: Pull complete
+acf418395441: Pull complete
+fd40623afbad: Pull complete
+514b465c8260: Pull complete
+1a7d0731d762: Pull complete
+b117f557e18e: Pull complete
+3e062b8f9ba8: Pull complete
+2a87f10191d2: Pull complete
+4440bc3d28f6: Pull complete
+69a4398a073c: Pull complete
+13e5978180f0: Pull complete
+b61ebe896cee: Pull complete
+bed57baaca45: Pull complete
+d77249c0191a: Pull complete
+32e1428d2005: Pull complete
+bce2f1ea1f44: Pull complete
+4f4fb700ef54: Pull complete
+aeb08b479e42: Pull complete
+2f787524a343: Pull complete
+0fa93c2edd04: Pull complete
+f55fa8e1308a: Pull complete
+02bfb4431d5e: Pull complete
+bf2493af10d6: Pull complete
+1264849f33a5: Pull complete
+32ccebfba981: Pull complete
+639b38c68d95: Pull complete
+4c4db6302c90: Pull complete
+45f3513f0141: Pull complete
+0009bada8345: Pull complete
+9b67c79adf61: Pull complete
+75190ae0f4a2: Pull complete
+94201d697422: Pull complete
+51fb8fb7faf8: Pull complete
+fe44a9853c38: Pull complete
+75570dfcb786: Pull complete
+0e62915f9e83: Pull complete
+fe7554bd3ccc: Pull complete
+a67f053877c6: Pull complete
+53c61d1c672e: Pull complete
+ec5984c59fae: Pull complete
+Digest: sha256:6fbf4ccd7a9b854cf2f7d855afca38f7eaa0ee4f0f0179737b55b78f1c8d30ff
+Status: Downloaded newer image for sswiston/rb_tp:pj
+docker.io/sswiston/rb_tp:pj
+Setting up Docker container
+Performing simulation 77
+2024-02-15_17:01:20
+Generating model parameters
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2386-gf9f25c) on Thu Feb  8 16:07:25 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
+   Processing file "scripts/rev_scripts/model.Rev"
+   Error:	The folder doesn't exist.
+   Error:	Problem processing line 17 in file "scripts/rev_scripts/model.Rev"
+   Error:	Problem processing line 21 in file
+   "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
+> Generating PhyloJunction script
+Everything OK with provided arguments!
+Preparing .pj script for simulation 77.
+...done!
+Running PhyloJunction script
+Matplotlib created a temporary cache directory at /tmp/421419.tmpdir/matplotlib-gcazqzh4 because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:455: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '14.0210' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  tree_summary_df_dict[rv_name].at[idx, "root_age"] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:459: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '14.1119' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  tree_summary_df_dict[rv_name].at[idx, "origin_age"] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+Reading script /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_scripts_generated_in_py/sim77.pj
+    ... done!
+outfile_path = /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/pj_output/figures/sample77_trs1_1
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2386-gf9f25c) on Thu Feb  8 16:07:25 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+Working on simulation 77
+root age 20.8262 colonization age 14.1119 origin time 0.0909443 ingroup branch 6.80524
+Got root and colonization ages
+Grafted outgroup onto tree
+Grafted outgroup onto tip data
+   Attempting to read the contents of file "sample77.tre"
+   Successfully read file
+Removed extinct taxa and saved new tree
+Simulated sequences
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-105.ris.wustl.edu>
+Subject: Job 421419: <77> in cluster <compute1-lsf> Done
+
+Job <77> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Thu Feb 15 10:21:28 2024
+Job was executed on host(s) <4*compute1-exec-105.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Thu Feb 15 10:59:42 2024
+</home/k.swiston> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Thu Feb 15 10:59:42 2024
+Terminated at Thu Feb 15 11:01:42 2024
+Results reported at Thu Feb 15 11:01:42 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   22.39 sec.
+    Max Memory :                                 153 MB
+    Average Memory :                             41.72 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3943.00 MB
+    Max Swap :                                   144 MB
+    Max Processes :                              9
+    Max Threads :                                14
+    Run time :                                   120 sec.
+    Turnaround time :                            2414 sec.
+
+The output (if any) is above this job summary.
+

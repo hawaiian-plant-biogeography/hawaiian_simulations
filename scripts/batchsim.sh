@@ -10,7 +10,7 @@ RUN_LIST=$(seq 1 100)
 for i in ${RUN_LIST[@]}
 do
     bsub -G compute-michael.landis \
-	-g /k.swiston/sim \
+	-g /k.swiston/hawaii \
 	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations/ \
 	-o $JOBDIR/$i.stdout.txt \
 	-J $i \
