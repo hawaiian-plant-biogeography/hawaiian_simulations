@@ -212,24 +212,17 @@ for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
 # hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
 if (analysis_type == "sim") {
     if (use_rj) {
-        #phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
-        #phi_b[1] ~ dnRJMixture(0.0, dnHalfNormal(offset=0,sd=1), p=0.5)
-        phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
-        phi_b[1] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)
-        #phi_d[2] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)
-        #phi_b[2] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)
+        phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)   # distance (km)
+        phi_b[1] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)    # distance (km)
+        sigma_w[1] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)  # is high island? (0=no, 1=yes)
+        sigma_e[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5) # is high island? (0=no, 1=yes)
     } else {
-        #phi_d[1] ~ dnUniform(-4,0)
-        #phi_b[1] ~ dnHalfNormal(offset=0,sd=1)
-        phi_d[1] ~ dnUniform(-4,0)
-        phi_b[1] ~ dnUniform(0,4)
-        #phi_d[2] ~ dnUniform(-4,0)
-        #phi_b[2] ~ dnUniform(0,4)
+        phi_d[1] ~ dnUniform(-4,0)   # distance (km)
+        phi_b[1] ~ dnUniform(0,4)    # distance (km)
+        sigma_w[1] ~ dnUniform(0,4)  # is high island? (0=no, 1=yes)
+        sigma_e[1] ~ dnUniform(-4,0) # is high island? (0=no, 1=yes)
     }
 }
-phi_d[1].setValue(-0.00001)
-phi_d[1].setValue(-2.81)
-phi_b[1].setValue(0.00001)
 
 # base-rate multipliers
 # first t is oldest
