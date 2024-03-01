@@ -205,7 +205,7 @@ rate_commands.append(sse_stash_str)
 
 trs_str = 'trs ~ discrete_sse(n=1, stash=stash, start_state=[' + ori_state + '], ' + \
     'stop="age", stop_value=' + ori_age + ', cond_surv="true", cond_obs_both_sides="false", ' + \
-    'origin="true", min_rec_taxa=15, max_rec_taxa=200, abort_at_obs=5000)'
+    'origin="true", min_rec_taxa=15, max_rec_taxa=200, abort_at_alive_count=5000)'
 
 rate_commands.append(trs_str)
 
