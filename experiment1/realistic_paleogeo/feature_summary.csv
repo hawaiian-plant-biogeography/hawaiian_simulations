@@ -34,6 +34,13 @@ time_index,feature_index,feature_relationship,feature_type,feature_path
 5,1,between,categorical,experiment1/realistic_paleogeo/time5/cb_feature1.csv
 6,1,between,categorical,experiment1/realistic_paleogeo/time6/cb_feature1.csv
 7,1,between,categorical,experiment1/realistic_paleogeo/time7/cb_feature1.csv
+1,2,between,categorical,experiment1/realistic_paleogeo/time1/cb_feature2.csv
+2,2,between,categorical,experiment1/realistic_paleogeo/time2/cb_feature2.csv
+3,2,between,categorical,experiment1/realistic_paleogeo/time3/cb_feature2.csv
+4,2,between,categorical,experiment1/realistic_paleogeo/time4/cb_feature2.csv
+5,2,between,categorical,experiment1/realistic_paleogeo/time5/cb_feature2.csv
+6,2,between,categorical,experiment1/realistic_paleogeo/time6/cb_feature2.csv
+7,2,between,categorical,experiment1/realistic_paleogeo/time7/cb_feature2.csv
 1,1,between,quantitative,experiment1/realistic_paleogeo/time1/qb_feature1.csv
 2,1,between,quantitative,experiment1/realistic_paleogeo/time2/qb_feature1.csv
 3,1,between,quantitative,experiment1/realistic_paleogeo/time3/qb_feature1.csv

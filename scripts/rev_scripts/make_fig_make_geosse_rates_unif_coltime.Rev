@@ -44,10 +44,10 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
 #      In our empirical case, that means we only consider the FIRST feature layer
 #      because there is only one CB and one QB layer each.
 
-rho_e.setValue(0.5)
-rho_w.setValue(0.1)
-rho_b.setValue(5)
-rho_d.setValue(0.05)
+rho_e.setValue(5.0)
+rho_w.setValue(0.05)
+rho_b.setValue(50)
+rho_d.setValue(0.0005)
 
 feat_specific_sigma_true_vals_s = "sample\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
 for (c_feat_idx in 1:sigma_d.size()) {
@@ -55,10 +55,10 @@ for (c_feat_idx in 1:sigma_d.size()) {
     sigma_e[c_feat_idx].redraw()
     sigma_w[c_feat_idx].redraw()
     sigma_b[c_feat_idx].redraw()
-    sigma_d[c_feat_idx].setValue(0)
+    sigma_d[c_feat_idx].setValue(2)
     sigma_e[c_feat_idx].setValue(-3)
     sigma_w[c_feat_idx].setValue(1)
-    sigma_b[c_feat_idx].setValue(0)
+    sigma_b[c_feat_idx].setValue(-2)
     sigma_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
 
     feat_specific_sigma_true_values_path = model_truth_dir + "sigma_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
@@ -76,7 +76,7 @@ for (q_feat_idx in 1:phi_d.size()) {
     phi_b[q_feat_idx].redraw()
     phi_d[q_feat_idx].setValue(-1)
     phi_e[q_feat_idx].setValue(-0.5)
-    phi_w[q_feat_idx].setValue(0.5)
+    phi_w[q_feat_idx].setValue(0.25)
     phi_b[q_feat_idx].setValue(2)
     phi_true_vals_s += s_idx + "\t" + q_feat_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
 
