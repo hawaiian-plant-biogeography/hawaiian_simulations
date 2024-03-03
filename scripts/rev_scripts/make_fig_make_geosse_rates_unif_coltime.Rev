@@ -44,12 +44,21 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
 #      In our empirical case, that means we only consider the FIRST feature layer
 #      because there is only one CB and one QB layer each.
 
+rho_e.setValue(0.5)
+rho_w.setValue(0.1)
+rho_b.setValue(5)
+rho_d.setValue(0.05)
+
 feat_specific_sigma_true_vals_s = "sample\tsigma_d\tsigma_e\tsigma_w\tsigma_b\n"
 for (c_feat_idx in 1:sigma_d.size()) {
     sigma_d[c_feat_idx].redraw()
     sigma_e[c_feat_idx].redraw()
     sigma_w[c_feat_idx].redraw()
     sigma_b[c_feat_idx].redraw()
+    sigma_d[c_feat_idx].setValue(0)
+    sigma_e[c_feat_idx].setValue(-3)
+    sigma_w[c_feat_idx].setValue(1)
+    sigma_b[c_feat_idx].setValue(0)
     sigma_true_vals_s += s_idx + "\t" + c_feat_idx + "\t" + sigma_d[c_feat_idx] + "\t" + sigma_e[c_feat_idx] + "\t" + sigma_w[c_feat_idx] + "\t" + sigma_b[c_feat_idx] + "\n"
 
     feat_specific_sigma_true_values_path = model_truth_dir + "sigma_true_vals_sample" + s_idx + "_feat" + c_feat_idx + ".tsv"
@@ -65,6 +74,10 @@ for (q_feat_idx in 1:phi_d.size()) {
     phi_e[q_feat_idx].redraw()
     phi_w[q_feat_idx].redraw()
     phi_b[q_feat_idx].redraw()
+    phi_d[q_feat_idx].setValue(-1)
+    phi_e[q_feat_idx].setValue(-0.5)
+    phi_w[q_feat_idx].setValue(0.5)
+    phi_b[q_feat_idx].setValue(2)
     phi_true_vals_s += s_idx + "\t" + q_feat_idx + "\t" + phi_d[q_feat_idx] + "\t" + phi_e[q_feat_idx] + "\t" + phi_w[q_feat_idx] + "\t" + phi_b[q_feat_idx] + "\n"
 
     feat_specific_phi_true_values_path = model_truth_dir + "phi_true_vals_sample" + s_idx + "_feat" + q_feat_idx + ".tsv"
@@ -74,10 +87,21 @@ for (q_feat_idx in 1:phi_d.size()) {
     write(feat_specific_phi_true_vals_s, file=feat_specific_phi_true_values_path)
 }
 
-rho_d.redraw()
-rho_e.redraw()
-rho_w.redraw()
-rho_b.redraw()
+sigma_e
+
+""
+
+m_e
+
+""
+
+r_e
+
+
+#rho_d.redraw()
+#rho_e.redraw()
+#rho_w.redraw()
+#rho_b.redraw()
 
 rho_true_vals_s += s_idx + "\t" + rho_d + "\t" + rho_e + "\t" + rho_w + "\t" + rho_b + "\n"
 
@@ -99,6 +123,11 @@ or_age = -1.0
 #       base-index 0 for RevBayes states in nex file
 non_continent_region_idxs = [1, 2, 3, 4, 5, 6]
 continent_region_idx = max(non_continent_region_idxs) + 1
+
+
+# Information about high islands
+
+
 
 # 22, 1000001, G+Z
 # 23, 0100001, N+Z
@@ -135,12 +164,21 @@ for (t in 1:n_epochs) {
 
         # event happened within interval t
         island_rates = rep(0.0, non_continent_region_idxs.size())
+        print(t, time_ends[t])
+
+        # high island status
+        is_high_island = feature_CW[t][1].get()
+        print(is_high_island)
         
-        # getting relative rates for colonizing each non-continental region
+        # getting relative rates for colonizing each possible *HIGH* island
         for (i in non_continent_region_idxs) {
-            island_rates[i] = r_d[t][continent_region_idx][i]
+            island_rates[i] = abs( r_d[t][continent_region_idx][i] * ifelse( is_high_island[1][i] == 1, 1, 0) )
         }
         islands_relative_rates <- simplex(island_rates)
+        print(islands_relative_rates)
+
+        print("speciation rates = ", rho_w * m_w[t][1])
+        print("extinction rates = ", rho_e * m_e[t][1])
 
         # starting region (island), between 1 and 6
         island_subroot_idx ~ dnCat(islands_relative_rates)

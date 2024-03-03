@@ -37,8 +37,8 @@ if (!exists("geosse_rates_dir")) geosse_rates_dir = exp_path + "geosse_rates_for
 #
 # base rate parameters
 if (!exists("rho_d_init")) rho_d_init = 0.125/5
-if (!exists("rho_e_init")) rho_e_init = 8/32
-if (!exists("rho_w_init")) rho_w_init = 3/20
+if (!exists("rho_e_init")) rho_e_init = 1/10
+if (!exists("rho_w_init")) rho_w_init = 1/20
 if (!exists("rho_b_init")) rho_b_init = 3*5/20
 
 # feature effect parameters
@@ -135,10 +135,10 @@ for (t in 1:n_epochs) {
 ###################################
 
 # base rate parameters
-rho_d ~ dnGamma(8,32)
-rho_e ~ dnGamma(8,32)
-rho_w ~ dnGamma(3,20)
-rho_b ~ dnGamma(3*5,20)
+rho_d ~ dnGamma(1,20)
+rho_e ~ dnGamma(1,20)
+rho_w ~ dnGamma(1,20)
+rho_b ~ dnGamma(10,20)
 
 # initializing values (only relevant for inference later)
 rho_d.setValue(rho_d_init)
@@ -234,6 +234,7 @@ for (t in 1:n_epochs) {
     m_b[t] := fnFeatureInformedRates(layer_CB[t], layer_QB[t], sigma_b, phi_b, null_rate=1)
 }
 
+
 # quantities we need for later
 n_regions = m_b[1].size()
 max_range_size = n_regions
@@ -265,6 +266,8 @@ for (t in 1:n_epochs) {
                                      extirpationRates=r_e[t],
                                      maxRangeSize=max_range_size)
 }
+
+# Q[1].getStateDescriptions()
 
 # get speciation manifested rates
 for (t in 1:n_epochs) {
