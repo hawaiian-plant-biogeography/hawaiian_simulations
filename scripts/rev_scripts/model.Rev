@@ -42,14 +42,14 @@ if (!exists("rho_w_init")) rho_w_init = 1/20
 if (!exists("rho_b_init")) rho_b_init = 3*5/20
 
 # feature effect parameters
-if (!exists("sigma_d_init")) sigma_d_init = 0.00001
-if (!exists("sigma_e_init")) sigma_e_init = 0.00001
-if (!exists("sigma_w_init")) sigma_w_init = 0.00001
-if (!exists("sigma_b_init")) sigma_b_init = 0.00001
-if (!exists("phi_d_init"))     phi_d_init = 0.00001
-if (!exists("phi_e_init"))     phi_e_init = 0.00001
-if (!exists("phi_w_init"))     phi_w_init = 0.00001
-if (!exists("phi_b_init"))     phi_b_init = 0.00001
+if (!exists("sigma_d_init")) sigma_d_init = 0.0
+if (!exists("sigma_e_init")) sigma_e_init = 0.0
+if (!exists("sigma_w_init")) sigma_w_init = 0.0
+if (!exists("sigma_b_init")) sigma_b_init = 0.0
+if (!exists("phi_d_init"))     phi_d_init = 0.0
+if (!exists("phi_e_init"))     phi_e_init = 0.0
+if (!exists("phi_w_init"))     phi_w_init = 0.0
+if (!exists("phi_b_init"))     phi_b_init = 0.0
 
 ############################
 # Reading epoch age limits #
@@ -147,54 +147,42 @@ rho_w.setValue(rho_w_init)
 rho_b.setValue(rho_b_init)
 
 # feature effect parameters
-if (analysis_type == "inf") {
-    rj_base_sigma_w  = dnNormal(0,1) # prior of "on-value" for RJMCMC
-    rj_base_sigma_e  = dnNormal(0,1)
-    rj_base_sigma_d  = dnNormal(0,1)
-    rj_base_sigma_b  = dnNormal(0,1)
-    rj_base_phi_w    = dnNormal(0,1)
-    rj_base_phi_e    = dnNormal(0,1)
-    rj_base_phi_d    = dnNormal(0,1)
-    rj_base_phi_b    = dnNormal(0,1)
-}
-if (analysis_type == "sim") {
-    rj_base_sigma_w  = dnUniform(-2,2) # prior of "on-value" for RJMCMC
-    rj_base_sigma_e  = dnUniform(-2,2)
-    rj_base_sigma_d  = dnUniform(-2,2)
-    rj_base_sigma_b  = dnUniform(-2,2)
-    rj_base_phi_w    = dnUniform(-2,2)
-    rj_base_phi_e    = dnUniform(-2,2)
-    rj_base_phi_d    = dnUniform(-2,2)
-    rj_base_phi_b    = dnUniform(-2,2)
-}
-rj_sigma_w       = dnRJMixture(0.0, rj_base_sigma_w, p=0.5)
-rj_sigma_e       = dnRJMixture(0.0, rj_base_sigma_e, p=0.5)
-rj_sigma_d       = dnRJMixture(0.0, rj_base_sigma_d, p=0.5)
-rj_sigma_b       = dnRJMixture(0.0, rj_base_sigma_b, p=0.5)
-rj_phi_w         = dnRJMixture(0.0, rj_base_phi_w, p=0.5)
-rj_phi_e         = dnRJMixture(0.0, rj_base_phi_e, p=0.5)
-rj_phi_d         = dnRJMixture(0.0, rj_base_phi_d, p=0.5)
-rj_phi_b         = dnRJMixture(0.0, rj_base_phi_b, p=0.5)
-
 if (use_rj) {
-    for (i in 1:feature_CW[1].size()) sigma_w[i] ~ rj_sigma_w
-    for (i in 1:feature_CW[1].size()) sigma_e[i] ~ rj_sigma_e
-    for (i in 1:feature_CB[1].size()) sigma_d[i] ~ rj_sigma_d
-    for (i in 1:feature_CB[1].size()) sigma_b[i] ~ rj_sigma_b
-    for (i in 1:feature_QW[1].size()) phi_w[i] ~ rj_phi_w
-    for (i in 1:feature_QW[1].size()) phi_e[i] ~ rj_phi_e
-    for (i in 1:feature_QB[1].size()) phi_d[i] ~ rj_phi_d
-    for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_phi_b
+    rj_prob <- 0.5
 } else {
-    for (i in 1:feature_CW[1].size()) sigma_w[i] ~ rj_base_sigma_w
-    for (i in 1:feature_CW[1].size()) sigma_e[i] ~ rj_base_sigma_e
-    for (i in 1:feature_CB[1].size()) sigma_d[i] ~ rj_base_sigma_d
-    for (i in 1:feature_CB[1].size()) sigma_b[i] ~ rj_base_sigma_b
-    for (i in 1:feature_QW[1].size()) phi_w[i] ~ rj_base_phi_w
-    for (i in 1:feature_QW[1].size()) phi_e[i] ~ rj_base_phi_e
-    for (i in 1:feature_QB[1].size()) phi_d[i] ~ rj_base_phi_d
-    for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_base_phi_b
+    rj_prob <- 0.0
 }
+rj_symm_base = dnRJMixture(0.0, dnUniform(-2,2), p=rj_prob)
+rj_neg_base = dnRJMixture(0.0, dnUniform(-4,0), p=rj_prob)
+rj_pos_base = dnRJMixture(0.0, dnUniform(0,4), p=rj_prob)
+
+for (i in 1:feature_CW[1].size()) sigma_w[i] ~ rj_symm_base
+for (i in 1:feature_CW[1].size()) sigma_e[i] ~ rj_symm_base
+for (i in 1:feature_CB[1].size()) sigma_d[i] ~ rj_symm_base
+for (i in 1:feature_CB[1].size()) sigma_b[i] ~ rj_symm_base
+for (i in 1:feature_QW[1].size()) phi_w[i] ~ rj_symm_base
+for (i in 1:feature_QW[1].size()) phi_e[i] ~ rj_symm_base
+for (i in 1:feature_QB[1].size()) phi_d[i] ~ rj_symm_base
+for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_symm_base
+
+
+# hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
+phi_e[1]   ~ rj_neg_base  # size (km^2)
+phi_e[2]   ~ rj_neg_base  # log-size (km^2)
+phi_w[1]   ~ rj_pos_base  # size (km^2)
+phi_w[2]   ~ rj_pos_base  # log-size (km^2)
+phi_d[1]   ~ rj_neg_base  # distance (km)
+phi_d[2]   ~ rj_neg_base  # log-distance (km)
+phi_b[1]   ~ rj_pos_base  # distance (km)
+phi_b[2]   ~ rj_pos_base  # log-distance (km)
+sigma_e[1] ~ rj_neg_base  # is high island? (0=no, 1=yes)
+sigma_e[2] ~ rj_symm_base # uplift? (0=no, 1=yes)
+sigma_w[1] ~ rj_pos_base  # is high island? (0=no, 1=yes)
+sigma_w[2] ~ rj_symm_base # uplift? (0=no, 1=yes)
+sigma_d[1] ~ rj_neg_base  # over-ocean movement? (0=no, 1=yes)
+sigma_d[2] ~ rj_pos_base  # old-to-young movement? (0=no, 1=yes)
+sigma_b[1] ~ rj_pos_base  # over-ocean movement? (0=no, 1=yes)
+sigma_b[2] ~ rj_neg_base  # old-to-young_movement? (0=no, 1=yes)
 
 # initializing values (only relevant for inference later)
 # categorical feature effects
@@ -208,21 +196,6 @@ for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
 for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
 for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
 for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
-
-# hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
-if (analysis_type == "sim") {
-    if (use_rj) {
-        phi_d[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5)   # distance (km)
-        phi_b[1] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)    # distance (km)
-        sigma_w[1] ~ dnRJMixture(0.0, dnUniform(0,4), p=0.5)  # is high island? (0=no, 1=yes)
-        sigma_e[1] ~ dnRJMixture(0.0, dnUniform(-4,0), p=0.5) # is high island? (0=no, 1=yes)
-    } else {
-        phi_d[1] ~ dnUniform(-4,0)   # distance (km)
-        phi_b[1] ~ dnUniform(0,4)    # distance (km)
-        sigma_w[1] ~ dnUniform(0,4)  # is high island? (0=no, 1=yes)
-        sigma_e[1] ~ dnUniform(-4,0) # is high island? (0=no, 1=yes)
-    }
-}
 
 # base-rate multipliers
 # first t is oldest

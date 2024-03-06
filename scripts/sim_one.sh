@@ -8,7 +8,7 @@ fi
 
 # RevBayes: generate island radiation rates
 echo "RevBayes: generate island radiation rates (${S_IDX})"
-rb_bg_args="s_idx=${S_IDX}; source(\"./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev\")"
+rb_bg_args="s_idx=${S_IDX}; source(\"./scripts/rev_scripts/make_fig_rate_output.Rev\")"
 
 echo "${rb_bg_args}" | rb-tp
 
