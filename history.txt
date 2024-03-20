@@ -1,52 +1,3 @@
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-x <- 1
-x
-Q <- fnJC(4)
-Q
-Q.methods()
-Q <- fnJC(4)
-Q.methods()
-Q
-Q.getStateDescriptions()
-
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=4; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=4;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
 i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
@@ -98,3 +49,52 @@ i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
 i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=4; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=4;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=3; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=3; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=4; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=4;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=5; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=5;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=6; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=6;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=7; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=7;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=8; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=8;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=9; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=9;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=11; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=11;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=12; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=12;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=13; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=13;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=18; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=18;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=19; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=19;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
