@@ -1,20 +1,39 @@
+#!/usr/bin/env sh
+
 # Set up volumes
 LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/storage1/fs1/michael.landis/Active/hawaiian_simulations"
 JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
 
+START_IDX=1
+END_IDX=1
+if [ -n "$1" ] && [ ! -n "$2" ]; then
+    START_IDX=1
+    END_IDX=$1 
+fi
+
+if [ -n "$1" ] && [ -n "$2" ]; then
+    START_IDX=$1
+    END_IDX=$2
+fi
+
+echo "Running jobs ${START_IDX} to ${END_IDX}"
+
+# get user/group for job submission
+RUN_GROUP=${USER}
+
 # Create a list of sims to run (numbers)
-RUN_LIST=$(seq 1 100)
-#RUN_LIST=(9999)
+RUN_LIST=$(seq $START_IDX $END_IDX)
 
 # Create and run a job for each sim
 for i in ${RUN_LIST[@]}
 do
+    echo "Submitting job ${i}"
     bsub -G compute-michael.landis \
-	-g /k.swiston/hawaii \
+	-g /${RUN_GROUP} \
 	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations/ \
 	-o $JOBDIR/$i.stdout.txt \
 	-J $i \
 	-q general \
 	-n 4 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \
-	-a 'docker(sswiston/rb_tp:pj)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+	-a 'docker(sswiston/rb_tp:7)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
 done

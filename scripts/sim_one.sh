@@ -1,16 +1,30 @@
 #!/bin/sh
 
+RB_EXEC="rb-tp"
+
+# check if running inside Docker
+if [ -f "/start.sh" ]; then
+    RB_EXEC="rb"
+    source /start.sh
+fi
+
+NOW=$( date '+%F_%H:%M:%S' )
+echo $NOW
+
 # pass random sim/seed index as argument
-S_IDX=$1
-if [ -z "${S_IDX}" ]; then
-    S_IDX=1
+S_IDX=1
+if [ -n "${S_IDX}" ]; then
+    S_IDX=$1
+fi
+if [ -n "${LSB_JOBNAME}" ]; then
+    S_IDX=${LSB_JOBNAME}
 fi
 
 # RevBayes: generate island radiation rates
 echo "RevBayes: generate island radiation rates (${S_IDX})"
 rb_bg_args="s_idx=${S_IDX}; source(\"./scripts/rev_scripts/make_fig_rate_output.Rev\")"
 
-echo "${rb_bg_args}" | rb-tp
+echo "${rb_bg_args}" | ${RB_EXEC}
 
 # RevBayes: generate Phylojunction scripts
 echo "RevBayes: generate Phylojunction scripts (${S_IDX})"
@@ -25,7 +39,7 @@ pjcli -d -p "sample${S_IDX}" -r ${S_IDX} -o "./experiment1/pj_output/" "./experi
 echo "RevBayes: simulate sequence data and make final tree (${S_IDX})"
 rb_molphy_args="i=${S_IDX};exp_path=\"./experiment1/\";source(\"./scripts/rev_scripts/sim_sequences.Rev\");"
 echo $rb_mol_phy_args
-echo $rb_molphy_args | rb-tp
+echo $rb_molphy_args | ${RB_EXEC}
 
 # R: make plot with range states at tips
 Rscript ./scripts/plot_tree.R ${S_IDX}

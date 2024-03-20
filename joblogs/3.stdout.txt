@@ -1,106 +1,13 @@
-pj: Pulling from sswiston/rb_tp
-Digest: sha256:8a960c0d392cc6c08aa640ba8b624d29c9316f2a483b87b8908f3083062a233b
-Status: Image is up to date for sswiston/rb_tp:pj
-docker.io/sswiston/rb_tp:pj
-Setting up Docker container
-Performing simulation 3
-2024-02-07_08:17:31
-Generating model parameters
-
-RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
-
-Visit the website www.RevBayes.com for more information about RevBayes.
-
-RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
-
-To quit RevBayes type 'quit()' or 'q()'.
-
-
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
-   Processing file "scripts/rev_scripts/model.Rev"
-Reading features in time slice 1
-Reading features in time slice 2
-Reading features in time slice 3
-Reading features in time slice 4
-Reading features in time slice 5
-Reading features in time slice 6
-Reading features in time slice 7
-   Processing of file "scripts/rev_scripts/model.Rev" completed
-Setting seed to 3
-Writing true feature effect values for categorical feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/sigma_true_vals_sample3_feat1.tsv
-Writing true feature effect values for quantitative feature 1 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/phi_true_vals_sample3_feat1.tsv
-Writing true base rate values for sample 3 in /storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/model_truth/rho_true_vals_sample3.tsv
-
-Whole tree root age = 22.5342
-Origin age of island radiation = 5.6705
-Island that got colonized = Necker
-Generating PhyloJunction script
-Everything OK with provided arguments!
-Preparing .pj script for simulation 3.
-...done!
-Running PhyloJunction script
-Matplotlib created a temporary cache directory at /tmp/224358.tmpdir/matplotlib-0zqv0q8z because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
-
-RevBayes version (1.2.1)
-Build from hawaii_fix (rapture-2191-gf38548) on Wed Feb  7 01:25:36 UTC 2024
-
-Visit the website www.RevBayes.com for more information about RevBayes.
-
-RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
-
-To quit RevBayes type 'quit()' or 'q()'.
-
-
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
-
-------------------------------------------------------------
-Sender: LSF System <lsfadmin@compute1-exec-163.ris.wustl.edu>
-Subject: Job 224358: <3> in cluster <compute1-lsf> Done
-
-Job <3> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Tue Feb  6 22:03:42 2024
-Job was executed on host(s) <4*compute1-exec-163.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Wed Feb  7 02:17:30 2024
-</home/k.swiston> was used as the home directory.
-</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
-Started at Wed Feb  7 02:17:30 2024
-Terminated at Wed Feb  7 02:20:42 2024
-Results reported at Wed Feb  7 02:20:42 2024
-
-Your job looked like:
-
-------------------------------------------------------------
-# LSBATCH: User input
-/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
-------------------------------------------------------------
-
-Successfully completed.
-
-Resource usage summary:
-
-    CPU time :                                   189.27 sec.
-    Max Memory :                                 153 MB
-    Average Memory :                             146.34 MB
-    Total Requested Memory :                     4096.00 MB
-    Delta Memory :                               3943.00 MB
-    Max Swap :                                   145 MB
-    Max Processes :                              9
-    Max Threads :                                19
-    Run time :                                   191 sec.
-    Turnaround time :                            15420 sec.
-
-The output (if any) is above this job summary.
-
-pj: Pulling from sswiston/rb_tp
-Digest: sha256:6fbf4ccd7a9b854cf2f7d855afca38f7eaa0ee4f0f0179737b55b78f1c8d30ff
-Status: Image is up to date for sswiston/rb_tp:pj
-docker.io/sswiston/rb_tp:pj
-Setting up Docker container
-Performing simulation 3
-2024-02-15_16:43:23
-Generating model parameters
+7: Pulling from sswiston/rb_tp
+Digest: sha256:d44e872f338de09f70d9d986f16e4daf3ef531cec9699d3183f0e1e60425bd91
+Status: Image is up to date for sswiston/rb_tp:7
+docker.io/sswiston/rb_tp:7
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+2024-03-20_15:40:34
+RevBayes: generate island radiation rates (3)
 
 RevBayes version (1.2.2)
-Build from stochmap_tp_dirty_merge (rapture-2386-gf9f25c) on Thu Feb  8 16:07:25 UTC 2024
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -109,21 +16,68 @@ RevBayes is free software released under the GPL license, version 3. Type 'licen
 To quit RevBayes type 'quit()' or 'q()'.
 
 
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
+>    Processing file "./scripts/rev_scripts/make_fig_rate_output.Rev"
    Processing file "scripts/rev_scripts/model.Rev"
    Error:	The folder doesn't exist.
    Error:	Problem processing line 17 in file "scripts/rev_scripts/model.Rev"
-   Error:	Problem processing line 21 in file
-   "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev"
-> Generating PhyloJunction script
+   Error:	Problem processing line 21 in file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+> RevBayes: generate Phylojunction scripts (3)
+python3 ./scripts/make_pj.py 3 experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "17.750, 7.750, 6.000, 3.930, 2.100, 1.100"
 Everything OK with provided arguments!
 Preparing .pj script for simulation 3.
 ...done!
-Running PhyloJunction script
-Matplotlib created a temporary cache directory at /tmp/421324.tmpdir/matplotlib-ov499fwm because the default path (/home/k.swiston/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Phylojunction: simulate island radiation (3)
+Matplotlib created a temporary cache directory at /tmp/275338.tmpdir/matplotlib-tmzc7daa because the default path (/home/michael.landis/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+Reading script ./experiment1/pj_scripts_generated_in_py/sim3.pj
+    sys.exit(load_entry_point('PhyloJunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 167, in call_cli
+    execute_pj_script(
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 39, in execute_pj_script
+    = cmd.script2dag(model,
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 62, in script2dag
+    _execute_spec_lines(all_lines_list, dag)
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 45, in _execute_spec_lines
+    _ = cmdline2dag(dag_obj, line)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 176, in cmdline2dag
+    parse_samp_dn_assignment(
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 525, in parse_samp_dn_assignment
+    create_add_rv_pgm(
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 386, in create_add_rv_pgm
+    stoch_node_dag = pgm.StochasticNodeDAG(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 615, in __init__
+    self.generate_value() if not value else value
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 639, in generate_value
+    return self.sampling_dn.generate()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/distribution/dn_discrete_sse.py", line 2151, in generate
+    raise ec.MaxNFailedAttemptsLimit(n_failed_attempts)
+phylojunction.utility.exception_classes.MaxNFailedAttemptsLimit: ERROR: Hit maximum number of (failed) sampling attempts (201).
+RevBayes: simulate sequence data and make final tree (3)
+
 
 RevBayes version (1.2.2)
-Build from stochmap_tp_dirty_merge (rapture-2386-gf9f25c) on Thu Feb  8 16:07:25 UTC 2024
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
 
 Visit the website www.RevBayes.com for more information about RevBayes.
 
@@ -132,41 +86,57 @@ RevBayes is free software released under the GPL license, version 3. Type 'licen
 To quit RevBayes type 'quit()' or 'q()'.
 
 
->    Processing file "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/sim_sequences.Rev"
+>    Processing file "./scripts/rev_scripts/sim_sequences.Rev"
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+WARNING: ignoring environment value of R_HOME
+During startup - Warning messages:
+1: Setting LC_CTYPE failed, using "C" 
+2: Setting LC_COLLATE failed, using "C" 
+3: Setting LC_TIME failed, using "C" 
+4: Setting LC_MESSAGES failed, using "C" 
+5: Setting LC_MONETARY failed, using "C" 
+6: Setting LC_PAPER failed, using "C" 
+7: Setting LC_MEASUREMENT failed, using "C" 
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file './experiment1/sim_data/sample3.tre': No such file or directory
+Execution halted
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@compute1-exec-133.ris.wustl.edu>
-Subject: Job 421324: <3> in cluster <compute1-lsf> Done
+Sender: LSF System <lsfadmin@compute1-exec-87.ris.wustl.edu>
+Subject: Job 275338: <3> in cluster <compute1-lsf> Exited
 
-Job <3> was submitted from host <compute1-client-1.ris.wustl.edu> by user <k.swiston> in cluster <compute1-lsf> at Thu Feb 15 10:21:09 2024
-Job was executed on host(s) <4*compute1-exec-133.ris.wustl.edu>, in queue <general>, as user <k.swiston> in cluster <compute1-lsf> at Thu Feb 15 10:43:22 2024
-</home/k.swiston> was used as the home directory.
+Job <3> was submitted from host <compute1-client-1.ris.wustl.edu> by user <michael.landis> in cluster <compute1-lsf> at Wed Mar 20 10:40:27 2024
+Job was executed on host(s) <4*compute1-exec-87.ris.wustl.edu>, in queue <general>, as user <michael.landis> in cluster <compute1-lsf> at Wed Mar 20 10:40:31 2024
+</home/michael.landis> was used as the home directory.
 </storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
-Started at Thu Feb 15 10:43:22 2024
-Terminated at Thu Feb 15 10:46:37 2024
-Results reported at Thu Feb 15 10:46:37 2024
+Started at Wed Mar 20 10:40:31 2024
+Terminated at Wed Mar 20 10:40:54 2024
+Results reported at Wed Mar 20 10:40:54 2024
 
 Your job looked like:
 
 ------------------------------------------------------------
 # LSBATCH: User input
-/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim.sh
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
 ------------------------------------------------------------
 
-Successfully completed.
+Exited with exit code 1.
 
 Resource usage summary:
 
-    CPU time :                                   190.28 sec.
-    Max Memory :                                 42 MB
-    Average Memory :                             39.97 MB
+    CPU time :                                   10.18 sec.
+    Max Memory :                                 9 MB
+    Average Memory :                             7.20 MB
     Total Requested Memory :                     4096.00 MB
-    Delta Memory :                               4054.00 MB
-    Max Swap :                                   33 MB
-    Max Processes :                              8
-    Max Threads :                                20
-    Run time :                                   197 sec.
-    Turnaround time :                            1528 sec.
+    Delta Memory :                               4087.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                14
+    Run time :                                   23 sec.
+    Turnaround time :                            27 sec.
 
 The output (if any) is above this job summary.
 

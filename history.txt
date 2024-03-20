@@ -1,15 +1,5 @@
 s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
 i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
-s_idx=2; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
-i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=1; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
 i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=3; source("./scripts/rev_scripts/make_fig_make_geosse_rates_unif_coltime.Rev")
@@ -98,3 +88,13 @@ s_idx=18; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
 i=18;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 s_idx=19; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
 i=19;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+s_idx=3; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=3;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
