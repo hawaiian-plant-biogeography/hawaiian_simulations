@@ -40,3 +40,9 @@ i=19;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev")
 i=6;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 i=4;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 i=13;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=17; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=17;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+i=18;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");

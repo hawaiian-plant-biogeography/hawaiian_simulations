@@ -1748,3 +1748,340 @@ e047a7a0ca04: Pull complete
 6d3a284f9141: Pull complete
 5ea6df8e7a07: Pull complete
 c7c6489014d8: Pull complete
+8bc5ad50c954: Pull complete
+5264701fb427: Pull complete
+fef2e7cb801c: Pull complete
+6cadd8d78d75: Pull complete
+59106d4298b7: Pull complete
+59cb04e44bd9: Pull complete
+dcf44bd1bad8: Pull complete
+2d8af8ec16b4: Pull complete
+bda034caa3f7: Pull complete
+bf061592f1b5: Pull complete
+b0f2b7224b35: Pull complete
+ae2f82e34288: Pull complete
+10064aa6ffbc: Pull complete
+f27a436e1e5f: Pull complete
+80d88015f8e8: Pull complete
+7e7114afa1df: Pull complete
+d196687fcc5a: Pull complete
+bae910fe3da9: Pull complete
+e974a9812dac: Pull complete
+6102c2ad01e7: Pull complete
+45036c5db557: Pull complete
+71a8bc8ee4a8: Pull complete
+412dee14a042: Pull complete
+5d922c5d1da7: Pull complete
+f9aa7eff4c15: Pull complete
+39e9df6610b7: Pull complete
+9c8a6b3b7445: Pull complete
+25ed8948efe2: Pull complete
+1785ed8296b5: Pull complete
+Digest: sha256:d44e872f338de09f70d9d986f16e4daf3ef531cec9699d3183f0e1e60425bd91
+Status: Downloaded newer image for sswiston/rb_tp:7
+docker.io/sswiston/rb_tp:7
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+2024-04-03_15:37:43
+RevBayes: generate island radiation rates (1)
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+   Processing file "scripts/rev_scripts/model.Rev"
+   Error:	The folder doesn't exist.
+   Error:	Problem processing line 17 in file "scripts/rev_scripts/model.Rev"
+   Error:	Problem processing line 21 in file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+> RevBayes: generate Phylojunction scripts (1)
+python3 ./scripts/make_pj.py 1 experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "17.750, 7.750, 6.000, 3.930, 2.100, 1.100"
+Everything OK with provided arguments!
+Preparing .pj script for simulation 1.
+...done!
+Phylojunction: simulate island radiation (1)
+Matplotlib created a temporary cache directory at /tmp/201756.tmpdir/matplotlib-iopif4d5 because the default path (/home/michael.landis/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+/PhyloJunction/src/phylojunction/readwrite/pj_write.py:479: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  tree_summary_df_dict[rv_name].at[idx, "n_" + str(ith_state)] = \
+Reading script ./experiment1/pj_scripts_generated_in_py/sim1.pj
+    ... done!
+Writing ./experiment1/pj_output/figures/sample1_trs1_1
+RevBayes: simulate sequence data and make final tree (1)
+
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "./scripts/rev_scripts/sim_sequences.Rev"
+Working on simulation 1
+root age 29.3218 colonization age 19.9437 origin time 0.952526 ingroup branch 10.3306
+Got root and colonization ages
+Grafted outgroup onto tree
+Grafted outgroup onto tip data
+   Attempting to read the contents of file "sample1.tre"
+   Successfully read file
+Removed extinct taxa and saved new tree
+Simulated sequences
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+WARNING: ignoring environment value of R_HOME
+During startup - Warning messages:
+1: Setting LC_CTYPE failed, using "C" 
+2: Setting LC_COLLATE failed, using "C" 
+3: Setting LC_TIME failed, using "C" 
+4: Setting LC_MESSAGES failed, using "C" 
+5: Setting LC_MONETARY failed, using "C" 
+6: Setting LC_PAPER failed, using "C" 
+7: Setting LC_MEASUREMENT failed, using "C" 
+Taxon= 1 	range_int= 6 	range_bit= 0000001 	region_set= Z 
+Taxon= 2 	range_int= 36 	range_bit= 0101100 	region_set= NOM 
+Taxon= 3 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 4 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 5 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 6 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 7 	range_int= 11 	range_bit= 0101000 	region_set= NO 
+Taxon= 8 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 9 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 10 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 11 	range_int= 0 	range_bit= 1000000 	region_set= G 
+Taxon= 12 	range_int= 0 	range_bit= 1000000 	region_set= G 
+Taxon= 13 	range_int= 5 	range_bit= 0000010 	region_set= H 
+Taxon= 14 	range_int= 5 	range_bit= 0000010 	region_set= H 
+Taxon= 15 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 16 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 17 	range_int= 18 	range_bit= 0100010 	region_set= NH 
+Taxon= 18 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 19 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 20 	range_int= 16 	range_bit= 0001100 	region_set= OM 
+Taxon= 21 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 22 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 23 	range_int= 12 	range_bit= 0011000 	region_set= KO 
+Taxon= 24 	range_int= 12 	range_bit= 0011000 	region_set= KO 
+Taxon= 25 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 26 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 27 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 28 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 29 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 30 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 31 	range_int= 0 	range_bit= 1000000 	region_set= G 
+Taxon= 32 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 33 	range_int= 16 	range_bit= 0001100 	region_set= OM 
+Taxon= 34 	range_int= 0 	range_bit= 1000000 	region_set= G 
+Taxon= 35 	range_int= 0 	range_bit= 1000000 	region_set= G 
+Taxon= 36 	range_int= 5 	range_bit= 0000010 	region_set= H 
+Taxon= 37 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 38 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 39 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 40 	range_int= 5 	range_bit= 0000010 	region_set= H 
+Taxon= 41 	range_int= 5 	range_bit= 0000010 	region_set= H 
+Taxon= 42 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 43 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 44 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 45 	range_int= 9 	range_bit= 0110000 	region_set= NK 
+Taxon= 46 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 47 	range_int= 9 	range_bit= 0110000 	region_set= NK 
+Taxon= 48 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 49 	range_int= 43 	range_bit= 0011010 	region_set= KOH 
+Taxon= 50 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 51 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 52 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 53 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 54 	range_int= 8 	range_bit= 1010000 	region_set= GK 
+Taxon= 55 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 56 	range_int= 12 	range_bit= 0011000 	region_set= KO 
+Taxon= 57 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 58 	range_int= 19 	range_bit= 0010010 	region_set= KH 
+Taxon= 59 	range_int= 43 	range_bit= 0011010 	region_set= KOH 
+Taxon= 60 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 61 	range_int= 15 	range_bit= 0010100 	region_set= KM 
+Taxon= 62 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 63 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 64 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 65 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 66 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 67 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 68 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 69 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 70 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 71 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 72 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 73 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 74 	range_int= 12 	range_bit= 0011000 	region_set= KO 
+Taxon= 75 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 76 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 77 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 78 	range_int= 6 	range_bit= 0000001 	region_set= Z 
+Taxon= 79 	range_int= 28 	range_bit= 1110000 	region_set= GNK 
+Taxon= 80 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 81 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 82 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 83 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 84 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 85 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 86 	range_int= 16 	range_bit= 0001100 	region_set= OM 
+Taxon= 87 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 88 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 89 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 90 	range_int= 14 	range_bit= 0100100 	region_set= NM 
+Taxon= 91 	range_int= 6 	range_bit= 0000001 	region_set= Z 
+Taxon= 92 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 93 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 94 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 95 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 96 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 97 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 98 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 99 	range_int= 3 	range_bit= 0001000 	region_set= O 
+Taxon= 100 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 101 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 102 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 103 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 104 	range_int= 4 	range_bit= 0000100 	region_set= M 
+Taxon= 105 	range_int= 19 	range_bit= 0010010 	region_set= KH 
+Taxon= 106 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 107 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 108 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 109 	range_int= 11 	range_bit= 0101000 	region_set= NO 
+Taxon= 110 	range_int= 6 	range_bit= 0000001 	region_set= Z 
+Taxon= 111 	range_int= 6 	range_bit= 0000001 	region_set= Z 
+Taxon= 112 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 113 	range_int= 12 	range_bit= 0011000 	region_set= KO 
+Taxon= 114 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 115 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 116 	range_int= 0 	range_bit= 1000000 	region_set= G 
+Taxon= 117 	range_int= 2 	range_bit= 0010000 	region_set= K 
+Taxon= 118 	range_int= 1 	range_bit= 0100000 	region_set= N 
+Taxon= 119 	range_int= 19 	range_bit= 0010010 	region_set= KH 
+Taxon= 120 	range_int= 9 	range_bit= 0110000 	region_set= NK 
+null device 
+          1 
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-113.ris.wustl.edu>
+Subject: Job 201756: <1> in cluster <compute1-lsf> Done
+
+Job <1> was submitted from host <compute1-client-1.ris.wustl.edu> by user <michael.landis> in cluster <compute1-lsf> at Wed Apr  3 10:33:00 2024
+Job was executed on host(s) <4*compute1-exec-113.ris.wustl.edu>, in queue <general>, as user <michael.landis> in cluster <compute1-lsf> at Wed Apr  3 10:33:06 2024
+</home/michael.landis> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Wed Apr  3 10:33:06 2024
+Terminated at Wed Apr  3 10:38:09 2024
+Results reported at Wed Apr  3 10:38:09 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   10.72 sec.
+    Max Memory :                                 9 MB
+    Average Memory :                             8.84 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               4087.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                18
+    Run time :                                   303 sec.
+    Turnaround time :                            309 sec.
+
+The output (if any) is above this job summary.
+
