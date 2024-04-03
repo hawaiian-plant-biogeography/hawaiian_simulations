@@ -140,3 +140,683 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+7: Pulling from sswiston/rb_tp
+Digest: sha256:d44e872f338de09f70d9d986f16e4daf3ef531cec9699d3183f0e1e60425bd91
+Status: Image is up to date for sswiston/rb_tp:7
+docker.io/sswiston/rb_tp:7
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+2024-03-20_15:58:50
+RevBayes: generate island radiation rates (3)
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+   Processing file "scripts/rev_scripts/model.Rev"
+   Error:	The folder doesn't exist.
+   Error:	Problem processing line 17 in file "scripts/rev_scripts/model.Rev"
+   Error:	Problem processing line 21 in file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+> RevBayes: generate Phylojunction scripts (3)
+python3 ./scripts/make_pj.py 3 experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "17.750, 7.750, 6.000, 3.930, 2.100, 1.100"
+Everything OK with provided arguments!
+Preparing .pj script for simulation 3.
+...done!
+Phylojunction: simulate island radiation (3)
+Matplotlib created a temporary cache directory at /tmp/275435.tmpdir/matplotlib-uy0ia1i1 because the default path (/home/michael.landis/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Reading script ./experiment1/pj_scripts_generated_in_py/sim3.pj
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+    sys.exit(load_entry_point('PhyloJunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 167, in call_cli
+    execute_pj_script(
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 39, in execute_pj_script
+    = cmd.script2dag(model,
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 62, in script2dag
+    _execute_spec_lines(all_lines_list, dag)
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 45, in _execute_spec_lines
+    _ = cmdline2dag(dag_obj, line)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 176, in cmdline2dag
+    parse_samp_dn_assignment(
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 525, in parse_samp_dn_assignment
+    create_add_rv_pgm(
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 386, in create_add_rv_pgm
+    stoch_node_dag = pgm.StochasticNodeDAG(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 615, in __init__
+    self.generate_value() if not value else value
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 639, in generate_value
+    return self.sampling_dn.generate()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/distribution/dn_discrete_sse.py", line 2151, in generate
+    raise ec.MaxNFailedAttemptsLimit(n_failed_attempts)
+phylojunction.utility.exception_classes.MaxNFailedAttemptsLimit: ERROR: Hit maximum number of (failed) sampling attempts (201).
+RevBayes: simulate sequence data and make final tree (3)
+
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "./scripts/rev_scripts/sim_sequences.Rev"
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+WARNING: ignoring environment value of R_HOME
+During startup - Warning messages:
+1: Setting LC_CTYPE failed, using "C" 
+2: Setting LC_COLLATE failed, using "C" 
+3: Setting LC_TIME failed, using "C" 
+4: Setting LC_MESSAGES failed, using "C" 
+5: Setting LC_MONETARY failed, using "C" 
+6: Setting LC_PAPER failed, using "C" 
+7: Setting LC_MEASUREMENT failed, using "C" 
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file './experiment1/sim_data/sample3.tre': No such file or directory
+Execution halted
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-284.ris.wustl.edu>
+Subject: Job 275435: <3> in cluster <compute1-lsf> Exited
+
+Job <3> was submitted from host <compute1-client-1.ris.wustl.edu> by user <michael.landis> in cluster <compute1-lsf> at Wed Mar 20 10:58:46 2024
+Job was executed on host(s) <4*compute1-exec-284.ris.wustl.edu>, in queue <general>, as user <michael.landis> in cluster <compute1-lsf> at Wed Mar 20 10:58:48 2024
+</home/michael.landis> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Wed Mar 20 10:58:48 2024
+Terminated at Wed Mar 20 10:59:03 2024
+Results reported at Wed Mar 20 10:59:03 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   10.36 sec.
+    Max Memory :                                 9 MB
+    Average Memory :                             7.50 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               4087.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                21
+    Run time :                                   15 sec.
+    Turnaround time :                            17 sec.
+
+The output (if any) is above this job summary.
+
+7: Pulling from sswiston/rb_tp
+09e2bc8a597c: Pulling fs layer
+2b9b886a42b7: Pulling fs layer
+8ce14f1b6040: Pulling fs layer
+bc3ece41e309: Pulling fs layer
+2e1749e41102: Pulling fs layer
+ef83c79745fb: Pulling fs layer
+7e173d175d10: Pulling fs layer
+e763f42586ce: Pulling fs layer
+c4087cb4d203: Pulling fs layer
+6bb80b25c679: Pulling fs layer
+22deef2c6d74: Pulling fs layer
+ef83c79745fb: Waiting
+bc3ece41e309: Waiting
+6f174565ecc2: Pulling fs layer
+2e1749e41102: Waiting
+7e173d175d10: Waiting
+d94d92919122: Pulling fs layer
+e763f42586ce: Waiting
+d4d0501e8640: Pulling fs layer
+c4087cb4d203: Waiting
+6bb80b25c679: Waiting
+22deef2c6d74: Waiting
+4ba75a747dc2: Pulling fs layer
+6f174565ecc2: Waiting
+d94d92919122: Waiting
+bdfba4e06563: Pulling fs layer
+d4d0501e8640: Waiting
+4ba75a747dc2: Waiting
+da15b734f4e0: Pulling fs layer
+425eed1469d0: Pulling fs layer
+91d9256d1553: Pulling fs layer
+1cc816f5fb7c: Pulling fs layer
+425eed1469d0: Waiting
+bcd418f9087a: Pulling fs layer
+91d9256d1553: Waiting
+7d025bc8d970: Pulling fs layer
+00c5aaadc119: Pulling fs layer
+1cc816f5fb7c: Waiting
+a8eca5b08ab0: Pulling fs layer
+bcd418f9087a: Waiting
+00c5aaadc119: Waiting
+7d025bc8d970: Waiting
+339d14fa1e4c: Pulling fs layer
+a8eca5b08ab0: Waiting
+4f4fb700ef54: Pulling fs layer
+339d14fa1e4c: Waiting
+5eb1a1bfa10e: Pulling fs layer
+4f4fb700ef54: Waiting
+5eb1a1bfa10e: Waiting
+415592e71761: Pulling fs layer
+9f5fbef0620e: Pulling fs layer
+a78a1dc0f4ef: Pulling fs layer
+9f5fbef0620e: Waiting
+b255d9d428d8: Pulling fs layer
+de70acc16f82: Pulling fs layer
+fa1002082786: Pulling fs layer
+b255d9d428d8: Waiting
+c3b64c473cfe: Pulling fs layer
+de70acc16f82: Waiting
+fa1002082786: Waiting
+5e97fff42a10: Pulling fs layer
+81c46080858b: Pulling fs layer
+c39bdad10cf5: Pulling fs layer
+81c46080858b: Waiting
+5e97fff42a10: Waiting
+2b40fb470834: Pulling fs layer
+c3b64c473cfe: Waiting
+58d9ecc6cfdb: Pulling fs layer
+2b40fb470834: Waiting
+4105f2da20ce: Pulling fs layer
+91d0d0f534d2: Pulling fs layer
+ec78cb8480bd: Pulling fs layer
+96109d199f8e: Pulling fs layer
+def4274856d4: Pulling fs layer
+0dbac9a3d1e0: Pulling fs layer
+86cfc42b53c3: Pulling fs layer
+58d9ecc6cfdb: Waiting
+4faf7f61c2dd: Pulling fs layer
+ec78cb8480bd: Waiting
+4105f2da20ce: Waiting
+24bca1ad81f4: Pulling fs layer
+96109d199f8e: Waiting
+91d0d0f534d2: Waiting
+def4274856d4: Waiting
+0dbac9a3d1e0: Waiting
+704da0235df3: Pulling fs layer
+4faf7f61c2dd: Waiting
+86cfc42b53c3: Waiting
+24bca1ad81f4: Waiting
+7d6447c960f3: Pulling fs layer
+704da0235df3: Waiting
+3b0b69eb049b: Pulling fs layer
+537dec467165: Pulling fs layer
+7d6447c960f3: Waiting
+51b20db66ae9: Pulling fs layer
+3b0b69eb049b: Waiting
+ff3bbbedf6ac: Pulling fs layer
+537dec467165: Waiting
+dc7747ed74a7: Pulling fs layer
+51b20db66ae9: Waiting
+271ae3ecbe0d: Pulling fs layer
+ff3bbbedf6ac: Waiting
+dc7747ed74a7: Waiting
+9b987fd087da: Pulling fs layer
+271ae3ecbe0d: Waiting
+fb9e55e586fa: Pulling fs layer
+9b987fd087da: Waiting
+23510a6343fd: Pulling fs layer
+fb9e55e586fa: Waiting
+fd4bbda75e78: Pulling fs layer
+f03725552f0a: Pulling fs layer
+37ee2f377bce: Pulling fs layer
+bb63d693d815: Pulling fs layer
+23510a6343fd: Waiting
+fd4bbda75e78: Waiting
+fd172d8c5862: Pulling fs layer
+37ee2f377bce: Waiting
+460c6c77ab97: Pulling fs layer
+f03725552f0a: Waiting
+4e71aa62ff60: Pulling fs layer
+bb63d693d815: Waiting
+c9f866f195f3: Pulling fs layer
+fd172d8c5862: Waiting
+460c6c77ab97: Waiting
+32341e95c9ae: Pulling fs layer
+079fdcbfbf54: Pulling fs layer
+4e71aa62ff60: Waiting
+8728d7d7d7db: Pulling fs layer
+d7cc881e1ebb: Pulling fs layer
+079fdcbfbf54: Waiting
+42809a0f6939: Pulling fs layer
+8728d7d7d7db: Waiting
+14f6d686ad0e: Pulling fs layer
+d7cc881e1ebb: Waiting
+7983115a1993: Pulling fs layer
+42809a0f6939: Waiting
+0f51bfe3804f: Pulling fs layer
+7983115a1993: Waiting
+9d81585664ac: Pulling fs layer
+0f51bfe3804f: Waiting
+342d991a1373: Pulling fs layer
+9dcae794478d: Pulling fs layer
+9d81585664ac: Waiting
+e047a7a0ca04: Pulling fs layer
+6d3a284f9141: Pulling fs layer
+342d991a1373: Waiting
+5ea6df8e7a07: Pulling fs layer
+9dcae794478d: Waiting
+c7c6489014d8: Pulling fs layer
+6d3a284f9141: Waiting
+e047a7a0ca04: Waiting
+8bc5ad50c954: Pulling fs layer
+5ea6df8e7a07: Waiting
+5264701fb427: Pulling fs layer
+8bc5ad50c954: Waiting
+c7c6489014d8: Waiting
+fef2e7cb801c: Pulling fs layer
+6cadd8d78d75: Pulling fs layer
+59106d4298b7: Pulling fs layer
+59cb04e44bd9: Pulling fs layer
+dcf44bd1bad8: Pulling fs layer
+2d8af8ec16b4: Pulling fs layer
+bda034caa3f7: Pulling fs layer
+bf061592f1b5: Pulling fs layer
+59cb04e44bd9: Waiting
+2d8af8ec16b4: Waiting
+b0f2b7224b35: Pulling fs layer
+dcf44bd1bad8: Waiting
+59106d4298b7: Waiting
+ae2f82e34288: Pulling fs layer
+fef2e7cb801c: Waiting
+6cadd8d78d75: Waiting
+b0f2b7224b35: Waiting
+10064aa6ffbc: Pulling fs layer
+f27a436e1e5f: Pulling fs layer
+ae2f82e34288: Waiting
+bf061592f1b5: Waiting
+10064aa6ffbc: Waiting
+80d88015f8e8: Pulling fs layer
+f27a436e1e5f: Waiting
+7e7114afa1df: Pulling fs layer
+d196687fcc5a: Pulling fs layer
+bae910fe3da9: Pulling fs layer
+e974a9812dac: Pulling fs layer
+6102c2ad01e7: Pulling fs layer
+45036c5db557: Pulling fs layer
+d196687fcc5a: Waiting
+80d88015f8e8: Waiting
+e974a9812dac: Waiting
+71a8bc8ee4a8: Pulling fs layer
+7e7114afa1df: Waiting
+412dee14a042: Pulling fs layer
+bae910fe3da9: Waiting
+6102c2ad01e7: Waiting
+71a8bc8ee4a8: Waiting
+5d922c5d1da7: Pulling fs layer
+412dee14a042: Waiting
+f9aa7eff4c15: Pulling fs layer
+39e9df6610b7: Pulling fs layer
+45036c5db557: Waiting
+9c8a6b3b7445: Pulling fs layer
+5d922c5d1da7: Waiting
+39e9df6610b7: Waiting
+f9aa7eff4c15: Waiting
+25ed8948efe2: Pulling fs layer
+1785ed8296b5: Pulling fs layer
+9c8a6b3b7445: Waiting
+1785ed8296b5: Waiting
+25ed8948efe2: Waiting
+8ce14f1b6040: Verifying Checksum
+8ce14f1b6040: Download complete
+bc3ece41e309: Download complete
+2e1749e41102: Verifying Checksum
+2e1749e41102: Download complete
+ef83c79745fb: Download complete
+09e2bc8a597c: Verifying Checksum
+09e2bc8a597c: Download complete
+e763f42586ce: Verifying Checksum
+e763f42586ce: Download complete
+c4087cb4d203: Verifying Checksum
+c4087cb4d203: Download complete
+2b9b886a42b7: Verifying Checksum
+2b9b886a42b7: Download complete
+7e173d175d10: Verifying Checksum
+7e173d175d10: Download complete
+6f174565ecc2: Verifying Checksum
+6f174565ecc2: Download complete
+22deef2c6d74: Verifying Checksum
+22deef2c6d74: Download complete
+d94d92919122: Verifying Checksum
+d94d92919122: Download complete
+d4d0501e8640: Verifying Checksum
+d4d0501e8640: Download complete
+4ba75a747dc2: Download complete
+bdfba4e06563: Verifying Checksum
+bdfba4e06563: Download complete
+6bb80b25c679: Verifying Checksum
+6bb80b25c679: Download complete
+da15b734f4e0: Verifying Checksum
+da15b734f4e0: Download complete
+91d9256d1553: Verifying Checksum
+91d9256d1553: Download complete
+09e2bc8a597c: Pull complete
+425eed1469d0: Verifying Checksum
+425eed1469d0: Download complete
+7d025bc8d970: Verifying Checksum
+7d025bc8d970: Download complete
+00c5aaadc119: Verifying Checksum
+00c5aaadc119: Download complete
+a8eca5b08ab0: Download complete
+bcd418f9087a: Verifying Checksum
+bcd418f9087a: Download complete
+339d14fa1e4c: Verifying Checksum
+339d14fa1e4c: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+5eb1a1bfa10e: Verifying Checksum
+5eb1a1bfa10e: Download complete
+9f5fbef0620e: Verifying Checksum
+9f5fbef0620e: Download complete
+1cc816f5fb7c: Verifying Checksum
+1cc816f5fb7c: Download complete
+a78a1dc0f4ef: Verifying Checksum
+a78a1dc0f4ef: Download complete
+b255d9d428d8: Verifying Checksum
+b255d9d428d8: Download complete
+fa1002082786: Verifying Checksum
+fa1002082786: Download complete
+de70acc16f82: Verifying Checksum
+de70acc16f82: Download complete
+c3b64c473cfe: Verifying Checksum
+c3b64c473cfe: Download complete
+5e97fff42a10: Verifying Checksum
+5e97fff42a10: Download complete
+81c46080858b: Download complete
+c39bdad10cf5: Verifying Checksum
+c39bdad10cf5: Download complete
+58d9ecc6cfdb: Verifying Checksum
+58d9ecc6cfdb: Download complete
+4105f2da20ce: Verifying Checksum
+4105f2da20ce: Download complete
+91d0d0f534d2: Verifying Checksum
+91d0d0f534d2: Download complete
+415592e71761: Verifying Checksum
+415592e71761: Download complete
+96109d199f8e: Download complete
+def4274856d4: Verifying Checksum
+def4274856d4: Download complete
+2b9b886a42b7: Pull complete
+8ce14f1b6040: Pull complete
+bc3ece41e309: Pull complete
+2e1749e41102: Pull complete
+ef83c79745fb: Pull complete
+ec78cb8480bd: Verifying Checksum
+ec78cb8480bd: Download complete
+0dbac9a3d1e0: Verifying Checksum
+0dbac9a3d1e0: Download complete
+4faf7f61c2dd: Download complete
+86cfc42b53c3: Verifying Checksum
+86cfc42b53c3: Download complete
+24bca1ad81f4: Verifying Checksum
+24bca1ad81f4: Download complete
+7d6447c960f3: Verifying Checksum
+7d6447c960f3: Download complete
+704da0235df3: Verifying Checksum
+704da0235df3: Download complete
+537dec467165: Verifying Checksum
+537dec467165: Download complete
+3b0b69eb049b: Verifying Checksum
+3b0b69eb049b: Download complete
+ff3bbbedf6ac: Verifying Checksum
+ff3bbbedf6ac: Download complete
+dc7747ed74a7: Verifying Checksum
+dc7747ed74a7: Download complete
+51b20db66ae9: Download complete
+271ae3ecbe0d: Verifying Checksum
+271ae3ecbe0d: Download complete
+9b987fd087da: Verifying Checksum
+9b987fd087da: Download complete
+fb9e55e586fa: Download complete
+fd4bbda75e78: Verifying Checksum
+fd4bbda75e78: Download complete
+f03725552f0a: Verifying Checksum
+f03725552f0a: Download complete
+37ee2f377bce: Download complete
+bb63d693d815: Verifying Checksum
+bb63d693d815: Download complete
+2b40fb470834: Download complete
+fd172d8c5862: Verifying Checksum
+fd172d8c5862: Download complete
+4e71aa62ff60: Verifying Checksum
+4e71aa62ff60: Download complete
+c9f866f195f3: Verifying Checksum
+c9f866f195f3: Download complete
+460c6c77ab97: Verifying Checksum
+460c6c77ab97: Download complete
+079fdcbfbf54: Verifying Checksum
+079fdcbfbf54: Download complete
+8728d7d7d7db: Verifying Checksum
+8728d7d7d7db: Download complete
+d7cc881e1ebb: Verifying Checksum
+42809a0f6939: Download complete
+14f6d686ad0e: Download complete
+7983115a1993: Verifying Checksum
+7983115a1993: Download complete
+32341e95c9ae: Verifying Checksum
+32341e95c9ae: Download complete
+23510a6343fd: Verifying Checksum
+23510a6343fd: Download complete
+9d81585664ac: Verifying Checksum
+9d81585664ac: Download complete
+9dcae794478d: Verifying Checksum
+9dcae794478d: Download complete
+e047a7a0ca04: Verifying Checksum
+e047a7a0ca04: Download complete
+0f51bfe3804f: Verifying Checksum
+0f51bfe3804f: Download complete
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-144.ris.wustl.edu>
+Subject: Job 201687: <3> in cluster <compute1-lsf> Exited
+
+Job <3> was submitted from host <compute1-client-1.ris.wustl.edu> by user <michael.landis> in cluster <compute1-lsf> at Wed Apr  3 10:32:23 2024
+Job was executed on host(s) <4*compute1-exec-144.ris.wustl.edu>, in queue <general>, as user <michael.landis> in cluster <compute1-lsf> at Wed Apr  3 10:32:27 2024
+</home/michael.landis> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Wed Apr  3 10:32:27 2024
+Terminated at Wed Apr  3 10:33:00 2024
+Results reported at Wed Apr  3 10:33:00 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with signal termination: 9.
+
+Resource usage summary:
+
+    CPU time :                                   0.03 sec.
+    Max Memory :                                 8 MB
+    Average Memory :                             4.57 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               4088.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                15
+    Run time :                                   33 sec.
+    Turnaround time :                            37 sec.
+
+The output (if any) is above this job summary.
+
+7: Pulling from sswiston/rb_tp
+Digest: sha256:d44e872f338de09f70d9d986f16e4daf3ef531cec9699d3183f0e1e60425bd91
+Status: Image is up to date for sswiston/rb_tp:7
+docker.io/sswiston/rb_tp:7
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+2024-04-03_15:33:07
+RevBayes: generate island radiation rates (3)
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+   Processing file "scripts/rev_scripts/model.Rev"
+   Error:	The folder doesn't exist.
+   Error:	Problem processing line 17 in file "scripts/rev_scripts/model.Rev"
+   Error:	Problem processing line 21 in file "./scripts/rev_scripts/make_fig_rate_output.Rev"
+> RevBayes: generate Phylojunction scripts (3)
+python3 ./scripts/make_pj.py 3 experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "17.750, 7.750, 6.000, 3.930, 2.100, 1.100"
+Everything OK with provided arguments!
+Preparing .pj script for simulation 3.
+...done!
+Phylojunction: simulate island radiation (3)
+Matplotlib created a temporary cache directory at /tmp/201759.tmpdir/matplotlib-0mkojgoh because the default path (/home/michael.landis/.config/matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Reading script ./experiment1/pj_scripts_generated_in_py/sim3.pj
+Traceback (most recent call last):
+  File "/.local/bin/pjcli", line 33, in <module>
+    sys.exit(load_entry_point('PhyloJunction', 'console_scripts', 'pjcli')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 167, in call_cli
+    execute_pj_script(
+  File "/PhyloJunction/src/phylojunction/interface/pjcli/pj_cli.py", line 39, in execute_pj_script
+    = cmd.script2dag(model,
+      ^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 62, in script2dag
+    _execute_spec_lines(all_lines_list, dag)
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 45, in _execute_spec_lines
+    _ = cmdline2dag(dag_obj, line)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 176, in cmdline2dag
+    parse_samp_dn_assignment(
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 525, in parse_samp_dn_assignment
+    create_add_rv_pgm(
+  File "/PhyloJunction/src/phylojunction/interface/cmdbox/cmd_parse.py", line 386, in create_add_rv_pgm
+    stoch_node_dag = pgm.StochasticNodeDAG(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 615, in __init__
+    self.generate_value() if not value else value
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/pgm/pgm.py", line 639, in generate_value
+    return self.sampling_dn.generate()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/PhyloJunction/src/phylojunction/distribution/dn_discrete_sse.py", line 2151, in generate
+    raise ec.MaxNFailedAttemptsLimit(n_failed_attempts)
+phylojunction.utility.exception_classes.MaxNFailedAttemptsLimit: ERROR: Hit maximum number of (failed) sampling attempts (201).
+RevBayes: simulate sequence data and make final tree (3)
+
+
+RevBayes version (1.2.2)
+Build from stochmap_tp_dirty_merge (rapture-2392-g9a7fd3) on Mon Mar  4 19:45:37 UTC 2024
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+>    Processing file "./scripts/rev_scripts/sim_sequences.Rev"
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)
+WARNING: ignoring environment value of R_HOME
+During startup - Warning messages:
+1: Setting LC_CTYPE failed, using "C" 
+2: Setting LC_COLLATE failed, using "C" 
+3: Setting LC_TIME failed, using "C" 
+4: Setting LC_MESSAGES failed, using "C" 
+5: Setting LC_MONETARY failed, using "C" 
+6: Setting LC_PAPER failed, using "C" 
+7: Setting LC_MEASUREMENT failed, using "C" 
+Error in file(file, "r") : cannot open the connection
+Calls: read.tree -> scan -> file
+In addition: Warning message:
+In file(file, "r") :
+  cannot open file './experiment1/sim_data/sample3.tre': No such file or directory
+Execution halted
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@compute1-exec-65.ris.wustl.edu>
+Subject: Job 201759: <3> in cluster <compute1-lsf> Exited
+
+Job <3> was submitted from host <compute1-client-1.ris.wustl.edu> by user <michael.landis> in cluster <compute1-lsf> at Wed Apr  3 10:33:00 2024
+Job was executed on host(s) <4*compute1-exec-65.ris.wustl.edu>, in queue <general>, as user <michael.landis> in cluster <compute1-lsf> at Wed Apr  3 10:33:06 2024
+</home/michael.landis> was used as the home directory.
+</storage1/fs1/michael.landis/Active/hawaiian_simulations/> was used as the working directory.
+Started at Wed Apr  3 10:33:06 2024
+Terminated at Wed Apr  3 10:33:22 2024
+Results reported at Wed Apr  3 10:33:22 2024
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   14.19 sec.
+    Max Memory :                                 396 MB
+    Average Memory :                             241.75 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3700.00 MB
+    Max Swap :                                   390 MB
+    Max Processes :                              8
+    Max Threads :                                15
+    Run time :                                   15 sec.
+    Turnaround time :                            22 sec.
+
+The output (if any) is above this job summary.
+
