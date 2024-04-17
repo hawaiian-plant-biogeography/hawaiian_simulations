@@ -5,4 +5,5 @@
 joblogs/*
 experiment1/pj_output/*
 experiment1/sim_data/*
+experiment1/model_truth/*
 !experiment1/sim_data/sample1.*
