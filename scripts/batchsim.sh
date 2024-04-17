@@ -31,7 +31,7 @@ do
     bsub -G compute-michael.landis \
 	-g /${RUN_GROUP} \
 	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations/ \
-	-o $JOBDIR/$i.stdout.txt \
+	-o $JOBDIR/$i.sim.stdout.txt \
 	-J $i \
 	-q general \
 	-n 4 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \

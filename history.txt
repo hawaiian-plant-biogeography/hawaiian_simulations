@@ -46,3 +46,6 @@ i=18;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev")
 s_idx=2; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
 i=2;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
 i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1; source("./scripts/rev_scripts/make_fig_rate_output.Rev")
+i=1;exp_path="./experiment1/";source("./scripts/rev_scripts/sim_sequences.Rev");
+s_idx=1;exp_path="/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/";source("/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/inf.Rev");
