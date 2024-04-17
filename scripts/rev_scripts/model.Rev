@@ -36,10 +36,10 @@ if (!exists("geosse_rates_dir")) geosse_rates_dir = exp_path + "geosse_rates_for
 # setting up FIG model quantities we may need to tweak
 #
 # base rate parameters
-if (!exists("rho_d_init")) rho_d_init = 0.125/5
-if (!exists("rho_e_init")) rho_e_init = 1/10
-if (!exists("rho_w_init")) rho_w_init = 1/20
-if (!exists("rho_b_init")) rho_b_init = 3*5/20
+if (!exists("rho_d_init")) rho_d_init = 0.025
+if (!exists("rho_e_init")) rho_e_init = 0.500
+if (!exists("rho_w_init")) rho_w_init = 0.250
+if (!exists("rho_b_init")) rho_b_init = 2.000
 
 # feature effect parameters
 if (!exists("sigma_d_init")) sigma_d_init = 0.0
