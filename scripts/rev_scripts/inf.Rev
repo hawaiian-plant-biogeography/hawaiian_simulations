@@ -16,7 +16,7 @@
 # Initial Setup #
 #################
 
-if (!exists("s_idx")) s_idx = 9999
+if (!exists("s_idx")) s_idx = 1       # 9999
 if (!exists("exp_path")) exp_path = "./experiment1/"
 analysis_type = v("sim","inf")[2]
 
@@ -55,11 +55,11 @@ num_sites = dat_mol.nchar()
 # reading range data
 bg_fp = exp_path + "sim_data/" + "sample" + s_idx + ".data.tsv"
 num_regions <- 7  # TODO: possibly learn this from regional feature files
-num_states <- floor(2^num_regions - 1)
+num_states <- floor(2^num_regions - 1)   ### TOO LARGE?
 dat_nn <- readCharacterDataDelimited( bg_fp,
                                       type="NaturalNumbers",
                                       stateLabels=num_states,
-                                      delimiter=",",
+                                      delimiter="\t",
                                       header=false )
 
 ##############
@@ -95,11 +95,14 @@ pi_root_region <- simplex(pi_root_region_vec)
 
 # convert RevBayes epoch times (descending order) into Tensorphylo
 # epoch times (ascending order) --> have times_fwd[] from model script
-for (i in 1:times.size()) {
-    lambda_fwd[i] := lambda[times.size()-i+1]
-    mu_fwd[i] := mu[times.size()-i+1]
-    Q_fwd[i] := Q[times.size()-i+1]
-    omega_fwd[i] := omega[times.size()-i+1]
+
+num_timeslices = Q.size()
+for (i in 1:num_timeslices) {
+    j = num_timeslices - i + 1
+    lambda_fwd[i] := lambda[j]
+    mu_fwd[i] := mu[j]
+    Q_fwd[i] := Q[j]
+    omega_fwd[i] := omega[j]
 }
 
 # set up Tensorphylo SSE model
