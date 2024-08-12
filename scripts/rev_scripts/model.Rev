@@ -165,7 +165,7 @@ for (i in 1:feature_QW[1].size()) phi_e[i] ~ rj_symm_base
 for (i in 1:feature_QB[1].size()) phi_d[i] ~ rj_symm_base
 for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_symm_base
 
-
+if (false) {
 # hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
 phi_e[1]   ~ rj_neg_base  # size (km^2)
 phi_e[2]   ~ rj_neg_base  # log-size (km^2)
@@ -196,6 +196,7 @@ for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
 for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
 for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
 for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
+}
 
 # base-rate multipliers
 # first t is oldest

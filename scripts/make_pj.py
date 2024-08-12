@@ -176,15 +176,21 @@ for i, clado_map in enumerate(toks):
             elif anc_state != left_state and anc_state != right_state and int(left_state) < int(right_state):
                 # only consider anc -> left,right patterns where left<right; ignore cases where right>left to avoid double-counting
                 pj_clado_str = pj_clado_bw_template_str.replace('ANC', anc_state).replace('LEFT', left_state).replace('RIGHT', right_state).replace("VALUE",val).replace('EPOCH', epoch)
-
                 rate_commands.append( pj_clado_str )
                 rate_names.append( f'det_b_birth_rate{anc_state}_{left_state}_{right_state}_t{epoch}' )
+                
+                pj_clado_str = pj_clado_bw_template_str.replace('ANC', anc_state).replace('LEFT', right_state).replace('RIGHT', left_state).replace("VALUE",val).replace('EPOCH', epoch)
+                rate_commands.append( pj_clado_str )
+                rate_names.append( f'det_b_birth_rate{anc_state}_{right_state}_{left_state}_t{epoch}' )
                 
             elif anc_state == right_state:
                 # only consider anc -> left,anc patterns; skip anc -> anc,right patterns to avoid double-counting
                 pj_clado_str = pj_clado_asym_template_str.replace('ANC', anc_state).replace('LEFT', left_state).replace('RIGHT',right_state).replace("VALUE",val).replace('EPOCH', epoch)
                 rate_commands.append( pj_clado_str )
                 rate_names.append( f'det_b_birth_rate{anc_state}_{left_state}_{right_state}_t{epoch}' )
+                pj_clado_str = pj_clado_asym_template_str.replace('ANC', anc_state).replace('LEFT', right_state).replace('RIGHT',left_state).replace("VALUE",val).replace('EPOCH', epoch)
+                rate_commands.append( pj_clado_str )
+                rate_names.append( f'det_b_birth_rate{anc_state}_{right_state}_{left_state}_t{epoch}' )
 
 clado_file.close()
 
