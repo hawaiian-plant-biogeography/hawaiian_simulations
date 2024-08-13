@@ -35,9 +35,13 @@ python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ e
 echo "Phylojunction: simulate island radiation (${S_IDX})"
 pjcli -d -p "sample${S_IDX}" -r ${S_IDX} -o "./experiment1/pj_output/" "./experiment1/pj_scripts_generated_in_py/sim${S_IDX}.pj" -f "trs"
 
+# Python: graft outgroup on to PJ tree
+echo "Python: graft outgroup on to PJ tree (${S_IDX})"
+python3 ./scripts/graft.py ${S_IDX}
+
 # RevBayes: generate sequence data and make final tree
 echo "RevBayes: simulate sequence data and make final tree (${S_IDX})"
-rb_molphy_args="i=${S_IDX};exp_path=\"./experiment1/\";source(\"./scripts/rev_scripts/sim_sequences.Rev\");"
+rb_molphy_args="i=${S_IDX};exp_path=\"./experiment1/\";source(\"./scripts/rev_scripts/sim_sequences2.Rev\");"
 echo $rb_mol_phy_args
 echo $rb_molphy_args | ${RB_EXEC}
 

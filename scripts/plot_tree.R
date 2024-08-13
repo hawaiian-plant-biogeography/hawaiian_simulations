@@ -24,6 +24,7 @@ lbl = read.table(lbl_fn, sep=",", header=T, colClasses=c("numeric","character"))
 region_names = unlist(strsplit("GNKOMHZ", split=""))
 
 tip_ranges = list()
+print(dat)
 for (i in 1:length(phy$tip.label)) {
     tip_lbl = phy$tip.label[i]
     range_int = dat[dat$V1==tip_lbl,]$V2

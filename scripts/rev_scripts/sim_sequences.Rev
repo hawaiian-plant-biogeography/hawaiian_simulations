@@ -13,9 +13,9 @@
 # Initial Setup #
 #################
 
-if (!exists("i")) i = 9999
+if (!exists("i")) i = 2 #9999
 if (!exists("exp_path")) exp_path = "experiment1/"
-if (!exists("continent_region_idx")) continent_region_idx = 6
+if (!exists("continent_region_idx")) continent_region_idx = 7
 
 pj_path = exp_path + "pj_output/"
 model_path = exp_path + "model_truth/"
@@ -25,12 +25,14 @@ out_path = exp_path + "sim_data/"
 # Adding Outgroup #
 ###################
 
-file = pj_path + "sample" + i + "_trs_complete.tsv"
+file = pj_path + "sample" + i + "_trs_complete2.tsv"
+print(file)
 if (fileExists(file)) {
     print("Working on simulation " + i)
 
     # Read the tree from pj_output
     str = readDataDelimitedFile(file,sep="",header=TRUE)[1][3]
+    #phy = readTrees(text=str, treetype="clock")
 
     # Read the root age from model_truth
     colonization_fp = model_path + "colonization_true_vals_sample" + i + ".tsv"
@@ -38,10 +40,13 @@ if (fileExists(file)) {
     root_age = colonization_times[1][2]
     colonization_age = colonization_times[1][3]
 
+    # origin time
     origin_time = str.substr(str.indexOf("root") + 5, str.indexOf("origin") - 2)
     position = origin_time.indexOf(".")
     origin_time = origin_time.substr(1,position-1) + origin_time.substr(position+1,origin_time.size())
+    print(origin_time)
     origin_time_length = origin_time.size()
+    print(origin_time_length)
     if (origin_time_length > 9) {
         origin_time = origin_time.substr(1,9)
         origin_time_length = 9
@@ -49,13 +54,16 @@ if (fileExists(file)) {
     origin_time = int(origin_time)
     origin_time = origin_time / (10^origin_time_length) * 10^(position-1)
 
+    # ingroup branch length
     ingroup_branch = root_age - colonization_age + origin_time
     print("root age " + root_age + " colonization age " + colonization_age + " origin time " + origin_time + " ingroup branch " + ingroup_branch)
 
     print("Got root and colonization ages")
 
     # Graft on outgroup to the tree
+    print(str)
     str = "(outgroup:" + root_age + "," + str.substr(2,str.size())
+    print(str)
     str = str.substr(1,str.indexOf("root")-1) + "sub" + str.substr(str.indexOf("root"),str.size())
     str = str.substr(1,str.indexOf("subroot")+7) + ingroup_branch + str.substr(str.indexOf("origin")-1,str.size())
     str = str.substr(1,str.indexOf("origin")-1) + "root;"

@@ -13,8 +13,8 @@
 #################
 
 #loadPlugin("TensorPhylo", "/Users/binho/.local/lib/")
-loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
-#loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
+#loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
+loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
 if (!exists("s_idx")) s_idx = 18 #9999
@@ -124,6 +124,7 @@ for (t in 1:n_epochs) {
     }
 }
 
+
 # layer objects:
 # 1D: time slice; shallowest comma
 # 2D: feature; one level deeper comma
@@ -167,35 +168,35 @@ for (i in 1:feature_QB[1].size()) phi_b[i] ~ rj_symm_base
 
 if (false) {
 # hard coding more reasonable priors for phi_d[1] and phi_b[1] in simulations
-phi_e[1]   ~ rj_neg_base  # size (km^2)
-phi_e[2]   ~ rj_neg_base  # log-size (km^2)
-phi_w[1]   ~ rj_pos_base  # size (km^2)
-phi_w[2]   ~ rj_pos_base  # log-size (km^2)
-phi_d[1]   ~ rj_neg_base  # distance (km)
-phi_d[2]   ~ rj_neg_base  # log-distance (km)
-phi_b[1]   ~ rj_pos_base  # distance (km)
-phi_b[2]   ~ rj_pos_base  # log-distance (km)
-sigma_e[1] ~ rj_neg_base  # is high island? (0=no, 1=yes)
-sigma_e[2] ~ rj_symm_base # uplift? (0=no, 1=yes)
-sigma_w[1] ~ rj_pos_base  # is high island? (0=no, 1=yes)
-sigma_w[2] ~ rj_symm_base # uplift? (0=no, 1=yes)
-sigma_d[1] ~ rj_neg_base  # over-ocean movement? (0=no, 1=yes)
-sigma_d[2] ~ rj_pos_base  # old-to-young movement? (0=no, 1=yes)
-sigma_b[1] ~ rj_pos_base  # over-ocean movement? (0=no, 1=yes)
-sigma_b[2] ~ rj_neg_base  # old-to-young_movement? (0=no, 1=yes)
+    phi_e[1]   ~ rj_neg_base  # size (km^2)
+    phi_e[2]   ~ rj_neg_base  # log-size (km^2)
+    phi_w[1]   ~ rj_pos_base  # size (km^2)
+    phi_w[2]   ~ rj_pos_base  # log-size (km^2)
+    phi_d[1]   ~ rj_neg_base  # distance (km)
+    phi_d[2]   ~ rj_neg_base  # log-distance (km)
+    phi_b[1]   ~ rj_pos_base  # distance (km)
+    phi_b[2]   ~ rj_pos_base  # log-distance (km)
+    sigma_e[1] ~ rj_neg_base  # is high island? (0=no, 1=yes)
+    sigma_e[2] ~ rj_symm_base # uplift? (0=no, 1=yes)
+    sigma_w[1] ~ rj_pos_base  # is high island? (0=no, 1=yes)
+    sigma_w[2] ~ rj_symm_base # uplift? (0=no, 1=yes)
+    sigma_d[1] ~ rj_neg_base  # over-ocean movement? (0=no, 1=yes)
+    sigma_d[2] ~ rj_pos_base  # old-to-young movement? (0=no, 1=yes)
+    sigma_b[1] ~ rj_pos_base  # over-ocean movement? (0=no, 1=yes)
+    sigma_b[2] ~ rj_neg_base  # old-to-young_movement? (0=no, 1=yes)
 
 # initializing values (only relevant for inference later)
 # categorical feature effects
-for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
-for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
-for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
-for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
+    for (i in 1:feature_CW[1].size()) sigma_w[i].setValue(sigma_w_init)
+    for (i in 1:feature_CW[1].size()) sigma_e[i].setValue(sigma_e_init)
+    for (i in 1:feature_CB[1].size()) sigma_d[i].setValue(sigma_d_init)
+    for (i in 1:feature_CB[1].size()) sigma_b[i].setValue(sigma_b_init)
 
 # quantitative feature effects
-for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
-for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
-for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
-for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
+    for (i in 1:feature_QW[1].size()) phi_w[i].setValue(phi_w_init)
+    for (i in 1:feature_QW[1].size()) phi_e[i].setValue(phi_e_init)
+    for (i in 1:feature_QB[1].size()) phi_d[i].setValue(phi_d_init)
+    for (i in 1:feature_QB[1].size()) phi_b[i].setValue(phi_b_init)
 }
 
 # base-rate multipliers

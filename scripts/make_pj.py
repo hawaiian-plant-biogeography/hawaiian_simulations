@@ -59,6 +59,7 @@ if not os.path.isfile(ori_fn):
     exit(sys.argv[0] + ": File containing origin age and state does not exist.")
 
 if not os.path.isdir(fp):
+    print(fp)
     exit(sys.argv[0] + ": Directory for placing .pj script does not exist.")
 
 # file paths and names
@@ -77,6 +78,11 @@ print("Preparing .pj script for simulation " + sim_idx + ".")
 # rate name container
 rate_commands = list()
 rate_names = list()
+
+def tp2pj_epoch(x, num_epochs=7):
+    y = num_epochs - x + 1
+    return y
+    
 
 ##############
 # EXTINCTION #
@@ -97,7 +103,8 @@ for i,line in enumerate(ext_file.readlines()):
 
     for j,vec in enumerate(toks):
         # basic pj extinction template for epoch t
-        epoch = str(j+1)
+        #epoch = str(j+1)
+        epoch = str( tp2pj_epoch(j+1) )
         vec = vec.strip('[]')
         toks2 = vec.split(',')
 
@@ -124,7 +131,8 @@ lines = ''.join(trans_file.readlines())
 trans = ast.literal_eval(lines)
 
 for i, x in enumerate(trans):
-    epoch = str(i+1)
+    #epoch = str(i+1)
+    epoch = str( tp2pj_epoch(i+1) )
 
     for j,y in enumerate(x):
         from_state = str(j)
@@ -161,7 +169,8 @@ for i, clado_map in enumerate(toks):
     clado_map = clado_map.strip(' []')
     clado_events = clado_map.split(',\n')
     # epoch_for_name = str(i)
-    epoch = str(i+1) # has to start at 1
+    # epoch = str(i+1) # has to start at 1
+    epoch = str( tp2pj_epoch(i+1) )
 
     for k, evt in enumerate(clado_events):
         res = re.findall( r'[(] ([0-9]+) -> ([0-9]+), ([0-9]+) [)] = ([0-9]+[.][0-9]+)', evt)[0]
@@ -209,7 +218,7 @@ sse_stash_str = '\nstash := sse_stash(flat_rate_mat=[ ' + ", ".join(rate_names) 
 
 rate_commands.append(sse_stash_str)
 
-min_rec_taxa = str(15)
+min_rec_taxa = str(2)
 max_rec_taxa = str(500)
 abort_at_alive_count = str(1000)
 
