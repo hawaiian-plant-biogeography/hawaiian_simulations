@@ -6,7 +6,7 @@ import copy
 
 idx                    = int(sys.argv[1])
 exp_path               = './experiment1/'
-continent_region_idx   = 7
+continent_region_idx   = 6
 
 pj_path                = exp_path + 'pj_output/'
 model_path             = exp_path + 'model_truth/'
