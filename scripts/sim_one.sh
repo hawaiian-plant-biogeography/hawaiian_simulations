@@ -46,4 +46,5 @@ echo $rb_mol_phy_args
 echo $rb_molphy_args | ${RB_EXEC}
 
 # R: make plot with range states at tips
-Rscript ./scripts/plot_tree.R ${S_IDX}
+Rscript ./scripts/plot_tree.R ${S_IDX} 0
+Rscript ./scripts/plot_tree.R ${S_IDX} 1

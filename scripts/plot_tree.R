@@ -4,12 +4,18 @@ library(ape)
 
 args = commandArgs(trailingOnly=TRUE)
 sim_idx = 2
+complete = 0
 if ( length(args) > 0 ) {
     sim_idx = args[1]
+    complete = args[2]
 }
 
 base_dir = "./experiment1/"
-exp_dir = paste0(base_dir, "sim_data/sample")
+if (complete == 0) {
+    exp_dir = paste0(base_dir, "sim_data/sample")
+} else if (complete == 1) {
+    exp_dir = paste0(base_dir, "sim_data/sample_complete")
+}
 col_dir = paste0(base_dir, "model_truth/colonization_true_vals_sample")
 script_dir = "./scripts"
 
@@ -67,4 +73,5 @@ text(x=col_time*0, adj=0, y=num_taxa, labels=paste0("into ", col_reg, "\nage=", 
 #text(x=col_time*0, adj=0, y=num_taxa-0.5, labels=paste0("age=", col_age), col="red", cex=0.75)
 text(x=epoch_times, y=num_taxa, adj=c(1.2,0), labels=c("+N","","+K","+O","+M","+H",""), col="blue", cex=0.75)
 dev.off()
+print(plot_fn)
 
