@@ -16,7 +16,7 @@
 # Initial Setup #
 #################
 
-if (!exists("s_idx")) s_idx = 1       # 9999
+if (!exists("s_idx")) s_idx = 9       # 9999
 if (!exists("exp_path")) exp_path = "./experiment1/"
 analysis_type = v("sim","inf")[2]
 
@@ -42,10 +42,13 @@ analysis = "sim_" + s_idx
 # reading tree
 tree_fp      = exp_path + "sim_data/sample" + s_idx + ".tre"
 phy          = readTrees(file=tree_fp)[1]
+#phy.rescale( 15.0 / phy.rootAge() )
 tree_height  <- phy.rootAge()
 taxa         = phy.taxa()
 num_taxa     = taxa.size()
 num_branches = 2 * num_taxa - 2
+
+print("num_taxa = ", num_taxa)
 
 # reading molecular data
 mol_fp    = exp_path + "sim_data/" + "sample" + s_idx + ".sequences.nex"
@@ -54,21 +57,26 @@ num_sites = dat_mol.nchar()
 
 # reading range data
 bg_fp = exp_path + "sim_data/" + "sample" + s_idx + ".data.tsv"
+max_range_size <- 4
 num_regions <- 7  # TODO: possibly learn this from regional feature files
-num_states <- floor(2^num_regions - 1)   ### TOO LARGE?
+#num_states <- floor(2^num_regions - 1)   ### TOO LARGE?
+num_states = 0
+for (i in 1:max_range_size) num_states += choose(n_regions, i)
 dat_nn <- readCharacterDataDelimited( bg_fp,
                                       type="NaturalNumbers",
                                       stateLabels=num_states,
                                       delimiter="\t",
                                       header=false )
 
+dat_nn.show()
+
 ##############
 # Tree Model #
 ##############
 
 # tree model
-whole_tree_age ~ dnUniform(0,30)
-whole_tree_age.setValue(tree_height)
+root_age ~ dnUniform(0,30)
+root_age.setValue(tree_height)
 
 # expected number of taxa
 outgroup_region     <- 7
@@ -85,11 +93,47 @@ rho_sample[1][outgroup_region] <- rho_outgroup
 rho_times <- [ 0.0 ]
 
 # root state frequencies
-for (i in 1:num_states) {
-    pi_root_region_vec[i] <- 0.0
+#for (i in 1:num_states) {
+#    pi_root_region_vec[i] <- 0.0
+#}
+#pi_root_region_vec[outgroup_region] <- 1.0
+#pi_root_region <- simplex(pi_root_region_vec)
+
+# base frequencies
+pi_bg_base <- rep(0, num_states)
+
+if (true) {
+    region_available[1] := 1
+    region_available[2] := 1
+    region_available[3] := ifelse(root_age >  8.000, 0, 1)
+    region_available[4] := ifelse(root_age >  6.150, 0, 1)
+    region_available[5] := ifelse(root_age >  4.135, 0, 1)
+    region_available[6] := ifelse(root_age >  2.550, 0, 1)
+    region_available[7] := ifelse(root_age >  1.200, 0, 1)
+} else {
+    for (i in 1:num_regions) {
+        region_available[i] := 1
+    }
 }
-pi_root_region_vec[outgroup_region] <- 1.0
-pi_root_region <- simplex(pi_root_region_vec)
+
+#region2state = [ 22+1, 23+1, 24+1, 25+1, 26+1, 27+1 ]
+#r2s_idx = 1
+
+# assume that the integer equal to "num_regions" is the
+# range-integer for a species that occurs only in the
+# mainland region, for base-indexing of 1 (Rev script).
+# For example, region 7 is Mainland US, set the
+# range-integer for the range {7} to 1.
+
+pi_allowed_ranges <- [ 6+1, 22+1, 23+1, 24+1, 25+1, 26+1, 27+1 ]
+#pi_allowed_ranges <- [ num_regions ]
+for (i in 1:pi_allowed_ranges.size()) {
+    j = pi_allowed_ranges[i]
+    #pi_bg_base[j] <- 1
+    pi_bg_base[j] := region_available[i]
+}
+pi_bg := simplex(pi_bg_base)
+
 
 # TODO: MAKE SURE TENSORPHYLO IS GETTING THE CORRECT TIMES
 
@@ -105,37 +149,69 @@ for (i in 1:num_timeslices) {
     omega_fwd[i] := omega[j]
 }
 
-rho_e.setValue(0.500)
-rho_w.setValue(0.250)
-rho_b.setValue(2.000)
-rho_d.setValue(0.025)
+for (i in 1:(num_timeslices-1)) {
+    print("time " + i + " = " + times_fwd[i])
+    print(mu[i])
+    print("")
+}
 
-phi_w[1].setValue(0.25)
-phi_w[2].setValue(0.5)
-phi_e[1].setValue(-0.25)
-phi_e[2].setValue(-0.5)
-phi_d[1].setValue(-1.0)
-phi_d[2].setValue(-0.5)
-phi_b[1].setValue(1)
-phi_b[2].setValue(1)
+if (true) {
+    rho_e.setValue(0.50)
+    rho_w.setValue(0.20)
+    rho_b.setValue(1.00)
+    rho_d.setValue(0.01)
+}
+if (false) {
+    phi_w[1].setValue(0.25)
+    phi_w[2].setValue(0.25)
+    phi_e[1].setValue(-0.5)
+    phi_e[2].setValue(-0.5)
+    phi_d[1].setValue(0.5)
+    phi_d[2].setValue(-1.0)
+    phi_b[1].setValue(0.0)
+    phi_b[2].setValue(2.0)
 
-sigma_w[1].setValue(1.0)
-sigma_w[2].setValue(-0.5)
-sigma_e[1].setValue(-1.0)
-sigma_e[2].setValue(0.0)
-sigma_d[1].setValue(-1.0)
-sigma_d[2].setValue(0.5)
-sigma_b[1].setValue(1.0)
-sigma_b[2].setValue(0.0)
+    sigma_w[1].setValue(0.5)
+    sigma_w[2].setValue(0.0)
+    sigma_e[1].setValue(-3.0)
+    sigma_e[2].setValue(-1.0)
+    sigma_d[1].setValue(-3.0)
+    sigma_d[2].setValue(0.5)
+    sigma_b[1].setValue(2.0)
+    sigma_b[2].setValue(0.0)
+}
+
+# rho_e.setValue(0.500)
+# rho_w.setValue(0.250)
+# rho_b.setValue(2.000)
+# rho_d.setValue(0.025)
+# 
+# phi_w[1].setValue(0.25)
+# phi_w[2].setValue(0.5)
+# phi_e[1].setValue(-0.25)
+# phi_e[2].setValue(-0.5)
+# phi_d[1].setValue(-1.0)
+# phi_d[2].setValue(-0.5)
+# phi_b[1].setValue(1)
+# phi_b[2].setValue(1)
+# 
+# sigma_w[1].setValue(1.0)
+# sigma_w[2].setValue(-0.5)
+# sigma_e[1].setValue(-1.0)
+# sigma_e[2].setValue(0.0)
+# sigma_d[1].setValue(-1.0)
+# sigma_d[2].setValue(0.5)
+# sigma_b[1].setValue(1.0)
+# sigma_b[2].setValue(0.0)
 
 # set up Tensorphylo SSE model
 condition="survival"
-timetree ~ dnGLHBDSP( rootAge          = whole_tree_age,
-                          lambda       = lambda_fwd,
-                          mu           = mu_fwd,
-                          eta          = Q_fwd,
-                          omega        = omega_fwd,
-                          pi           = pi_root_region,
+timetree ~ dnGLHBDSP( rootAge          = root_age,
+                          lambda       = lambda,
+                          mu           = mu,
+                          eta          = Q,
+                          omega        = omega,
+                          pi           = pi_bg,
                           lambdaTimes  = times_fwd,
                           muTimes      = times_fwd,
                           etaTimes     = times_fwd,
@@ -186,7 +262,7 @@ if (update_topology) {
     moves.append( mvFNPR(timetree, weight=num_taxa/4) )
 }
 moves.append( mvNodeTimeSlideUniform(timetree, weight=num_taxa) )
-moves.append( mvScale(whole_tree_age, weight=10) )
+moves.append( mvScale(root_age, weight=10) )
 
 for (i in 1:sigma_e.size()) {
     moves.append( mvScale(sigma_e[i], weight=2) )
@@ -258,7 +334,7 @@ for (i in 1:num_branches) {
 # joint moves
 up_down_scale_tree = mvUpDownScale(lambda=1.0, weight=20)
 up_down_scale_tree.addVariable(timetree,      up=true)
-up_down_scale_tree.addVariable(whole_tree_age,      up=true)
+up_down_scale_tree.addVariable(root_age,      up=true)
 up_down_scale_tree.addVariable(mu_mol_branch, up=false)
 up_down_scale_tree.addVariable(mu_mol_base,   up=false)
 moves.append(up_down_scale_tree)
@@ -278,13 +354,13 @@ moves.append(up_down_mol_rate)
 # create monitor vector
 monitors = VectorMonitors()
 # screen monitor, so you don't get bored
-monitors.append( mnScreen(whole_tree_age, printgen=print_gen) )
+monitors.append( mnScreen(root_age, printgen=print_gen) )
 # file monitor for all simple model variables
 monitors.append( mnModel(printgen=print_gen, file="output/" + analysis + ".model.txt") )
 # file monitor for tree
 monitors.append( mnFile(timetree, printgen=print_gen, file="output/" + analysis + ".tre") )
 # file monitor for molecular model
-monitors.append( mnFile(mu_mol_base, mu_mol_branch, whole_tree_age, printgen=print_gen, file="output/" + analysis + ".mol.txt") )
+monitors.append( mnFile(mu_mol_base, mu_mol_branch, root_age, printgen=print_gen, file="output/" + analysis + ".mol.txt") )
 # file monitor for biogeographic model
 #for (k in 1:num_times) {
 #    bg_mon_filename = "output/" + analysis + ".time" + k + ".bg.txt"
