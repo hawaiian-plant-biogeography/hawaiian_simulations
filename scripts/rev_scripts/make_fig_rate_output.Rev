@@ -63,7 +63,7 @@ if (true) {
 
     sigma_w[1].setValue(0.5)
     sigma_w[2].setValue(0.0)
-    sigma_e[1].setValue(-2.0)
+    sigma_e[1].setValue(-3.0)
     sigma_e[2].setValue(-1.0)
     sigma_d[1].setValue(-3.0)
     sigma_d[2].setValue(0.5)
