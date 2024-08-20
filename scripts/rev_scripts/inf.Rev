@@ -31,7 +31,7 @@ n_proc <- 4
 print_gen <- 10
 n_iter <- 5000
 under_prior = false
-move_schedule = v("single","random")[1]
+move_schedule = v("single","random")[2]
 update_topology = false
 analysis = "sim_" + s_idx
 
@@ -149,26 +149,6 @@ for (i in 1:num_timeslices) {
     omega_fwd[i] := omega[j]
 }
 
-<<<<<<< HEAD
-xxx
-
-
-if (true) {
-    rho_e.setValue(0.50)
-    rho_w.setValue(0.20)
-    rho_b.setValue(1.00)
-    rho_d.setValue(0.01)
-
-    phi_w[1].setValue(0.25)
-    phi_w[2].setValue(0.25)
-    phi_e[1].setValue(-0.5)
-    phi_e[2].setValue(-0.5)
-    phi_d[1].setValue(0.5)
-    phi_d[2].setValue(-1.0)
-    phi_b[1].setValue(0.0)
-    phi_b[2].setValue(2.0)
-
-=======
 for (i in 1:(num_timeslices-1)) {
     print("time " + i + " = " + times_fwd[i])
     print(mu[i])
@@ -191,7 +171,6 @@ if (false) {
     phi_b[1].setValue(0.0)
     phi_b[2].setValue(2.0)
 
->>>>>>> bcd84bdc0b8dfcb5ae11bf81c63d92731d795178
     sigma_w[1].setValue(0.5)
     sigma_w[2].setValue(0.0)
     sigma_e[1].setValue(-3.0)
@@ -282,8 +261,13 @@ if (update_topology) {
     moves.append( mvNNI(timetree, weight=num_taxa) )
     moves.append( mvFNPR(timetree, weight=num_taxa/4) )
 }
-moves.append( mvNodeTimeSlideUniform(timetree, weight=num_taxa) )
-moves.append( mvScale(root_age, weight=10) )
+moves.append( mvNodeTimeSlideUniform(timetree, weight=num_taxa*2) )
+moves.append( mvScale(root_age, weight=20) )
+
+moves.append( mvScale(rho_d, weight=5) )
+moves.append( mvScale(rho_e, weight=5) )
+moves.append( mvScale(rho_w, weight=5) )
+moves.append( mvScale(rho_b, weight=5) )
 
 for (i in 1:sigma_e.size()) {
     moves.append( mvScale(sigma_e[i], weight=2) )
@@ -336,11 +320,11 @@ for (i in 1:phi_d.size()) {
 
 # molecular moves
 # base rate of molecular substitution
-moves.append(mvScale(mu_mol_base, weight=5) )
+moves.append(mvScale(mu_mol_base, weight=20) )
 
 # branch rates of molecular substitution, centered on mu_mol_base
 for (i in 1:num_branches) {
-    moves.append(mvScale(mu_mol_branch[i], weight=1))
+    moves.append(mvScale(mu_mol_branch[i], weight=3))
 }
 
 #for (i in 1:num_loci) {
@@ -366,9 +350,9 @@ up_down_mol_rate.addVariable(mu_mol_base,   up=true)
 moves.append(up_down_mol_rate)
 
 # MJL: this seems to cause a bug, working to fix w/ Mike May
-#rate_age_proposal = mvRateAgeProposal(timetree, weight=20, alpha=5)
-#rate_age_proposal.addRates(mu_mol_branch)
-#moves.append(rate_age_proposal)
+rate_age_proposal = mvRateAgeProposal(timetree, weight=20, alpha=5)
+rate_age_proposal.addRates(mu_mol_branch)
+moves.append(rate_age_proposal)
 
 # creating monitors
 #print("Creating monitors...")
