@@ -12,12 +12,11 @@
 # Initial setup #
 #################
 
-#loadPlugin("TensorPhylo", "/Users/binho/.local/lib/")
-loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
-#loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
+#loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
+loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
-if (!exists("s_idx")) s_idx = 18 #9999
+if (!exists("s_idx")) s_idx = 1
 
 # settings
 if (!exists("use_rj")) use_rj = false

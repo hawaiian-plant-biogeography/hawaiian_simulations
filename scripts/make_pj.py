@@ -218,13 +218,18 @@ sse_stash_str = '\nstash := sse_stash(flat_rate_mat=[ ' + ", ".join(rate_names) 
 
 rate_commands.append(sse_stash_str)
 
-min_rec_taxa = str(10)
-max_rec_taxa = str(200)
+min_rec_taxa = str(5)
+max_rec_taxa = str(300)
 abort_at_alive_count = str(2000)
+max_n_attempts=str(5000)
+runtime_limit=str(5)  # seconds
 
 trs_str = 'trs ~ discrete_sse(n=1, stash=stash, start_state=[' + ori_state + '], ' + \
     'stop="age", stop_value=' + ori_age + ', cond_surv="true", cond_obs_both_sides="false", ' + \
-    'origin="true", min_rec_taxa=' + min_rec_taxa + ', max_rec_taxa=' + max_rec_taxa + ', abort_at_alive_count=' + abort_at_alive_count + ')'
+    'origin="true", min_rec_taxa=' + min_rec_taxa + ', max_rec_taxa=' + max_rec_taxa + ',' + \
+    'abort_at_alive_count=' + abort_at_alive_count + ', max_n_attempts=' + max_n_attempts + ',' + \
+    'runtime_limit=' + runtime_limit + \
+    ')'
 
 rate_commands.append(trs_str)
 

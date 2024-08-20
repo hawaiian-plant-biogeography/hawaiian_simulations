@@ -70,6 +70,12 @@ dat_nn <- readCharacterDataDelimited( bg_fp,
 
 dat_nn.show()
 
+# reading true ages
+age_fp = exp_path + "sim_data/" + "sample" + s_idx + ".stat.tsv"
+dat_age = readDataDelimitedFile(age_fp, delimiter="\t", header=true)
+root_age_true = dat_age[1][1]
+ingroup_age_true = dat_age[1][2]
+
 ##############
 # Tree Model #
 ##############
@@ -242,6 +248,18 @@ seq ~ dnPhyloCTMC(tree=timetree,
 timetree.clamp(phy)
 timetree.clampCharData(dat_nn)
 seq.clamp(dat_mol)
+
+# extra monitors
+taxon_idx = 1
+for (i in 1:taxa.size()) {
+    if (taxa[i].getSpeciesName() != "outgroup") {
+        ingroup_taxa[taxon_idx++] = taxa[i]
+    }
+}
+ingroup_clade = clade(ingroup_taxa)
+ingroup_age := tmrca(timetree, ingroup_clade, stemAge=false)
+ingroup_age_error := ingroup_age - ingroup_age_true
+root_age_error := root_age - root_age_true
 
 ########
 # MCMC #

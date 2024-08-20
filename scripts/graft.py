@@ -68,6 +68,9 @@ def make_tree(phy_fn, out_prefix, drop_extinct=True):
     if drop_extinct:
         phy.retain_taxa(keep_taxa)
         print('Convert from complete to reconstructed tree')
+    
+    phy.resolve_node_ages()
+    ingroup_age = phy.seed_node.child_nodes()[0].age
 
     if drop_extinct:
         # update tip data
@@ -79,6 +82,8 @@ def make_tree(phy_fn, out_prefix, drop_extinct=True):
         tip_states = [ nd.annotations.get_value('state') for nd in phy.leaf_nodes() ]
         data = { 'name': tip_names, 'state': tip_states }
         df_tip = pd.DataFrame(data)
+
+    phy.resolve_node_ages()
     print('Graft outgroup to states')
 
     # save new tree
@@ -90,6 +95,17 @@ def make_tree(phy_fn, out_prefix, drop_extinct=True):
     new_tip_fn = out_prefix + '.data.tsv'
     df_tip.to_csv(new_tip_fn, index=False, header=False, sep='\t')
     print('Write new states to file: ', new_tip_fn)
+
+    # save new tree data
+    num_ingroup_taxa = len(phy.leaf_nodes())
+    new_stat_fn = out_prefix + '.stat.tsv'
+    df_stat = pd.DataFrame( {
+        'root_age':[root_age],
+        'ingroup_age':[ingroup_age],
+        'colonization_age':[col_age]
+        })
+    df_stat.to_csv(new_stat_fn, index=False, header=True, sep='\t')
+    print('Write new statistics to file: ', new_stat_fn)
     return
 
 make_tree(phy_fn, out_prefix, True)
