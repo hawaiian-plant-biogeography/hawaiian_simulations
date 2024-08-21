@@ -31,5 +31,5 @@ do
 	-J $i \
 	-q general \
 	-n 8 -M 16GB -R "rusage [mem=16GB] span[hosts=1]" \
-	-a 'docker(sswiston/rb_tp:7)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/inf_one.sh
+	-a 'docker(sswiston/phylo_docker:basic_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/inf_one.sh
 done

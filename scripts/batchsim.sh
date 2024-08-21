@@ -35,5 +35,5 @@ do
 	-J $i \
 	-q general \
 	-n 4 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \
-	-a 'docker(sswiston/rb_tp:7)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+	-a 'docker(sswiston/phylo_docker:basic_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
 done
