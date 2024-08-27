@@ -1,6 +1,7 @@
 # Set up volumes
-LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/storage1/fs1/michael.landis/Active/hawaiian_simulations"
-JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
+BASEDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations"
+LSF_DOCKER_VOLUMES="${BASEDIR}:${BASEDIR}"
+JOBDIR="${BASEDIR}/joblogs"
 
 # Create a list of sims to run (numbers)
 START_IDX=1
@@ -24,12 +25,18 @@ RUN_LIST=$(seq $START_IDX $END_IDX)
 # Create and run a job for each sim
 for i in ${RUN_LIST[@]}
 do
+    # check sim files exist
+    TREE_FILE="${BASEDIR}/experiment1/sim_data/sample${i}.tre"
+    if  [ ! -f ${TREE_FILE} ]; then
+        continue
+    fi
+    echo "Submitting sim idx ${i}"
     bsub -G compute-michael.landis \
-	-g /${RUN_GROUP} \
-	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations/ \
-	-o $JOBDIR/$i.inf.stdout.txt \
-	-J $i \
-	-q general \
-	-n 8 -M 16GB -R "rusage [mem=16GB] span[hosts=1]" \
-	-a 'docker(sswiston/phylo_docker:basic_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/inf_one.sh
+    -g /${RUN_GROUP} \
+    -cwd ${BASEDIR}/ \
+    -o $JOBDIR/$i.inf.stdout.txt \
+    -J INF_${i} \
+    -q general \
+    -n 8 -M 16GB -R "rusage [mem=16GB] span[hosts=1]" \
+    -a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash ${BASEDIR}/scripts/inf_one.sh
 done

@@ -4,9 +4,11 @@ RB_EXEC="rb"
 
 # check if running inside Docker
 echo "Searching for start.sh"
-if [ -f "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh" ]; then
+#if [ -f "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh" ]; then
+if [ -f "/start.sh" ]; then
     RB_EXEC="rb"
-    source /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh
+    #source /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh
+    source /start.sh
     echo "... found start.sh!"
     #echo $PATH
     #echo $(which rb)

@@ -28,12 +28,13 @@ RUN_LIST=$(seq $START_IDX $END_IDX)
 for i in ${RUN_LIST[@]}
 do
     echo "Submitting job ${i}"
+    rm $JOBDIR/$i.sim.stdout.txt 
     bsub -G compute-michael.landis \
 	-g /${RUN_GROUP} \
 	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations/ \
 	-o $JOBDIR/$i.sim.stdout.txt \
-	-J $i \
+	-J SIM_${i} \
 	-q general \
 	-n 4 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \
-	-a 'docker(sswiston/phylo_docker:basic_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+	-a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
 done
