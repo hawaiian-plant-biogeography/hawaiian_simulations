@@ -30,6 +30,16 @@ if [ -n "${LSB_JOBNAME}" ]; then
     S_IDX=${LSB_JOBNAME}
 fi
 
+rm "./experiment1/sim_data/sample${S_IDX}.*"
+rm "./experiment1/sim_data/sample_complete${S_IDX}.*"
+rm "./experiment1/geosse_rates_for_pj_scripts/clado${S_IDX}.txt"
+rm "./experiment1/geosse_rates_for_pj_scripts/mu${S_IDX}.txt"
+rm "./experiment1/geosse_rates_for_pj_scripts/trans${S_IDX}.txt"
+rm "./experiment1/model_truth/*_sample${S_IDX}.*"
+rm "./experiment1/model_truth/*_sample${S_IDX}_*"
+rm "./experiment1/model_truth/*_sample${S_IDX}_*"
+rm "./experiment1/pj_scripts_generated_in_py/sim${S_IDX}.pj"
+
 # RevBayes: generate island radiation rates
 echo "RevBayes: generate island radiation rates (${S_IDX})"
 rb_bg_args="s_idx=${S_IDX}; source(\"./scripts/rev_scripts/make_fig_rate_output.Rev\")"
@@ -37,9 +47,10 @@ echo "${rb_bg_args}" | ${RB_EXEC}
 #exit 1
 
 # RevBayes: generate Phylojunction scripts
+EPOCH_TIMES="20.5 11.5 6.15 4.135 2.55 1.20"
 echo "RevBayes: generate Phylojunction scripts (${S_IDX})"
-echo "python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 \"17.750, 7.750, 6.000, 3.930, 2.100, 1.100\""
-python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "17.750, 7.750, 6.000, 3.930, 2.100, 1.100"
+echo "python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 \"${EPOCH_TIMES}\""
+python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "${EPOCH_TIMES}"
 
 #python -c 'import sys; print("\n".join(sys.path))'
 #find / -name "*dendropy*"
