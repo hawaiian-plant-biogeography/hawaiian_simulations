@@ -1,11 +1,21 @@
 #!/bin/sh
 
-RB_EXEC="rb-tp"
+RB_EXEC="rb"
 
 # check if running inside Docker
+echo "Searching for start.sh"
+#if [ -f "/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh" ]; then
 if [ -f "/start.sh" ]; then
     RB_EXEC="rb"
+    #source /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh
     source /start.sh
+    echo "... found start.sh!"
+    #echo $PATH
+    #echo $(which rb)
+    #echo $(which rb-tp)
+    #echo $(ls /.local)
+    #echo $(ls /.local/bin)
+    #echo $(ls /)
 fi
 
 NOW=$( date '+%F_%H:%M:%S' )
@@ -30,6 +40,14 @@ echo "${rb_bg_args}" | ${RB_EXEC}
 echo "RevBayes: generate Phylojunction scripts (${S_IDX})"
 echo "python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 \"17.750, 7.750, 6.000, 3.930, 2.100, 1.100\""
 python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ experiment1/model_truth/ experiment1/pj_scripts_generated_in_py/ 127 7 "17.750, 7.750, 6.000, 3.930, 2.100, 1.100"
+
+#python -c 'import sys; print("\n".join(sys.path))'
+#find / -name "*dendropy*"
+#mkdir -p ./pj_venv
+#python3 -m venv ./pj_venv
+#. ./pj_venv/bin/activate
+#python3 -m pip uninstall dendropy
+#python3 -m pip install dendropy numpy pandas phylojunction
 
 # Phylojunction: run simulation
 echo "Phylojunction: simulate island radiation (${S_IDX})"

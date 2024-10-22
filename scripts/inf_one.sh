@@ -1,5 +1,5 @@
 # Run startup script that sets path variables
-RB_EXEC="rb-tp"
+RB_EXEC="rb"
 
 # check if running inside Docker
 if [ -f "/start.sh" ]; then

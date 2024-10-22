@@ -27,7 +27,7 @@ source("scripts/rev_scripts/model.Rev")
 seed(s_idx)
 
 # analysis settings
-n_proc <- 4
+n_proc <- 6
 print_gen <- 10
 n_iter <- 5000
 under_prior = false
