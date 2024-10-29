@@ -1,0 +1,55 @@
+Here's what we decided:
+
+# Regions
+
+We'd all like to use 10+ regions, but we should use fewer initially. The 7-region systems we entertained mostly considered whether we include Laysan + Lisianksi, whether include Nihoa (and asst. islands), and how to lump Necker and Gardner. After looking at how island altitudes change over time, Gardner is the largest island once it forms until Kauai grows to substantial size.
+
+Strategy 1. The new Gardner complex (Maro through LP) will create an earlier larger region that coexists with the new Necker complex (Necker through Nihoa). Two larger persistent regions could help create good conditions for sustaining biodiversity and older crown ages under GeoSSE.
+
+Strategy 2. The main alternative option is to construct a Gardner complex, containing Maro through Necker, and a Kalau+Nihoa complex. This setup would have one older larger complex (Gardner) alongside a younger smaller one. Under GeoSSE, this might lead to heightened extinction risk (easy to lose your one region) and thereby reduce the probability that older lineages survive until the present under GeoSSE.
+
+I think we all prefer Strategy 1, but hopefully we can confirm that soon.
+
+Region definitions:
+Z: non-Hawaiian region
+H: Hawaii
+O: Oahu
+M: Maui Nui complex
+K: Kauai + Niihau
+N: Necker + Kalau + Nihoa
+G: Maro + Gardner + St Rogatien + Brooks + La Perouse
+
+
+
+# Epochs
+
+Choosing new island ages will work well for capturing periods of growth vs. decay/subsidence for island complexes. Verified looking at Lim & Marshall and the spreadsheet.
+
+32 to 19.7    (no suitable islands of 1500m+ [0])
+19.7 to 10.6  (age of Maro in Clague 1996)
+10.6 to 6.2   (age of Necker in Clague 1996 [1])
+6.15 to 4.15  (age of Kauai in Lim & Marshal [2])
+4.15 to 2.55  (age of Oahu in L&M)
+2.55 to 1.20  (age of Maui Nui in L&M)
+1.20 to 0.0   (age of Hawaii in L&M)
+
+[0] -- except Lisianski immediately after forming, briefly
+[1] -- Necker is 11.0 in Price & Clague
+[2] -- Lim & Marshall do not include Niihau in age estimate; Clague often puts Niihau at 5.1 and Kauai at 4.7; I would still go with L&M age to represent both, because the difference between Kauai and Niihau in age is fairly negligible
+
+
+
+# Island complexes and growth/decay phases
+
+The categorical variable for net-growth/decay is meant to differentiate very young islands w/ naive ecosystems versus older islands w/ mature ecosystems. It becomes hard to judge whether a complex is in net-growth or decay when some of its islands are growing and others are decaying/subsiding.
+
+Possible strategies:
+- treat only the first epoch for an island has net-growth and all others as net-decay
+- instead, ask whether *any* island in the complex is new or growing, to represent that there is some new ecosystem formation in the region; the reasoning here is that islands with sustained growth have multiple volcanoes, as do complexes with multiple islands
+
+
+
+# Paleoaltitude
+
+Max altitude might not be the best metric for paleoaltitude, especially for island complexes. We might want to subdivide larger epochs to better represent changes in altitude over time. We could also consider using mean altitude per island per epoch, and get that from the spreadsheet.
+
