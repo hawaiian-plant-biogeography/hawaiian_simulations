@@ -17,6 +17,8 @@ import re
 # sys.argv[5]: number of states
 # sys.argv[6]: number of epochs
 # sys.argv[7]: epoch age ends
+# sys.argv[8]: minimum number of taxa in reconstructed tree
+# sys.argv[9]: maximum number of taxa in reconstructed tree
 
 sim_idx = sys.argv[1]
 rates_fp = sys.argv[2]
@@ -26,6 +28,8 @@ fp = sys.argv[4]
 n_states = sys.argv[5]
 n_epochs = sys.argv[6]
 epoch_age_ends = sys.argv[7].rstrip("'").lstrip("'")
+min_rec_taxa = sys.argv[8]
+max_rec_taxa = sys.argv[9]
 
 try:
     int(sim_idx)
@@ -45,8 +49,24 @@ try:
 except:
     exit(sys.argv[0] + ": Could not read number of epochs (sixth argument) as integer.")
 
+try:
+    int(min_rec_taxa)
+
+except:
+    exit(sys.argv[0] + ": Could not read min. num. taxa (seventh argument) as integer.")
+
+try:
+    int(max_rec_taxa)
+
+except:
+    exit(sys.argv[0] + ": Could not read max. num. taxa (eighth argument) as integer.")
+
+if int(min_rec_taxa) > int(max_rec_taxa):
+    exit(sys.argv[0] + ": min. num. taxa must be less than max. num taxa.")
+
 if len(epoch_age_ends.split(",")) != (int(n_epochs)-1):
     exit(sys.argv[0] + ": Number of epoch age ends must be the number of epochs minus 1.")
+
 
 if not os.path.isdir(rates_fp):
     exit(sys.argv[0] + ": Directory containing GeoSSE rate files does not exist.")
@@ -218,9 +238,9 @@ sse_stash_str = '\nstash := sse_stash(flat_rate_mat=[ ' + ", ".join(rate_names) 
 
 rate_commands.append(sse_stash_str)
 
-min_rec_taxa = str(5)
-max_rec_taxa = str(300)
-abort_at_alive_count = str(2000)
+# min_rec_taxa = str(5)
+# max_rec_taxa = str(300)
+abort_at_alive_count = str(int(max_rec_taxa)*5)
 max_n_attempts=str(5000)
 runtime_limit=str(5)  # seconds
 

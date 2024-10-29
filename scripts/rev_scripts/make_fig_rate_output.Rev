@@ -17,7 +17,6 @@
 # Initial setup #
 #################
 
-if (!exists("scenario")) { scenario = v("young_col","old_col","any_col")[3] }
 if (!exists("set_rate")) { set_rates = true }
 analysis_type = v("sim","inf")[1]
 source("scripts/rev_scripts/model.Rev")
@@ -173,28 +172,26 @@ island_names = ["Gardener", "Necker", "Kauai", "Oahu", "Maui-Nui complex", "Hawa
 
 # origination age of *lineage* within islands
 # i.e. first colonization time
-if (scenario == "young_col") {
-    island_ori_age ~ dnUnif(0.0, 6.0)
-} else if (scenario == "old_col") {
-    island_ori_age ~ dnUnif(6.0, 20.0)
-} else if (scenario == "any_col") {
-    island_ori_age ~ dnUnif(0.0, 20.0)
-} else {
-    print("Unknown scenario: " + scenario)
-}
+island_ori_age ~ dnUnif(min_col_age, max_col_age)
 island_ori_age.redraw()
+# print(" *** island_ori_age = " + island_ori_age + " *** ")
 #island_ori_age.setValue(1.0)
 
 # draw root age for the whole tree
 # this is the age of the MRCA that separates
 # the ingroup (stem) and the outgroup
-whole_tree_age ~ dnUnif(island_ori_age, 30.0)
+whole_tree_age ~ dnUnif(island_ori_age, max_crown_age)
 whole_tree_age.redraw()
 
 # old -> young
 time_ends <- times
 time_ends[n_epochs] <- 0
 print(times)
+
+print( r_d[6][continent_region_idx] )
+xxxx
+
+
 for (t in 1:n_epochs) {
     t_bwd = n_epochs - t + 1
     print("Epoch " + t + " end_time=" + time_ends[t])
@@ -208,16 +205,16 @@ for (t in 1:n_epochs) {
         island_rates = rep(0.0, non_continent_region_idxs.size())
         #print(t, time_ends[t])
 
-        # high island status
+        # high island status, assumes cat index 1
         is_high_island = feature_CW[t_bwd][1].get()
-        #print(is_high_island)
+        print(is_high_island)
         
         # getting relative rates for colonizing each possible *HIGH* island
         for (i in non_continent_region_idxs) {
             island_rates[i] = abs( r_d[t_bwd][continent_region_idx][i] * ifelse( is_high_island[1][i] == 1, 1, 0) )
         }
+        print(island_rates)
         islands_relative_rates <- simplex(island_rates)
-        #print(islands_relative_rates)
 
         print("speciation rates = ", rho_w * m_w[t_bwd][1])
         print("extinction rates = ", rho_e * m_e[t_bwd][1])
@@ -235,6 +232,9 @@ for (t in 1:n_epochs) {
         break
     }
 }
+
+print(island_names)
+print(island_subroot_idx)
 print("\nWhole tree root age = " + whole_tree_age)
 print("Origin age of island radiation = " + island_ori_age)
 print("Island that got colonized = " + colonized_island_name)
