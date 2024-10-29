@@ -88,8 +88,6 @@ rb_bg_args="s_idx=${S_IDX}; min_col_age=${MIN_COL_AGE}; max_col_age=${MAX_COL_AG
 echo "${rb_bg_args}" | ${RB_EXEC}
 
 
-exit 1
-
 # RevBayes: generate Phylojunction scripts
 EPOCH_TIMES="20.5,11.5,6.15,4.135,2.55,1.20"
 echo "RevBayes: generate Phylojunction scripts (${S_IDX})"

@@ -188,10 +188,6 @@ time_ends <- times
 time_ends[n_epochs] <- 0
 print(times)
 
-print( r_d[6][continent_region_idx] )
-xxxx
-
-
 for (t in 1:n_epochs) {
     t_bwd = n_epochs - t + 1
     print("Epoch " + t + " end_time=" + time_ends[t])
