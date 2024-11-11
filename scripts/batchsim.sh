@@ -4,6 +4,12 @@
 LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/storage1/fs1/michael.landis/Active/hawaiian_simulations"
 JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
 
+# analysis settings
+MIN_TAXA=20
+MAX_TAXA=75
+MIN_AGE=1
+MAX_AGE=6
+
 START_IDX=1
 END_IDX=1
 if [ -n "$1" ] && [ ! -n "$2" ]; then
@@ -36,5 +42,5 @@ do
 	-J SIM_${i} \
 	-q general \
 	-n 4 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \
-	-a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh
+	-a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh ${i} ${MIN_AGE} ${MAX_AGE} ${MIN_TAXA} ${MAX_TAXA}
 done

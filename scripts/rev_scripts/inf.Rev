@@ -108,19 +108,19 @@ rho_times <- [ 0.0 ]
 # base frequencies
 pi_bg_base <- rep(0, num_states)
 
-if (true) {
-    region_available[1] := 1
-    region_available[2] := 1
-    region_available[3] := ifelse(root_age >  8.000, 0, 1)
-    region_available[4] := ifelse(root_age >  6.150, 0, 1)
-    region_available[5] := ifelse(root_age >  4.135, 0, 1)
-    region_available[6] := ifelse(root_age >  2.550, 0, 1)
-    region_available[7] := ifelse(root_age >  1.200, 0, 1)
-} else {
-    for (i in 1:num_regions) {
-        region_available[i] := 1
-    }
-}
+# if (true) {
+#     region_available[1] := 1
+#     region_available[2] := 1
+#     region_available[3] := ifelse(root_age >  8.000, 0, 1)
+#     region_available[4] := ifelse(root_age >  6.150, 0, 1)
+#     region_available[5] := ifelse(root_age >  4.135, 0, 1)
+#     region_available[6] := ifelse(root_age >  2.550, 0, 1)
+#     region_available[7] := ifelse(root_age >  1.200, 0, 1)
+# } else {
+#     for (i in 1:num_regions) {
+#         region_available[i] := 1
+#     }
+# }
 
 #region2state = [ 22+1, 23+1, 24+1, 25+1, 26+1, 27+1 ]
 #r2s_idx = 1
@@ -131,13 +131,14 @@ if (true) {
 # For example, region 7 is Mainland US, set the
 # range-integer for the range {7} to 1.
 
-pi_allowed_ranges <- [ 6+1, 22+1, 23+1, 24+1, 25+1, 26+1, 27+1 ]
+#pi_allowed_ranges <- [ 6+1, 22+1, 23+1, 24+1, 25+1, 26+1, 27+1 ]
 #pi_allowed_ranges <- [ num_regions ]
-for (i in 1:pi_allowed_ranges.size()) {
-    j = pi_allowed_ranges[i]
+#for (i in 1:pi_allowed_ranges.size()) {
+#    j = pi_allowed_ranges[i]
     #pi_bg_base[j] <- 1
-    pi_bg_base[j] := region_available[i]
-}
+#    pi_bg_base[j] := region_available[i]
+#}
+pi_bg_base[outgroup_region] = 1
 pi_bg := simplex(pi_bg_base)
 
 

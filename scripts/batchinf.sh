@@ -38,5 +38,5 @@ do
     -J INF_${i} \
     -q general \
     -n 8 -M 16GB -R "rusage [mem=16GB] span[hosts=1]" \
-    -a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash ${BASEDIR}/scripts/inf_one.sh
+    -a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash ${BASEDIR}/scripts/inf_one.sh ${i}
 done

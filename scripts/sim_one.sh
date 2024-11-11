@@ -30,9 +30,9 @@ S_IDX=$1
 if [ -z "${S_IDX}" ]; then
     S_IDX=1
 fi
-if [ -n "${LSB_JOBNAME}" ]; then
-    S_IDX=${LSB_JOBNAME}
-fi
+#if [ -n "${LSB_JOBNAME}" ]; then
+#    S_IDX=${LSB_JOBNAME}
+#fi
 
 # min/max colonization ages
 MAX_CROWN_AGE=32

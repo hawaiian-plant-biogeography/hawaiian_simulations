@@ -13,9 +13,9 @@ S_IDX=1
 if [ -n "${S_IDX}" ]; then
     S_IDX=$1
 fi
-if [ -n "${LSB_JOBNAME}" ]; then
-    S_IDX=${LSB_JOBNAME}
-fi
+#if [ -n "${LSB_JOBNAME}" ]; then
+#    S_IDX=${LSB_JOBNAME}
+#fi
 
 # Recording date and time of inference
 echo "Performing inference $S_IDX"
