@@ -81,7 +81,7 @@ ingroup_age_true = dat_age[1][2]
 ##############
 
 # tree model
-root_age ~ dnUniform(0,30)
+root_age ~ dnUniform(0,50)
 root_age.setValue(tree_height)
 
 # expected number of taxa
