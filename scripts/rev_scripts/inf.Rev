@@ -43,7 +43,7 @@ analysis = "sim_" + s_idx
 tree_fp      = exp_path + "sim_data/sample" + s_idx + ".tre"
 phy          = readTrees(file=tree_fp)[1]
 #phy.rescale( 15.0 / phy.rootAge() )
-tree_height  <- phy.rootAge()
+tree_height  = phy.rootAge()
 taxa         = phy.taxa()
 num_taxa     = taxa.size()
 num_branches = 2 * num_taxa - 2
@@ -57,10 +57,9 @@ num_sites = dat_mol.nchar()
 
 # reading range data
 bg_fp = exp_path + "sim_data/" + "sample" + s_idx + ".data.tsv"
-max_range_size <- 4
-num_regions <- 7  # TODO: possibly learn this from regional feature files
-#num_states <- floor(2^num_regions - 1)   ### TOO LARGE?
-num_states = 0
+max_range_size = 4
+num_regions    = 7
+num_states     = 0
 for (i in 1:max_range_size) num_states += choose(n_regions, i)
 dat_nn <- readCharacterDataDelimited( bg_fp,
                                       type="NaturalNumbers",
@@ -81,7 +80,7 @@ ingroup_age_true = dat_age[1][2]
 ##############
 
 # tree model
-root_age ~ dnUniform(0,30)
+root_age ~ dnUniform(0,32)   # age of submersion
 root_age.setValue(tree_height)
 
 # expected number of taxa
@@ -228,7 +227,10 @@ timetree ~ dnGLHBDSP( rootAge          = root_age,
                           condition    = condition,
                           taxa         = taxa,
                           nStates      = num_states,
-                          nProc        = n_proc )
+                          nProc        = n_proc,
+                          absTol       = 1e-7,
+                          relTol       = 1e-7,
+                          maxDenseSteps = 5e3)
 
 
 # molecular model

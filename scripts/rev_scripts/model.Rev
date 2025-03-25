@@ -75,10 +75,10 @@ times_table = readDataDelimitedFile(times_path, delimiter=",", header=true)
 n_epochs = times_table.size() + 1
 
 
-# 4th element is the epoch's age end
+# 2nd element is mean epoch age
 # young -> old (forward in time, NOT how PhyloJunction likes it)
 for (i in 1:(n_epochs-1)) {
-    times_fwd[i] <- times_table[i][4]
+    times_fwd[i] <- times_table[i][2]
 }
 
 # old -> young

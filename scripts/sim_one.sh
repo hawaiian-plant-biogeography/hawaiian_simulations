@@ -52,7 +52,7 @@ if [ -z "${MIN_TAXA}" ]; then
     MIN_TAXA=20
 fi
 if [ -z "${MAX_TAXA}" ]; then
-    MAX_TAXA=75
+    MAX_TAXA=50
 fi
 
 echo "Simulation settings:"
