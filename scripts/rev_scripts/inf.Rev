@@ -247,6 +247,8 @@ seq ~ dnPhyloCTMC(tree=timetree,
                   branchRates=mu_mol_branch,
                   nSites=2000,type="DNA")
 
+phy.rescale( 3.0 / phy.rootAge() )
+
 # clamping data
 timetree.clamp(phy)
 timetree.clampCharData(dat_nn)

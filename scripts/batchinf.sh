@@ -1,5 +1,5 @@
 # Set up volumes
-BASEDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations"
+BASEDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20"
 LSF_DOCKER_VOLUMES="${BASEDIR}:${BASEDIR}"
 JOBDIR="${BASEDIR}/joblogs"
 

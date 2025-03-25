@@ -13,7 +13,6 @@ RB_EXEC="rb"
 echo "Searching for start.sh"
 if [ -f "/start.sh" ]; then
     RB_EXEC="rb"
-    #source /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh
     source /start.sh
     echo "... found start.sh!"
 fi

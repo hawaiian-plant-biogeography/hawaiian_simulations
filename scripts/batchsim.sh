@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 
 # Set up volumes
-LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/storage1/fs1/michael.landis/Active/hawaiian_simulations"
-JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
+LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20:/storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20"
+JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20/joblogs"
 
 # analysis settings
 MIN_TAXA=20
 MAX_TAXA=75
-MIN_AGE=1
-MAX_AGE=6
+MIN_AGE=6
+MAX_AGE=20.5
 
 START_IDX=1
 END_IDX=1
@@ -37,10 +37,10 @@ do
     rm $JOBDIR/$i.sim.stdout.txt 
     bsub -G compute-michael.landis \
 	-g /${RUN_GROUP} \
-	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations/ \
+	-cwd /storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20/ \
 	-o $JOBDIR/$i.sim.stdout.txt \
 	-J SIM_${i} \
 	-q general \
 	-n 4 -M 4GB -R "rusage [mem=4GB] span[hosts=1]" \
-	-a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/sim_one.sh ${i} ${MIN_AGE} ${MAX_AGE} ${MIN_TAXA} ${MAX_TAXA}
+	-a 'docker(sswiston/phylo_docker:full_amd64)' /bin/bash /storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20/scripts/sim_one.sh ${i} ${MIN_AGE} ${MAX_AGE} ${MIN_TAXA} ${MAX_TAXA}
 done

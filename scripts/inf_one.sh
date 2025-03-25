@@ -24,6 +24,6 @@ echo $NOW
 
 # Run .Rev script to do inference on the simulation s_idx
 echo "Running inference script"
-RB_CMD="s_idx=${S_IDX};exp_path=\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/experiment1/\";source(\"/storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/rev_scripts/inf.Rev\");"
+#RB_CMD="s_idx=${S_IDX};exp_path=\"/storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20/experiment1/\";source(\"/storage1/fs1/michael.landis/Active/hawaiian_simulations_age_6_to_20/scripts/rev_scripts/inf.Rev\");"
 RB_CMD="s_idx=${S_IDX};exp_path=\"./experiment1/\";source(\"./scripts/rev_scripts/inf.Rev\");"
 echo ${RB_CMD} | ${RB_EXEC}
