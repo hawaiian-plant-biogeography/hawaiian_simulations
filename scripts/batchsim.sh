@@ -8,7 +8,7 @@ JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
 MIN_TAXA=20
 MAX_TAXA=50
 MIN_AGE=1
-MAX_AGE=6
+MAX_AGE=20
 
 START_IDX=1
 END_IDX=1
@@ -29,6 +29,14 @@ RUN_GROUP=${USER}
 
 # Create a list of sims to run (numbers)
 RUN_LIST=$(seq $START_IDX $END_IDX)
+
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/pj_output/*.*
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/pj_output/figures/*.*
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/pj_scripts/*.*
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/geosse_rates_for_pj_scripts/*.*
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/pj_scripts_generated_in_py/*.*
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/sim_data/*.*
+rm /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/experiment1/model_truth/*.*
 
 # Create and run a job for each sim
 for i in ${RUN_LIST[@]}
