@@ -12,8 +12,8 @@
 # Initial setup #
 #################
 
-loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
-#loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
+#loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
+loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
 if (!exists("s_idx")) s_idx = 1
@@ -30,6 +30,7 @@ if (!exists("times_path")) times_path             = exp_path + geo_path + "age_s
 if (!exists("pj_scripts_dir")) pj_scripts_dir     = exp_path + "pj_scripts/"
 if (!exists("pj_scripts_py_dir")) pj_scripts_py_dir     = exp_path + "pj_scripts_generated_in_py/"
 if (!exists("model_truth_dir")) model_truth_dir   = exp_path + "model_truth/"
+if (!exists("sim_data_dir")) sim_data_dir         = exp_path + "sim_data/"
 if (!exists("geosse_rates_dir")) geosse_rates_dir = exp_path + "geosse_rates_for_pj_scripts/"
 
 # setting up FIG model quantities we may need to tweak
