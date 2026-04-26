@@ -28,10 +28,10 @@ seed(s_idx)
 
 # analysis settings
 n_proc <- 6
-print_gen <- 10
-n_iter <- 5000
+print_gen <- 100
+n_iter <- 1e5
 under_prior = false
-move_schedule = v("single","random")[2]
+move_schedule = v("single","random")[1]
 update_topology = false
 analysis = "sim_" + s_idx
 
@@ -67,34 +67,40 @@ dat_nn <- readCharacterDataDelimited( bg_fp,
                                       delimiter="\t",
                                       header=false )
 
-dat_nn.show()
+#dat_nn.show()
 
 # reading true ages
-age_fp = exp_path + "sim_data/" + "sample" + s_idx + ".stat.tsv"
-dat_age = readDataDelimitedFile(age_fp, delimiter="\t", header=true)
-root_age_true = dat_age[1][1]
-ingroup_age_true = dat_age[1][2]
+#age_fp = exp_path + "sim_data/" + "sample" + s_idx + ".stat.tsv"
+#dat_age = readDataDelimitedFile(age_fp, delimiter="\t", header=true)
+#root_age_true = dat_age[1][1]
+#ingroup_age_true = dat_age[1][2]
 
 ##############
 # Tree Model #
 ##############
 
 # tree model
-root_age ~ dnUniform(0,32)   # age of submersion
-root_age.setValue(tree_height)
+root_age <- tree_height
+#root_age ~ dnUniform(0,32)   # age of submersion
+#root_age.setValue(tree_height)
+
+print("hi")
 
 # expected number of taxa
 outgroup_region     <- 7
 outgroup_birth_rate <- rho_w * m_w[1][1][outgroup_region]
 outgroup_death_rate <- rho_e * m_e[1][1][outgroup_region]
-n_expected_outgroup_taxa <- 2 * exp((outgroup_birth_rate - outgroup_death_rate) * tree_height)
-rho_outgroup <- Probability(1.0 / n_expected_outgroup_taxa)
+print(outgroup_birth_rate)
+print(outgroup_death_rate)
+#n_expected_outgroup_taxa <- 2 * exp((outgroup_birth_rate - outgroup_death_rate) * tree_height)
+#rho_outgroup <- Probability(1.0 / n_expected_outgroup_taxa)
+# rho_outgroup <- 0.01
 
 # rho sample
 for (i in 1:num_states) {
     rho_sample[1][i] <- 1.0
 }
-rho_sample[1][outgroup_region] <- rho_outgroup
+# rho_sample[1][outgroup_region] <- rho_outgroup
 rho_times <- [ 0.0 ]
 
 # root state frequencies
@@ -115,6 +121,7 @@ if (true) {
      region_available[5] := ifelse(root_age >  4.135, 0, 1)
      region_available[6] := ifelse(root_age >  2.550, 0, 1)
      region_available[7] := ifelse(root_age >  1.200, 0, 1)
+     print(root_age, region_available)
 } else {
      for (i in 1:num_regions) {
          region_available[i] := 1
@@ -147,6 +154,8 @@ for (i in 1:region_available.size()) {
 pi_bg := simplex(pi_bg_base)
 
 
+print("OK")
+
 # TODO: MAKE SURE TENSORPHYLO IS GETTING THE CORRECT TIMES
 
 # convert RevBayes epoch times (descending order) into Tensorphylo
@@ -168,10 +177,10 @@ for (i in 1:(num_timeslices-1)) {
 }
 
 if (true) {
-    rho_e.setValue(0.50)
-    rho_w.setValue(0.20)
-    rho_b.setValue(1.00)
-    rho_d.setValue(0.01)
+    rho_e.setValue(0.05)
+    rho_w.setValue(0.05)
+    rho_b.setValue(0.20)
+    rho_d.setValue(0.05)
 }
 if (false) {
     phi_w[1].setValue(0.25)
@@ -193,28 +202,6 @@ if (false) {
     sigma_b[2].setValue(0.0)
 }
 
-# rho_e.setValue(0.500)
-# rho_w.setValue(0.250)
-# rho_b.setValue(2.000)
-# rho_d.setValue(0.025)
-# 
-# phi_w[1].setValue(0.25)
-# phi_w[2].setValue(0.5)
-# phi_e[1].setValue(-0.25)
-# phi_e[2].setValue(-0.5)
-# phi_d[1].setValue(-1.0)
-# phi_d[2].setValue(-0.5)
-# phi_b[1].setValue(1)
-# phi_b[2].setValue(1)
-# 
-# sigma_w[1].setValue(1.0)
-# sigma_w[2].setValue(-0.5)
-# sigma_e[1].setValue(-1.0)
-# sigma_e[2].setValue(0.0)
-# sigma_d[1].setValue(-1.0)
-# sigma_d[2].setValue(0.5)
-# sigma_b[1].setValue(1.0)
-# sigma_b[2].setValue(0.0)
 
 # set up Tensorphylo SSE model
 condition="survival"
@@ -238,6 +225,9 @@ timetree ~ dnGLHBDSP( rootAge          = root_age,
                           relTol       = 1e-7,
                           maxDenseSteps = 5e3)
 
+# clamping data
+timetree.clamp(phy)
+timetree.clampCharData(dat_nn)
 
 # molecular model
 if (false) {
@@ -255,24 +245,24 @@ if (false) {
                       nSites=2000,type="DNA")
 
     # clamping data
-    timetree.clamp(phy)
-    timetree.clampCharData(dat_nn)
     seq.clamp(dat_mol)
 }
 
 # extra monitors
 if (false) {
-taxon_idx = 1
-for (i in 1:taxa.size()) {
-    if (taxa[i].getSpeciesName() != "outgroup") {
-        ingroup_taxa[taxon_idx++] = taxa[i]
+    taxon_idx = 1
+    for (i in 1:taxa.size()) {
+        if (taxa[i].getSpeciesName() != "outgroup") {
+            ingroup_taxa[taxon_idx++] = taxa[i]
+        }
     }
+    ingroup_clade = clade(ingroup_taxa)
+    ingroup_age := tmrca(timetree, ingroup_clade, stemAge=false)
+    ingroup_age_error := ingroup_age - ingroup_age_true
+    root_age_error := root_age - root_age_true
 }
-ingroup_clade = clade(ingroup_taxa)
-ingroup_age := tmrca(timetree, ingroup_clade, stemAge=false)
-ingroup_age_error := ingroup_age - ingroup_age_true
-root_age_error := root_age - root_age_true
-}
+
+
 
 ########
 # MCMC #
@@ -287,14 +277,14 @@ print("...done!")
 print("Creating moves...")
 moves = VectorMoves()
 
-if (false) {
 # tree variable moves
-if (update_topology) {
-    moves.append( mvNNI(timetree, weight=num_taxa) )
-    moves.append( mvFNPR(timetree, weight=num_taxa/4) )
-}
-moves.append( mvNodeTimeSlideUniform(timetree, weight=num_taxa*2) )
-moves.append( mvScale(root_age, weight=20) )
+if (false) {
+    if (update_topology) {
+        moves.append( mvNNI(timetree, weight=num_taxa) )
+        moves.append( mvFNPR(timetree, weight=num_taxa/4) )
+    }
+    moves.append( mvNodeTimeSlideUniform(timetree, weight=num_taxa*2) )
+    moves.append( mvScale(root_age, weight=20) )
 }
 
 moves.append( mvScale(rho_d, weight=5) )
@@ -361,16 +351,27 @@ if (false) {
         moves.append(mvScale(mu_mol_branch[i], weight=3))
     }
 
-    #for (i in 1:num_loci) {
-    #    if (i >= 2) {
-    #        moves.append(mvScale(mu_mol_locus_rel[i], weight=3))
-    #    }
-    #    moves.append(mvScale(kappa[i], weight=3))
-    #    moves.append(mvScale(alpha[i], weight=3))
-    #    moves.append(mvSimplex(pi_mol[i], alpha=3, offset=0.5, weight=3))
-    #}
-
     # joint moves
+    up_down_scale_tree = mvUpDownScale(lambda=1.0, weight=20)
+    up_down_scale_tree.addVariable(timetree,      up=true)
+    up_down_scale_tree.addVariable(root_age,      up=true)
+    up_down_scale_tree.addVariable(mu_mol_branch, up=false)
+    up_down_scale_tree.addVariable(mu_mol_base,   up=false)
+    moves.append(up_down_scale_tree)
+
+    up_down_mol_rate = mvUpDownScale(lambda=1.0, weight=20)
+    up_down_mol_rate.addVariable(mu_mol_branch, up=true)
+    up_down_mol_rate.addVariable(mu_mol_base,   up=true)
+    moves.append(up_down_mol_rate)
+
+    # MJL: this seems to cause a bug, working to fix w/ Mike May
+    rate_age_proposal = mvRateAgeProposal(timetree, weight=20, alpha=5)
+    rate_age_proposal.addRates(mu_mol_branch)
+    moves.append(rate_age_proposal)
+}
+
+# joint moves
+if (false) {
     up_down_scale_tree = mvUpDownScale(lambda=1.0, weight=20)
     up_down_scale_tree.addVariable(timetree,      up=true)
     up_down_scale_tree.addVariable(root_age,      up=true)
@@ -394,13 +395,13 @@ if (false) {
 # create monitor vector
 monitors = VectorMonitors()
 # screen monitor, so you don't get bored
-monitors.append( mnScreen(root_age, printgen=print_gen) )
+monitors.append( mnScreen(rho_w, rho_e, rho_b, rho_d, printgen=print_gen) )
 # file monitor for all simple model variables
 monitors.append( mnModel(printgen=print_gen, file="output/" + analysis + ".model.txt") )
 # file monitor for tree
-monitors.append( mnFile(timetree, printgen=print_gen, file="output/" + analysis + ".tre") )
+#monitors.append( mnFile(timetree, printgen=print_gen, file="output/" + analysis + ".tre") )
 # file monitor for molecular model
-monitors.append( mnFile(mu_mol_base, mu_mol_branch, root_age, printgen=print_gen, file="output/" + analysis + ".mol.txt") )
+#monitors.append( mnFile(mu_mol_base, mu_mol_branch, root_age, printgen=print_gen, file="output/" + analysis + ".mol.txt") )
 # file monitor for biogeographic model
 #for (k in 1:num_times) {
 #    bg_mon_filename = "output/" + analysis + ".time" + k + ".bg.txt"

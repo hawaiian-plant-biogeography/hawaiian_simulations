@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 # Set up volumes
-LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations:/storage1/fs1/michael.landis/Active/hawaiian_simulations"
-JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations/joblogs"
+LSF_DOCKER_VOLUMES="/storage1/fs1/michael.landis/Active/hawaiian_simulations_param:/storage1/fs1/michael.landis/Active/hawaiian_simulations_param"
+JOBDIR="/storage1/fs1/michael.landis/Active/hawaiian_simulations_param/joblogs"
 
 # analysis settings
 MIN_TAXA=20
