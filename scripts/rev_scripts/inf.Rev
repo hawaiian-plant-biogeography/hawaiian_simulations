@@ -51,9 +51,9 @@ num_branches = 2 * num_taxa - 2
 print("num_taxa = ", num_taxa)
 
 # reading molecular data
-mol_fp    = exp_path + "sim_data/" + "sample" + s_idx + ".sequences.nex"
-dat_mol   = readDiscreteCharacterData(mol_fp)
-num_sites = dat_mol.nchar()
+#mol_fp    = exp_path + "sim_data/" + "sample" + s_idx + ".sequences.nex"
+#dat_mol   = readDiscreteCharacterData(mol_fp)
+#num_sites = dat_mol.nchar()
 
 # reading range data
 bg_fp = exp_path + "sim_data/" + "sample" + s_idx + ".data.tsv"
@@ -107,19 +107,25 @@ rho_times <- [ 0.0 ]
 # base frequencies
 pi_bg_base <- rep(0, num_states)
 
-# if (true) {
-#     region_available[1] := 1
-#     region_available[2] := 1
-#     region_available[3] := ifelse(root_age >  8.000, 0, 1)
-#     region_available[4] := ifelse(root_age >  6.150, 0, 1)
-#     region_available[5] := ifelse(root_age >  4.135, 0, 1)
-#     region_available[6] := ifelse(root_age >  2.550, 0, 1)
-#     region_available[7] := ifelse(root_age >  1.200, 0, 1)
-# } else {
-#     for (i in 1:num_regions) {
-#         region_available[i] := 1
-#     }
-# }
+if (true) {
+     region_available[1] := 1
+     region_available[2] := 1
+     region_available[3] := ifelse(root_age >  8.000, 0, 1)
+     region_available[4] := ifelse(root_age >  6.150, 0, 1)
+     region_available[5] := ifelse(root_age >  4.135, 0, 1)
+     region_available[6] := ifelse(root_age >  2.550, 0, 1)
+     region_available[7] := ifelse(root_age >  1.200, 0, 1)
+} else {
+     for (i in 1:num_regions) {
+         region_available[i] := 1
+     }
+}
+
+for (i in 1:region_available.size()) {
+    if (region_available[i] == 1) {
+        pi_bg_base[i] <- 1
+    }
+}
 
 #region2state = [ 22+1, 23+1, 24+1, 25+1, 26+1, 27+1 ]
 #r2s_idx = 1
@@ -137,7 +143,7 @@ pi_bg_base <- rep(0, num_states)
     #pi_bg_base[j] <- 1
 #    pi_bg_base[j] := region_available[i]
 #}
-pi_bg_base[outgroup_region] = 1
+#pi_bg_base[outgroup_region] = 1
 pi_bg := simplex(pi_bg_base)
 
 
@@ -234,25 +240,28 @@ timetree ~ dnGLHBDSP( rootAge          = root_age,
 
 
 # molecular model
-mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
-Q_mol <- fnJC(4)
-mu_mol_sd <- 0.587405 
-if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
-for (j in 1:num_branches) {
-    ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
-    mu_mol_branch[j] ~ dnLnorm(ln_mean, mu_mol_sd)
-}   
-seq ~ dnPhyloCTMC(tree=timetree,
-                  Q=Q_mol,
-                  branchRates=mu_mol_branch,
-                  nSites=2000,type="DNA")
+if (false) {
+    mu_mol_base ~ dnLoguniform(5e-4, 5e-2)
+    Q_mol <- fnJC(4)
+    mu_mol_sd <- 0.587405 
+    if (exists("mu_mol_branch")) {clear(mu_mol_branch)}
+    for (j in 1:num_branches) {
+        ln_mean := ln(mu_mol_base) - 0.5 * mu_mol_sd * mu_mol_sd
+        mu_mol_branch[j] ~ dnLnorm(ln_mean, mu_mol_sd)
+    }   
+    seq ~ dnPhyloCTMC(tree=timetree,
+                      Q=Q_mol,
+                      branchRates=mu_mol_branch,
+                      nSites=2000,type="DNA")
 
-# clamping data
-timetree.clamp(phy)
-timetree.clampCharData(dat_nn)
-seq.clamp(dat_mol)
+    # clamping data
+    timetree.clamp(phy)
+    timetree.clampCharData(dat_nn)
+    seq.clamp(dat_mol)
+}
 
 # extra monitors
+if (false) {
 taxon_idx = 1
 for (i in 1:taxa.size()) {
     if (taxa[i].getSpeciesName() != "outgroup") {
@@ -263,6 +272,7 @@ ingroup_clade = clade(ingroup_taxa)
 ingroup_age := tmrca(timetree, ingroup_clade, stemAge=false)
 ingroup_age_error := ingroup_age - ingroup_age_true
 root_age_error := root_age - root_age_true
+}
 
 ########
 # MCMC #
@@ -277,6 +287,7 @@ print("...done!")
 print("Creating moves...")
 moves = VectorMoves()
 
+if (false) {
 # tree variable moves
 if (update_topology) {
     moves.append( mvNNI(timetree, weight=num_taxa) )
@@ -284,6 +295,7 @@ if (update_topology) {
 }
 moves.append( mvNodeTimeSlideUniform(timetree, weight=num_taxa*2) )
 moves.append( mvScale(root_age, weight=20) )
+}
 
 moves.append( mvScale(rho_d, weight=5) )
 moves.append( mvScale(rho_e, weight=5) )
@@ -339,41 +351,43 @@ for (i in 1:phi_d.size()) {
     }
 }
 
-# molecular moves
-# base rate of molecular substitution
-moves.append(mvScale(mu_mol_base, weight=20) )
+if (false) {
+    # molecular moves
+    # base rate of molecular substitution
+    moves.append(mvScale(mu_mol_base, weight=20) )
 
-# branch rates of molecular substitution, centered on mu_mol_base
-for (i in 1:num_branches) {
-    moves.append(mvScale(mu_mol_branch[i], weight=3))
+    # branch rates of molecular substitution, centered on mu_mol_base
+    for (i in 1:num_branches) {
+        moves.append(mvScale(mu_mol_branch[i], weight=3))
+    }
+
+    #for (i in 1:num_loci) {
+    #    if (i >= 2) {
+    #        moves.append(mvScale(mu_mol_locus_rel[i], weight=3))
+    #    }
+    #    moves.append(mvScale(kappa[i], weight=3))
+    #    moves.append(mvScale(alpha[i], weight=3))
+    #    moves.append(mvSimplex(pi_mol[i], alpha=3, offset=0.5, weight=3))
+    #}
+
+    # joint moves
+    up_down_scale_tree = mvUpDownScale(lambda=1.0, weight=20)
+    up_down_scale_tree.addVariable(timetree,      up=true)
+    up_down_scale_tree.addVariable(root_age,      up=true)
+    up_down_scale_tree.addVariable(mu_mol_branch, up=false)
+    up_down_scale_tree.addVariable(mu_mol_base,   up=false)
+    moves.append(up_down_scale_tree)
+
+    up_down_mol_rate = mvUpDownScale(lambda=1.0, weight=20)
+    up_down_mol_rate.addVariable(mu_mol_branch, up=true)
+    up_down_mol_rate.addVariable(mu_mol_base,   up=true)
+    moves.append(up_down_mol_rate)
+
+    # MJL: this seems to cause a bug, working to fix w/ Mike May
+    rate_age_proposal = mvRateAgeProposal(timetree, weight=20, alpha=5)
+    rate_age_proposal.addRates(mu_mol_branch)
+    moves.append(rate_age_proposal)
 }
-
-#for (i in 1:num_loci) {
-#    if (i >= 2) {
-#        moves.append(mvScale(mu_mol_locus_rel[i], weight=3))
-#    }
-#    moves.append(mvScale(kappa[i], weight=3))
-#    moves.append(mvScale(alpha[i], weight=3))
-#    moves.append(mvSimplex(pi_mol[i], alpha=3, offset=0.5, weight=3))
-#}
-
-# joint moves
-up_down_scale_tree = mvUpDownScale(lambda=1.0, weight=20)
-up_down_scale_tree.addVariable(timetree,      up=true)
-up_down_scale_tree.addVariable(root_age,      up=true)
-up_down_scale_tree.addVariable(mu_mol_branch, up=false)
-up_down_scale_tree.addVariable(mu_mol_base,   up=false)
-moves.append(up_down_scale_tree)
-
-up_down_mol_rate = mvUpDownScale(lambda=1.0, weight=20)
-up_down_mol_rate.addVariable(mu_mol_branch, up=true)
-up_down_mol_rate.addVariable(mu_mol_base,   up=true)
-moves.append(up_down_mol_rate)
-
-# MJL: this seems to cause a bug, working to fix w/ Mike May
-rate_age_proposal = mvRateAgeProposal(timetree, weight=20, alpha=5)
-rate_age_proposal.addRates(mu_mol_branch)
-moves.append(rate_age_proposal)
 
 # creating monitors
 #print("Creating monitors...")
