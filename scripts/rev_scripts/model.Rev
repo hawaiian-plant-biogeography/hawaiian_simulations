@@ -12,8 +12,8 @@
 # Initial setup #
 #################
 
-#loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
-loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
+loadPlugin("TensorPhylo", "/tensorphylo/build/installer/lib")
+#loadPlugin("TensorPhylo", "/Users/mlandis/.local/lib/tensorphylo")
 
 # sim number
 if (!exists("s_idx")) s_idx = 1
@@ -136,10 +136,10 @@ for (t in 1:n_epochs) {
 ###################################
 
 # base rate parameters
-rho_d ~ dnExp(20) # dnGamma(1,20)
-rho_e ~ dnExp(20) # dnGamma(1,20)
-rho_w ~ dnExp(20) # dnGamma(1,20)
-rho_b ~ dnExp(20) # dnGamma(10,20)
+rho_d ~ dnExp(10) # dnGamma(1,20)
+rho_e ~ dnExp(10) # dnGamma(1,20)
+rho_w ~ dnExp(10) # dnGamma(1,20)
+rho_b ~ dnExp(10) # dnGamma(10,20)
 
 # initializing values (only relevant for inference later)
 rho_d.setValue(rho_d_init)
@@ -272,4 +272,5 @@ for (t in 1:n_epochs) {
     }
 }
 
+print("done!")
 # ... done running, expects another script to take over ...

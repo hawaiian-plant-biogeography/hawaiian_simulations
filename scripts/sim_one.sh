@@ -13,7 +13,7 @@ RB_EXEC="rb"
 echo "Searching for start.sh"
 if [ -f "/start.sh" ]; then
     RB_EXEC="rb"
-    #source /storage1/fs1/michael.landis/Active/hawaiian_simulations/scripts/start.sh
+    #source /storage1/fs1/michael.landis/Active/hawaiian_simulations_param/scripts/start.sh
     source /start.sh
     echo "... found start.sh!"
 fi
@@ -110,7 +110,11 @@ python3 ./scripts/make_pj.py ${S_IDX} experiment1/geosse_rates_for_pj_scripts/ e
 
 # Phylojunction: run simulation
 echo "Phylojunction: simulate island radiation (${S_IDX})"
-pjcli -d -p "sample${S_IDX}" -r ${S_IDX} -o "./experiment1/pj_output/" "./experiment1/pj_scripts_generated_in_py/sim${S_IDX}.pj" -f "trs"
+PATH=./.local/local/bin:$PATH
+#cp ./local/local/bin/pjcli .
+#cp /.local/local/bin/pjcli 
+python3 /.local/local/bin/pjcli -d -p "sample${S_IDX}" -r ${S_IDX} -o "./experiment1/pj_output/" "./experiment1/pj_scripts_generated_in_py/sim${S_IDX}.pj" -f "trs"
+#./.local/local/bin/pjcli -d -p "sample${S_IDX}" -r ${S_IDX} -o "./experiment1/pj_output/" "./experiment1/pj_scripts_generated_in_py/sim${S_IDX}.pj" -f "trs"
 
 # Python: graft outgroup on to PJ tree
 echo "Python: graft outgroup on to PJ tree (${S_IDX})"
