@@ -42,10 +42,10 @@ colonization_true_vals_s = "sample\ttree_age\tcolonization_age\tsubroot_range\n"
 #      In our empirical case, that means we only consider the FIRST feature layer
 #      because there is only one CB and one QB layer each.
 if (set_rates) { 
-    rho_e.setValue(0.025) # 1.00)
-    rho_w.setValue(0.025) #0.30)
-    rho_d.setValue(0.025) #0.02)
-    rho_b.setValue(0.15) #0.50)
+    rho_e.setValue(0.05) # 1.00)
+    rho_w.setValue(0.05) #0.30)
+    rho_d.setValue(0.05) #0.02)
+    rho_b.setValue(0.25) #0.50)
 
     phi_w[1].setValue(0)
     phi_w[2].setValue(0)
@@ -66,25 +66,29 @@ if (set_rates) {
     sigma_b[2].setValue(0)
     
     # note: all quantitative features have been log-transformed
-    if (runif(1,0,1)[1] < 0.5)      phi_w[1].setValue(1.0)          # size:            high elevation, high speciation
-    if (runif(1,0,1)[1] < 0.5)      phi_e[1].setValue(-1.0)         # size:            high elevation, low extinction
-    if (runif(1,0,1)[1] < 0.5)      phi_d[1].setValue(-1.0)         # dist:            far region, low dispersal
-    if (runif(1,0,1)[1] < 0.5)      phi_b[1].setValue(1.0)          # dist:            far region, high speciation
+    c1 = 0.5
+    c2 = 1.0
+    c3 = 1.5
+    c4 = 2.0
+    if (runif(1,0,1)[1] < 0.5)      phi_w[1].setValue(1.0*c1)          # size:            high elevation, high speciation
+    if (runif(1,0,1)[1] < 0.5)      phi_e[1].setValue(-1.0*c2)         # size:            high elevation, low extinction
+    if (runif(1,0,1)[1] < 0.5)      phi_d[1].setValue(-1.0*c1)         # dist:            far region, low dispersal
+    if (runif(1,0,1)[1] < 0.5)      phi_b[1].setValue(1.0*c2)          # dist:            far region, high speciation
     
-    if (runif(1,0,1)[1] < 0.5)      phi_w[2].setValue(-1.0)         # age:             young region, high speciation
-    if (runif(1,0,1)[1] < 0.5)      phi_e[2].setValue(1.0)          # age:             young region, slow extinction
-    if (runif(1,0,1)[1] < 0.5)      phi_d[2].setValue(1.0)          # age diff:        positive diff (old -> young), high dispersal
-    if (runif(1,0,1)[1] < 0.5)      phi_b[2].setValue(-1.0)         # age diff:        positive [big] diff (old <-> young), high speciation
+    if (runif(1,0,1)[1] < 0.5)      phi_w[2].setValue(-1.0*c1)         # age:             young region, high speciation
+    if (runif(1,0,1)[1] < 0.5)      phi_e[2].setValue(1.0*c2)          # age:             young region, slow extinction
+    if (runif(1,0,1)[1] < 0.5)      phi_d[2].setValue(1.0*c1)          # age diff:        positive diff (old -> young), high dispersal
+    if (runif(1,0,1)[1] < 0.5)      phi_b[2].setValue(-1.0*c2)         # age diff:        positive [big] diff (old <-> young), high speciation
 
-    if (runif(1,0,1)[1] < 0.5)      sigma_w[1].setValue(1.0)        # high-class:      high island, high speciation
-    if (runif(1,0,1)[1] < 0.5)      sigma_e[1].setValue(-1.0)       # high-class:      high island, low extinction
-    if (runif(1,0,1)[1] < 0.5)      sigma_d[1].setValue(-1.0)       # dist-class:      movement over ocean, low dispersal
-    if (runif(1,0,1)[1] < 0.5)      sigma_b[1].setValue(1.0)        # dist-class:      movement over ocean, high speciation
+    if (runif(1,0,1)[1] < 0.5)      sigma_w[1].setValue(1.0*c3)        # high-class:      high island, high speciation
+    if (runif(1,0,1)[1] < 0.5)      sigma_e[1].setValue(-1.0*c3)       # high-class:      high island, low extinction
+    if (runif(1,0,1)[1] < 0.5)      sigma_d[1].setValue(-1.0*c3)       # dist-class:      movement over ocean, low dispersal
+    if (runif(1,0,1)[1] < 0.5)      sigma_b[1].setValue(1.0*c3)        # dist-class:      movement over ocean, high speciation
 
-    if (runif(1,0,1)[1] < 0.5)      sigma_w[2].setValue(-1.0)       # grow-class:      growing island, slow speciation
-    if (runif(1,0,1)[1] < 0.5)      sigma_e[2].setValue(1.0)        # grow-class:      growing island, fast extinction
-    if (runif(1,0,1)[1] < 0.5)      sigma_d[2].setValue(1.0)        # age-diff-class:  movement into young, high dispersal
-    if (runif(1,0,1)[1] < 0.5)      sigma_b[2].setValue(-1.0)       # age-diff-class:  movement into young, low speciation (shouldn't matter)
+    if (runif(1,0,1)[1] < 0.5)      sigma_w[2].setValue(-1.0*c3)       # grow-class:      growing island, slow speciation
+    if (runif(1,0,1)[1] < 0.5)      sigma_e[2].setValue(1.0*c3)        # grow-class:      growing island, fast extinction
+    if (runif(1,0,1)[1] < 0.5)      sigma_d[2].setValue(1.0*c3)        # age-diff-class:  movement into young, high dispersal
+    if (runif(1,0,1)[1] < 0.5)      sigma_b[2].setValue(-1.0*c3)       # age-diff-class:  movement into young, low speciation (shouldn't matter)
 
 } else {
     rho_e.setValue(0.05)
